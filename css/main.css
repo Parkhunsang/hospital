@@ -375,34 +375,6 @@
       url("../assets/visual-slide-01.png") center / cover no-repeat;
   }
 
-  .process,
-  .clinic-band {
-    grid-template-columns: 1fr;
-  }
-
-  .process-visual {
-    min-height: 260px;
-  }
-}
-
-@media (max-width: 640px) {
-  .visual-controls {
-    left: 24px;
-    right: 24px;
-    bottom: 28px;
-    gap: 14px;
-  }
-
-  .visual-fraction {
-    min-width: 66px;
-    font-size: 17px;
-  }
-
-  .visual-progress {
-    flex: 1;
-    width: auto;
-  }
-
   .visual-prev,
   .visual-next {
     font-size: 30px;
