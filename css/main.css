@@ -1,8 +1,12 @@
-#visual .visual-swiper {
+#visual {
   width: 100%;
   height: calc(100vh - 80px);
   height: calc(100dvh - 80px);
+}
 
+#visual .visual-swiper {
+  width: 100%;
+  height: 100%;
   position: relative;
 }
 
@@ -21,16 +25,25 @@
   height: 100%;
 }
 
+.slide-01,
+.slide-02,
+.slide-03 {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
 .slide-01 {
-  background: yellow;
+  background-image: url("../assets/visual-slide-01.png");
 }
 
 .slide-02 {
-  background: pink;
+  background-image: url("../assets/visual-slide-02.png");
 }
 
 .slide-03 {
-  background: red;
+  background-image: url("../assets/visual-slide-03.png");
 }
 
 .visual-controls {
@@ -182,7 +195,7 @@
 .process-visual {
   min-height: 370px;
   border-radius: 8px;
-  background: url("../assets/visual-slide-2.png") center / cover no-repeat;
+  background: url("../assets/visual-slide-02.png") center / cover no-repeat;
   box-shadow: var(--shadow);
 }
 
@@ -309,7 +322,7 @@
       rgba(2, 44, 84, 0.95) 64%,
       rgba(2, 44, 84, 0.68)
     ),
-    url("../assets/visual-slide-3.png") center / cover no-repeat;
+    url("../assets/visual-slide-03.png") center / cover no-repeat;
 }
 
 .metrics {
@@ -359,7 +372,7 @@
         rgba(255, 255, 255, 0.86) 63%,
         rgba(255, 255, 255, 0.3) 100%
       ),
-      url("../assets/visual-slide-1.png") center / cover no-repeat;
+      url("../assets/visual-slide-01.png") center / cover no-repeat;
   }
 
   .process,
