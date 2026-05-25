@@ -2,7 +2,9 @@ const currentEl = document.querySelector(".visual-current");
 const totalEl = document.querySelector(".visual-total");
 const progressEl = document.querySelector(".visual-progress span");
 const toggleBtn = document.querySelector(".visual-toggle");
-const totalSlides = document.querySelectorAll("#visual_slide > .swiper-slide").length;
+const totalSlides = document.querySelectorAll(
+  "#visual_slide > .swiper-slide",
+).length;
 
 const formatSlideNumber = (number) => String(number).padStart(2, "0");
 
