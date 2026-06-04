@@ -1,356 +1,599 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>코어업 척추통증센터 | 병원 제작 사이트</title>
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/common.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
-    />
-    <link rel="stylesheet" href="css/main.css" />
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"
-    ></script>
-    <script defer src="./js/main.js"></script>
-  </head>
-  <body>
-    <header class="topbar">
-      <nav class="nav" aria-label="주요 메뉴">
-        <a class="brand" href="#">
-          <span class="brand-mark">C</span>
-          <span>
-            코어업 척추통증센터
-            <small>SPINE & PAIN CENTER</small>
-          </span>
-        </a>
-        <div class="nav-links">
-          <a href="#symptoms">통증 선택</a>
-          <a href="#system">협진 시스템</a>
-          <a href="#clinic">진료 안내</a>
-          <a href="#results">진료 성과</a>
-        </div>
-        <div class="nav-actions">
-          <a class="ghost-button" href="tel:0212345678">전화 상담</a>
-          <a class="primary-button" href="#booking">예약하기</a>
-        </div>
-      </nav>
-    </header>
 
-    <main>
-      <section id="visual">
-        <div class="swiper visual-swiper">
-          <ul id="visual_slide" class="swiper-wrapper">
-            <li class="swiper-slide slide-01">
-              <div class="text_wrap">
-                <p class="text_wrap_title">
-                  정확한 진단 위의 치료,<br />환자의 일상을 먼저 생각합니다.
-                </p>
-                <p class="text_wrap_sub">
-                  정형외과 &#183; 신경외과 &#183; 영상의학과 &#183;
-                  마취통증의학과<br />
-                  분야별 협진으로 통증의 원인을 함께 찾습니다.
-                </p>
-              </div>
-            </li>
-            <li class="swiper-slide slide-02">
-              <div class="text_wrap">
-                <p class="text_wrap_title">
-                  환자의 상태에 맞춘<br />맞춤 치료로 더 빠른 회복을 돕습니다.
-                </p>
-                <p class="text_wrap_sub">
-                  비수술 치료 &#183; 도수치료 &#183; 주사치료 &#183;
-                  재활치료까지<br />
-                  환자의 통증을 줄이고 일상으로의 회복을 지원합니다.
-                </p>
-              </div>
-            </li>
-            <li class="swiper-slide slide-03">
-              <div class="text_wrap">
-                <p class="text_wrap_title">
-                  정밀한 진단이<br />올바른 치료의 시작입니다.
-                </p>
-                <p class="text_wrap_sub">
-                  최신 MRI &#183; 초음파 장비와 숙련된 의료진의 정확한
-                  판독으로<br />
-                  통증의 원인을 정밀하게 진단합니다.
-                </p>
-              </div>
-            </li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>코어업 척추통증센터 | 병원 제작 사이트</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <!-- Three.js 및 카메라 애니메이션을 위한 라이브러리 추가 -->
+  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="./js/main.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="주요 메뉴">
+      <a class="brand" href="#">
+        <span class="brand-mark">C</span>
+        <span>
+          코어업 척추통증센터
+          <small>SPINE & PAIN CENTER</small>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#information">병원 소개</a>
+        <a href="#reservation">진료예약 및 안내</a>
+        <a href="#clinic">클리닉 소개</a>
+        <a href="#clinic">도수재활치료</a>
+        <a href="#board">커뮤니티</a>
+      </div>
+      <div class="nav-actions">
+        <a class="ghost-button" href="tel:0212345678">전화 상담</a>
+        <a class="primary-button" href="#booking">예약하기</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 3D Body Map Hero 섹션 -->
+    <section id="hero-3d">
+      <div id="canvas-container"></div>
+
+      <div class="ui-layer">
+        <div class="menu-list">
+          <div class="info-text-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+              <path fill="currentColor"
+                d="M140 176a4 4 0 0 1-4 4a12 12 0 0 1-12-12v-40a4 4 0 0 0-4-4a4 4 0 0 1 0-8a12 12 0 0 1 12 12v40a4 4 0 0 0 4 4a4 4 0 0 1 4 4m-16-84a8 8 0 1 0-8-8a8 8 0 0 0 8 8m104 36A100 100 0 1 1 128 28a100.11 100.11 0 0 1 100 100m-8 0a92 92 0 1 0-92 92a92.1 92.1 0 0 0 92-92" />
+            </svg>
+            <p>통증 부위를 선택해주세요</p>
+          </div>
+
+          <ul class="pain-list">
+            <li data-target="neck">목 통증</li>
+            <li data-target="shoulder">어깨 통증</li>
+            <li data-target="waist">허리 통증</li>
+            <li data-target="wrist">손/손목 통증</li>
+            <li data-target="knee">무릎 통증</li>
+            <li data-target="foot">발/발목 통증</li>
           </ul>
         </div>
-        <div class="tv_wrap">
-          <div class="tv_container">
-            <div class="visual-controls" aria-label="메인 비주얼 슬라이드 제어">
-              <div class="visual-fraction" aria-live="polite">
-                <span class="visual-current">01</span>
-                <span class="visual-slash">/</span>
-                <span class="visual-total">03</span>
-              </div>
-              <div class="visual-progress" aria-hidden="true">
-                <span></span>
-              </div>
-              <button
-                type="button"
-                class="visual-toggle"
-                aria-label="슬라이드 일시정지"
-              >
-                <span></span>
-                <span></span>
-              </button>
-              <button
-                type="button"
-                class="visual-prev"
-                aria-label="이전 슬라이드"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                class="visual-next"
-                aria-label="다음 슬라이드"
-              >
-                ›
-              </button>
-            </div>
-            <div class="toGo_section"></div>
+        <div id="info-panel" class="info-panel hidden">
+          <h3 id="info-title">부위명</h3>
+          <ul id="info-disease-list" class="disease-list">
+            <!-- JS에서 관련 질환 리스트가 삽입됩니다 -->
+          </ul>
+          <div class="panel-actions">
+            <button id="close-panel" class="ghost-button small">
+              뒤로가기
+            </button>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section class="section">
-        <div class="container">
-          <div class="section-head">
-            <div class="section-title">
-              <span class="eyebrow">진료 원칙</span>
-              <h2>검사부터 회복까지, 환자 중심으로 설계한 진료</h2>
-              <p>
-                증상을 단순히 줄이는 데서 멈추지 않고 원인 확인, 치료 선택, 재활
-                관리까지 이어지는 흐름을 제공합니다.
-              </p>
-            </div>
-          </div>
-
-          <div class="care-grid">
-            <article class="care-item">
-              <div class="care-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11Z"
-                  />
-                  <path d="M9 10h6M12 7v6" />
-                </svg>
-              </div>
-              <h3>환자 중심 진료</h3>
-              <p>
-                환자의 이야기에 귀 기울이고 생활 패턴과 통증 양상을 함께
-                확인합니다.
-              </p>
-            </article>
-            <article class="care-item">
-              <div class="care-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="7" />
-                  <path d="M12 3v4M12 17v4M3 12h4M17 12h4" />
-                </svg>
-              </div>
-              <h3>정확한 진단</h3>
-              <p>
-                MRI, CT, 초음파 등 필요한 검사를 바탕으로 통증의 원인을 명확히
-                파악합니다.
-              </p>
-            </article>
-            <article class="care-item">
-              <div class="care-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M20 8c0 5-8 11-8 11S4 13 4 8a4 4 0 0 1 7-2.6A4 4 0 0 1 20 8Z"
-                  />
-                  <path d="M8 12h3l2-3 3 6h2" />
-                </svg>
-              </div>
-              <h3>꼭 필요한 치료</h3>
-              <p>
-                과잉 진료 없이 현재 상태에 맞는 비수술, 수술, 재활 계획을
-                제안합니다.
-              </p>
-            </article>
+      <div class="tv_wrap">
+        <div class="tv_container">
+          <div class="toGo_section">
+            <ul class="toGo-list">
+              <li>
+                <a href="#booking" class="toGo-item">
+                  <div class="toGo-icon">
+                    <img src="./assets/reservition.svg" alt="진료시간 예약" aria-hidden="true" />
+                  </div>
+                  <span class="toGo-name">진료시간 예약</span>
+                </a>
+              </li>
+              <li>
+                <a href="#certificate" class="toGo-item">
+                  <div class="toGo-icon">
+                    <img src="./assets/certificate.svg" alt="제증명 발급" aria-hidden="true" />
+                  </div>
+                  <span class="toGo-name">제증명 발급</span>
+                </a>
+              </li>
+              <li>
+                <a href="#non-surgical" class="toGo-item">
+                  <div class="toGo-icon">
+                    <img src="./assets/non-surgical.svg" alt="비수술 클리닉" aria-hidden="true" />
+                  </div>
+                  <span class="toGo-name">비수술 클리닉</span>
+                </a>
+              </li>
+              <li>
+                <a href="#reviews" class="toGo-item">
+                  <div class="toGo-icon">
+                    <img src="./assets/coment.svg" alt="고객 후기" aria-hidden="true" />
+                  </div>
+                  <span class="toGo-name">고객 후기</span>
+                </a>
+              </li>
+              <li>
+                <a href="#location" class="toGo-item">
+                  <div class="toGo-icon">
+                    <img src="./assets/location.svg" alt="오시는 길" aria-hidden="true" />
+                  </div>
+                  <span class="toGo-name">오시는 길</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section alt" id="system">
-        <div class="container process">
+
+    <section class="section fast-diagnosis">
+      <div class="container">
+        <div class="section-head">
           <div class="section-title">
-            <span class="eyebrow">02</span>
-            <h2>정형외과·신경외과·영상의학과 전문 협진 시스템</h2>
+            <span class="eyebrow">원스톱 진단 시스템</span>
+            <h2>당일 검사부터 결과 안내까지 빠르게</h2>
             <p>
-              정확한 진단부터 맞춤 치료까지, 각 분야 전문의의 긴밀한 협진으로
-              최적의 치료 계획을 수립합니다.
+              통증으로 고통받는 시간을 줄이기 위해 체계적이고 신속한 진단
+              시스템을 운영합니다.
             </p>
-            <div class="hero-actions">
-              <a class="primary-button" href="#booking">협진 상담 예약</a>
-              <a class="ghost-button" href="#clinic">검사 장비 보기</a>
+          </div>
+        </div>
+
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-num">01</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <div class="step-info">
+              <h3>진료 및 문진</h3>
+              <p>전문의가 직접 통증의 양상과 원인을 세밀하게 파악합니다.</p>
             </div>
           </div>
-          <div class="steps" aria-label="협진 단계">
-            <article class="step">
-              <div class="step-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="8" />
-                  <path d="M8 12h8M12 8v8" />
-                </svg>
-              </div>
-              <div>
-                <h3>정밀 진단</h3>
-                <p>대학병원급 MRI·CT 등 첨단 장비로 정확하게 진단합니다.</p>
-              </div>
-            </article>
-            <article class="step">
-              <div class="step-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="4" y="5" width="16" height="11" rx="2" />
-                  <path d="M9 20h6M12 16v4" />
-                </svg>
-              </div>
-              <div>
-                <h3>영상 판독</h3>
-                <p>영상의학과 전문의가 필요한 검사 결과를 정밀 판독합니다.</p>
-              </div>
-            </article>
-            <article class="step">
-              <div class="step-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M16 11a4 4 0 1 0-8 0" />
-                  <path d="M4 20a8 8 0 0 1 16 0" />
-                  <path d="M19 8v5M22 10.5h-6" />
-                </svg>
-              </div>
-              <div>
-                <h3>전문의 협진</h3>
-                <p>
-                  정형외과, 신경외과, 마취통증의학과 전문의가 다각도로
-                  협진합니다.
+
+          <div class="process-step">
+            <div class="step-num">02</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="7" width="20" height="15" rx="2" ry="2" />
+                <polyline points="17 2 12 7 7 2" />
+              </svg>
+            </div>
+            <div class="step-info">
+              <h3>정밀 영상 검사</h3>
+              <p>MRI, CT, X-ray 등 상태에 맞는 맞춤 검사를 진행합니다.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-num">03</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
+              </svg>
+            </div>
+            <div class="step-info">
+              <h3>영상의학 판독</h3>
+              <p>
+                영상의학과 전문의가 검사 결과를 빠르고 정확하게 판독합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-num">04</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <div class="step-info">
+              <h3>통합 협진 및 치료</h3>
+              <p>전문 협진을 통해 최적의 치료 계획을 수립합니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fast-features">
+          <div class="feature-tag">정형외과 협진</div>
+          <div class="feature-tag">신경외과 협진</div>
+          <div class="feature-tag">영상의학과 검사</div>
+          <div class="feature-tag">마취통증의학과 연계</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section equipment alt">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-title">
+            <span class="eyebrow">첨단 검사 장비</span>
+            <h2>정확한 진단은 적절한 검사에서 시작됩니다.</h2>
+            <p>
+              증상과 원인에 맞는 최적의 검사를 통해 불필요한 진료를 줄이고
+              신뢰할 수 있는 결과를 제공합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="equip-grid">
+          <article class="equip-card">
+            <div class="equip-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="7" width="20" height="15" rx="2" ry="2" />
+                <polyline points="17 2 12 7 7 2" />
+              </svg>
+            </div>
+            <div class="equip-info">
+              <h3>MRI <small>자기공명영상</small></h3>
+              <ul class="equip-details">
+                <li>
+                  <strong>확인 내용:</strong> 디스크, 신경 압박, 인대·근육
+                  손상
+                </li>
+                <li><strong>주요 대상:</strong> 목·허리 통증, 저림 증상</li>
+              </ul>
+            </div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                <path d="M2 12h20" />
+              </svg>
+            </div>
+            <div class="equip-info">
+              <h3>CT <small>컴퓨터단층촬영</small></h3>
+              <ul class="equip-details">
+                <li><strong>확인 내용:</strong> 뼈 구조, 골절, 관절 상태</li>
+                <li><strong>주요 대상:</strong> 사고 후 통증, 골절 의심</li>
+              </ul>
+            </div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+            </div>
+            <div class="equip-info">
+              <h3>X-ray <small>디지털 엑스레이</small></h3>
+              <ul class="equip-details">
+                <li>
+                  <strong>확인 내용:</strong> 뼈 정렬, 관절 간격, 기본 골격
+                  상태
+                </li>
+                <li><strong>주요 대상:</strong> 초기 통증 평가</li>
+              </ul>
+            </div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2 12h4l2-9 5 18 3-9h6" />
+              </svg>
+            </div>
+            <div class="equip-info">
+              <h3>초음파 <small>근골격계 초음파</small></h3>
+              <ul class="equip-details">
+                <li>
+                  <strong>확인 내용:</strong> 힘줄, 인대, 염증, 연부조직
+                </li>
+                <li><strong>주요 대상:</strong> 어깨·손목·무릎 통증</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section non-surgical">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-title">
+            <h2>수술보다 먼저, 비수술 치료를 고민합니다.</h2>
+          </div>
+        </div>
+
+        <div class="treat-grid">
+          <article class="treat-card">
+            <div class="treat-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </div>
+            <h3>도수치료</h3>
+            <p>관절 가동성과 근육 기능 회복</p>
+            <div class="treat-tags">
+              <span>#자세불균형</span><span>#근육긴장</span><span>#만성통증</span>
+            </div>
+          </article>
+
+          <article class="treat-card">
+            <div class="treat-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="4" />
+                <line x1="12" y1="2" x2="12" y2="4" />
+                <line x1="12" y1="20" x2="12" y2="22" />
+                <line x1="2" y1="12" x2="4" y2="12" />
+                <line x1="20" y1="12" x2="22" y2="12" />
+              </svg>
+            </div>
+            <h3>신경차단술</h3>
+            <p>신경 압박으로 인한 통증 신호 완화</p>
+            <div class="treat-tags">
+              <span>#저림·방사통</span><span>#디스크의심</span>
+            </div>
+          </article>
+
+          <article class="treat-card">
+            <div class="treat-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 2h6M12 2v4M10 6h4l4 14H6L10 6z" />
+                <path d="M6 14h12" />
+              </svg>
+            </div>
+            <h3>주사치료</h3>
+            <p>염증 조절과 관절 통증의 빠른 완화</p>
+            <div class="treat-tags">
+              <span>#염증성통증</span><span>#관절통증</span>
+            </div>
+          </article>
+
+          <article class="treat-card">
+            <div class="treat-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+            </div>
+            <h3>재활치료</h3>
+            <p>치료 후 재발 방지와 움직임 기능 회복</p>
+            <div class="treat-tags">
+              <span>#수술후회복</span><span>#기능회복</span>
+            </div>
+          </article>
+
+          <article class="treat-card">
+            <div class="treat-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            </div>
+            <h3>체외충격파</h3>
+            <p>힘줄과 인대 부위의 조직 회복 자극</p>
+            <div class="treat-tags">
+              <span>#힘줄·인대손상</span><span>#만성통증</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section self-test alt">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-title">
+            <h2>내 증상 체크하기</h2>
+          </div>
+        </div>
+
+        <div class="self-test-wrap">
+          <div class="test-questions">
+            <label class="test-checkbox">
+              <input type="checkbox" name="symptom" value="waist" />
+              <span class="checkbox-box"></span>
+              <span class="checkbox-text">허리가 자주 아프다</span>
+            </label>
+            <label class="test-checkbox">
+              <input type="checkbox" name="symptom" value="leg" />
+              <span class="checkbox-box"></span>
+              <span class="checkbox-text">다리가 저리거나 당긴다</span>
+            </label>
+            <label class="test-checkbox">
+              <input type="checkbox" name="symptom" value="sit" />
+              <span class="checkbox-box"></span>
+              <span class="checkbox-text">오래 앉아있기 힘들다</span>
+            </label>
+            <label class="test-checkbox">
+              <input type="checkbox" name="symptom" value="neck" />
+              <span class="checkbox-box"></span>
+              <span class="checkbox-text">목과 어깨가 자주 뻐근하다</span>
+            </label>
+            <label class="test-checkbox">
+              <input type="checkbox" name="symptom" value="arm" />
+              <span class="checkbox-box"></span>
+              <span class="checkbox-text">팔이나 손이 저릴 때가 있다</span>
+            </label>
+            <label class="test-checkbox">
+              <input type="checkbox" name="symptom" value="knee" />
+              <span class="checkbox-box"></span>
+              <span class="checkbox-text">계단을 오르내릴 때 무릎 통증이 있다</span>
+            </label>
+          </div>
+          <div class="test-result-box">
+            <h3>하나라도 해당된다면 관련 진료가 필요할 수 있습니다.</h3>
+            <p>
+              증상을 방치하지 마시고, 정확한 원인 파악을 위해 전문의의 진료를
+              받아보시길 권장합니다.
+            </p>
+            <div class="result-actions">
+              <a href="#booking" class="primary-button full-width">진료 예약하기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section doctors alt">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-title">
+            <span class="eyebrow">의료진 소개</span>
+            <h2>오늘 진료 가능한 의료진을 확인하세요.</h2>
+            <p>
+              풍부한 임상 경험을 갖춘 전문의가 통증의 근본적인 원인을 찾아
+              치료합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="doctor-grid">
+
+          <article class="doctor-card">
+            <div class="doc-image">
+              <img src="https://via.placeholder.com/400x500/e7f2ff/06366b?text=Doctor+Photo" alt="김코어 대표원장" />
+              <div class="doc-badge">정형외과 전문의</div>
+            </div>
+            <div class="doc-info">
+              <div class="doc-header">
+                <h3>김코어 <small>대표원장</small></h3>
+                <p class="doc-philosophy">
+                  "통증의 원인을 정확히 찾고 필요한 치료부터 제안합니다."
                 </p>
               </div>
-            </article>
-            <article class="step">
-              <div class="step-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M20 8c0 5-8 11-8 11S4 13 4 8a4 4 0 0 1 7-2.6A4 4 0 0 1 20 8Z"
-                  />
-                </svg>
+              <ul class="doc-specs">
+                <li>
+                  <strong>전문 진료:</strong> 허리디스크, 척추관협착증,
+                  좌골신경통
+                </li>
+              </ul>
+              <div class="doc-schedule">
+                <div class="schedule-head">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  <span>오늘 진료 가능 시간</span>
+                </div>
+                <div class="schedule-time">14:00 ~ 18:00</div>
               </div>
-              <div>
-                <h3>맞춤 치료</h3>
-                <p>환자의 상태에 맞춘 치료와 재활까지 통합 관리합니다.</p>
+              <div class="doc-actions">
+                <a href="#booking" class="primary-button full-width">진료 예약하기</a>
               </div>
-            </article>
-          </div>
-        </div>
-        <div class="container process-visual-wrap">
-          <div
-            class="process-visual"
-            role="img"
-            aria-label="전문 협진 시스템 비주얼"
-          ></div>
-        </div>
-      </section>
+            </div>
+          </article>
 
-      <section class="section" id="clinic">
-        <div class="container clinic-band">
-          <div class="section-title">
-            <span class="eyebrow">진료 안내</span>
-            <h2>처음 방문해도 흐름이 분명한 진료 경험</h2>
-            <p>
-              접수, 문진, 검사, 진단, 치료 계획까지 환자가 이해하기 쉬운 순서로
-              안내합니다.
-            </p>
-            <div class="clinic-info">
-              <div class="info-row">
-                <span>진료 과목</span>
-                <p>척추, 관절, 신경 통증, 스포츠 손상, 재활 치료</p>
+          <article class="doctor-card">
+            <div class="doc-image">
+              <img src="https://via.placeholder.com/400x500/e7f2ff/06366b?text=Doctor+Photo" alt="이척추 원장" />
+              <div class="doc-badge">신경외과 전문의</div>
+            </div>
+            <div class="doc-info">
+              <div class="doc-header">
+                <h3>이척추 <small>원장</small></h3>
+                <p class="doc-philosophy">
+                  "수술은 최후의 수단, 비수술 우선 치료를 지향합니다."
+                </p>
               </div>
-              <div class="info-row">
-                <span>진료 시간</span>
-                <p>평일 09:00 - 18:30 · 토요일 09:00 - 13:00</p>
+              <ul class="doc-specs">
+                <li>
+                  <strong>전문 진료:</strong> 목디스크, 거북목, 신경차단술
+                </li>
+              </ul>
+              <div class="doc-schedule">
+                <div class="schedule-head">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  <span>오늘 진료 가능 시간</span>
+                </div>
+                <div class="schedule-time">09:30 ~ 13:00</div>
               </div>
-              <div class="info-row">
-                <span>검사 장비</span>
-                <p>MRI, CT, 초음파, 디지털 X-ray, 체형 분석</p>
+              <div class="doc-actions">
+                <a href="#booking" class="primary-button full-width">진료 예약하기</a>
               </div>
             </div>
-          </div>
-
-          <aside class="booking" id="booking">
-            <h3>예약 상담을 남겨주시면 빠르게 안내드리겠습니다.</h3>
-            <p>
-              증상과 희망 진료 시간을 남겨주시면 담당자가 확인 후 연락드립니다.
-            </p>
-            <form class="form">
-              <input type="text" placeholder="이름" aria-label="이름" />
-              <input type="tel" placeholder="연락처" aria-label="연락처" />
-              <select aria-label="증상 선택">
-                <option>목 통증</option>
-                <option>허리 통증</option>
-                <option>어깨 통증</option>
-                <option>무릎 통증</option>
-                <option>기타 통증</option>
-              </select>
-              <select aria-label="희망 시간">
-                <option>오전 진료</option>
-                <option>오후 진료</option>
-                <option>가장 빠른 시간</option>
-              </select>
-              <button type="button">예약 상담 신청</button>
-            </form>
-          </aside>
+          </article>
         </div>
-      </section>
-
-      <section class="section dark" id="results">
-        <div class="container">
-          <div class="section-title">
-            <span class="eyebrow">03</span>
-            <h2>신뢰가 쌓아온 결과, 더 나은 내일을 위한 성장</h2>
-            <p>
-              풍부한 경험과 체계적인 진료 시스템으로 환자분들의 건강한 일상을
-              함께 만들어갑니다.
-            </p>
-          </div>
-          <div class="metrics">
-            <div class="metric">
-              <span>비수술 치료 경험</span><strong>12,000+</strong
-              ><small>건 이상</small>
-            </div>
-            <div class="metric">
-              <span>MRI/초음파 정밀 진단</span><strong>18,000+</strong
-              ><small>건 이상</small>
-            </div>
-            <div class="metric">
-              <span>재진 환자 비율</span><strong>82%</strong><small>이상</small>
-            </div>
-            <div class="metric">
-              <span>지역 주민 신뢰도</span><strong>9.3/10</strong
-              ><small>자체 조사 기준</small>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        <div>
-          <strong>코어업 척추통증센터</strong><br />
-          서울특별시 강남구 테헤란로 000 · 대표전화 02-1234-5678
-        </div>
-        <div>Copyright COREUP Spine & Pain Center. All rights reserved.</div>
       </div>
-    </footer>
-  </body>
+    </section>
+
+    <section class="section health-info alt">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-title">
+            <span class="eyebrow">건강 정보</span>
+            <h2>통증을 이해하면 치료 방향이 보입니다.</h2>
+          </div>
+        </div>
+
+        <div class="health-grid">
+          <article class="health-card">
+            <div class="health-thumb">
+              <img src="https://via.placeholder.com/400x250/e7f2ff/06366b?text=Health+Info" alt="허리디스크 정보" />
+              <span class="health-cat">허리/척추</span>
+            </div>
+            <div class="health-body">
+              <h3>허리디스크와 단순 근육통, 어떻게 다를까?</h3>
+              <p>
+                허리가 아플 때 가장 먼저 의심하는 허리디스크. 단순 근육통과의
+                차이점과 병원에 가야 할 타이밍을 알아봅니다.
+              </p>
+            </div>
+          </article>
+
+          <article class="health-card">
+            <div class="health-thumb">
+              <img src="https://via.placeholder.com/400x250/e7f2ff/06366b?text=Health+Info" alt="목디스크 정보" />
+              <span class="health-cat">목/어깨</span>
+            </div>
+            <div class="health-body">
+              <h3>팔이 저린데 목디스크라고요?</h3>
+              <p>
+                목이 아닌 팔과 손이 저린 증상으로 병원을 찾았다가 목디스크
+                진단을 받는 경우가 많습니다. 그 이유를 설명해드립니다.
+              </p>
+            </div>
+          </article>
+
+          <article class="health-card">
+            <div class="health-thumb">
+              <img src="https://via.placeholder.com/400x250/e7f2ff/06366b?text=Health+Info" alt="관절염 정보" />
+              <span class="health-cat">무릎/관절</span>
+            </div>
+            <div class="health-body">
+              <h3>무릎 통증, 방치하면 퇴행성 관절염으로</h3>
+              <p>
+                계단을 오르내릴 때 시큰거리는 무릎 통증. 초기에 잡지 않으면
+                연골이 닳아 퇴행성 관절염으로 진행될 수 있습니다.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>코어업 척추통증센터</strong><br />
+        서울특별시 강남구 테헤란로 000 · 대표전화 02-1234-5678
+      </div>
+      <div>Copyright COREUP Spine & Pain Center. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+
 </html>

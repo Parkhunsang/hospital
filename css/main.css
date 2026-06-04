@@ -1,52 +1,5 @@
-#visual {
-  width: 100%;
-  height: calc(100vh - 80px);
-  height: calc(100dvh - 80px);
-}
-
-#visual .visual-swiper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-#visual_slide {
-  width: 100%;
-  height: 100%;
-}
-
-#visual_slide .swiper-slide {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#visual_slide li {
-  width: 100%;
-  height: 100%;
-}
-
-.slide-01,
-.slide-02,
-.slide-03 {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  object-fit: cover;
-}
-
-.slide-01 {
-  background-image: url("../assets/visual-slide-01.png");
-}
-
-.slide-02 {
-  background-image: url("../assets/visual-slide-02.png");
-}
-
-.slide-03 {
-  background-image: url("../assets/visual-slide-03.png");
+main {
+  margin-top: -80px;
 }
 
 .tv_wrap {
@@ -69,155 +22,102 @@
   gap: 30px;
 }
 
-.text_wrap {
+.toGo_section {
   width: 1200px;
-  min-height: 200px;
+  height: 80px;
+  margin-bottom: 30px;
   display: flex;
-  flex-direction: column;
-  gap: 80px;
+  align-items: center;
 }
 
-.text_wrap_title {
-  font: 500 40px "pretendard";
-  color: #06366b;
+.toGo-list {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #fafafc;
+  border-radius: 20px;
+}
+
+.toGo-list li {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   position: relative;
 }
 
-.text_wrap_title::before {
+.toGo-list li:nth-child(1) {
+  border-radius: 20px 0 0 20px;
+}
+
+.toGo-list li:nth-child(5) {
+  border-radius: 0 20px 20px 0;
+}
+
+.toGo-list li:hover {
+  background: #1b2d5a;
+}
+
+.toGo-list li:hover .toGo-name {
+  color: #ffffff;
+}
+
+.toGo-list li:hover .toGo-icon img {
+  filter: brightness(0) invert(1);
+}
+
+.toGo-list li::after {
   content: "";
+  width: 1px;
+  height: 50%;
   position: absolute;
-  width: 40px;
-  background: linear-gradient(to right, #0b1632, #1b2d5a, #2f5fa7);
-  height: 3px;
-  left: 0px;
-  top: 120px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -0.5px;
+  background: rgba(136, 149, 182, 0.85);
+  border-radius: 50px;
 }
 
-.text_wrap_sub {
-  font: 500 20px "pretendard";
-  color: #243041;
-}
-
-.toGo_section {
-  width: 1200px;
-  height: 150px;
-  background: #f9f9f9;
-  border-radius: 20px;
-  margin-bottom: 30px;
-}
-
-.visual-controls_wrap {
-  width: 1200px;
-}
-
-.visual-controls {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  color: #0b1632;
-}
-
-.visual-fraction {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 78px;
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: 0;
-}
-
-.visual-slash,
-.visual-total {
-  opacity: 0.72;
-}
-
-.visual-progress {
-  width: min(240px, 32vw);
-  height: 2px;
-  background: rgba(11, 22, 50, 0.55);
-  overflow: hidden;
-}
-
-.visual-progress span {
-  display: block;
-  width: 0;
-  height: 100%;
-  background: #0b1632;
-}
-
-.visual-toggle,
-.visual-prev,
-.visual-next {
-  display: grid;
-  place-items: center;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  color: #0b1632;
-  cursor: pointer;
-}
-
-.visual-toggle {
-  grid-template-columns: repeat(2, 3px);
-  justify-content: center;
-  gap: 6px;
-}
-
-.visual-toggle span {
-  width: 2px;
-  height: 14px;
-  background: currentColor;
-}
-
-.visual-toggle.is-paused {
-  grid-template-columns: 1fr;
-  font-size: 16px;
-  font-weight: 800;
-}
-
-.visual-toggle.is-paused span {
+.toGo-list li:nth-child(1):after {
   display: none;
 }
 
-.visual-toggle.is-paused::before {
-  content: "";
-  width: 0;
-  height: 0;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 9px solid currentColor;
+.toGo-name {
+  transition: all 0.3s ease;
 }
 
-.visual-prev,
-.visual-next {
-  font-size: 36px;
-  font-weight: 300;
-  line-height: 1;
+.toGo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-decoration: none;
+  color: var(--ink);
+  width: 100%;
+  height: 100%;
 }
 
-.visual-prev:hover,
-.visual-next:hover,
-.visual-toggle:hover {
-  opacity: 0.72;
+.toGo-item:hover {
+  opacity: 0.8;
 }
 
-.care-grid {
+.toGo-icon {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  place-items: center;
 }
 
-.care-item {
-  min-height: 178px;
-  padding: 25px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--white);
+.toGo-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a2b3c;
 }
 
-.care-icon,
 .step-icon {
   width: 48px;
   height: 48px;
@@ -228,225 +128,1043 @@
   color: var(--blue);
 }
 
-.care-item h3 {
-  margin-top: 18px;
-  color: var(--navy);
-  font-size: 20px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.care-item p {
-  margin-top: 10px;
-  color: var(--muted);
-  font-weight: 600;
-  line-height: 1.65;
+/* ==========================================================================
+   4. 빠른 진단 시스템 (Fast Diagnosis System)
+   ========================================================================== */
+.fast-diagnosis .process-steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
-.process {
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 36px;
+.fast-diagnosis .process-steps::before {
+  content: "";
+  position: absolute;
+  top: 86px;
+  left: 100px;
+  right: 100px;
+  height: 2px;
+  background: var(--line);
+  z-index: 0;
+}
+
+.process-step {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  background: transparent;
+  padding: 20px 10px;
 }
 
-.process-visual-wrap {
-  margin-top: 36px;
-}
-
-.process-visual {
-  min-height: 370px;
-  border-radius: 8px;
-  background: url("../assets/visual-slide-02.png") center / cover no-repeat;
-  box-shadow: var(--shadow);
-}
-
-.steps {
-  display: grid;
-  gap: 14px;
-}
-
-.step {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 16px;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--white);
-}
-
-.step h3 {
-  color: var(--navy);
-  font-size: 18px;
-}
-
-.step p {
-  margin-top: 7px;
-  color: var(--muted);
-  font-weight: 600;
-  line-height: 1.6;
-}
-
-.clinic-band {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 34px;
-  align-items: center;
-}
-
-.clinic-info {
-  display: grid;
-  gap: 14px;
-}
-
-.info-row {
-  display: grid;
-  grid-template-columns: 112px 1fr;
-  gap: 18px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.info-row span {
+.step-num {
+  font-size: 14px;
+  font-weight: 800;
   color: var(--blue);
-  font-weight: 900;
+  background: var(--sky);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 1);
 }
 
-.info-row p {
-  color: #263e56;
+.fast-diagnosis .step-icon {
+  width: 90px;
+  height: 90px;
+  background: var(--white);
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  color: var(--navy);
+  box-shadow: 0 8px 16px rgba(7, 29, 54, 0.04);
+  transition: all 0.3s ease;
+}
+
+.fast-diagnosis .process-step:hover .step-icon {
+  border-color: var(--navy);
+  color: var(--white);
+  background: var(--navy);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(6, 54, 107, 0.15);
+}
+
+.fast-diagnosis .step-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.step-info h3 {
+  font-size: 20px;
   font-weight: 700;
-  line-height: 1.65;
+  color: var(--ink);
+  margin: 0 0 12px;
 }
 
-.booking {
+.step-info p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  word-break: keep-all;
+  margin: 0;
+}
+
+.fast-features {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: var(--soft);
   padding: 30px;
-  border-radius: 8px;
+  border-radius: 16px;
+}
+
+.feature-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  box-shadow: 0 2px 8px rgba(7, 29, 54, 0.04);
+}
+
+.feature-tag::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+@media (max-width: 960px) {
+  .fast-diagnosis .process-steps {
+    flex-wrap: wrap;
+  }
+
+  .fast-diagnosis .process-steps::before {
+    display: none;
+  }
+
+  .process-step {
+    flex: 1 1 calc(50% - 20px);
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .process-step {
+    flex: 1 1 100%;
+  }
+}
+
+/* ==========================================================================
+   5. 검사 장비와 검사 전후 안내 (Equipment & Exam Flow)
+   ========================================================================== */
+.equip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.equip-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 30px 24px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.equip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: #cbe3fa;
+}
+
+.equip-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--sky);
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  color: var(--blue);
+}
+
+.equip-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.equip-info h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.equip-info h3 small {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.equip-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.equip-details li {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.equip-details li strong {
+  color: var(--ink);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 960px) {
+  .equip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .equip-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+
+
+}
+
+/* ==========================================================================
+   6. 비수술 치료 솔루션 (Non-Surgical Treatments)
+   ========================================================================== */
+.treat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.treat-card {
+  width: calc(33.333% - 16px);
+  min-width: 320px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 36px 30px;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.treat-card:hover {
+  border-color: var(--navy);
+  box-shadow: 0 12px 24px rgba(6, 54, 107, 0.12);
+  transform: translateY(-6px);
+}
+
+.treat-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--soft);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--blue);
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.treat-card:hover .treat-icon {
   background: var(--navy);
   color: var(--white);
 }
 
-.booking h3 {
-  font-size: 26px;
-  line-height: 1.3;
+.treat-icon svg {
+  width: 36px;
+  height: 36px;
 }
 
-.booking p {
-  margin-top: 12px;
-  color: #d9ebff;
-  font-weight: 600;
-  line-height: 1.7;
-}
-
-.form {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 22px;
-}
-
-.form input,
-.form select {
-  width: 100%;
-  min-height: 46px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 8px;
-  padding: 0 13px;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--white);
-  outline: none;
-}
-
-.form input::placeholder {
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.form select {
-  color-scheme: dark;
-}
-
-.form button {
-  grid-column: 1 / -1;
-  min-height: 48px;
-  border: 0;
-  border-radius: 8px;
-  background: var(--white);
-  color: var(--navy);
-  font-weight: 900;
-  cursor: pointer;
-}
-
-.section.dark {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(2, 28, 54, 0.98),
-      rgba(2, 44, 84, 0.95) 64%,
-      rgba(2, 44, 84, 0.68)
-    ),
-    url("../assets/visual-slide-03.png") center / cover no-repeat;
-}
-
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 38px;
-}
-
-.metric {
-  min-height: 180px;
-  padding: 24px 18px;
-  border: 1px solid rgba(217, 235, 255, 0.45);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  text-align: center;
-}
-
-.metric strong {
-  display: block;
-  margin-top: 18px;
-  color: #d5e9ff;
-  font-size: 42px;
-  line-height: 1;
-}
-
-.metric span {
-  display: block;
-  margin-top: 12px;
-  color: var(--white);
+.treat-card h3 {
+  font-size: 22px;
   font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 12px;
 }
 
-.metric small {
-  display: block;
-  margin-top: 8px;
-  color: #c7dff5;
+.treat-card p {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 24px;
+  word-break: keep-all;
+}
+
+.treat-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.treat-tags span {
+  background: var(--sky);
+  color: var(--blue);
+  padding: 6px 12px;
+  border-radius: 20px;
   font-size: 13px;
+  font-weight: 700;
 }
 
 @media (max-width: 960px) {
-  #visual {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.98) 0%,
-        rgba(255, 255, 255, 0.86) 63%,
-        rgba(255, 255, 255, 0.3) 100%
-      ),
-      url("../assets/visual-slide-01.png") center / cover no-repeat;
+  .treat-card {
+    width: calc(50% - 12px);
   }
+}
 
-  .visual-prev,
-  .visual-next {
-    font-size: 30px;
+@media (max-width: 640px) {
+  .treat-card {
+    width: 100%;
+    min-width: auto;
   }
+}
 
-  .step {
-    grid-template-columns: 48px 1fr;
-    padding: 15px;
-  }
+/* ==========================================================================
+   7. 의료진 소개 및 오늘 진료 가능 일정 (Doctors)
+   ========================================================================== */
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
 
-  .info-row {
+.doctor-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+  border-color: #cbe3fa;
+}
+
+.doc-image {
+  position: relative;
+  height: 320px;
+  background: var(--soft);
+  overflow: hidden;
+}
+
+.doc-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.doctor-card:hover .doc-image img {
+  transform: scale(1.05);
+}
+
+.doc-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--navy);
+  color: var(--white);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(6, 54, 107, 0.2);
+}
+
+.doc-info {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.doc-header {
+  margin-bottom: 20px;
+}
+
+.doc-header h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.doc-header h3 small {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.doc-philosophy {
+  font-size: 16px;
+  color: var(--blue);
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  word-break: keep-all;
+}
+
+.doc-specs {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.doc-specs li {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.doc-specs li strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.doc-schedule {
+  background: var(--soft);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: auto;
+}
+
+.schedule-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.schedule-head svg {
+  width: 20px;
+  height: 20px;
+}
+
+.schedule-time {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--blue);
+}
+
+.primary-button.full-width {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 960px) {
+  .doctor-grid {
     grid-template-columns: 1fr;
-    gap: 6px;
   }
+
+  .doctor-card {
+    flex-direction: row;
+  }
+
+  .doc-image {
+    width: 280px;
+    height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .doctor-card {
+    flex-direction: column;
+  }
+
+  .doc-image {
+    width: 100%;
+    height: 280px;
+  }
+
+  .doc-schedule {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* ==========================================================================
+   9. 자가진단 테스트 (Self Test)
+   ========================================================================== */
+.self-test-wrap {
+  display: flex;
+  gap: 30px;
+}
+
+.test-questions {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.test-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.test-checkbox:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 12px rgba(7, 86, 156, 0.08);
+}
+
+.test-checkbox input {
+  display: none;
+}
+
+.checkbox-box {
+  width: 26px;
+  height: 26px;
+  border: 2px solid #b3c5d6;
+  border-radius: 6px;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.test-checkbox input:checked+.checkbox-box {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.test-checkbox input:checked+.checkbox-box::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.test-checkbox input:checked~.checkbox-text {
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.checkbox-text {
+  font-size: 16px;
+  color: var(--ink);
+  font-weight: 600;
+  user-select: none;
+}
+
+.test-result-box {
+  width: 340px;
+  background: var(--navy);
+  border-radius: 20px;
+  padding: 36px 30px;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.test-result-box h3 {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.4;
+  margin: 0 0 16px;
+}
+
+.test-result-box p {
+  color: #c7dff5;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 30px;
+  word-break: keep-all;
+}
+
+.test-result-box .primary-button {
+  background: var(--white);
+  color: var(--navy);
+}
+
+@media (max-width: 960px) {
+  .self-test-wrap {
+    flex-direction: column;
+  }
+
+  .test-result-box {
+    width: 100%;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .test-questions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   11. 통증 건강정보 (Health Information)
+   ========================================================================== */
+.health-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.health-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.health-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.health-thumb {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: var(--soft);
+}
+
+.health-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.health-card:hover .health-thumb img {
+  transform: scale(1.05);
+}
+
+.health-cat {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(6, 54, 107, 0.2);
+}
+
+.health-body {
+  padding: 24px;
+}
+
+.health-body h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 12px;
+  line-height: 1.4;
+}
+
+.health-body p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+  word-break: keep-all;
+}
+
+@media (max-width: 960px) {
+  .health-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   15. 3D Body Map Hero Section
+   ========================================================================== */
+#hero-3d {
+  position: relative;
+  width: 100%;
+  /* 상단 헤더 80px을 제외한 전체 화면 높이 */
+  height: 100vh;
+  overflow: hidden;
+  --bg-start: #f8fafd;
+  --bg-end: #eaf2ff;
+  background: radial-gradient(circle at 50% 50%,
+      var(--bg-start) 0%,
+      var(--bg-end) 100%);
+  /* 깊이감 있는 밝은 스튜디오 그라데이션 배경 */
+}
+
+#canvas-container {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ui-layer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 100%;
+  pointer-events: none;
+  /* 배경의 3D 캔버스 드래그를 방해하지 않음 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.menu-list,
+.info-panel {
+  pointer-events: auto;
+  /* UI 요소들은 클릭 가능하도록 설정 */
+}
+
+.pain-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.menu-list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  padding: 16px 36px;
+  border-radius: 30px;
+  box-shadow: 0 8px 24px rgba(27, 45, 90, 0.04);
+  border: 1px solid #eaf2ff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: #243041;
+  /* Muted Slate */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  /* Stacking context container */
+}
+
+/* Menu items text wrapper layer */
+.menu-list li span {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Individual colors for dynamic hover matching click theme */
+.menu-list li[data-target="neck"] {
+  --item-theme: #1b2d5a;
+}
+
+.menu-list li[data-target="shoulder"] {
+  --item-theme: #124741;
+}
+
+.menu-list li[data-target="waist"] {
+  --item-theme: #1b2d5a;
+}
+
+.menu-list li[data-target="wrist"] {
+  --item-theme: #3d1a63;
+}
+
+.menu-list li[data-target="knee"] {
+  --item-theme: #4a3b12;
+}
+
+.menu-list li[data-target="foot"] {
+  --item-theme: #243041;
+}
+
+
+
+/* Circular expanding background container */
+.menu-list li::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 320px;
+  height: 320px;
+  background: var(--item-theme, #1b2d5a);
+  border-radius: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.menu-list li:hover {
+  transform: translateX(6px);
+  box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
+  border-color: var(--item-theme, #2f5fa7);
+  color: var(--item-theme, #2f5fa7);
+}
+
+.menu-list li:hover::before {
+  height: 50%;
+  background: var(--item-theme, #2f5fa7);
+}
+
+.menu-list li.active {
+  color: #ffffff;
+  border-color: var(--item-theme, #1b2d5a);
+  transform: translateX(10px);
+  box-shadow: 0 12px 30px rgba(27, 45, 90, 0.15);
+}
+
+.menu-list li.active::before {
+  height: 60%;
+  background: #ffffff;
+}
+
+.menu-list li.active::after {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.info-text-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-left: 10px;
+}
+
+.info-text-wrap svg {
+  color: #2f5fa7;
+}
+
+.info-text-wrap p {
+  font: 700 15px "pretendard";
+  color: #2f5fa7;
+  letter-spacing: -0.02em;
+}
+
+.info-panel {
+  --panel-bg: rgba(248, 250, 253, 0.85);
+  --panel-border: rgba(234, 242, 255, 0.8);
+  --panel-text: #1b2d5a;
+  background: var(--panel-bg);
+  /* Semi-transparent F8FAFD */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 36px 30px;
+  border-radius: 24px;
+  box-shadow:
+    0 20px 50px rgba(27, 45, 90, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  width: 340px;
+  border: 1px solid var(--panel-border);
+  color: var(--panel-text);
+  /* EAF2FF based border */
+  transition:
+    opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.info-panel.hidden {
+  opacity: 0;
+  transform: translateX(40px);
+  pointer-events: none;
+}
+
+.info-panel h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--panel-text);
+  /* Deep Navy */
+  margin: 0 0 16px;
+  letter-spacing: -0.03em;
+  transition: color 0.6s ease;
+}
+
+.info-panel p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.panel-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* -----------------------------------------
+   info-panel 내 질환 리스트(버튼형) 스타일
+----------------------------------------- */
+.disease-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* 모든 질환이 스크롤 없이 한 번에 보이도록 해제 */
+  max-height: none;
+}
+
+/* 스크롤바 디자인 커스텀 */
+.disease-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.disease-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.disease-list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.disease-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.disease-list li {
+  width: 100%;
+}
+
+.disease-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  color: #243041;
+  /* Muted Slate */
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid var(--panel-border);
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 2px 8px rgba(27, 45, 90, 0.02);
+}
+
+/* 새 창 열림을 직관적으로 알 수 있게 우측 화살표 아이콘 추가 */
+.disease-list a::after {
+  content: "→";
+  font-size: 16px;
+  color: var(--panel-text);
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+/* 마우스 호버(Hover) 시 효과 */
+.disease-list a:hover {
+  background-color: #eaf2ff;
+  /* Light Sky Blue */
+  border-color: #2f5fa7;
+  /* Trust Blue */
+  color: #1b2d5a;
+  /* Deep Navy */
+  box-shadow: 0 6px 16px rgba(47, 95, 167, 0.12);
+}
+
+/* 마우스 호버 시 화살표 이동 애니메이션 */
+.disease-list a:hover::after {
+  color: #1b2d5a;
+  transform: translateX(4px);
 }
