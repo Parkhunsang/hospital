@@ -2,6 +2,328 @@ main {
   margin-top: -80px;
 }
 
+/* ==========================================================================
+   01. 3D Body Map Hero Section [START]
+   ========================================================================== */
+#hero-3d {
+  position: relative;
+  width: 100%;
+  /* 상단 헤더 80px을 제외한 전체 화면 높이 */
+  height: 100vh;
+  overflow: hidden;
+  --bg-start: #f8fafd;
+  --bg-end: #eaf2ff;
+  background: radial-gradient(circle at 50% 50%,
+      var(--bg-start) 0%,
+      var(--bg-end) 100%);
+  /* 깊이감 있는 밝은 스튜디오 그라데이션 배경 */
+}
+
+#canvas-container {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ui-layer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 100%;
+  pointer-events: none;
+  /* 배경의 3D 캔버스 드래그를 방해하지 않음 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.hero-welcome-message {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: auto;
+  z-index: 15;
+}
+
+.hero-welcome-message h2 {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #6b7c96;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.01em;
+}
+
+.hero-welcome-message p {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: #1b2d5a;
+  margin: 0;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.menu-list {
+  pointer-events: auto;
+  /* UI 요소들은 클릭 가능하도록 설정 */
+}
+
+.info-text-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-left: 10px;
+}
+
+.info-text-wrap svg {
+  color: #2f5fa7;
+}
+
+.info-text-wrap p {
+  font: 700 15px "pretendard";
+  color: #2f5fa7;
+  letter-spacing: -0.02em;
+}
+
+.pain-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.menu-list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  padding: 16px 36px;
+  border-radius: 30px;
+  box-shadow: 0 8px 24px rgba(27, 45, 90, 0.04);
+  border: 1px solid #eaf2ff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: #243041;
+  /* Muted Slate */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  /* Stacking context container */
+}
+
+/* Menu items text wrapper layer */
+.menu-list li span {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Circular expanding background container */
+.menu-list li::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 320px;
+  height: 320px;
+  background: var(--item-theme, #1b2d5a);
+  border-radius: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.menu-list li:hover {
+  transform: translateX(6px);
+  box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
+  border-color: var(--item-theme, #2f5fa7);
+  color: var(--item-theme, #2f5fa7);
+}
+
+.menu-list li:hover::before {
+  height: 50%;
+  background: var(--item-theme, #2f5fa7);
+}
+
+.menu-list li.active {
+  color: #ffffff;
+  border-color: var(--item-theme, #1b2d5a);
+  transform: translateX(10px);
+  box-shadow: 0 12px 30px rgba(27, 45, 90, 0.15);
+}
+
+.menu-list li.active::before {
+  height: 60%;
+  background: #ffffff;
+}
+
+.menu-list li.active::after {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.info-panel {
+  pointer-events: auto;
+  /* UI 요소들은 클릭 가능하도록 설정 */
+  --panel-bg: rgba(248, 250, 253, 0.85);
+  --panel-border: rgba(234, 242, 255, 0.8);
+  --panel-text: #1b2d5a;
+  background: var(--panel-bg);
+  /* Semi-transparent F8FAFD */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 36px 30px;
+  border-radius: 24px;
+  box-shadow:
+    0 20px 50px rgba(27, 45, 90, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  width: 340px;
+  border: 1px solid var(--panel-border);
+  color: var(--panel-text);
+  /* EAF2FF based border */
+  transition:
+    opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.info-panel.hidden {
+  opacity: 0;
+  transform: translateX(40px);
+  pointer-events: none;
+}
+
+.info-panel h3 {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--panel-text);
+  /* Deep Navy */
+  margin: 0 0 16px;
+  letter-spacing: -0.03em;
+  transition: color 0.6s ease;
+}
+
+.info-panel p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.panel-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* -----------------------------------------
+   info-panel 내 질환 리스트(버튼형) 스타일
+----------------------------------------- */
+.disease-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* 모든 질환이 스크롤 없이 한 번에 보이도록 해제 */
+  max-height: none;
+}
+
+/* 스크롤바 디자인 커스텀 */
+.disease-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.disease-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.disease-list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.disease-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.disease-list li {
+  width: 100%;
+}
+
+.disease-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  color: #243041;
+  /* Muted Slate */
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid var(--panel-border);
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 2px 8px rgba(27, 45, 90, 0.02);
+}
+
+/* 새 창 열림을 직관적으로 알 수 있게 우측 화살표 아이콘 추가 */
+.disease-list a::after {
+  content: "→";
+  font-size: 16px;
+  color: var(--panel-text);
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+/* 마우스 호버(Hover) 시 효과 */
+.disease-list a:hover {
+  background-color: #eaf2ff;
+  /* Light Sky Blue */
+  border-color: #2f5fa7;
+  /* Trust Blue */
+  color: #1b2d5a;
+  /* Deep Navy */
+  box-shadow: 0 6px 16px rgba(47, 95, 167, 0.12);
+}
+
+/* 마우스 호버 시 화살표 이동 애니메이션 */
+.disease-list a:hover::after {
+  color: #1b2d5a;
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   01. 3D Body Map Hero Section [END]
+   ========================================================================== */
+
 .tv_wrap {
   width: 100%;
   height: 100%;
@@ -141,92 +463,164 @@ main {
 }
 
 /* ==========================================================================
-   4. 빠른 진단 시스템 (Fast Diagnosis System)
+   02. 빠른 진단 시스템 (Fast Diagnosis System) [START]
    ========================================================================== */
-.fast-diagnosis .process-steps {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  position: relative;
-  margin-top: 20px;
-  margin-bottom: 40px;
+.fast-diagnosis {
+  background: linear-gradient(180deg, #f8fafd 0%, #ffffff 100%);
+  padding: 100px 0;
 }
 
-.fast-diagnosis .process-steps::before {
-  content: "";
-  position: absolute;
-  top: 86px;
-  left: 100px;
-  right: 100px;
-  height: 2px;
-  background: var(--line);
-  z-index: 0;
+.fast-diagnosis .section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.fast-diagnosis .section-title .eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: #2f5fa7;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.fast-diagnosis .section-title .sub-eyebrow {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--muted, #6b7c96);
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.fast-diagnosis .section-title h2 {
+  font-size: 38px;
+  font-weight: 800;
+  color: #1b2d5a;
+  letter-spacing: -0.03em;
+  margin: 0;
+  line-height: 1.3;
+  word-break: keep-all;
+}
+
+.fast-diagnosis .process-steps {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .process-step {
   flex: 1;
-  position: relative;
-  z-index: 1;
+  background: #ffffff;
+  border: 1px solid rgba(47, 95, 167, 0.08);
+  border-radius: 24px;
+  padding: 50px 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(27, 45, 90, 0.02);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  background: transparent;
-  padding: 20px 10px;
+  position: relative;
+  overflow: hidden;
 }
 
-.step-num {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--blue);
-  background: var(--sky);
-  padding: 6px 14px;
-  border-radius: 20px;
-  margin-bottom: 24px;
-  display: inline-block;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 1);
+.process-step:hover {
+  transform: translateY(-8px);
+  border-color: rgba(47, 95, 167, 0.2);
+  box-shadow: 0 20px 40px rgba(27, 45, 90, 0.08);
 }
 
-.fast-diagnosis .step-icon {
-  width: 90px;
-  height: 90px;
-  background: var(--white);
-  border: 2px solid var(--line);
+.step-icon-container {
+  width: 100px;
+  height: 100px;
+  background: rgba(234, 242, 255, 0.5);
   border-radius: 50%;
   display: grid;
   place-items: center;
-  margin-bottom: 24px;
-  color: var(--navy);
-  box-shadow: 0 8px 16px rgba(7, 29, 54, 0.04);
+  margin-bottom: 30px;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
-.fast-diagnosis .process-step:hover .step-icon {
-  border-color: var(--navy);
-  color: var(--white);
-  background: var(--navy);
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(6, 54, 107, 0.15);
+.process-step:hover .step-icon-container {
+  background: rgba(234, 242, 255, 0.9);
 }
 
-.fast-diagnosis .step-icon svg {
-  width: 36px;
-  height: 36px;
+/* SVG 내부 점선이 실선으로 채워지는 효과 */
+.dash-circle {
+  transition: stroke-dasharray 0.3s ease, opacity 0.3s ease;
+}
+
+.process-step:hover .dash-circle {
+  stroke-dasharray: none;
+  opacity: 1;
+}
+
+.step-icon-container svg {
+  width: 56px;
+  height: 56px;
+}
+
+.step-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.step-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue, #2f5fa7);
+  background: rgba(234, 242, 255, 0.6);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .step-info h3 {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 800;
+  color: #1b2d5a;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
 }
 
 .step-info p {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.6;
-  word-break: keep-all;
+  font-size: 14px;
+  color: var(--muted, #6b7c96);
+  line-height: 1.5;
   margin: 0;
+  word-break: keep-all;
+  max-width: 240px;
+}
+
+.process-step::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(234, 242, 255, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.process-step:hover::after {
+  transform: translate(-50%, -50%) scale(1.5);
 }
 
 .fast-features {
@@ -234,248 +628,348 @@ main {
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
-  background: var(--soft);
-  padding: 30px;
-  border-radius: 16px;
+  padding: 20px;
 }
 
 .feature-tag {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--white);
-  padding: 12px 24px;
-  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(47, 95, 167, 0.08);
+  padding: 14px 28px;
+  border-radius: 30px;
   font-weight: 700;
-  color: var(--navy);
-  box-shadow: 0 2px 8px rgba(7, 29, 54, 0.04);
+  font-size: 15px;
+  color: #1b2d5a;
+  box-shadow: 0 4px 12px rgba(27, 45, 90, 0.02);
+  transition: all 0.3s ease;
+}
+
+.feature-tag:hover {
+  border-color: rgba(47, 95, 167, 0.2);
+  box-shadow: 0 8px 20px rgba(27, 45, 90, 0.06);
+  transform: translateY(-2px);
 }
 
 .feature-tag::before {
   content: "";
   display: block;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--blue);
-}
-
-@media (max-width: 960px) {
-  .fast-diagnosis .process-steps {
-    flex-wrap: wrap;
-  }
-
-  .fast-diagnosis .process-steps::before {
-    display: none;
-  }
-
-  .process-step {
-    flex: 1 1 calc(50% - 20px);
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-  }
-}
-
-@media (max-width: 640px) {
-  .process-step {
-    flex: 1 1 100%;
-  }
+  background: #2f5fa7;
 }
 
 /* ==========================================================================
-   5. 검사 장비와 검사 전후 안내 (Equipment & Exam Flow)
+   02. 빠른 진단 시스템 (Fast Diagnosis System) [END]
    ========================================================================== */
-.equip-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-bottom: 50px;
+
+/* ==========================================================================
+   03. 비수술 치료 솔루션 (Non-Surgical Treatments) [START]
+   ========================================================================== */
+.non-surgical {
+  background: #F8FAFD;
+  padding: 100px 0;
+  position: relative;
+
+
 }
 
-.equip-card {
-  background: var(--white);
-  border: 1px solid var(--line);
+.non-surgical::before {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  right: 0%;
+  width: 50%;
+  height: 400px;
+  background: #295daa;
+  border-radius: 466px 0 0 466px;
+  z-index: 0;
+  opacity: .15;
+}
+
+.non-surgical::after {
+  content: '';
+  position: absolute;
+  bottom: 2%;
+  right: 0%;
+  width: 80%;
+  height: 400px;
+  background: url(../assets/non-surgical_clinic.png)no-repeat 95% 9.5%;
+  background-size: 57%;
+  opacity: .30;
+}
+
+.non-surgical-wrapper {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* 좌측 상세 카드 영역 */
+.treat-detail-container {
+  width: 480px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.treat-detail-card {
+  display: none;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid rgba(47, 95, 167, 0.08);
+  border-radius: 24px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 35px rgba(27, 45, 90, 0.03);
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.treat-detail-card.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.treat-image-placeholder {
+  width: 100%;
+  height: 240px;
   border-radius: 16px;
-  padding: 30px 24px;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  margin-bottom: 24px;
+  transition: transform 0.5s ease;
+}
+
+.treat-detail-info {
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
-.equip-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow);
-  border-color: #cbe3fa;
+.treat-category {
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2f5fa7;
+  background: rgba(234, 242, 255, 0.6);
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
 }
 
-.equip-icon {
-  width: 64px;
-  height: 64px;
-  background: var(--sky);
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  color: var(--blue);
-}
-
-.equip-icon svg {
-  width: 32px;
-  height: 32px;
-}
-
-.equip-info h3 {
-  font-size: 22px;
+.treat-detail-info h3 {
+  font-size: 28px;
   font-weight: 800;
-  color: var(--navy);
-  margin: 0 0 16px;
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
+  color: #1b2d5a;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
 }
 
-.equip-info h3 small {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--muted);
+.treat-summary {
+  font-size: 16px;
+  color: var(--muted, #6b7c96);
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+  word-break: keep-all;
 }
 
-.equip-details {
+.treat-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.equip-details li {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.5;
+.treat-features li {
+  position: relative;
+  padding-left: 18px;
   word-break: keep-all;
 }
 
-.equip-details li strong {
-  color: var(--ink);
+.treat-features-text {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #1b2d5a;
+}
+
+.treat-features li::before {
+  content: "•";
+  color: #2f5fa7;
+  font-weight: 800;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 16px;
+}
+
+/* 인디케이터 도트 */
+.treat-detail-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.treat-detail-pagination .dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(47, 95, 167, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.treat-detail-pagination .dot.active {
+  width: 24px;
+  border-radius: 4px;
+  background: #2f5fa7;
+}
+
+/* 우측 슬라이더 영역 */
+.treat-slider-container {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(47, 95, 167, 0.08);
+}
+
+.slider-hint {
+  font-size: 14px;
   font-weight: 700;
-  display: block;
-  margin-bottom: 4px;
+  color: #6b7c96;
 }
 
-@media (max-width: 960px) {
-  .equip-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.swiper-nav-custom {
+  display: flex;
+  gap: 10px;
 }
 
-@media (max-width: 640px) {
-  .equip-grid {
-    grid-template-columns: 1fr;
-  }
+.swiper-btn-prev-custom,
+.swiper-btn-next-custom {
+  background: #ffffff;
+  border: 1px solid rgba(47, 95, 167, 0.15);
+  color: #1b2d5a;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  transition: all 0.3s ease;
+  user-select: none;
+}
 
+.swiper-btn-prev-custom:hover,
+.swiper-btn-next-custom:hover {
+  background: #2f5fa7;
+  color: #ffffff;
+  border-color: #2f5fa7;
+}
 
+.swiper-btn-prev-custom:disabled,
+.swiper-btn-next-custom:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: #ffffff;
+  color: #1b2d5a;
+  border-color: rgba(47, 95, 167, 0.15);
+  pointer-events: none;
+}
 
+.treat-swiper {
+  width: 100%;
+  padding: 10px 5px;
+}
 
+.treat-swiper .swiper-slide {
+  background: #ffffff;
+  border: 1px solid rgba(47, 95, 167, 0.06);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(27, 45, 90, 0.01);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.treat-swiper .swiper-slide:hover {
+  transform: translateY(-6px);
+  border-color: rgba(47, 95, 167, 0.15);
+  box-shadow: 0 12px 24px rgba(27, 45, 90, 0.05);
+}
+
+.treat-swiper .swiper-slide.swiper-slide-thumb-active {
+  border-color: #2f5fa7;
+  background: rgba(234, 242, 255, 0.3);
+}
+
+.treat-thumb-placeholder {
+  width: 100%;
+  height: 140px;
+  border-radius: 12px;
+}
+
+.treat-thumb-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.treat-thumb-info h4 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #1b2d5a;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.01em;
+}
+
+.treat-thumb-info p {
+  font-size: 13px;
+  color: #6b7c96;
+  margin: 0;
+}
+
+/* 임시 프리미엄 파스텔 그라데이션 플레이스홀더 색상군 */
+.bg-blue {
+  background: url(../assets/manual_therapy.png) no-repeat center/cover;
+}
+
+.bg-pink {
+  background: url(../assets/nerve_block_non_surgical_injection.png) no-repeat center/cover;
+}
+
+.bg-purple {
+  background: url(../assets/pain_injection_therapy.png) no-repeat center/cover;
+}
+
+.bg-teal {
+  background: url(../assets/rehabilitation_physical_therapy.png) no-repeat center/cover;
+}
+
+.bg-orange {
+  background: url(../assets/extracorporeal_shock_wave_therapy.png) no-repeat center/cover;
 }
 
 /* ==========================================================================
-   6. 비수술 치료 솔루션 (Non-Surgical Treatments)
+   03. 비수술 치료 솔루션 (Non-Surgical Treatments) [END]
    ========================================================================== */
-.treat-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  justify-content: center;
-}
 
-.treat-card {
-  width: calc(33.333% - 16px);
-  min-width: 320px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 36px 30px;
-  transition: all 0.3s ease;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
 
-.treat-card:hover {
-  border-color: var(--navy);
-  box-shadow: 0 12px 24px rgba(6, 54, 107, 0.12);
-  transform: translateY(-6px);
-}
-
-.treat-icon {
-  width: 72px;
-  height: 72px;
-  background: var(--soft);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  color: var(--blue);
-  margin-bottom: 24px;
-  transition: all 0.3s ease;
-}
-
-.treat-card:hover .treat-icon {
-  background: var(--navy);
-  color: var(--white);
-}
-
-.treat-icon svg {
-  width: 36px;
-  height: 36px;
-}
-
-.treat-card h3 {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--navy);
-  margin: 0 0 12px;
-}
-
-.treat-card p {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin: 0 0 24px;
-  word-break: keep-all;
-}
-
-.treat-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-top: auto;
-}
-
-.treat-tags span {
-  background: var(--sky);
-  color: var(--blue);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-@media (max-width: 960px) {
-  .treat-card {
-    width: calc(50% - 12px);
-  }
-}
-
-@media (max-width: 640px) {
-  .treat-card {
-    width: 100%;
-    min-width: auto;
-  }
-}
 
 /* ==========================================================================
    7. 의료진 소개 및 오늘 진료 가능 일정 (Doctors)
@@ -624,37 +1118,7 @@ main {
   justify-content: center;
 }
 
-@media (max-width: 960px) {
-  .doctor-grid {
-    grid-template-columns: 1fr;
-  }
 
-  .doctor-card {
-    flex-direction: row;
-  }
-
-  .doc-image {
-    width: 280px;
-    height: auto;
-  }
-}
-
-@media (max-width: 640px) {
-  .doctor-card {
-    flex-direction: column;
-  }
-
-  .doc-image {
-    width: 100%;
-    height: 280px;
-  }
-
-  .doc-schedule {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-}
 
 /* ==========================================================================
    9. 자가진단 테스트 (Self Test)
@@ -762,22 +1226,7 @@ main {
   color: var(--navy);
 }
 
-@media (max-width: 960px) {
-  .self-test-wrap {
-    flex-direction: column;
-  }
 
-  .test-result-box {
-    width: 100%;
-    padding: 30px;
-  }
-}
-
-@media (max-width: 640px) {
-  .test-questions {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* ==========================================================================
    11. 통증 건강정보 (Health Information)
@@ -854,317 +1303,407 @@ main {
   word-break: keep-all;
 }
 
+
+
+
+
+/* ==========================================================================
+   Responsive Media Queries (Responsive Styles)
+   ========================================================================== */
 @media (max-width: 960px) {
+  .hero-welcome-message {
+    top: 5%;
+    width: 90%;
+  }
+
+  .hero-welcome-message h2 {
+    font-size: 16px;
+  }
+
+  .hero-welcome-message p {
+    font-size: 28px;
+  }
+
+  .fast-diagnosis .process-steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .process-step {
+    width: 100%;
+    max-width: 480px;
+    padding: 40px 24px;
+  }
+
+  .equip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .non-surgical-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .treat-detail-container {
+    width: 100%;
+    max-width: 540px;
+  }
+
+  .treat-slider-container {
+    width: 100%;
+    max-width: 540px;
+  }
+
+  .doctor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-card {
+    flex-direction: row;
+  }
+
+  .doc-image {
+    width: 280px;
+    height: auto;
+  }
+
+  .self-test-wrap {
+    flex-direction: column;
+  }
+
+  .test-result-box {
+    width: 100%;
+    padding: 30px;
+  }
+
   .health-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 640px) {
+
+  .equip-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+
+  .doctor-card {
+    flex-direction: column;
+  }
+
+  .doc-image {
+    width: 100%;
+    height: 280px;
+  }
+
+  .doc-schedule {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .test-questions {
+    grid-template-columns: 1fr;
+  }
+
   .health-grid {
     grid-template-columns: 1fr;
   }
 }
 
 /* ==========================================================================
-   15. 3D Body Map Hero Section
+   04. Additional Trust Badges & Layout Modifications
    ========================================================================== */
-#hero-3d {
-  position: relative;
-  width: 100%;
-  /* 상단 헤더 80px을 제외한 전체 화면 높이 */
-  height: 100vh;
-  overflow: hidden;
-  --bg-start: #f8fafd;
-  --bg-end: #eaf2ff;
-  background: radial-gradient(circle at 50% 50%,
-      var(--bg-start) 0%,
-      var(--bg-end) 100%);
-  /* 깊이감 있는 밝은 스튜디오 그라데이션 배경 */
+.flex-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-#canvas-container {
-  width: 100%;
-  height: 100%;
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.badge-accent {
+  background: rgba(47, 95, 167, 0.08);
+  color: #2f5fa7;
+  border: 1px solid rgba(47, 95, 167, 0.15);
+}
+
+.badge-outline {
+  background: transparent;
+  color: #6b7c96;
+  border: 1px solid rgba(107, 124, 150, 0.3);
+}
+
+.footer-notice {
   display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(185, 203, 224, 0.5);
+  font-weight: 500;
 }
 
-.ui-layer {
+/* ==========================================================================
+   05. Intro Door Animation (Split Door) Style [START]
+   ========================================================================== */
+body.door-locked {
+  overflow: hidden !important;
+  height: 100vh;
+}
+
+#intro-door {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  /* Ensure it is above the header and all panels */
+  overflow: hidden;
+  display: flex;
+  pointer-events: auto;
+}
+
+.door-panel {
+  width: 50vw;
+  height: 100vh;
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1200px;
-  height: 100%;
-  pointer-events: none;
-  /* 배경의 3D 캔버스 드래그를 방해하지 않음 */
+  background-image: url('../assets/intro_door.png');
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  box-sizing: border-box;
-  z-index: 10;
-}
-
-.menu-list,
-.info-panel {
-  pointer-events: auto;
-  /* UI 요소들은 클릭 가능하도록 설정 */
-}
-
-.pain-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.menu-list li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffffff;
-  padding: 16px 36px;
-  border-radius: 30px;
-  box-shadow: 0 8px 24px rgba(27, 45, 90, 0.04);
-  border: 1px solid #eaf2ff;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 700;
-  color: #243041;
-  /* Muted Slate */
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
-  overflow: hidden;
   z-index: 1;
-  /* Stacking context container */
 }
 
-/* Menu items text wrapper layer */
-.menu-list li span {
+.door-left {
+  left: 0;
+  background-position: left center;
+  border-right: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.door-right {
+  right: 0;
+  background-position: right center;
+  border-left: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.door-inner {
+  width: 100%;
+  height: 100%;
   position: relative;
-  z-index: 2;
-  pointer-events: none;
+  display: flex;
+  align-items: center;
 }
 
-/* Individual colors for dynamic hover matching click theme */
-.menu-list li[data-target="neck"] {
-  --item-theme: #1b2d5a;
-}
-
-.menu-list li[data-target="shoulder"] {
-  --item-theme: #124741;
-}
-
-.menu-list li[data-target="waist"] {
-  --item-theme: #1b2d5a;
-}
-
-.menu-list li[data-target="wrist"] {
-  --item-theme: #3d1a63;
-}
-
-.menu-list li[data-target="knee"] {
-  --item-theme: #4a3b12;
-}
-
-.menu-list li[data-target="foot"] {
-  --item-theme: #243041;
-}
-
-
-
-/* Circular expanding background container */
-.menu-list li::after {
+/* Dark glass filter overlay to enhance text readability over the image */
+.door-panel::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 100%;
-  width: 320px;
-  height: 320px;
-  background: var(--item-theme, #1b2d5a);
-  border-radius: 50%;
-  z-index: 1;
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.menu-list li:hover {
-  transform: translateX(6px);
-  box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
-  border-color: var(--item-theme, #2f5fa7);
-  color: var(--item-theme, #2f5fa7);
-}
-
-.menu-list li:hover::before {
-  height: 50%;
-  background: var(--item-theme, #2f5fa7);
-}
-
-.menu-list li.active {
-  color: #ffffff;
-  border-color: var(--item-theme, #1b2d5a);
-  transform: translateX(10px);
-  box-shadow: 0 12px 30px rgba(27, 45, 90, 0.15);
-}
-
-.menu-list li.active::before {
-  height: 60%;
-  background: #ffffff;
-}
-
-.menu-list li.active::after {
-  transform: translate(-50%, -50%) scale(1.5);
-}
-
-.info-text-wrap {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  margin-bottom: 24px;
-  padding-left: 10px;
-}
-
-.info-text-wrap svg {
-  color: #2f5fa7;
-}
-
-.info-text-wrap p {
-  font: 700 15px "pretendard";
-  color: #2f5fa7;
-  letter-spacing: -0.02em;
-}
-
-.info-panel {
-  --panel-bg: rgba(248, 250, 253, 0.85);
-  --panel-border: rgba(234, 242, 255, 0.8);
-  --panel-text: #1b2d5a;
-  background: var(--panel-bg);
-  /* Semi-transparent F8FAFD */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  padding: 36px 30px;
-  border-radius: 24px;
-  box-shadow:
-    0 20px 50px rgba(27, 45, 90, 0.08),
-    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
-  width: 340px;
-  border: 1px solid var(--panel-border);
-  color: var(--panel-text);
-  /* EAF2FF based border */
-  transition:
-    opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-    transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.info-panel.hidden {
-  opacity: 0;
-  transform: translateX(40px);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(8, 17, 36, 0.45);
   pointer-events: none;
 }
 
-.info-panel h3 {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--panel-text);
-  /* Deep Navy */
-  margin: 0 0 16px;
-  letter-spacing: -0.03em;
-  transition: color 0.6s ease;
-}
-
-.info-panel p {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin: 0 0 24px;
-}
-
-.panel-actions {
-  display: flex;
-  gap: 10px;
-}
-
-/* -----------------------------------------
-   info-panel 내 질환 리스트(버튼형) 스타일
------------------------------------------ */
-.disease-list {
-  list-style: none;
-  padding: 0;
-  margin: 16px 0 24px 0;
+/* Central Overlay Card content */
+.intro-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  /* 모든 질환이 스크롤 없이 한 번에 보이도록 해제 */
-  max-height: none;
-}
-
-/* 스크롤바 디자인 커스텀 */
-.disease-list::-webkit-scrollbar {
-  width: 6px;
-}
-
-.disease-list::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-.disease-list::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
-}
-
-.disease-list::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
-
-.disease-list li {
-  width: 100%;
-}
-
-.disease-list a {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
-  background-color: #ffffff;
-  color: #243041;
-  /* Muted Slate */
-  text-decoration: none;
-  border-radius: 12px;
-  border: 1px solid var(--panel-border);
-  font-size: 15px;
-  font-weight: 600;
-  transition: all 0.25s ease-in-out;
-  box-shadow: 0 2px 8px rgba(27, 45, 90, 0.02);
+  justify-content: center;
+  width: min(540px, calc(100% - 40px));
+  padding: 50px 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  pointer-events: auto;
+  /* Allow clicking button inside */
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 새 창 열림을 직관적으로 알 수 있게 우측 화살표 아이콘 추가 */
-.disease-list a::after {
-  content: "→";
+.intro-logo-wrap {
+  margin-bottom: 12px;
+}
+
+.intro-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.intro-welcome-text {
+  margin-bottom: 32px;
+}
+
+.intro-eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: #abcfff;
+  letter-spacing: 0.18em;
+  margin-bottom: 14px;
+}
+
+.intro-content h1 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.intro-content p {
   font-size: 16px;
-  color: var(--panel-text);
-  transition:
-    transform 0.25s ease,
-    color 0.25s ease;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.6;
 }
 
-/* 마우스 호버(Hover) 시 효과 */
-.disease-list a:hover {
-  background-color: #eaf2ff;
-  /* Light Sky Blue */
-  border-color: #2f5fa7;
-  /* Trust Blue */
-  color: #1b2d5a;
-  /* Deep Navy */
-  box-shadow: 0 6px 16px rgba(47, 95, 167, 0.12);
+.enter-btn-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-/* 마우스 호버 시 화살표 이동 애니메이션 */
-.disease-list a:hover::after {
-  color: #1b2d5a;
+.enter-btn {
+  background: #ffffff !important;
+  color: #1b2d5a !important;
+  border: none;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 16px 36px !important;
+  border-radius: 30px !important;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.enter-btn:hover {
+  background: #eaf2ff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(234, 242, 255, 0.3) !important;
+}
+
+.enter-btn:hover .arrow-icon {
   transform: translateX(4px);
 }
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.scroll-down-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 36px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mouse-icon {
+  width: 22px;
+  height: 34px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 11px;
+  position: relative;
+}
+
+.mouse-icon .wheel {
+  width: 4px;
+  height: 6px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 1.6s infinite ease-in-out;
+}
+
+@keyframes scrollWheel {
+  0% {
+    top: 6px;
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 18px;
+    opacity: 0;
+  }
+}
+
+/* Responsive Styles for Door */
+@media (max-width: 768px) {
+  .intro-content {
+    padding: 36px 20px;
+    border-radius: 24px;
+  }
+
+  .intro-logo-wrap {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 18px;
+  }
+
+  .intro-content h1 {
+    font-size: 26px;
+  }
+
+  .intro-content p {
+    font-size: 14px;
+  }
+
+  .enter-btn {
+    padding: 12px 28px !important;
+    font-size: 15px;
+  }
+}
+
+/* ==========================================================================
+   05. Intro Door Animation (Split Door) Style [END]
+   ========================================================================== */

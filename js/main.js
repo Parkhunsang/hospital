@@ -1,7 +1,9 @@
 // 기존에 main.js 내용이 있다면 아래 코드를 파일 하단에 추가해 주세요.
 
 document.addEventListener("DOMContentLoaded", () => {
+  initIntroDoor();
   init3DBodyMap();
+  initNonSurgicalSlider();
 });
 
 function init3DBodyMap() {
@@ -160,51 +162,6 @@ function init3DBodyMap() {
     },
   );
 
-  // // 바닥 그림자판
-  // const plane = new THREE.Mesh(
-  //   new THREE.PlaneGeometry(30, 30),
-  //   new THREE.ShadowMaterial({ opacity: 0.15 }), // 투명하게 만들고 그림자만 남김
-  // );
-  // plane.rotation.x = -Math.PI / 2;
-  // plane.position.y = -2.5;
-  // plane.receiveShadow = true;
-  // scene.add(plane);
-
-  // // [디버깅] 각 부위별 위치를 시각적으로 확인하기 위한 헬퍼 추가
-  // Object.keys(bodyData).forEach((key) => {
-  //   const data = bodyData[key];
-
-  //   const targetX = data.targetX !== undefined ? data.targetX : 0; // targetX가 없으면 기본값 0
-  //   const camX = data.camX !== undefined ? data.camX : 2.5; // camX가 없으면 기본값 2.5
-
-  //   // 타겟(바라보는 곳) 위치 표시 (빨간 점)
-  //   const targetGeo = new THREE.SphereGeometry(0.08, 16, 16);
-  //   const targetMat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-  //   const targetMesh = new THREE.Mesh(targetGeo, targetMat);
-  //   targetMesh.position.set(targetX, data.targetY, 0);
-  //   scene.add(targetMesh);
-
-  //   // 카메라(Zoom-in) 위치 표시 (파란 점)
-  //   const camGeo = new THREE.SphereGeometry(0.08, 16, 16);
-  //   const camMat = new THREE.MeshBasicMaterial({ color: 0x00aaff });
-  //   const camMesh = new THREE.Mesh(camGeo, camMat);
-  //   camMesh.position.set(camX, data.camY, data.camZ);
-  //   scene.add(camMesh);
-
-  //   // 타겟과 카메라를 잇는 시선 방향 표시 (초록색 선)
-  //   const lineMat = new THREE.LineBasicMaterial({
-  //     color: 0x00ff00,
-  //     transparent: true,
-  //     opacity: 0.5,
-  //   });
-  //   const points = [];
-  //   points.push(new THREE.Vector3(targetX, data.targetY, 0));
-  //   points.push(new THREE.Vector3(camX, data.camY, data.camZ));
-  //   const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-  //   const line = new THREE.Line(lineGeo, lineMat);
-  //   scene.add(line);
-  // });
-
   // 5. 마우스 드래그 컨트롤 설정
   const controls = new THREE.OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true; // 부드러운 감속 효과
@@ -284,47 +241,12 @@ function init3DBodyMap() {
       panelBorder: "rgba(234, 242, 255, 0.8)",
       panelText: "#1b2d5a"
     },
-    neck: {
+    active: {
       bgStart: "#f5f9ff",
       bgEnd: "#cbdfff",
       panelBg: "rgba(224, 237, 255, 0.85)",
       panelBorder: "rgba(47, 95, 167, 0.25)",
       panelText: "#1b2d5a"
-    },
-    shoulder: {
-      bgStart: "#f2faf9",
-      bgEnd: "#c0e6e2",
-      panelBg: "rgba(215, 242, 239, 0.85)",
-      panelBorder: "rgba(36, 150, 137, 0.25)",
-      panelText: "#124741"
-    },
-    waist: {
-      bgStart: "#f4f7fa",
-      bgEnd: "#bacfdf",
-      panelBg: "rgba(220, 235, 248, 0.85)",
-      panelBorder: "rgba(47, 95, 167, 0.25)",
-      panelText: "#1b2d5a"
-    },
-    wrist: {
-      bgStart: "#faf7fd",
-      bgEnd: "#dccef2",
-      panelBg: "rgba(238, 226, 252, 0.85)",
-      panelBorder: "rgba(110, 68, 168, 0.25)",
-      panelText: "#3d1a63"
-    },
-    knee: {
-      bgStart: "#fbfaf6",
-      bgEnd: "#e6dfcd",
-      panelBg: "rgba(247, 243, 230, 0.85)",
-      panelBorder: "rgba(168, 142, 68, 0.25)",
-      panelText: "#4a3b12"
-    },
-    foot: {
-      bgStart: "#f5f6f7",
-      bgEnd: "#c5ccd1",
-      panelBg: "rgba(225, 230, 235, 0.85)",
-      panelBorder: "rgba(74, 85, 96, 0.25)",
-      panelText: "#243041"
     }
   };
 
@@ -336,7 +258,7 @@ function init3DBodyMap() {
 
       const targetId = item.getAttribute("data-target");
       const data = bodyData[targetId];
-      const theme = themeData[targetId] || themeData.default;
+      const theme = themeData.active;
 
       if (data && typeof gsap !== "undefined") {
         // 정보 패널 데이터 업데이트 및 보이기
@@ -441,4 +363,302 @@ function init3DBodyMap() {
 
     markerGroup.visible = false; // 메인 화면으로 돌아오면 마커 숨기기
   });
+}
+
+/* ==========================================================================
+   03. 비수술 치료 솔루션 (Non-Surgical Treatments) Slider Logic
+   ========================================================================== */
+function initNonSurgicalSlider() {
+  const swiperContainer = document.querySelector(".treat-swiper");
+  if (!swiperContainer) return;
+
+  // Swiper 초기화 (썸네일 목록 슬라이더 - navigation 옵션 제거)
+  const treatSwiper = new Swiper(".treat-swiper", {
+    slidesPerView: 1.2,
+    spaceBetween: 16,
+    watchSlidesProgress: true,
+    breakpoints: {
+      480: {
+        slidesPerView: 2,
+        spaceBetween: 16,
+      },
+      768: {
+        slidesPerView: 2.2,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      }
+    }
+  });
+
+  const detailCards = document.querySelectorAll(".treat-detail-card");
+  const paginationDots = document.querySelectorAll(".treat-detail-pagination .dot");
+  const slides = document.querySelectorAll(".treat-swiper .swiper-slide");
+  const btnPrev = document.querySelector(".swiper-btn-prev-custom");
+  const btnNext = document.querySelector(".swiper-btn-next-custom");
+
+  let currentIdx = 0;
+  const totalSlides = slides.length;
+
+  // 활성화 상태 업데이트 함수
+  function updateActiveTreatment(activeIndex) {
+    currentIdx = activeIndex;
+
+    // 1. 상세 카드 토글 (Fade-in 효과를 위해 active 클래스 제어)
+    detailCards.forEach((card) => {
+      const cardIndex = parseInt(card.getAttribute("data-index"), 10);
+      if (cardIndex === activeIndex) {
+        card.classList.add("active");
+      } else {
+        card.classList.remove("active");
+      }
+    });
+
+    // 2. 인디케이터 도트 활성화 상태 연동
+    paginationDots.forEach((dot) => {
+      const dotIndex = parseInt(dot.getAttribute("data-index"), 10);
+      if (dotIndex === activeIndex) {
+        dot.classList.add("active");
+      } else {
+        dot.classList.remove("active");
+      }
+    });
+
+    // 3. 우측 썸네일 active 클래스 적용
+    slides.forEach((slide) => {
+      const slideIndex = parseInt(slide.getAttribute("data-slide-index"), 10);
+      if (slideIndex === activeIndex) {
+        slide.classList.add("swiper-slide-thumb-active");
+      } else {
+        slide.classList.remove("swiper-slide-thumb-active");
+      }
+    });
+
+    // 4. Custom Navigation 버튼 상태 업데이트
+    if (btnPrev && btnNext) {
+      if (currentIdx === 0) {
+        btnPrev.classList.add("swiper-button-disabled");
+        btnPrev.setAttribute("disabled", "true");
+      } else {
+        btnPrev.classList.remove("swiper-button-disabled");
+        btnPrev.removeAttribute("disabled");
+      }
+
+      if (currentIdx === totalSlides - 1) {
+        btnNext.classList.add("swiper-button-disabled");
+        btnNext.setAttribute("disabled", "true");
+      } else {
+        btnNext.classList.remove("swiper-button-disabled");
+        btnNext.removeAttribute("disabled");
+      }
+    }
+  }
+
+  // 슬라이드 클릭 시 해당 아이템 활성화 및 Swiper 이동
+  slides.forEach((slide) => {
+    slide.addEventListener("click", () => {
+      const index = parseInt(slide.getAttribute("data-slide-index"), 10);
+      treatSwiper.slideTo(index);
+      updateActiveTreatment(index);
+    });
+  });
+
+  // 페이지네이션 도트 클릭 시 이동
+  paginationDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const index = parseInt(dot.getAttribute("data-index"), 10);
+      treatSwiper.slideTo(index);
+      updateActiveTreatment(index);
+    });
+  });
+
+  // Custom 버튼 클릭 이벤트 등록
+  if (btnPrev) {
+    btnPrev.addEventListener("click", () => {
+      if (currentIdx > 0) {
+        const targetIdx = currentIdx - 1;
+        treatSwiper.slideTo(targetIdx);
+        updateActiveTreatment(targetIdx);
+      }
+    });
+  }
+
+  if (btnNext) {
+    btnNext.addEventListener("click", () => {
+      if (currentIdx < totalSlides - 1) {
+        const targetIdx = currentIdx + 1;
+        treatSwiper.slideTo(targetIdx);
+        updateActiveTreatment(targetIdx);
+      }
+    });
+  }
+
+  // Swiper 슬라이드 전환 시 동기화 (터치 스와이프 대응)
+  treatSwiper.on("slideChange", () => {
+    const swiperActiveIdx = treatSwiper.activeIndex;
+    if (currentIdx !== swiperActiveIdx) {
+      updateActiveTreatment(swiperActiveIdx);
+    }
+  });
+
+  // 초기 로드 시 0번 아이템 활성화 상태 주입
+  updateActiveTreatment(0);
+}
+
+/* ==========================================================================
+   04. 인트로 도어 열림 애니메이션 (Intro Split Door) Logic
+   ========================================================================== */
+function initIntroDoor() {
+  const introDoor = document.getElementById("intro-door");
+  if (!introDoor) return;
+
+  const enterBtn = document.getElementById("enter-clinic-btn");
+  const doorLeft = introDoor.querySelector(".door-left");
+  const doorRight = introDoor.querySelector(".door-right");
+  const introContent = introDoor.querySelector(".intro-content");
+
+  // 스크롤 및 바디 조작 제한을 위한 클래스 추가
+  document.body.classList.add("door-locked");
+
+  // 메인 콘텐츠 요소 초기 상태 설정 (깜빡임 현상 방지)
+  if (typeof gsap !== "undefined") {
+    gsap.set(".topbar", { opacity: 0, y: -80 });
+    gsap.set(".hero-welcome-message", { opacity: 0, y: -30 });
+    gsap.set(".menu-list", { opacity: 0, x: -50 });
+    gsap.set(".tv_wrap", { opacity: 0, y: 50 });
+  }
+
+  let hasOpened = false;
+
+  function openDoors() {
+    if (hasOpened) return;
+    hasOpened = true;
+
+    // 이벤트 리스너 제거
+    window.removeEventListener("wheel", handleScrollTrigger);
+    window.removeEventListener("touchstart", handleTouchStart);
+    window.removeEventListener("touchmove", handleTouchTrigger);
+    window.removeEventListener("keydown", handleKeydownTrigger);
+
+    if (typeof gsap !== "undefined") {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          introDoor.style.display = "none";
+          document.body.classList.remove("door-locked");
+          
+          // Three.js 캔버스 렌더링 영역 강제 리사이즈로 화면 맞춤
+          window.dispatchEvent(new Event("resize"));
+        }
+      });
+
+      // 1. 중앙 웰컴 박스 카드 페이드아웃
+      tl.to(introContent, {
+        opacity: 0,
+        y: -40,
+        duration: 0.6,
+        ease: "power2.in"
+      });
+
+      // 2. 좌우 문 슬라이드 아웃
+      tl.to(doorLeft, {
+        xPercent: -100,
+        duration: 1.5,
+        ease: "power3.inOut"
+      }, "-=0.2");
+
+      tl.to(doorRight, {
+        xPercent: 100,
+        duration: 1.5,
+        ease: "power3.inOut"
+      }, "-=1.5");
+
+      // 3. 헤더 네비바 등장
+      tl.to(".topbar", {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out"
+      }, "-=0.9");
+
+      // 4. 메인 Welcome 텍스트 및 인체 맵 UI 등장
+      tl.to(".hero-welcome-message", {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: "power3.out"
+      }, "-=0.7");
+
+      tl.to([".menu-list", ".tv_wrap"], {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: 1.0,
+        stagger: 0.15,
+        ease: "power3.out"
+      }, "-=0.8");
+
+    } else {
+      // GSAP 비활성화 시 Fallback (기본 브라우저 css 전환)
+      doorLeft.style.transform = "translateX(-100%)";
+      doorRight.style.transform = "translateX(100%)";
+      introContent.style.opacity = "0";
+      setTimeout(() => {
+        introDoor.style.display = "none";
+        document.body.classList.remove("door-locked");
+        
+        const topbar = document.querySelector(".topbar");
+        if (topbar) {
+          topbar.style.opacity = "1";
+          topbar.style.transform = "none";
+        }
+        
+        const welcome = document.querySelector(".hero-welcome-message");
+        if (welcome) {
+          welcome.style.opacity = "1";
+          welcome.style.transform = "none";
+        }
+      }, 1500);
+    }
+  }
+
+  // 스크롤 휠 감지 (아래 방향 스크롤)
+  function handleScrollTrigger(e) {
+    if (e.deltaY > 0) {
+      openDoors();
+    }
+  }
+
+  // 모바일 터치 드래그 감지
+  let touchStartY = 0;
+  function handleTouchStart(e) {
+    touchStartY = e.touches[0].clientY;
+  }
+  
+  function handleTouchTrigger(e) {
+    const touchEndY = e.touches[0].clientY;
+    // 위로 스와이프 (아래로 스크롤하려는 행동) 감지 시 문 열림
+    if (touchStartY - touchEndY > 30) {
+      openDoors();
+    }
+  }
+
+  // 키보드 키 감지
+  function handleKeydownTrigger(e) {
+    const triggerKeys = ["ArrowDown", "PageDown", " ", "Enter"];
+    if (triggerKeys.includes(e.key)) {
+      openDoors();
+    }
+  }
+
+  // 이벤트 핸들러 바인딩
+  if (enterBtn) {
+    enterBtn.addEventListener("click", openDoors);
+  }
+  
+  window.addEventListener("wheel", handleScrollTrigger, { passive: true });
+  window.addEventListener("touchstart", handleTouchStart, { passive: true });
+  window.addEventListener("touchmove", handleTouchTrigger, { passive: true });
+  window.addEventListener("keydown", handleKeydownTrigger);
 }
