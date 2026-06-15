@@ -915,7 +915,6 @@ main {
 }
 
 .treat-swiper .swiper-slide.swiper-slide-thumb-active {
-  border-color: #2f5fa7;
   background: rgba(234, 242, 255, 0.3);
 }
 
