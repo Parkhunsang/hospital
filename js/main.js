@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initIntroDoor();
   init3DBodyMap();
   initNonSurgicalSlider();
+  initBrandTrustSlider();
 });
 
 function init3DBodyMap() {
@@ -22,15 +23,15 @@ function init3DBodyMap() {
       title: "목",
       diseases: ["목디스크", "거북목 증후군"],
       targetX: 0,
-      targetY: 1.6,
+      targetY: 1.3,
       camY: -3.5,
       camZ: -2.5,
     },
     shoulder: {
       title: "어깨",
       diseases: ["오십견", "회전근개파열", "석회성 건염", "견관절재발성 탈구"],
-      targetY: 1.4,
-      targetX: 0.3,
+      targetY: 1.1,
+      targetX: 0.4,
       camY: 1.4,
       camZ: 4.0,
     },
@@ -44,7 +45,8 @@ function init3DBodyMap() {
         "척추 골절",
         "골다공증성 압박골절",
       ],
-      targetY: 0.3,
+      targetX: -0.1,
+      targetY: 0,
       camY: -3.5,
       camZ: -5.5,
     },
@@ -58,7 +60,7 @@ function init3DBodyMap() {
         "팔꿈치터널증후군",
       ],
       targetX: 1.1, // 손목 위치에 맞게 시선(타겟)의 X 좌표를 오른쪽으로 이동
-      targetY: 0.3,
+      targetY: 0,
       camX: 5.0, // 타겟이 우측으로 이동한 만큼 카메라도 우측으로 이동
       camY: 0.5,
       camZ: 3.5,
@@ -72,7 +74,7 @@ function init3DBodyMap() {
         "줄기세포 수술",
         "퇴행성 관절염",
       ],
-      targetY: -0.8,
+      targetY: -1.1,
       targetX: 0.3,
       camY: 0,
       camZ: 2.0,
@@ -85,7 +87,7 @@ function init3DBodyMap() {
         "발목 관절염",
         "족저근막염 등 다양한 족부질환",
       ],
-      targetY: -1.8,
+      targetY: -2.1,
       targetX: 0.4,
       camY: -3.8,
       camZ: -1.5,
@@ -152,7 +154,7 @@ function init3DBodyMap() {
 
       // 모델의 기본 크기나 위치 조절이 필요하다면 아래 주석을 풀고 수치를 변경하세요.
       model.scale.set(0.2, 0.2, 0.2);
-      model.position.set(0, -2, 0);
+      model.position.set(0, -2.3, 0);
 
       scene.add(model);
     },
@@ -231,20 +233,21 @@ function init3DBodyMap() {
   const infoTitle = document.getElementById("info-title");
   const infoDiseaseList = document.getElementById("info-disease-list");
   const closeBtn = document.getElementById("close-panel");
+  const welcomeMessage = document.querySelector(".hero-welcome-message");
 
   // 6-1. 테마 색상 정의 (배경 및 인포패널 연동)
   const themeData = {
     default: {
       bgStart: "#f8fafd",
       bgEnd: "#eaf2ff",
-      panelBg: "rgba(248, 250, 253, 0.85)",
+      panelBg: "rgba(248, 250, 253, 0.25)",
       panelBorder: "rgba(234, 242, 255, 0.8)",
       panelText: "#1b2d5a"
     },
     active: {
       bgStart: "#f5f9ff",
       bgEnd: "#cbdfff",
-      panelBg: "rgba(224, 237, 255, 0.85)",
+      panelBg: "rgba(224, 237, 255, 0.25)",
       panelBorder: "rgba(47, 95, 167, 0.25)",
       panelText: "#1b2d5a"
     }
@@ -263,6 +266,17 @@ function init3DBodyMap() {
       if (data && typeof gsap !== "undefined") {
         // 정보 패널 데이터 업데이트 및 보이기
         infoTitle.textContent = data.title;
+
+        // 웰컴 메시지 위로 올리며 페이드 아웃
+        if (welcomeMessage) {
+          gsap.to(welcomeMessage, {
+            y: -80,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.inOut",
+            pointerEvents: "none"
+          });
+        }
 
         // 질환 리스트 동적 렌더링
         infoDiseaseList.innerHTML = "";
@@ -330,6 +344,20 @@ function init3DBodyMap() {
     menuItems.forEach((li) => li.classList.remove("active"));
 
     if (typeof gsap !== "undefined") {
+      // 웰컴 메시지 위에서 아래로 복귀하며 페이드 인
+      if (welcomeMessage) {
+        gsap.fromTo(welcomeMessage,
+          { y: -80, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            pointerEvents: "auto"
+          }
+        );
+      }
+
       gsap.to(camera.position, {
         x: defaultCamPos.x,
         y: defaultCamPos.y,
@@ -547,7 +575,7 @@ function initIntroDoor() {
         onComplete: () => {
           introDoor.style.display = "none";
           document.body.classList.remove("door-locked");
-          
+
           // Three.js 캔버스 렌더링 영역 강제 리사이즈로 화면 맞춤
           window.dispatchEvent(new Event("resize"));
         }
@@ -607,13 +635,13 @@ function initIntroDoor() {
       setTimeout(() => {
         introDoor.style.display = "none";
         document.body.classList.remove("door-locked");
-        
+
         const topbar = document.querySelector(".topbar");
         if (topbar) {
           topbar.style.opacity = "1";
           topbar.style.transform = "none";
         }
-        
+
         const welcome = document.querySelector(".hero-welcome-message");
         if (welcome) {
           welcome.style.opacity = "1";
@@ -635,7 +663,7 @@ function initIntroDoor() {
   function handleTouchStart(e) {
     touchStartY = e.touches[0].clientY;
   }
-  
+
   function handleTouchTrigger(e) {
     const touchEndY = e.touches[0].clientY;
     // 위로 스와이프 (아래로 스크롤하려는 행동) 감지 시 문 열림
@@ -656,9 +684,93 @@ function initIntroDoor() {
   if (enterBtn) {
     enterBtn.addEventListener("click", openDoors);
   }
-  
+
   window.addEventListener("wheel", handleScrollTrigger, { passive: true });
   window.addEventListener("touchstart", handleTouchStart, { passive: true });
   window.addEventListener("touchmove", handleTouchTrigger, { passive: true });
   window.addEventListener("keydown", handleKeydownTrigger);
+}
+
+/* ==========================================================================
+   Brand Trust Slider (Branding & Stats Swiper) Logic
+   ========================================================================== */
+function initBrandTrustSlider() {
+  const swiperContainer = document.querySelector(".brand-swiper");
+  if (!swiperContainer) return;
+
+  // Swiper 초기화
+  const brandSwiper = new Swiper(".brand-swiper", {
+    loop: true,
+    speed: 800,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+  });
+
+  const btnPrev = document.querySelector(".brand-btn-prev");
+  const btnNext = document.querySelector(".brand-btn-next");
+  const btnPlayPause = document.querySelector(".brand-btn-play-pause");
+  const currIndexEl = document.querySelector(".curr-index");
+  const progressBarFillEl = document.querySelector(".progress-bar-fill");
+  const iconPause = document.querySelector(".icon-pause");
+  const iconPlay = document.querySelector(".icon-play");
+
+  const totalSlides = 3;
+
+  function updateSliderControls(realIndex) {
+    if (currIndexEl) {
+      currIndexEl.textContent = String(realIndex + 1).padStart(2, "0");
+    }
+
+    if (progressBarFillEl) {
+      const fillPercentage = ((realIndex + 1) / totalSlides) * 100;
+      progressBarFillEl.style.width = `${fillPercentage}%`;
+    }
+
+    if (realIndex === 2) {
+      swiperContainer.classList.add("brand-swiper-dark-theme");
+    } else {
+      swiperContainer.classList.remove("brand-swiper-dark-theme");
+    }
+  }
+
+  brandSwiper.on("slideChange", () => {
+    updateSliderControls(brandSwiper.realIndex);
+  });
+
+  if (btnPrev) {
+    btnPrev.addEventListener("click", () => {
+      brandSwiper.slidePrev();
+    });
+  }
+
+  if (btnNext) {
+    btnNext.addEventListener("click", () => {
+      brandSwiper.slideNext();
+    });
+  }
+
+  let isPlaying = true;
+  if (btnPlayPause) {
+    btnPlayPause.addEventListener("click", () => {
+      if (isPlaying) {
+        brandSwiper.autoplay.stop();
+        isPlaying = false;
+
+        if (iconPause) iconPause.classList.add("hidden");
+        if (iconPlay) iconPlay.classList.remove("hidden");
+        btnPlayPause.setAttribute("aria-label", "자동 재생 시작");
+      } else {
+        brandSwiper.autoplay.start();
+        isPlaying = true;
+
+        if (iconPause) iconPause.classList.remove("hidden");
+        if (iconPlay) iconPlay.classList.add("hidden");
+        btnPlayPause.setAttribute("aria-label", "자동 재생 정지");
+      }
+    });
+  }
+
+  updateSliderControls(0);
 }

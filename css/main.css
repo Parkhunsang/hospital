@@ -44,26 +44,70 @@ main {
 
 .hero-welcome-message {
   position: absolute;
+  overflow: hidden;
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   pointer-events: auto;
   z-index: 15;
+  width: 350px;
+  height: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      /* 왼쪽 위: 빛을 받아 반짝이는 영역 */
+      rgba(255, 255, 255, 0.03) 40%,
+      /* 중간: 맑게 뚫려 있는 영역 */
+      rgba(255, 255, 255, 0.01) 100%
+      /* 오른쪽 아래: 어두운 영역 */
+    );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 20px;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    /* 테두리 안쪽 하이라이트 */
+    0 10px 30px rgba(0, 0, 0, 0.04);
+  /* 아래로 떨어지는 부드러운 음영 */
 }
+
+.hero-welcome-message::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 115도 각도로 정중앙(50%)을 관통하는 선명한 반사광 설정 */
+  background: linear-gradient(115deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 35%,
+      rgba(255, 255, 255, 0.15) 45%,
+      rgba(255, 255, 255, 0.25) 50%,
+      /* 가장 반짝이는 광선 중심 */
+      rgba(255, 255, 255, 0.15) 55%,
+      rgba(255, 255, 255, 0) 65%,
+      rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
 
 .hero-welcome-message h2 {
   font-family: "Noto Sans KR", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #6b7c96;
-  margin: 0 0 10px 0;
   letter-spacing: -0.01em;
 }
 
 .hero-welcome-message p {
   font-family: "Noto Sans KR", sans-serif;
-  font-size: 38px;
+  font-size: 26px;
   font-weight: 800;
   color: #1b2d5a;
   margin: 0;
@@ -190,18 +234,22 @@ main {
 .info-panel {
   pointer-events: auto;
   /* UI 요소들은 클릭 가능하도록 설정 */
-  --panel-bg: rgba(248, 250, 253, 0.85);
-  --panel-border: rgba(234, 242, 255, 0.8);
+  --panel-bg: rgba(248, 250, 253, 0.25);
+  --panel-border: rgba(234, 242, 255, 0.4);
   --panel-text: #1b2d5a;
   background: var(--panel-bg);
   /* Semi-transparent F8FAFD */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 36px 30px;
   border-radius: 24px;
   box-shadow:
-    0 20px 50px rgba(27, 45, 90, 0.08),
-    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
+    /* 1) 상단 모서리에 맺히는 강한 하이라이트 선 */
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.1),
+    /* 2) 하단 모서리에 맺히는 미세한 어둠 */
+    0 12px 32px 0 rgba(27, 45, 90, 0.1);
+  /* 3) 유리 아래로 깔리는 자연스러운 그림자 */
   width: 340px;
   border: 1px solid var(--panel-border);
   color: var(--panel-text);
@@ -209,7 +257,30 @@ main {
   transition:
     opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
     transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
 }
+
+.info-panel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 115도 각도로 정중앙(50%)을 관통하는 선명한 반사광 설정 */
+  background: linear-gradient(115deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 35%,
+      rgba(255, 255, 255, 0.15) 45%,
+      rgba(255, 255, 255, 0.25) 50%,
+      /* 가장 반짝이는 광선 중심 */
+      rgba(255, 255, 255, 0.15) 55%,
+      rgba(255, 255, 255, 0) 65%,
+      rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
 
 .info-panel.hidden {
   opacity: 0;
@@ -440,34 +511,14 @@ main {
   color: #1a2b3c;
 }
 
-.step-icon {
-  width: 48px;
-  height: 48px;
-  display: grid;
-  place-items: center;
-  border-radius: 8px;
-  background: #e7f2ff;
-  color: var(--blue);
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ==========================================================================
-   02. 빠른 진단 시스템 (Fast Diagnosis System) [START]
-   ========================================================================== */
+/* Fast Diagnosis - Start */
 .fast-diagnosis {
-  background: linear-gradient(180deg, #f8fafd 0%, #ffffff 100%);
+  background: radial-gradient(circle at top, #f6f9fc 0%, #ffffff 100%);
   padding: 100px 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .fast-diagnosis .section-title {
@@ -508,54 +559,87 @@ main {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   list-style: none;
   padding: 0;
   margin: 0;
+  position: relative;
+}
+
+/* Horizontal timeline connector behind the cards */
+.fast-diagnosis .process-steps::before {
+  content: "";
+  position: absolute;
+  top: 100px;
+  /* Aligned with the center of the 100px icon container */
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg,
+      rgba(47, 95, 167, 0.02) 0%,
+      rgba(47, 95, 167, 0.25) 50%,
+      rgba(47, 95, 167, 0.02) 100%);
+  z-index: 1;
 }
 
 .process-step {
   flex: 1;
-  background: #ffffff;
-  border: 1px solid rgba(47, 95, 167, 0.08);
-  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 28px;
   padding: 50px 30px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(27, 45, 90, 0.02);
-  transition: all 0.3s ease;
+  box-shadow:
+    0 15px 35px rgba(27, 45, 90, 0.03),
+    0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  z-index: 2;
   overflow: hidden;
 }
 
 .process-step:hover {
-  transform: translateY(-8px);
-  border-color: rgba(47, 95, 167, 0.2);
-  box-shadow: 0 20px 40px rgba(27, 45, 90, 0.08);
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(47, 95, 167, 0.25);
+  box-shadow:
+    0 30px 60px rgba(27, 45, 90, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
 }
 
 .step-icon-container {
   width: 100px;
   height: 100px;
-  background: rgba(234, 242, 255, 0.5);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 50%;
   display: grid;
   place-items: center;
   margin-bottom: 30px;
-  transition: all 0.3s ease;
+  box-shadow:
+    0 10px 20px rgba(27, 45, 90, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   z-index: 2;
 }
 
 .process-step:hover .step-icon-container {
-  background: rgba(234, 242, 255, 0.9);
+  background: #ffffff;
+  transform: scale(1.08);
+  box-shadow:
+    0 15px 30px rgba(47, 95, 167, 0.15),
+    0 0 0 1px rgba(47, 95, 167, 0.1) inset;
 }
 
 /* SVG 내부 점선이 실선으로 채워지는 효과 */
 .dash-circle {
-  transition: stroke-dasharray 0.3s ease, opacity 0.3s ease;
+  transition: stroke-dasharray 0.4s ease, opacity 0.4s ease;
 }
 
 .process-step:hover .dash-circle {
@@ -576,15 +660,24 @@ main {
 }
 
 .step-label {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--blue, #2f5fa7);
-  background: rgba(234, 242, 255, 0.6);
-  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #2f5fa7;
+  background: rgba(234, 242, 255, 0.8);
+  border: 1px solid rgba(47, 95, 167, 0.15);
+  padding: 5px 14px;
   border-radius: 20px;
   margin-bottom: 20px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.process-step:hover .step-label {
+  background: #2f5fa7;
+  color: #ffffff;
+  border-color: #2f5fa7;
+  box-shadow: 0 4px 12px rgba(47, 95, 167, 0.25);
 }
 
 .step-info h3 {
@@ -598,12 +691,13 @@ main {
 .step-info p {
   font-size: 14px;
   color: var(--muted, #6b7c96);
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
   word-break: keep-all;
   max-width: 240px;
 }
 
+/* Soft glow backing element inside step */
 .process-step::after {
   content: "";
   position: absolute;
@@ -611,7 +705,7 @@ main {
   left: 50%;
   width: 320px;
   height: 320px;
-  background: radial-gradient(circle, rgba(234, 242, 255, 0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(234, 242, 255, 0.3) 0%, transparent 70%);
   border-radius: 50%;
   z-index: 1;
   transform: translate(-50%, -50%) scale(0);
@@ -635,8 +729,10 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #ffffff;
-  border: 1px solid rgba(47, 95, 167, 0.08);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   padding: 14px 28px;
   border-radius: 30px;
   font-weight: 700;
@@ -647,6 +743,7 @@ main {
 }
 
 .feature-tag:hover {
+  background: #ffffff;
   border-color: rgba(47, 95, 167, 0.2);
   box-shadow: 0 8px 20px rgba(27, 45, 90, 0.06);
   transform: translateY(-2px);
@@ -661,9 +758,7 @@ main {
   background: #2f5fa7;
 }
 
-/* ==========================================================================
-   02. 빠른 진단 시스템 (Fast Diagnosis System) [END]
-   ========================================================================== */
+/* Fast Diagnosis - End */
 
 /* ==========================================================================
    03. 비수술 치료 솔루션 (Non-Surgical Treatments) [START]
@@ -968,6 +1063,409 @@ main {
 /* ==========================================================================
    03. 비수술 치료 솔루션 (Non-Surgical Treatments) [END]
    ========================================================================== */
+
+/* Brand Trust Slider - Start */
+.brand-trust-slider {
+  background: #ffffff;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-swiper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(27, 45, 90, 0.06);
+  position: relative;
+}
+
+.brand-swiper .swiper-slide {
+  height: 520px;
+  box-sizing: border-box;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Slide inner container to align content */
+.slide-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 0 60px;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+.slide-content {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 10;
+}
+
+.slide-content.full-width {
+  flex: 1;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+}
+
+.slide-eyebrow {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+  color: #008275;
+  /* Primary Teal */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  background: rgba(0, 130, 117, 0.08);
+  padding: 5px 12px;
+  border-radius: 20px;
+  align-self: flex-start;
+}
+
+.slide-content.full-width .slide-eyebrow {
+  align-self: center;
+}
+
+.slide-eyebrow.color-white {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.slide-title {
+  font-size: 38px;
+  font-weight: 800;
+  color: #1b2d5a;
+  line-height: 1.35;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.03em;
+  word-break: keep-all;
+}
+
+.slide-title.color-white {
+  color: #ffffff;
+}
+
+.slide-title .highlight {
+  color: #008275;
+}
+
+.slide-title .highlight-yellow {
+  color: #ffe066;
+}
+
+.slide-desc {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #6b7c96;
+  margin: 0 0 32px 0;
+  word-break: keep-all;
+}
+
+.slide-desc.color-white {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.slide-graphic {
+  flex: 0.9;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+}
+
+/* Slide 1 - Stats Cards layout */
+.stats-grid {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.stat-pill-card {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid rgba(0, 130, 117, 0.12);
+  border-radius: 24px;
+  padding: 24px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 10px 24px rgba(27, 45, 90, 0.02);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-pill-card:hover {
+  transform: translateY(-8px);
+  border-color: #008275;
+  box-shadow: 0 15px 30px rgba(0, 130, 117, 0.08);
+}
+
+.stat-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6b7c96;
+  letter-spacing: -0.01em;
+}
+
+.stat-val {
+  font-size: 26px;
+  font-weight: 800;
+  color: #008275;
+}
+
+.stat-val small {
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.recovery-wave-svg {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+}
+
+/* Slide 2 - Training Center Graphic */
+.training-graphic-wrap {
+  width: 100%;
+  max-width: 440px;
+  height: 320px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.world-map-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  background: radial-gradient(circle, #008275 10%, transparent 11%);
+  background-size: 12px 12px;
+  mask-image: radial-gradient(circle, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle, black, transparent 80%);
+}
+
+.doctor-circle-overlay {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 6px solid #ffffff;
+  box-shadow: 0 20px 45px rgba(27, 45, 90, 0.12);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.5s ease;
+}
+
+.doctor-circle-overlay:hover {
+  transform: scale(1.04);
+}
+
+.doctor-circle-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.circle-tag {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #008275;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0, 130, 117, 0.3);
+  white-space: nowrap;
+}
+
+/* Slide 3 - Philosophy Background */
+.slide-philosophy {
+  background: url('../assets/visual-slide-03.png') no-repeat center/cover;
+}
+
+.slide-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(8, 26, 60, 0.85) 0%, rgba(27, 45, 90, 0.7) 100%);
+  z-index: 1;
+}
+
+.primary-button.outline-white {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.primary-button.outline-white:hover {
+  background: #ffffff;
+  color: #1b2d5a;
+}
+
+/* Custom Swiper Controls (Cham Podo Namu style) */
+.brand-slider-controls {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #1b2d5a;
+  box-shadow: 0 10px 30px rgba(8, 26, 60, 0.05);
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
+.brand-btn-prev,
+.brand-btn-next,
+.brand-btn-play-pause {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  padding: 0;
+}
+
+.brand-btn-prev svg,
+.brand-btn-next svg {
+  width: 20px;
+  height: 20px;
+}
+
+.brand-btn-play-pause svg {
+  width: 14px;
+  height: 14px;
+}
+
+.brand-btn-prev:hover,
+.brand-btn-next:hover,
+.brand-btn-play-pause:hover {
+  transform: scale(1.1);
+}
+
+.brand-slider-pagination {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.curr-index,
+.total-index {
+  font-family: "Pretendard", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.progress-bar-container {
+  width: 60px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+}
+
+.progress-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 33.33%;
+  background: #008275;
+  transition: width 0.3s ease;
+}
+
+/* Adapt slider control colors based on active slide theme */
+.brand-swiper-dark-theme .brand-slider-controls {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.brand-swiper-dark-theme .progress-bar-container {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.brand-swiper-dark-theme .progress-bar-fill {
+  background: #ffe066;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Micro-Animations: Slide Element Transitions */
+.brand-swiper .swiper-slide .slide-eyebrow,
+.brand-swiper .swiper-slide .slide-title,
+.brand-swiper .swiper-slide .stats-grid,
+.brand-swiper .swiper-slide .slide-desc,
+.brand-swiper .swiper-slide .slide-actions,
+.brand-swiper .swiper-slide .slide-graphic {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-swiper .swiper-slide-active .slide-eyebrow,
+.brand-swiper .swiper-slide-active .slide-title,
+.brand-swiper .swiper-slide-active .stats-grid,
+.brand-swiper .swiper-slide-active .slide-desc,
+.brand-swiper .swiper-slide-active .slide-actions,
+.brand-swiper .swiper-slide-active .slide-graphic {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brand-swiper .swiper-slide-active .slide-eyebrow {
+  transition-delay: 0.1s;
+}
+
+.brand-swiper .swiper-slide-active .slide-title {
+  transition-delay: 0.2s;
+}
+
+.brand-swiper .swiper-slide-active .stats-grid,
+.brand-swiper .swiper-slide-active .slide-desc {
+  transition-delay: 0.3s;
+}
+
+.brand-swiper .swiper-slide-active .slide-actions,
+.brand-swiper .swiper-slide-active .slide-graphic {
+  transition-delay: 0.4s;
+}
+
+/* Brand Trust Slider - End */
 
 
 
@@ -1311,6 +1809,37 @@ main {
    Responsive Media Queries (Responsive Styles)
    ========================================================================== */
 @media (max-width: 960px) {
+
+  .ui-layer {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .tv_container,
+  .toGo_section {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .toGo-list {
+    flex-wrap: wrap;
+    height: auto;
+    border-radius: 12px;
+    padding: 10px;
+    gap: 10px;
+    background: #fafafc;
+  }
+
+  .toGo-list li {
+    flex: 1 1 calc(33.33% - 10px);
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  .toGo-list li::after {
+    display: none;
+  }
+
   .hero-welcome-message {
     top: 5%;
     width: 90%;
@@ -1328,6 +1857,10 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 24px;
+  }
+
+  .fast-diagnosis .process-steps::before {
+    display: none;
   }
 
   .process-step {
@@ -1381,15 +1914,62 @@ main {
   .health-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* Brand Slider Responsive (Tablet) */
+  .brand-swiper .swiper-slide {
+    height: auto;
+    padding: 60px 0;
+  }
+
+  .slide-container {
+    flex-direction: column;
+    padding: 0 40px;
+    gap: 30px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-content {
+    align-items: center;
+  }
+
+  .slide-eyebrow {
+    align-self: center;
+  }
+
+  .slide-title {
+    font-size: 28px;
+  }
+
+  .stats-grid {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .slide-graphic {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .brand-slider-controls {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 30px auto 0;
+    justify-content: center;
+    width: fit-content;
+  }
 }
 
 @media (max-width: 640px) {
 
+  .toGo-list li {
+    flex: 1 1 calc(50% - 10px);
+  }
+
   .equip-grid {
     grid-template-columns: 1fr;
   }
-
-
 
   .doctor-card {
     flex-direction: column;
@@ -1412,6 +1992,62 @@ main {
 
   .health-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Brand Slider Responsive (Mobile) */
+  .brand-swiper .swiper-slide {
+    height: auto;
+    padding: 50px 0;
+  }
+
+  .slide-container {
+    padding: 0 20px;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .slide-content {
+    align-items: center;
+  }
+
+  .slide-eyebrow {
+    align-self: center;
+  }
+
+  .slide-title {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .stats-grid {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .stat-pill-card {
+    padding: 16px;
+  }
+
+  .slide-desc {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .slide-graphic {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .brand-slider-controls {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: 20px auto 0;
+    justify-content: center;
+    width: fit-content;
   }
 }
 
