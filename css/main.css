@@ -102,35 +102,23 @@ body.door-locked {
   object-fit: contain;
 }
 
-.intro-door__welcome-text {
-  margin-bottom: 32px;
-}
-
 .intro-door__eyebrow {
   display: block;
   margin-bottom: 14px;
   font-size: 13px;
   font-weight: 800;
-  color: #abcfff;
+  color: #2f5fa7;
   letter-spacing: 0.18em;
-}
-
-.intro-door__title {
-  margin: 0 0 16px 0;
-  font-size: 34px;
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.25;
-  letter-spacing: -0.03em;
 }
 
 .intro-door__desc {
   margin: 0;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 1);
   line-height: 1.6;
   letter-spacing: -0.02em;
+  margin-bottom: 32px;
 }
 
 .intro-door__btn-wrap {
@@ -211,10 +199,6 @@ body.door-locked {
     width: 70px;
     height: 70px;
     margin-bottom: 18px;
-  }
-
-  .intro-door__title {
-    font-size: 26px;
   }
 
   .intro-door__desc {

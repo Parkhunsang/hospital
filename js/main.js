@@ -26,7 +26,7 @@ function init3DBodyMap() {
       targetY: 1.3,
       camY: -3.5,
       camZ: -2.5,
-      image: ""
+      image: "",
     },
     shoulder: {
       title: "어깨",
@@ -40,7 +40,7 @@ function init3DBodyMap() {
       width: 0.8,
       height: 0.8,
       maskScale: [1.0, 1.0],
-      zOffset: 0.05
+      zOffset: 0.05,
     },
     waist: {
       title: "허리",
@@ -61,7 +61,7 @@ function init3DBodyMap() {
       width: 0.65,
       height: 1.2,
       maskScale: [1.2, 0.7],
-      zOffset: -0.05
+      zOffset: -0.05,
     },
     wrist: {
       title: "손목",
@@ -77,7 +77,7 @@ function init3DBodyMap() {
       camX: 5.0, // 타겟이 우측으로 이동한 만큼 카메라도 우측으로 이동
       camY: 0.5,
       camZ: 3.5,
-      image: ""
+      image: "",
     },
     knee: {
       title: "무릎",
@@ -97,7 +97,7 @@ function init3DBodyMap() {
       width: 0.75,
       height: 0.75,
       maskScale: [1.0, 1.0],
-      zOffset: 0.05
+      zOffset: 0.05,
     },
     foot: {
       title: "발/ 발목",
@@ -111,7 +111,7 @@ function init3DBodyMap() {
       targetX: 0.4,
       camY: -3.8,
       camZ: -1.5,
-      image: ""
+      image: "",
     },
   };
 
@@ -166,14 +166,14 @@ function init3DBodyMap() {
 
       // 반투명 화이트/그레이 서리 유리(translucent frosted glass) 질감의 Physical Material 적용 (투명도를 약간 낮춰 두께감 표현)
       const material = new THREE.MeshPhysicalMaterial({
-        color: 0xf3f6fb,        // 반투명 화이트/그레이톤
-        transmission: 0.35,     // 껍데기가 겹쳐 보여 유령처럼 흐려지는 현상을 막기 위해 투명도 하향
+        color: 0xf3f6fb, // 반투명 화이트/그레이톤
+        transmission: 0.35, // 껍데기가 겹쳐 보여 유령처럼 흐려지는 현상을 막기 위해 투명도 하향
         opacity: 1.0,
         transparent: true,
-        roughness: 0.25,        // frosted 유리의 뽀얀 무광 질감
-        ior: 1.45,              // 유리의 실제 굴절률
-        clearcoat: 0.3,         // 매끄러운 표면 반사광 하이라이트 생성
-        clearcoatRoughness: 0.1
+        roughness: 0.25, // frosted 유리의 뽀얀 무광 질감
+        ior: 1.45, // 유리의 실제 굴절률
+        clearcoat: 0.3, // 매끄러운 표면 반사광 하이라이트 생성
+        clearcoatRoughness: 0.1,
       });
       material.thickness = 1.2; // 유리의 입체감을 살리는 두께감
       material.attenuationColor = new THREE.Color(0xffffff);
@@ -272,12 +272,12 @@ function init3DBodyMap() {
   const illustrationTextures = {
     shoulder: textureLoader.load("./assets/shoulder_joint_illustration.png"),
     waist: textureLoader.load("./assets/vertebrae_illustration.png"),
-    knee: textureLoader.load("./assets/knee_joint_illustration.png")
+    knee: textureLoader.load("./assets/knee_joint_illustration.png"),
   };
 
   // [마커] 통증 부위 표시용 빛나는 포인터 및 3D 홀로그램 평면/글로우 생성
   const markerGroup = new THREE.Group();
-  
+
   // 1) 기본 구체 마커 (고광택 딥 로열 블루) - 일러스트 준비 중인 부위에 표시
   const markerGeo = new THREE.SphereGeometry(0.06, 32, 32);
   const markerMat = new THREE.MeshStandardMaterial({
@@ -310,12 +310,12 @@ function init3DBodyMap() {
       tDiffuse: { value: null },
       uOpacity: { value: 0.0 },
       uAngleOpacity: { value: 1.0 },
-      uMaskScale: { value: new THREE.Vector2(1.0, 1.0) }
+      uMaskScale: { value: new THREE.Vector2(1.0, 1.0) },
     },
     transparent: true,
     depthTest: true,
     depthWrite: false,
-    side: THREE.DoubleSide
+    side: THREE.DoubleSide,
   });
   const jointPlane = new THREE.Mesh(jointPlaneGeo, jointMat);
   jointPlane.renderOrder = -1; // 반투명 유리 모델보다 먼저 렌더링하여 서리유리 굴절/블러 효과 유도
@@ -330,12 +330,12 @@ function init3DBodyMap() {
     uniforms: {
       uGlowColor: { value: new THREE.Color(0x3a86ff) },
       uOpacity: { value: 0.0 },
-      uAngleOpacity: { value: 1.0 }
+      uAngleOpacity: { value: 1.0 },
     },
     transparent: true,
     depthTest: true,
     depthWrite: false,
-    side: THREE.DoubleSide
+    side: THREE.DoubleSide,
   });
   const glowPlane = new THREE.Mesh(glowPlaneGeo, glowPlaneMat);
   glowPlane.renderOrder = -2; // 일러스트 배후 렌더링
@@ -366,7 +366,7 @@ function init3DBodyMap() {
 
     if (markerGroup.visible) {
       pulseTime += 0.05;
-      
+
       // 1) 구체 마커용 펄스 (일러스트 비활성화된 부위용)
       if (glowMesh.visible) {
         const scale = 1 + Math.sin(pulseTime) * 0.2;
@@ -379,11 +379,15 @@ function init3DBodyMap() {
         if (activeNormal) {
           const toCamera = new THREE.Vector3();
           toCamera.copy(camera.position).sub(markerGroup.position).normalize();
-          
+
           const dot = toCamera.dot(activeNormal);
           // dot이 0.5 이상이면 1.0, 0.1 이하면 0.0으로 부드럽게 보간
-          const angleOpacity = THREE.MathUtils.clamp((dot - 0.1) / 0.4, 0.0, 1.0);
-          
+          const angleOpacity = THREE.MathUtils.clamp(
+            (dot - 0.1) / 0.4,
+            0.0,
+            1.0,
+          );
+
           jointMat.uniforms.uAngleOpacity.value = angleOpacity;
           glowPlaneMat.uniforms.uAngleOpacity.value = angleOpacity;
         }
@@ -391,8 +395,12 @@ function init3DBodyMap() {
         // 글로우의 맥동 효과 (크기와 투명도가 호흡하듯 변화)
         if (glowPlane.visible) {
           const scalePulse = 1.0 + Math.sin(pulseTime * 2.0) * 0.08; // 0.92 ~ 1.08
-          glowPlane.scale.set(activeWidth * 1.6 * scalePulse, activeHeight * 1.6 * scalePulse, 1.0);
-          
+          glowPlane.scale.set(
+            activeWidth * 1.6 * scalePulse,
+            activeHeight * 1.6 * scalePulse,
+            1.0,
+          );
+
           const opacityPulse = 0.4 + Math.sin(pulseTime * 2.0) * 0.15; // 0.25 ~ 0.55
           glowPlaneMat.uniforms.uOpacity.value = opacityPulse * glowBaseOpacity;
         }
@@ -411,7 +419,9 @@ function init3DBodyMap() {
   const closeBtn = document.getElementById("close-panel");
   const welcomeMessage = document.querySelector(".hero-3d__welcome");
   const infoVisualImg = document.getElementById("info-visual-img");
-  const infoVisualPlaceholder = document.getElementById("info-visual-placeholder");
+  const infoVisualPlaceholder = document.getElementById(
+    "info-visual-placeholder",
+  );
 
   // 6-1. 테마 색상 정의 (배경 및 인포패널 연동)
   const themeData = {
@@ -420,21 +430,23 @@ function init3DBodyMap() {
       bgEnd: "#eaf2ff",
       panelBg: "rgba(248, 250, 253, 0.25)",
       panelBorder: "rgba(234, 242, 255, 0.8)",
-      panelText: "#1b2d5a"
+      panelText: "#1b2d5a",
     },
     active: {
       bgStart: "#f5f9ff",
       bgEnd: "#cbdfff",
       panelBg: "rgba(224, 237, 255, 0.25)",
       panelBorder: "rgba(47, 95, 167, 0.25)",
-      panelText: "#1b2d5a"
-    }
+      panelText: "#1b2d5a",
+    },
   };
 
   menuItems.forEach((item) => {
     item.addEventListener("click", () => {
       // 기존 활성화 해제 및 현재 항목 활성화
-      menuItems.forEach((li) => li.classList.remove("hero-3d__pain-item--active"));
+      menuItems.forEach((li) =>
+        li.classList.remove("hero-3d__pain-item--active"),
+      );
       item.classList.add("hero-3d__pain-item--active");
 
       const targetId = item.getAttribute("data-target");
@@ -452,7 +464,7 @@ function init3DBodyMap() {
             opacity: 0,
             duration: 0.6,
             ease: "power2.inOut",
-            pointerEvents: "none"
+            pointerEvents: "none",
           });
         }
 
@@ -462,16 +474,18 @@ function init3DBodyMap() {
             infoVisualImg.src = data.image;
             infoVisualImg.classList.remove("hidden");
             infoVisualPlaceholder.classList.add("hidden");
-            gsap.fromTo(infoVisualImg, 
-              { opacity: 0, scale: 0.95 }, 
-              { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }
+            gsap.fromTo(
+              infoVisualImg,
+              { opacity: 0, scale: 0.95 },
+              { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" },
             );
           } else {
             infoVisualImg.classList.add("hidden");
             infoVisualPlaceholder.classList.remove("hidden");
-            gsap.fromTo(infoVisualPlaceholder, 
-              { opacity: 0, scale: 0.95 }, 
-              { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }
+            gsap.fromTo(
+              infoVisualPlaceholder,
+              { opacity: 0, scale: 0.95 },
+              { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" },
             );
           }
         }
@@ -545,41 +559,53 @@ function init3DBodyMap() {
           activeHeight = data.height || 0.8;
           const zOff = data.zOffset || 0.05;
           const maskS = data.maskScale || [1.0, 1.0];
-          
+
           // 텍스처 및 균일 변수(Uniform) 업데이트
           jointMat.uniforms.tDiffuse.value = illustrationTextures[targetId];
           jointMat.uniforms.uMaskScale.value.set(maskS[0], maskS[1]);
-          
+
           // 평면 메시 방향 및 오프셋 적용
-          const normalVec = new THREE.Vector3(data.normal[0], data.normal[1], data.normal[2]);
-          const quaternion = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), normalVec);
-          
+          const normalVec = new THREE.Vector3(
+            data.normal[0],
+            data.normal[1],
+            data.normal[2],
+          );
+          const quaternion = new THREE.Quaternion().setFromUnitVectors(
+            new THREE.Vector3(0, 0, 1),
+            normalVec,
+          );
+
           jointPlane.quaternion.copy(quaternion);
           glowPlane.quaternion.copy(quaternion);
-          
+
           jointPlane.position.set(0, 0, zOff);
           glowPlane.position.set(0, 0, zOff - 0.02); // 글로우는 일러스트보다 살짝 안쪽(뒤쪽)에 배치
-          
+
           jointPlane.scale.set(activeWidth, activeHeight, 1.0);
           glowPlane.scale.set(activeWidth * 1.6, activeHeight * 1.6, 1.0);
-          
+
           activeNormal = normalVec;
 
           jointPlane.visible = true;
           glowPlane.visible = true;
 
           // GSAP를 통한 페이드인 효과
-          gsap.killTweensOf([jointMat.uniforms.uOpacity, glowPlaneMat.uniforms.uOpacity]);
-          
-          gsap.fromTo(jointMat.uniforms.uOpacity, 
-            { value: 0 }, 
-            { value: 1.0, duration: 0.6, ease: "power2.out" }
+          gsap.killTweensOf([
+            jointMat.uniforms.uOpacity,
+            glowPlaneMat.uniforms.uOpacity,
+          ]);
+
+          gsap.fromTo(
+            jointMat.uniforms.uOpacity,
+            { value: 0 },
+            { value: 1.0, duration: 0.6, ease: "power2.out" },
           );
-          
+
           glowBaseOpacity = 1.0;
-          gsap.fromTo(glowPlaneMat.uniforms.uOpacity, 
-            { value: 0 }, 
-            { value: 0.5, duration: 0.6, ease: "power2.out" }
+          gsap.fromTo(
+            glowPlaneMat.uniforms.uOpacity,
+            { value: 0 },
+            { value: 0.5, duration: 0.6, ease: "power2.out" },
           );
         } else {
           markerMesh.visible = true;
@@ -597,20 +623,23 @@ function init3DBodyMap() {
   // 닫기/뒤로가기 버튼 클릭 시 전체 화면으로 복귀
   closeBtn.addEventListener("click", () => {
     infoPanel.classList.add("hero-3d__info-panel--hidden");
-    menuItems.forEach((li) => li.classList.remove("hero-3d__pain-item--active"));
+    menuItems.forEach((li) =>
+      li.classList.remove("hero-3d__pain-item--active"),
+    );
 
     if (typeof gsap !== "undefined") {
       // 웰컴 메시지 위에서 아래로 복귀하며 페이드 인
       if (welcomeMessage) {
-        gsap.fromTo(welcomeMessage,
+        gsap.fromTo(
+          welcomeMessage,
           { y: -80, opacity: 0 },
           {
             y: 0,
             opacity: 1,
             duration: 0.8,
             ease: "power2.out",
-            pointerEvents: "auto"
-          }
+            pointerEvents: "auto",
+          },
         );
       }
 
@@ -647,14 +676,17 @@ function init3DBodyMap() {
       // 스프라이트 마커 페이드아웃 후 숨기기
       // 3D 융화 마커 페이드아웃 후 숨기기
       if (jointPlane.visible) {
-        gsap.killTweensOf([jointMat.uniforms.uOpacity, glowPlaneMat.uniforms.uOpacity]);
-        
+        gsap.killTweensOf([
+          jointMat.uniforms.uOpacity,
+          glowPlaneMat.uniforms.uOpacity,
+        ]);
+
         gsap.to(jointMat.uniforms.uOpacity, {
           value: 0,
           duration: 0.5,
-          ease: "power2.inOut"
+          ease: "power2.inOut",
         });
-        
+
         glowBaseOpacity = 0.0;
         gsap.to(glowPlaneMat.uniforms.uOpacity, {
           value: 0,
@@ -665,7 +697,7 @@ function init3DBodyMap() {
             glowPlane.visible = false;
             markerGroup.visible = false;
             activeNormal = null;
-          }
+          },
         });
       } else {
         markerGroup.visible = false;
@@ -701,13 +733,17 @@ function initNonSurgicalSlider() {
       1024: {
         slidesPerView: 3,
         spaceBetween: 20,
-      }
-    }
+      },
+    },
   });
 
   const detailCards = document.querySelectorAll(".non-surgical__detail-card");
-  const paginationDots = document.querySelectorAll(".non-surgical__pagination .non-surgical__dot");
-  const slides = document.querySelectorAll(".non-surgical__swiper .swiper-slide");
+  const paginationDots = document.querySelectorAll(
+    ".non-surgical__pagination .non-surgical__dot",
+  );
+  const slides = document.querySelectorAll(
+    ".non-surgical__swiper .swiper-slide",
+  );
   const btnPrev = document.querySelector(".non-surgical__swiper-btn--prev");
   const btnNext = document.querySelector(".non-surgical__swiper-btn--next");
 
@@ -840,6 +876,7 @@ function initIntroDoor() {
     gsap.set(".hero-welcome-message", { opacity: 0, y: -30 });
     gsap.set(".hero-3d__menu", { opacity: 0, x: -50 });
     gsap.set(".hero-3d__tv-wrap", { opacity: 0, y: 50 });
+    gsap.set(".hero-3d__welcome", { opacity: 0, y: -50 });
   }
 
   let hasOpened = false;
@@ -862,7 +899,7 @@ function initIntroDoor() {
 
           // Three.js 캔버스 렌더링 영역 강제 리사이즈로 화면 맞춤
           window.dispatchEvent(new Event("resize"));
-        }
+        },
       });
 
       // 1. 중앙 웰컴 박스 카드 페이드아웃
@@ -870,47 +907,66 @@ function initIntroDoor() {
         opacity: 0,
         y: -40,
         duration: 0.6,
-        ease: "power2.in"
+        ease: "power2.in",
       });
 
       // 2. 좌우 문 슬라이드 아웃
-      tl.to(doorLeft, {
-        xPercent: -100,
-        duration: 1.5,
-        ease: "power3.inOut"
-      }, "-=0.2");
+      tl.to(
+        doorLeft,
+        {
+          xPercent: -100,
+          duration: 1.5,
+          ease: "power3.inOut",
+        },
+        "-=0.2",
+      );
 
-      tl.to(doorRight, {
-        xPercent: 100,
-        duration: 1.5,
-        ease: "power3.inOut"
-      }, "-=1.5");
+      tl.to(
+        doorRight,
+        {
+          xPercent: 100,
+          duration: 1.5,
+          ease: "power3.inOut",
+        },
+        "-=1.5",
+      );
 
       // 3. 헤더 네비바 등장
-      tl.to(".topbar", {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.out"
-      }, "-=0.9");
+      tl.to(
+        ".topbar",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "-=0.9",
+      );
 
       // 4. 메인 Welcome 텍스트 및 인체 맵 UI 등장
-      tl.to(".hero-welcome-message", {
-        opacity: 1,
-        y: 0,
-        duration: 1.0,
-        ease: "power3.out"
-      }, "-=0.7");
+      tl.to(
+        ".hero-welcome-message",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.0,
+          ease: "power3.out",
+        },
+        "-=0.7",
+      );
 
-      tl.to([".hero-3d__menu", ".hero-3d__tv-wrap"], {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 1.0,
-        stagger: 0.15,
-        ease: "power3.out"
-      }, "-=0.8");
-
+      tl.to(
+        [".hero-3d__menu", ".hero-3d__tv-wrap", ".hero-3d__welcome"],
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          duration: 1.0,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "-=0.8",
+      );
     } else {
       // GSAP 비활성화 시 Fallback (기본 브라우저 css 전환)
       doorLeft.style.transform = "translateX(-100%)";
@@ -996,7 +1052,9 @@ function initBrandTrustSlider() {
   const btnNext = document.querySelector(".brand-trust__btn--next");
   const btnPlayPause = document.querySelector(".brand-trust__btn--play-pause");
   const currIndexEl = document.querySelector(".brand-trust__current-index");
-  const progressBarFillEl = document.querySelector(".brand-trust__progress-fill");
+  const progressBarFillEl = document.querySelector(
+    ".brand-trust__progress-fill",
+  );
   const iconPause = document.querySelector(".brand-trust__icon-pause");
   const iconPlay = document.querySelector(".brand-trust__icon-play");
 
