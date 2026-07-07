@@ -2,102 +2,322 @@ main {
   margin-top: -80px;
 }
 
-/* ==========================================================================
-   01. 3D Body Map Hero Section [START]
-   ========================================================================== */
-#hero-3d {
-  position: relative;
-  width: 100%;
-  /* 상단 헤더 80px을 제외한 전체 화면 높이 */
+/* 인트로 도어(병원 입장 효과) */
+body.door-locked {
+  overflow: hidden !important;
   height: 100vh;
+}
+
+.intro-door {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  display: flex;
   overflow: hidden;
-  --bg-start: #f8fafd;
-  --bg-end: #eaf2ff;
-  background: radial-gradient(circle at 50% 50%,
-      var(--bg-start) 0%,
-      var(--bg-end) 100%);
-  /* 깊이감 있는 밝은 스튜디오 그라데이션 배경 */
+  width: 100vw;
+  height: 100vh;
+  pointer-events: auto;
 }
 
-#canvas-container {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.ui-layer {
+.intro-door__panel {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1200px;
-  height: 100%;
-  pointer-events: none;
-  /* 배경의 3D 캔버스 드래그를 방해하지 않음 */
+  z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  box-sizing: border-box;
-  z-index: 10;
+  width: 50vw;
+  height: 100vh;
+  background-image: url("../assets/intro_door.png");
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-welcome-message {
-  position: absolute;
-  overflow: hidden;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  pointer-events: auto;
-  z-index: 15;
-  width: 350px;
-  height: auto;
-  padding: 12px;
+.intro-door__panel--left {
+  left: 0;
+  background-position: left center;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.intro-door__panel--right {
+  right: 0;
+  background-position: right center;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.intro-door__inner {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background: linear-gradient(135deg,
-      rgba(255, 255, 255, 0.22) 0%,
-      /* 왼쪽 위: 빛을 받아 반짝이는 영역 */
-      rgba(255, 255, 255, 0.03) 40%,
-      /* 중간: 맑게 뚫려 있는 영역 */
-      rgba(255, 255, 255, 0.01) 100%
-      /* 오른쪽 아래: 어두운 영역 */
-    );
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-radius: 20px;
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.5),
-    /* 테두리 안쪽 하이라이트 */
-    0 10px 30px rgba(0, 0, 0, 0.04);
-  /* 아래로 떨어지는 부드러운 음영 */
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-.hero-welcome-message::after {
-  content: "";
+.intro-door__panel::before {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* 115도 각도로 정중앙(50%)을 관통하는 선명한 반사광 설정 */
-  background: linear-gradient(115deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0) 35%,
-      rgba(255, 255, 255, 0.15) 45%,
-      rgba(255, 255, 255, 0.25) 50%,
-      /* 가장 반짝이는 광선 중심 */
-      rgba(255, 255, 255, 0.15) 55%,
-      rgba(255, 255, 255, 0) 65%,
-      rgba(255, 255, 255, 0) 100%);
+  background: rgb(98 105 119 / 45%);
+  content: "";
   pointer-events: none;
 }
 
+.intro-door__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(540px, calc(100% - 40px));
+  padding: 50px 30px;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-.hero-welcome-message h2 {
+.intro-door__logo-wrap {
+  margin-bottom: 12px;
+}
+
+.intro-door__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.intro-door__welcome-text {
+  margin-bottom: 32px;
+}
+
+.intro-door__eyebrow {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #abcfff;
+  letter-spacing: 0.18em;
+}
+
+.intro-door__title {
+  margin: 0 0 16px 0;
+  font-size: 34px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+
+.intro-door__desc {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  letter-spacing: -0.02em;
+}
+
+.intro-door__btn-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.intro-door__enter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 36px !important;
+  border: none;
+  border-radius: 30px !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
+  font-size: 16px;
+  font-weight: 800;
+  color: #1b2d5a !important;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.intro-door__enter-btn:hover {
+  background: #eaf2ff !important;
+  box-shadow: 0 15px 30px rgba(234, 242, 255, 0.3) !important;
+  transform: translateY(-3px);
+}
+
+.intro-door__enter-btn:hover .intro-door__arrow-icon {
+  transform: translateX(4px);
+}
+
+.intro-door__arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.intro-door__scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 36px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.intro-door__mouse-icon {
+  position: relative;
+  width: 22px;
+  height: 34px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 11px;
+}
+
+.intro-door__mouse-wheel {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 4px;
+  height: 6px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  animation: scrollWheel 1.6s infinite ease-in-out;
+}
+
+/* Responsive Styles for Door */
+@media (max-width: 768px) {
+  .intro-door__content {
+    padding: 36px 20px;
+    border-radius: 24px;
+  }
+
+  .intro-door__logo-wrap {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 18px;
+  }
+
+  .intro-door__title {
+    font-size: 26px;
+  }
+
+  .intro-door__desc {
+    font-size: 14px;
+  }
+
+  .intro-door__enter-btn {
+    padding: 12px 28px !important;
+    font-size: 15px;
+  }
+}
+
+/* 인트로 도어 끝 */
+
+/* 02. 3D Body Map Hero Section [START] */
+.hero-3d {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  --bg-start: #f8fafd;
+  --bg-end: #eaf2ff;
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--bg-start) 0%,
+    var(--bg-end) 100%
+  );
+  /* 깊이감 있는 밝은 스튜디오 그라데이션 배경 */
+}
+
+.hero-3d__canvas-container {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-3d__ui-layer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1200px;
+  height: 100%;
+  box-sizing: border-box;
+  transform: translateX(-50%);
+  pointer-events: none;
+  /* 배경의 3D 캔버스 드래그를 방해하지 않음 */
+}
+
+.hero-3d__welcome {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+  width: 350px;
+  height: auto;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    0 10px 30px rgba(0, 0, 0, 0.04);
+  text-align: center;
+  transform: translateX(-50%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: auto;
+}
+
+.hero-3d__welcome::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.15) 45%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 55%,
+    rgba(255, 255, 255, 0) 65%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.hero-3d__welcome-title {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 18px;
   font-weight: 600;
@@ -105,14 +325,14 @@ main {
   letter-spacing: -0.01em;
 }
 
-.hero-welcome-message p {
+.hero-3d__welcome-desc {
+  margin: 0;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 26px;
   font-weight: 800;
   color: #1b2d5a;
-  margin: 0;
-  letter-spacing: -0.03em;
   line-height: 1.2;
+  letter-spacing: -0.03em;
 }
 
 @keyframes slideDownFade {
@@ -127,597 +347,577 @@ main {
   }
 }
 
-.menu-list {
+.hero-3d__menu {
   pointer-events: auto;
   /* UI 요소들은 클릭 가능하도록 설정 */
 }
 
-.info-text-wrap {
+.hero-3d__info-text-wrap {
   display: flex;
   flex-direction: row;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
   margin-bottom: 24px;
   padding-left: 10px;
 }
 
-.info-text-wrap svg {
+.hero-3d__info-text-wrap svg {
   color: #2f5fa7;
 }
 
-.info-text-wrap p {
+.hero-3d__info-desc {
   font: 700 15px "pretendard";
   color: #2f5fa7;
   letter-spacing: -0.02em;
 }
 
-.pain-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.hero-3d__pain-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-.menu-list li {
+.hero-3d__pain-item {
+  position: relative;
+  z-index: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: #ffffff;
+  justify-content: center;
+  overflow: hidden;
   padding: 16px 36px;
   border-radius: 30px;
-  box-shadow: 0 8px 24px rgba(27, 45, 90, 0.04);
   border: 1px solid #eaf2ff;
-  cursor: pointer;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(27, 45, 90, 0.04);
   font-size: 16px;
   font-weight: 700;
   color: #243041;
-  /* Muted Slate */
+  cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  /* Stacking context container */
 }
 
 /* Menu items text wrapper layer */
-.menu-list li span {
+.hero-3d__pain-item span {
   position: relative;
   z-index: 2;
   pointer-events: none;
 }
 
 /* Circular expanding background container */
-.menu-list li::after {
-  content: "";
+.hero-3d__pain-item::after {
   position: absolute;
   top: 50%;
   left: 100%;
+  z-index: 1;
   width: 320px;
   height: 320px;
-  background: var(--item-theme, #1b2d5a);
   border-radius: 50%;
-  z-index: 1;
+  background: var(--item-theme, #1b2d5a);
+  content: "";
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.menu-list li:hover {
-  transform: translateX(6px);
-  box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
+.hero-3d__pain-item:hover {
   border-color: var(--item-theme, #2f5fa7);
   color: var(--item-theme, #2f5fa7);
+  transform: translateX(6px);
+  box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
 }
 
-.menu-list li:hover::before {
-  height: 50%;
+.hero-3d__pain-item:hover::before {
   background: var(--item-theme, #2f5fa7);
+  height: 50%;
 }
 
-.menu-list li.active {
-  color: #ffffff;
+.hero-3d__pain-item.active {
   border-color: var(--item-theme, #1b2d5a);
-  transform: translateX(10px);
   box-shadow: 0 12px 30px rgba(27, 45, 90, 0.15);
+  color: #ffffff;
+  transform: translateX(10px);
 }
 
-.menu-list li.active::before {
-  height: 60%;
+.hero-3d__pain-item.active::before {
   background: #ffffff;
+  height: 60%;
 }
 
-.menu-list li.active::after {
+.hero-3d__pain-item.active::after {
   transform: translate(-50%, -50%) scale(1.5);
 }
 
-.info-panel {
-  pointer-events: auto;
-  /* UI 요소들은 클릭 가능하도록 설정 */
-  --panel-bg: rgba(248, 250, 253, 0.25);
-  --panel-border: rgba(234, 242, 255, 0.4);
-  --panel-text: #1b2d5a;
-  background: var(--panel-bg);
-  /* Semi-transparent F8FAFD */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 36px 30px;
-  border-radius: 24px;
-  box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
-    /* 1) 상단 모서리에 맺히는 강한 하이라이트 선 */
-    inset 0 -1px 0 0 rgba(255, 255, 255, 0.1),
-    /* 2) 하단 모서리에 맺히는 미세한 어둠 */
-    0 12px 32px 0 rgba(27, 45, 90, 0.1);
-  /* 3) 유리 아래로 깔리는 자연스러운 그림자 */
-  width: 340px;
-  border: 1px solid var(--panel-border);
-  color: var(--panel-text);
-  /* EAF2FF based border */
+.hero-3d__info-panel {
+  position: relative;
+  overflow: hidden;
+
+  display: block;
   transition:
     opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
     transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
-  overflow: hidden;
+  width: 340px;
+  padding: 36px 30px;
+  border-radius: 24px;
+  --panel-bg: rgba(248, 250, 253, 0.25);
+  --panel-border: rgba(234, 242, 255, 0.4);
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.1),
+    0 12px 32px 0 rgba(27, 45, 90, 0.1);
+
+  --panel-text: #1b2d5a;
+  color: var(--panel-text);
+  pointer-events: auto;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-.info-panel::after {
-  content: "";
+.hero-3d__info-panel::after {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* 115도 각도로 정중앙(50%)을 관통하는 선명한 반사광 설정 */
-  background: linear-gradient(115deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0) 35%,
-      rgba(255, 255, 255, 0.15) 45%,
-      rgba(255, 255, 255, 0.25) 50%,
-      /* 가장 반짝이는 광선 중심 */
-      rgba(255, 255, 255, 0.15) 55%,
-      rgba(255, 255, 255, 0) 65%,
-      rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.15) 45%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 55%,
+    rgba(255, 255, 255, 0) 65%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  content: "";
   pointer-events: none;
 }
 
-
-.info-panel.hidden {
+.hero-3d__info-panel--hidden {
   opacity: 0;
   transform: translateX(40px);
   pointer-events: none;
 }
 
-.info-panel h3 {
+.hero-3d__info-title {
+  margin: 0 0 16px;
   font-size: 24px;
   font-weight: 800;
   color: var(--panel-text);
-  /* Deep Navy */
-  margin: 0 0 16px;
   letter-spacing: -0.03em;
   transition: color 0.6s ease;
 }
 
-.info-panel p {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin: 0 0 24px;
-}
-
-.panel-actions {
+.hero-3d__panel-actions {
   display: flex;
   gap: 10px;
 }
 
-/* -----------------------------------------
-   info-panel 내 질환 리스트(버튼형) 스타일
------------------------------------------ */
-.disease-list {
-  list-style: none;
-  padding: 0;
-  margin: 16px 0 24px 0;
+/* info-panel 내 질환 리스트(버튼형) 스타일*/
+.hero-3d__disease-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* 모든 질환이 스크롤 없이 한 번에 보이도록 해제 */
+  overflow-y: auto;
   max-height: none;
+  padding: 0;
+  margin: 16px 0 24px 0;
+  list-style: none;
 }
 
 /* 스크롤바 디자인 커스텀 */
-.disease-list::-webkit-scrollbar {
+.hero-3d__disease-list::-webkit-scrollbar {
   width: 6px;
 }
 
-.disease-list::-webkit-scrollbar-track {
+.hero-3d__disease-list::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 4px;
 }
 
-.disease-list::-webkit-scrollbar-thumb {
+.hero-3d__disease-list::-webkit-scrollbar-thumb {
   background: #c1c1c1;
   border-radius: 4px;
 }
 
-.disease-list::-webkit-scrollbar-thumb:hover {
+.hero-3d__disease-list::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
 }
 
-.disease-list li {
+.hero-3d__disease-item {
   width: 100%;
 }
 
-.disease-list a {
+.hero-3d__disease-link {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 16px 20px;
-  background-color: #ffffff;
-  color: #243041;
-  /* Muted Slate */
-  text-decoration: none;
   border-radius: 12px;
   border: 1px solid var(--panel-border);
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(27, 45, 90, 0.02);
   font-size: 15px;
   font-weight: 600;
+  color: #243041;
+  text-decoration: none;
   transition: all 0.25s ease-in-out;
-  box-shadow: 0 2px 8px rgba(27, 45, 90, 0.02);
 }
 
-/* 새 창 열림을 직관적으로 알 수 있게 우측 화살표 아이콘 추가 */
-.disease-list a::after {
-  content: "→";
+.hero-3d__disease-link::after {
   font-size: 16px;
   color: var(--panel-text);
+  content: "→";
   transition:
     transform 0.25s ease,
     color 0.25s ease;
 }
 
-/* 마우스 호버(Hover) 시 효과 */
-.disease-list a:hover {
-  background-color: #eaf2ff;
-  /* Light Sky Blue */
+.hero-3d__disease-link:hover {
   border-color: #2f5fa7;
-  /* Trust Blue */
-  color: #1b2d5a;
-  /* Deep Navy */
+  background-color: #eaf2ff;
   box-shadow: 0 6px 16px rgba(47, 95, 167, 0.12);
+  color: #1b2d5a;
 }
 
-/* 마우스 호버 시 화살표 이동 애니메이션 */
-.disease-list a:hover::after {
+.hero-3d__disease-link:hover::after {
   color: #1b2d5a;
   transform: translateX(4px);
 }
+/* 02. 3D Body Map Hero Section [END] */
 
-/* ==========================================================================
-   01. 3D Body Map Hero Section [END]
-   ========================================================================== */
-
-.tv_wrap {
-  width: 100%;
-  height: 100%;
+.hero-3d__tv-wrap {
   position: absolute;
   left: 0px;
   top: 0px;
   z-index: 1;
   display: flex;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* 드래그 이벤트가 Three.js 캔버스로 전달되도록 설정 */
 }
 
-.tv_container {
-  width: 1200px;
-  height: 100%;
+.hero-3d__tv-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: 30px;
+  width: 1200px;
+  height: 100%;
 }
 
-.toGo_section {
+.hero-3d__togo-section {
+  display: flex;
+  align-items: center;
   width: 1200px;
   height: 80px;
   margin-bottom: 30px;
-  display: flex;
-  align-items: center;
+  pointer-events: auto;
 }
 
-.toGo-list {
+.hero-3d__togo-list {
   display: flex;
-  width: 100%;
-  height: 100%;
   justify-content: space-between;
   align-items: center;
-  list-style: none;
+  width: 100%;
+  height: 100%;
   padding: 0;
   margin: 0;
-  background: #fafafc;
   border-radius: 20px;
+  background: #fafafc;
+  list-style: none;
 }
 
-.toGo-list li {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.hero-3d__togo-item-wrap {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
 }
 
-.toGo-list li:nth-child(1) {
+.hero-3d__togo-item-wrap:nth-child(1) {
   border-radius: 20px 0 0 20px;
 }
 
-.toGo-list li:nth-child(5) {
+.hero-3d__togo-item-wrap:nth-child(5) {
   border-radius: 0 20px 20px 0;
 }
 
-.toGo-list li:hover {
+.hero-3d__togo-item-wrap:hover {
   background: #1b2d5a;
 }
 
-.toGo-list li:hover .toGo-name {
+.hero-3d__togo-item-wrap:hover .hero-3d__togo-name {
   color: #ffffff;
 }
 
-.toGo-list li:hover .toGo-icon img {
+.hero-3d__togo-item-wrap:hover .hero-3d__togo-icon img {
   filter: brightness(0) invert(1);
 }
 
-.toGo-list li::after {
-  content: "";
-  width: 1px;
-  height: 50%;
+.hero-3d__togo-item-wrap::after {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   left: -0.5px;
-  background: rgba(136, 149, 182, 0.85);
+  width: 1px;
+  height: 50%;
   border-radius: 50px;
+  background: rgba(136, 149, 182, 0.85);
+  content: "";
+  transform: translateY(-50%);
 }
 
-.toGo-list li:nth-child(1):after {
+.hero-3d__togo-item-wrap:nth-child(1):after {
   display: none;
 }
 
-.toGo-name {
+.hero-3d__togo-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a2b3c;
   transition: all 0.3s ease;
 }
 
-.toGo-item {
+.hero-3d__togo-item {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
-  text-decoration: none;
-  color: var(--ink);
   width: 100%;
   height: 100%;
+  color: var(--ink);
+  text-decoration: none;
 }
 
-.toGo-item:hover {
+.hero-3d__togo-item:hover {
   opacity: 0.8;
 }
 
-.toGo-icon {
+.hero-3d__togo-icon {
   display: grid;
   place-items: center;
 }
 
-.toGo-name {
-  font-size: 17px;
-  font-weight: 700;
-  color: #1a2b3c;
-}
-
-
-
-/* Fast Diagnosis - Start */
+/* 03. Fast Diagnosis [START] */
 .fast-diagnosis {
-  background: radial-gradient(circle at top, #f6f9fc 0%, #ffffff 100%);
-  padding: 100px 0;
   position: relative;
   overflow: hidden;
+  padding: 100px 0;
+  background: radial-gradient(circle at top, #f6f9fc 0%, #ffffff 100%);
 }
 
-.fast-diagnosis .section-title {
-  text-align: center;
+.fast-diagnosis__title-wrap {
   margin-bottom: 60px;
+  text-align: center;
 }
 
-.fast-diagnosis .section-title .eyebrow {
+.fast-diagnosis__eyebrow {
   display: block;
+  margin-bottom: 12px;
   font-size: 13px;
   font-weight: 800;
   color: #2f5fa7;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-bottom: 12px;
 }
 
-.fast-diagnosis .section-title .sub-eyebrow {
+.fast-diagnosis__sub-eyebrow {
   display: block;
+  margin-bottom: 16px;
   font-size: 15px;
   font-weight: 500;
   color: var(--muted, #6b7c96);
   letter-spacing: -0.01em;
-  margin-bottom: 16px;
 }
 
-.fast-diagnosis .section-title h2 {
+.fast-diagnosis__title {
+  margin: 0;
   font-size: 38px;
   font-weight: 800;
   color: #1b2d5a;
-  letter-spacing: -0.03em;
-  margin: 0;
   line-height: 1.3;
+  letter-spacing: -0.03em;
   word-break: keep-all;
 }
 
-.fast-diagnosis .process-steps {
+.fast-diagnosis__steps {
+  position: relative;
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 60px;
-  list-style: none;
   padding: 0;
-  margin: 0;
-  position: relative;
+  margin: 0 0 60px 0;
+  list-style: none;
 }
 
 /* Horizontal timeline connector behind the cards */
-.fast-diagnosis .process-steps::before {
-  content: "";
+.fast-diagnosis__steps::before {
   position: absolute;
   top: 100px;
   /* Aligned with the center of the 100px icon container */
   left: 15%;
   right: 15%;
-  height: 2px;
-  background: linear-gradient(90deg,
-      rgba(47, 95, 167, 0.02) 0%,
-      rgba(47, 95, 167, 0.25) 50%,
-      rgba(47, 95, 167, 0.02) 100%);
   z-index: 1;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(47, 95, 167, 0.02) 0%,
+    rgba(47, 95, 167, 0.25) 50%,
+    rgba(47, 95, 167, 0.02) 100%
+  );
+  content: "";
 }
 
-.process-step {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 28px;
-  padding: 50px 30px;
-  text-align: center;
-  box-shadow:
-    0 15px 35px rgba(27, 45, 90, 0.03),
-    0 0 0 1px rgba(255, 255, 255, 0.4) inset;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.fast-diagnosis__step {
   position: relative;
   z-index: 2;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 50px 30px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 15px 35px rgba(27, 45, 90, 0.03),
+    0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+
+  text-align: center;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.process-step:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.85);
+.fast-diagnosis__step:hover {
   border-color: rgba(47, 95, 167, 0.25);
+  background: rgba(255, 255, 255, 0.85);
   box-shadow:
     0 30px 60px rgba(27, 45, 90, 0.1),
     0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  transform: translateY(-10px);
 }
 
-.step-icon-container {
-  width: 100px;
-  height: 100px;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
+.fast-diagnosis__icon-wrap {
+  position: relative;
+  z-index: 2;
   display: grid;
   place-items: center;
+  width: 100px;
+  height: 100px;
   margin-bottom: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.8);
   box-shadow:
     0 10px 20px rgba(27, 45, 90, 0.05),
     0 0 0 1px rgba(255, 255, 255, 0.8) inset;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  z-index: 2;
 }
 
-.process-step:hover .step-icon-container {
+.fast-diagnosis__step:hover .fast-diagnosis__icon-wrap {
   background: #ffffff;
-  transform: scale(1.08);
   box-shadow:
     0 15px 30px rgba(47, 95, 167, 0.15),
     0 0 0 1px rgba(47, 95, 167, 0.1) inset;
+  transform: scale(1.08);
 }
 
 /* SVG 내부 점선이 실선으로 채워지는 효과 */
 .dash-circle {
-  transition: stroke-dasharray 0.4s ease, opacity 0.4s ease;
+  transition:
+    stroke-dasharray 0.4s ease,
+    opacity 0.4s ease;
 }
 
-.process-step:hover .dash-circle {
+.fast-diagnosis__step:hover .dash-circle {
   stroke-dasharray: none;
   opacity: 1;
 }
 
-.step-icon-container svg {
+.fast-diagnosis__icon-wrap svg {
   width: 56px;
   height: 56px;
 }
 
-.step-info {
+.fast-diagnosis__info {
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
 }
 
-.step-label {
-  font-size: 11px;
-  font-weight: 800;
-  color: #2f5fa7;
-  background: rgba(234, 242, 255, 0.8);
-  border: 1px solid rgba(47, 95, 167, 0.15);
+.fast-diagnosis__label {
   padding: 5px 14px;
   border-radius: 20px;
   margin-bottom: 20px;
+  border: 1px solid rgba(47, 95, 167, 0.15);
+  background: rgba(234, 242, 255, 0.8);
+  font-size: 11px;
+  font-weight: 800;
+  color: #2f5fa7;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: all 0.3s ease;
 }
 
-.process-step:hover .step-label {
-  background: #2f5fa7;
-  color: #ffffff;
+.fast-diagnosis__step:hover .fast-diagnosis__label {
   border-color: #2f5fa7;
+  background: #2f5fa7;
   box-shadow: 0 4px 12px rgba(47, 95, 167, 0.25);
+  color: #ffffff;
 }
 
-.step-info h3 {
+.fast-diagnosis__step-title {
+  margin: 0 0 12px 0;
   font-size: 22px;
   font-weight: 800;
   color: #1b2d5a;
-  margin: 0 0 12px 0;
   letter-spacing: -0.02em;
 }
 
-.step-info p {
+.fast-diagnosis__step-desc {
+  margin: 0;
+  max-width: 240px;
   font-size: 14px;
   color: var(--muted, #6b7c96);
   line-height: 1.6;
-  margin: 0;
   word-break: keep-all;
-  max-width: 240px;
 }
 
 /* Soft glow backing element inside step */
-.process-step::after {
-  content: "";
+.fast-diagnosis__step::after {
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 1;
   width: 320px;
   height: 320px;
-  background: radial-gradient(circle, rgba(234, 242, 255, 0.3) 0%, transparent 70%);
   border-radius: 50%;
-  z-index: 1;
+  background: radial-gradient(
+    circle,
+    rgba(234, 242, 255, 0.3) 0%,
+    transparent 70%
+  );
+  content: "";
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
 
-.process-step:hover::after {
+.fast-diagnosis__step:hover::after {
   transform: translate(-50%, -50%) scale(1.5);
 }
 
-.fast-features {
+.fast-diagnosis__features {
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -725,110 +925,130 @@ main {
   padding: 20px;
 }
 
-.feature-tag {
+.fast-diagnosis__feature-tag {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
   padding: 14px 28px;
   border-radius: 30px;
-  font-weight: 700;
-  font-size: 15px;
-  color: #1b2d5a;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.65);
   box-shadow: 0 4px 12px rgba(27, 45, 90, 0.02);
+  font-size: 15px;
+  font-weight: 700;
+  color: #1b2d5a;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: all 0.3s ease;
 }
 
-.feature-tag:hover {
-  background: #ffffff;
+.fast-diagnosis__feature-tag:hover {
   border-color: rgba(47, 95, 167, 0.2);
+  background: #ffffff;
   box-shadow: 0 8px 20px rgba(27, 45, 90, 0.06);
   transform: translateY(-2px);
 }
 
-.feature-tag::before {
-  content: "";
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #2f5fa7;
-}
-
-/* Fast Diagnosis - End */
-
-/* ==========================================================================
-   03. 비수술 치료 솔루션 (Non-Surgical Treatments) [START]
-   ========================================================================== */
 .non-surgical {
-  background: #F8FAFD;
-  padding: 100px 0;
   position: relative;
-
-
+  padding: 100px 0;
+  background: #f8fafd;
 }
 
 .non-surgical::before {
-  content: '';
   position: absolute;
   bottom: 10%;
   right: 0%;
+  z-index: 0;
   width: 50%;
   height: 400px;
-  background: #295daa;
   border-radius: 466px 0 0 466px;
-  z-index: 0;
-  opacity: .15;
+  background: #295daa;
+  content: "";
+  opacity: 0.15;
 }
 
 .non-surgical::after {
-  content: '';
   position: absolute;
   bottom: 2%;
   right: 0%;
   width: 80%;
   height: 400px;
-  background: url(../assets/non-surgical_clinic.png)no-repeat 95% 9.5%;
+  background: url(../assets/non-surgical_clinic.png) no-repeat 95% 9.5%;
   background-size: 57%;
-  opacity: .30;
+  content: "";
+  opacity: 0.3;
 }
 
-.non-surgical-wrapper {
+.non-surgical__title-wrap {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.non-surgical__eyebrow {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #2f5fa7;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.non-surgical__sub-eyebrow {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--muted, #6b7c96);
+  letter-spacing: -0.01em;
+}
+
+.non-surgical__title {
+  margin: 0;
+  font-size: 38px;
+  font-weight: 800;
+  color: #1b2d5a;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  word-break: keep-all;
+}
+
+.non-surgical__wrapper {
   display: flex;
   gap: 40px;
   align-items: flex-start;
 }
 
 /* 좌측 상세 카드 영역 */
-.treat-detail-container {
+.non-surgical__detail-container {
   width: 480px;
   flex-shrink: 0;
   position: relative;
 }
 
-.treat-detail-card {
+.non-surgical__detail-card {
   display: none;
   flex-direction: column;
-  background: #ffffff;
-  border: 1px solid rgba(47, 95, 167, 0.08);
-  border-radius: 24px;
-  padding: 40px 30px;
-  box-shadow: 0 10px 35px rgba(27, 45, 90, 0.03);
   opacity: 0;
+  padding: 40px 30px;
+  border-radius: 24px;
+  border: 1px solid rgba(47, 95, 167, 0.08);
+  background: #ffffff;
+  box-shadow: 0 10px 35px rgba(27, 45, 90, 0.03);
   transform: translateY(15px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
-.treat-detail-card.active {
+.non-surgical__detail-card--active {
   display: flex;
   opacity: 1;
   transform: translateY(0);
 }
 
-.treat-image-placeholder {
+.non-surgical__image-placeholder {
   width: 100%;
   height: 240px;
   border-radius: 16px;
@@ -836,103 +1056,103 @@ main {
   transition: transform 0.5s ease;
 }
 
-.treat-detail-info {
+.non-surgical__detail-info {
   display: flex;
   flex-direction: column;
 }
 
-.treat-category {
+.non-surgical__category {
   align-self: flex-start;
-  font-size: 13px;
-  font-weight: 700;
-  color: #2f5fa7;
-  background: rgba(234, 242, 255, 0.6);
   padding: 6px 12px;
   border-radius: 20px;
   margin-bottom: 16px;
+  background: rgba(234, 242, 255, 0.6);
+  font-size: 13px;
+  font-weight: 700;
+  color: #2f5fa7;
   letter-spacing: -0.01em;
 }
 
-.treat-detail-info h3 {
+.non-surgical__flex-title {
+  margin: 0 0 16px 0;
   font-size: 28px;
   font-weight: 800;
   color: #1b2d5a;
-  margin: 0 0 16px 0;
   letter-spacing: -0.02em;
 }
 
-.treat-summary {
+.non-surgical__summary {
+  margin: 0 0 24px 0;
   font-size: 16px;
   color: var(--muted, #6b7c96);
   line-height: 1.6;
-  margin: 0 0 24px 0;
   word-break: keep-all;
 }
 
-.treat-features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.non-surgical__features {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-.treat-features li {
+.non-surgical__feature-item {
   position: relative;
   padding-left: 18px;
   word-break: keep-all;
 }
 
-.treat-features-text {
+.non-surgical__feature-text {
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
   color: #1b2d5a;
 }
 
-.treat-features li::before {
-  content: "•";
-  color: #2f5fa7;
-  font-weight: 800;
+.non-surgical__feature-item::before {
   position: absolute;
   left: 0;
   top: 0;
+  content: "•";
+  color: #2f5fa7;
+  font-weight: 800;
   font-size: 16px;
 }
 
 /* 인디케이터 도트 */
-.treat-detail-pagination {
+.non-surgical__pagination {
   display: flex;
   justify-content: center;
   gap: 8px;
   margin-top: 24px;
 }
 
-.treat-detail-pagination .dot {
+.non-surgical__dot {
   width: 8px;
   height: 8px;
-  background: rgba(47, 95, 167, 0.2);
   border-radius: 50%;
+  background: rgba(47, 95, 167, 0.2);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.treat-detail-pagination .dot.active {
+.non-surgical__dot--active {
   width: 24px;
   border-radius: 4px;
   background: #2f5fa7;
 }
 
 /* 우측 슬라이더 영역 */
-.treat-slider-container {
-  flex: 1;
-  overflow: hidden;
+.non-surgical__slider-container {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  overflow: hidden;
 }
 
-.slider-controls {
+.non-surgical__slider-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -941,657 +1161,629 @@ main {
   border-bottom: 1px solid rgba(47, 95, 167, 0.08);
 }
 
-.slider-hint {
+.non-surgical__slider-hint {
   font-size: 14px;
   font-weight: 700;
   color: #6b7c96;
 }
 
-.swiper-nav-custom {
+.non-surgical__swiper-nav {
   display: flex;
   gap: 10px;
 }
 
-.swiper-btn-prev-custom,
-.swiper-btn-next-custom {
-  background: #ffffff;
-  border: 1px solid rgba(47, 95, 167, 0.15);
-  color: #1b2d5a;
+.non-surgical__swiper-btn--prev,
+.non-surgical__swiper-btn--next {
+  display: grid;
+  place-items: center;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  cursor: pointer;
+  border: 1px solid rgba(47, 95, 167, 0.15);
+  background: #ffffff;
+  color: #1b2d5a;
   font-size: 18px;
-  display: grid;
-  place-items: center;
+  cursor: pointer;
   transition: all 0.3s ease;
   user-select: none;
 }
 
-.swiper-btn-prev-custom:hover,
-.swiper-btn-next-custom:hover {
+.non-surgical__swiper-btn--prev:hover,
+.non-surgical__swiper-btn--next:hover {
+  border-color: #2f5fa7;
   background: #2f5fa7;
   color: #ffffff;
-  border-color: #2f5fa7;
 }
 
-.swiper-btn-prev-custom:disabled,
-.swiper-btn-next-custom:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
+.non-surgical__swiper-btn--prev:disabled,
+.non-surgical__swiper-btn--next:disabled {
+  border-color: rgba(47, 95, 167, 0.15);
   background: #ffffff;
   color: #1b2d5a;
-  border-color: rgba(47, 95, 167, 0.15);
+  opacity: 0.35;
+  cursor: not-allowed;
   pointer-events: none;
 }
 
-.treat-swiper {
+.non-surgical__swiper {
   width: 100%;
   padding: 10px 5px;
 }
 
-.treat-swiper .swiper-slide {
-  background: #ffffff;
-  border: 1px solid rgba(47, 95, 167, 0.06);
-  border-radius: 20px;
-  padding: 16px;
-  box-shadow: 0 4px 16px rgba(27, 45, 90, 0.01);
-  cursor: pointer;
-  transition: all 0.3s ease;
+.non-surgical__swiper .swiper-slide {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(47, 95, 167, 0.06);
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(27, 45, 90, 0.01);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.treat-swiper .swiper-slide:hover {
-  transform: translateY(-6px);
+.non-surgical__swiper .swiper-slide:hover {
   border-color: rgba(47, 95, 167, 0.15);
   box-shadow: 0 12px 24px rgba(27, 45, 90, 0.05);
+  transform: translateY(-6px);
 }
 
-.treat-swiper .swiper-slide.swiper-slide-thumb-active {
+.non-surgical__swiper .swiper-slide.swiper-slide-thumb-active {
   border-color: #2f5fa7;
   background: rgba(234, 242, 255, 0.3);
 }
 
-.treat-thumb-placeholder {
+.non-surgical__thumb-placeholder {
   width: 100%;
   height: 140px;
   border-radius: 12px;
 }
 
-.treat-thumb-info {
+.non-surgical__thumb-info {
   display: flex;
   flex-direction: column;
 }
 
-.treat-thumb-info h4 {
+.non-surgical__thumb-title {
+  margin: 0 0 6px 0;
   font-size: 17px;
   font-weight: 800;
   color: #1b2d5a;
-  margin: 0 0 6px 0;
   letter-spacing: -0.01em;
 }
 
-.treat-thumb-info p {
+.non-surgical__thumb-category {
+  margin: 0;
   font-size: 13px;
   color: #6b7c96;
-  margin: 0;
 }
+/* 04. 비수술 치료 솔루션 (Non-Surgical Treatments) [END] */
 
-/* 임시 프리미엄 파스텔 그라데이션 플레이스홀더 색상군 */
-.bg-blue {
-  background: url(../assets/manual_therapy.png) no-repeat center/cover;
-}
-
-.bg-pink {
-  background: url(../assets/nerve_block_non_surgical_injection.png) no-repeat center/cover;
-}
-
-.bg-purple {
-  background: url(../assets/pain_injection_therapy.png) no-repeat center/cover;
-}
-
-.bg-teal {
-  background: url(../assets/rehabilitation_physical_therapy.png) no-repeat center/cover;
-}
-
-.bg-orange {
-  background: url(../assets/extracorporeal_shock_wave_therapy.png) no-repeat center/cover;
-}
-
-/* ==========================================================================
-   03. 비수술 치료 솔루션 (Non-Surgical Treatments) [END]
-   ========================================================================== */
-
-/* Brand Trust Slider - Start */
-.brand-trust-slider {
-  background: #ffffff;
-  padding: 100px 0;
+/* 04-2. 브랜드 신뢰도 프로모션 슬라이더 (Brand Trust Slider) [START] */
+.brand-trust {
   position: relative;
   overflow: hidden;
+  padding: 100px 0;
 }
 
-.brand-swiper {
+.brand-trust__swiper {
+  position: relative;
+  overflow: hidden;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   border-radius: 32px;
-  overflow: hidden;
   box-shadow: 0 20px 50px rgba(27, 45, 90, 0.06);
-  position: relative;
 }
 
-.brand-swiper .swiper-slide {
+.brand-trust__slide {
+  position: relative;
+  overflow: hidden;
   height: 520px;
   box-sizing: border-box;
   background: #ffffff;
-  overflow: hidden;
-  position: relative;
 }
 
 /* Slide inner container to align content */
-.slide-container {
+.brand-trust__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 40px;
   width: 100%;
   height: 100%;
   padding: 0 60px;
-  gap: 40px;
   box-sizing: border-box;
 }
 
-.slide-content {
-  flex: 1.2;
+.brand-trust__content {
+  z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  z-index: 10;
+  flex: 1.2;
 }
 
-.slide-content.full-width {
+.brand-trust__content--full-width {
+  align-items: center;
   flex: 1;
   max-width: 750px;
   margin: 0 auto;
   text-align: center;
-  align-items: center;
 }
 
-.slide-eyebrow {
+.brand-trust__eyebrow {
   display: inline-block;
+  align-self: flex-start;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  background: rgba(0, 130, 117, 0.08);
   font-size: 14px;
   font-weight: 800;
   color: #008275;
   /* Primary Teal */
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 16px;
-  background: rgba(0, 130, 117, 0.08);
-  padding: 5px 12px;
-  border-radius: 20px;
-  align-self: flex-start;
 }
 
-.slide-content.full-width .slide-eyebrow {
+.brand-trust__content--full-width .brand-trust__eyebrow {
   align-self: center;
 }
 
-.slide-eyebrow.color-white {
-  color: #ffffff;
+.brand-trust__eyebrow--white {
   background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
 }
 
-.slide-title {
+.brand-trust__title {
+  margin: 0 0 24px 0;
   font-size: 38px;
   font-weight: 800;
   color: #1b2d5a;
   line-height: 1.35;
-  margin: 0 0 24px 0;
   letter-spacing: -0.03em;
   word-break: keep-all;
 }
 
-.slide-title.color-white {
+.brand-trust__title--white {
   color: #ffffff;
 }
 
-.slide-title .highlight {
+.brand-trust__highlight {
   color: #008275;
 }
 
-.slide-title .highlight-yellow {
+.brand-trust__highlight-yellow {
   color: #ffe066;
 }
 
-.slide-desc {
+.brand-trust__desc {
+  margin: 0 0 32px 0;
   font-size: 16px;
   line-height: 1.65;
   color: #6b7c96;
-  margin: 0 0 32px 0;
   word-break: keep-all;
 }
 
-.slide-desc.color-white {
+.brand-trust__desc--white {
   color: rgba(255, 255, 255, 0.85);
 }
 
-.slide-graphic {
-  flex: 0.9;
-  height: 100%;
+.brand-trust__graphic {
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  z-index: 5;
+  flex: 0.9;
+  height: 100%;
 }
 
 /* Slide 1 - Stats Cards layout */
-.stats-grid {
+.brand-trust__stats-grid {
   display: flex;
   gap: 16px;
   margin-top: 10px;
 }
 
-.stat-pill-card {
-  flex: 1;
-  background: #ffffff;
-  border: 1px solid rgba(0, 130, 117, 0.12);
-  border-radius: 24px;
-  padding: 24px 20px;
-  text-align: center;
+.brand-trust__stat-card {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1;
+  padding: 24px 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 130, 117, 0.12);
+  background: #ffffff;
   box-shadow: 0 10px 24px rgba(27, 45, 90, 0.02);
+  text-align: center;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.stat-pill-card:hover {
-  transform: translateY(-8px);
+.brand-trust__stat-card:hover {
   border-color: #008275;
   box-shadow: 0 15px 30px rgba(0, 130, 117, 0.08);
+  transform: translateY(-8px);
 }
 
-.stat-label {
+.brand-trust__stat-label {
   font-size: 13px;
   font-weight: 700;
   color: #6b7c96;
   letter-spacing: -0.01em;
 }
 
-.stat-val {
+.brand-trust__stat-val {
   font-size: 26px;
   font-weight: 800;
   color: #008275;
 }
 
-.stat-val small {
+.brand-trust__stat-val small {
+  margin-left: 2px;
   font-size: 14px;
   font-weight: 700;
-  margin-left: 2px;
 }
 
-.recovery-wave-svg {
+.brand-trust__wave-svg {
   width: 100%;
   max-width: 440px;
   height: auto;
 }
 
 /* Slide 2 - Training Center Graphic */
-.training-graphic-wrap {
-  width: 100%;
-  max-width: 440px;
-  height: 320px;
+.brand-trust__training-wrap {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 440px;
+  height: 320px;
 }
 
-.world-map-bg {
+.brand-trust__map-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.15;
   background: radial-gradient(circle, #008275 10%, transparent 11%);
   background-size: 12px 12px;
+  opacity: 0.15;
   mask-image: radial-gradient(circle, black, transparent 80%);
   -webkit-mask-image: radial-gradient(circle, black, transparent 80%);
 }
 
-.doctor-circle-overlay {
+.brand-trust__img-overlay {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
   width: 240px;
   height: 240px;
   border-radius: 50%;
   border: 6px solid #ffffff;
   box-shadow: 0 20px 45px rgba(27, 45, 90, 0.12);
-  overflow: hidden;
-  position: relative;
-  z-index: 2;
   transition: transform 0.5s ease;
 }
 
-.doctor-circle-overlay:hover {
+.brand-trust__img-overlay:hover {
   transform: scale(1.04);
 }
 
-.doctor-circle-overlay img {
+.brand-trust__img-overlay img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.circle-tag {
+.brand-trust__img-tag {
   position: absolute;
   bottom: 20px;
   left: 50%;
-  transform: translateX(-50%);
-  background: #008275;
-  color: #ffffff;
+  z-index: 5;
   padding: 6px 14px;
   border-radius: 20px;
+  background: #008275;
+  box-shadow: 0 4px 10px rgba(0, 130, 117, 0.3);
+  color: #ffffff;
   font-size: 12px;
   font-weight: 700;
-  box-shadow: 0 4px 10px rgba(0, 130, 117, 0.3);
+  transform: translateX(-50%);
   white-space: nowrap;
 }
 
 /* Slide 3 - Philosophy Background */
-.slide-philosophy {
-  background: url('../assets/visual-slide-03.png') no-repeat center/cover;
+.brand-trust__slide--philosophy {
+  background: url("../assets/visual-slide-03.png") no-repeat center/cover;
 }
 
-.slide-bg-overlay {
+.brand-trust__bg-overlay {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(8, 26, 60, 0.85) 0%, rgba(27, 45, 90, 0.7) 100%);
-  z-index: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 26, 60, 0.85) 0%,
+    rgba(27, 45, 90, 0.7) 100%
+  );
 }
 
-.primary-button.outline-white {
-  background: transparent;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-}
-
-.primary-button.outline-white:hover {
-  background: #ffffff;
-  color: #1b2d5a;
+.brand-trust__actions {
+  display: flex;
+  gap: 16px;
 }
 
 /* Custom Swiper Controls (Cham Podo Namu style) */
-.brand-slider-controls {
+.brand-trust__controls {
   position: absolute;
   bottom: 40px;
   left: 60px;
+  z-index: 20;
   display: flex;
   align-items: center;
   gap: 16px;
-  z-index: 20;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  color: #1b2d5a;
-  box-shadow: 0 10px 30px rgba(8, 26, 60, 0.05);
   padding: 10px 20px;
   border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(8, 26, 60, 0.05);
+  color: #1b2d5a;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
-.brand-btn-prev,
-.brand-btn-next,
-.brand-btn-play-pause {
+.brand-trust__btn--prev,
+.brand-trust__btn--next,
+.brand-trust__btn--play-pause {
+  display: grid;
+  place-items: center;
+  padding: 0;
   background: transparent;
   border: none;
   color: inherit;
   cursor: pointer;
-  display: grid;
-  place-items: center;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  padding: 0;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
-.brand-btn-prev svg,
-.brand-btn-next svg {
+.brand-trust__btn--prev svg,
+.brand-trust__btn--next svg {
   width: 20px;
   height: 20px;
 }
 
-.brand-btn-play-pause svg {
+.brand-trust__btn--play-pause svg {
   width: 14px;
   height: 14px;
 }
 
-.brand-btn-prev:hover,
-.brand-btn-next:hover,
-.brand-btn-play-pause:hover {
+.brand-trust__btn--prev:hover,
+.brand-trust__btn--next:hover,
+.brand-trust__btn--play-pause:hover {
   transform: scale(1.1);
 }
 
-.brand-slider-pagination {
+.brand-trust__pagination {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.curr-index,
-.total-index {
+.brand-trust__current-index,
+.brand-trust__total-index {
   font-family: "Pretendard", sans-serif;
   font-size: 14px;
   font-weight: 800;
 }
 
-.progress-bar-container {
-  width: 60px;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.1);
+.brand-trust__progress-wrap {
   position: relative;
   overflow: hidden;
+  width: 60px;
+  height: 2px;
   border-radius: 1px;
+  background: rgba(0, 0, 0, 0.1);
 }
 
-.progress-bar-fill {
+.brand-trust__progress-fill {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 33.33%;
+  height: 100%;
   background: #008275;
   transition: width 0.3s ease;
 }
 
 /* Adapt slider control colors based on active slide theme */
-.brand-swiper-dark-theme .brand-slider-controls {
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0.3);
+.brand-trust__swiper--dark-theme .brand-trust__controls {
   border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.3);
+  color: #ffffff;
 }
 
-.brand-swiper-dark-theme .progress-bar-container {
+.brand-trust__swiper--dark-theme .brand-trust__progress-wrap {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.brand-swiper-dark-theme .progress-bar-fill {
+.brand-trust__swiper--dark-theme .brand-trust__progress-fill {
   background: #ffe066;
 }
 
-.hidden {
-  display: none !important;
-}
-
 /* Micro-Animations: Slide Element Transitions */
-.brand-swiper .swiper-slide .slide-eyebrow,
-.brand-swiper .swiper-slide .slide-title,
-.brand-swiper .swiper-slide .stats-grid,
-.brand-swiper .swiper-slide .slide-desc,
-.brand-swiper .swiper-slide .slide-actions,
-.brand-swiper .swiper-slide .slide-graphic {
+.brand-trust__swiper .swiper-slide .brand-trust__eyebrow,
+.brand-trust__swiper .swiper-slide .brand-trust__title,
+.brand-trust__swiper .swiper-slide .brand-trust__stats-grid,
+.brand-trust__swiper .swiper-slide .brand-trust__desc,
+.brand-trust__swiper .swiper-slide .brand-trust__actions,
+.brand-trust__swiper .swiper-slide .brand-trust__graphic {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.brand-swiper .swiper-slide-active .slide-eyebrow,
-.brand-swiper .swiper-slide-active .slide-title,
-.brand-swiper .swiper-slide-active .stats-grid,
-.brand-swiper .swiper-slide-active .slide-desc,
-.brand-swiper .swiper-slide-active .slide-actions,
-.brand-swiper .swiper-slide-active .slide-graphic {
+.brand-trust__swiper .swiper-slide-active .brand-trust__eyebrow,
+.brand-trust__swiper .swiper-slide-active .brand-trust__title,
+.brand-trust__swiper .swiper-slide-active .brand-trust__stats-grid,
+.brand-trust__swiper .swiper-slide-active .brand-trust__desc,
+.brand-trust__swiper .swiper-slide-active .brand-trust__actions,
+.brand-trust__swiper .swiper-slide-active .brand-trust__graphic {
   opacity: 1;
+
   transform: translateY(0);
 }
 
-.brand-swiper .swiper-slide-active .slide-eyebrow {
+.brand-trust__swiper .swiper-slide-active .brand-trust__eyebrow {
   transition-delay: 0.1s;
 }
 
-.brand-swiper .swiper-slide-active .slide-title {
+.brand-trust__swiper .swiper-slide-active .brand-trust__title {
   transition-delay: 0.2s;
 }
 
-.brand-swiper .swiper-slide-active .stats-grid,
-.brand-swiper .swiper-slide-active .slide-desc {
+.brand-trust__swiper .swiper-slide-active .brand-trust__stats-grid,
+.brand-trust__swiper .swiper-slide-active .brand-trust__desc {
   transition-delay: 0.3s;
 }
 
-.brand-swiper .swiper-slide-active .slide-actions,
-.brand-swiper .swiper-slide-active .slide-graphic {
+.brand-trust__swiper .swiper-slide-active .brand-trust__actions,
+.brand-trust__swiper .swiper-slide-active .brand-trust__graphic {
   transition-delay: 0.4s;
 }
 
-/* Brand Trust Slider - End */
+/* 04-2. 브랜드 신뢰도 프로모션 슬라이더 (Brand Trust Slider) [END] */
 
-
-
-/* ==========================================================================
-   7. 의료진 소개 및 오늘 진료 가능 일정 (Doctors)
-   ========================================================================== */
-.doctor-grid {
+/* 05. 의료진 소개 및 오늘 진료 가능 일정 (Doctors) [START] */
+.doctors__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
 
-.doctor-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  overflow: hidden;
+.doctors__card {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: var(--white);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
 
-.doctor-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow);
+.doctors__card:hover {
   border-color: #cbe3fa;
+  box-shadow: var(--shadow);
+  transform: translateY(-6px);
 }
 
-.doc-image {
+.doctors__image {
   position: relative;
+  overflow: hidden;
   height: 320px;
   background: var(--soft);
-  overflow: hidden;
 }
 
-.doc-image img {
+.doctors__image img {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
   transition: transform 0.5s ease;
 }
 
-.doctor-card:hover .doc-image img {
+.doctors__card:hover .doctors__image img {
   transform: scale(1.05);
 }
 
-.doc-badge {
+.doctors__badge {
   position: absolute;
   top: 20px;
   left: 20px;
-  background: var(--navy);
-  color: var(--white);
   padding: 6px 14px;
   border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(6, 54, 107, 0.2);
+  background: var(--navy);
+  color: var(--white);
   font-size: 14px;
   font-weight: 700;
-  box-shadow: 0 4px 10px rgba(6, 54, 107, 0.2);
 }
 
-.doc-info {
-  padding: 30px;
+.doctors__info {
   display: flex;
   flex-direction: column;
   flex: 1;
+  padding: 30px;
 }
 
-.doc-header {
+.doctors__header {
   margin-bottom: 20px;
 }
 
-.doc-header h3 {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--ink);
-  margin: 0 0 12px;
+.doctors__name {
   display: flex;
   align-items: baseline;
   gap: 8px;
+  margin: 0 0 12px;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ink);
 }
 
-.doc-header h3 small {
+.doctors__role {
   font-size: 16px;
   font-weight: 600;
   color: var(--muted);
 }
 
-.doc-philosophy {
-  font-size: 16px;
-  color: var(--blue);
-  font-weight: 700;
-  line-height: 1.5;
+.doctors__philosophy {
   margin: 0;
+
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1.5;
   word-break: keep-all;
 }
 
-.doc-specs {
-  list-style: none;
-  padding: 0;
+.doctors__specs {
   margin: 0 0 24px 0;
+  padding: 0;
+  list-style: none;
 }
 
-.doc-specs li {
+.doctors__spec-item {
   font-size: 15px;
   color: var(--muted);
   line-height: 1.6;
 }
 
-.doc-specs li strong {
+.doctors__spec-label {
   color: var(--ink);
   font-weight: 700;
 }
 
-.doc-schedule {
-  background: var(--soft);
-  border-radius: 12px;
-  padding: 16px 20px;
+.doctors__schedule {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
   margin-top: auto;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--soft);
 }
 
-.schedule-head {
+.doctors__schedule-head {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1600,270 +1792,266 @@ main {
   font-size: 15px;
 }
 
-.schedule-head svg {
+.doctors__schedule-icon {
   width: 20px;
   height: 20px;
 }
 
-.schedule-time {
+.doctors__schedule-time {
   font-size: 16px;
   font-weight: 800;
   color: var(--blue);
 }
 
-.primary-button.full-width {
-  width: 100%;
-  justify-content: center;
+.doctors__actions {
+  display: flex;
 }
 
+.doctors__actions .primary-button.full-width {
+  justify-content: center;
+  width: 100%;
+}
 
+/* 05. 의료진 소개 및 오늘 진료 가능 일정 (Doctors) [END] */
 
-/* ==========================================================================
-   9. 자가진단 테스트 (Self Test)
-   ========================================================================== */
-.self-test-wrap {
+/* 06. 자가진단 테스트 (Self Test) [START] */
+.self-test__wrapper {
   display: flex;
   gap: 30px;
 }
 
-.test-questions {
-  flex: 1;
+.self-test__questions {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  flex: 1;
 }
 
-.test-checkbox {
+.self-test__checkbox {
   display: flex;
   align-items: center;
   gap: 14px;
   padding: 20px 24px;
-  background: var(--white);
-  border: 1px solid var(--line);
   border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--white);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.test-checkbox:hover {
+.self-test__checkbox:hover {
   border-color: var(--blue);
   box-shadow: 0 4px 12px rgba(7, 86, 156, 0.08);
 }
 
-.test-checkbox input {
+.self-test__checkbox input {
   display: none;
 }
 
-.checkbox-box {
+.self-test__checkbox-box {
+  position: relative;
+
   width: 26px;
   height: 26px;
-  border: 2px solid #b3c5d6;
   border-radius: 6px;
-  position: relative;
   flex-shrink: 0;
+  border: 2px solid #b3c5d6;
   transition: all 0.2s ease;
 }
 
-.test-checkbox input:checked+.checkbox-box {
-  background: var(--blue);
+.self-test__checkbox input:checked + .self-test__checkbox-box {
   border-color: var(--blue);
+  background: var(--blue);
 }
 
-.test-checkbox input:checked+.checkbox-box::after {
-  content: "";
+.self-test__checkbox input:checked + .self-test__checkbox-box::after {
   position: absolute;
-  left: 8px;
   top: 4px;
+  left: 8px;
   width: 6px;
   height: 12px;
   border: solid white;
   border-width: 0 2px 2px 0;
+  content: "";
   transform: rotate(45deg);
 }
 
-.test-checkbox input:checked~.checkbox-text {
+.self-test__checkbox input:checked ~ .self-test__checkbox-text {
   color: var(--blue);
   font-weight: 800;
 }
 
-.checkbox-text {
+.self-test__checkbox-text {
   font-size: 16px;
-  color: var(--ink);
   font-weight: 600;
+  color: var(--ink);
   user-select: none;
 }
 
-.test-result-box {
-  width: 340px;
-  background: var(--navy);
-  border-radius: 20px;
-  padding: 36px 30px;
-  color: var(--white);
+.self-test__result-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 340px;
+  padding: 36px 30px;
+  border-radius: 20px;
+  background: var(--navy);
+  color: var(--white);
 }
 
-.test-result-box h3 {
+.self-test__result-box h3 {
+  margin: 0 0 16px;
   font-size: 20px;
   font-weight: 800;
   line-height: 1.4;
-  margin: 0 0 16px;
 }
 
-.test-result-box p {
+.self-test__result-box p {
+  margin: 0 0 30px;
   color: #c7dff5;
   font-size: 15px;
   line-height: 1.6;
-  margin: 0 0 30px;
   word-break: keep-all;
 }
 
-.test-result-box .primary-button {
+.self-test__result-box .primary-button {
   background: var(--white);
   color: var(--navy);
 }
 
-
-
-/* ==========================================================================
-   11. 통증 건강정보 (Health Information)
-   ========================================================================== */
-.health-grid {
+/* 07. 통증 건강정보 (Health Information) [START] */
+.health-info__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
-.health-card {
-  background: var(--white);
-  border-radius: 16px;
+.health-info__card {
   overflow: hidden;
+  border-radius: 16px;
   border: 1px solid var(--line);
+  background: var(--white);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
 
-.health-card:hover {
-  transform: translateY(-5px);
+.health-info__card:hover {
   box-shadow: var(--shadow);
+  transform: translateY(-5px);
 }
 
-.health-thumb {
+.health-info__thumb {
   position: relative;
-  height: 220px;
   overflow: hidden;
+  height: 220px;
   background: var(--soft);
 }
 
-.health-thumb img {
+.health-info__thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
 
-.health-card:hover .health-thumb img {
+.health-info__card:hover .health-info__thumb img {
   transform: scale(1.05);
 }
 
-.health-cat {
+.health-info__cat {
   position: absolute;
   top: 16px;
   left: 16px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(6, 54, 107, 0.2);
   background: var(--navy);
   color: var(--white);
   font-size: 13px;
   font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(6, 54, 107, 0.2);
 }
 
-.health-body {
+.health-info__body {
   padding: 24px;
 }
 
-.health-body h3 {
+.health-info__title {
+  margin: 0 0 12px;
   font-size: 20px;
   font-weight: 800;
   color: var(--ink);
-  margin: 0 0 12px;
   line-height: 1.4;
 }
 
-.health-body p {
+.health-info__desc {
+  margin: 0;
   font-size: 15px;
   color: var(--muted);
   line-height: 1.6;
-  margin: 0;
   word-break: keep-all;
 }
 
+/* 07. 통증 건강정보 (Health Information) [END] */
 
-
-
-
-/* ==========================================================================
-   Responsive Media Queries (Responsive Styles)
-   ========================================================================== */
+/* Responsive Media Queries (Responsive Styles) [START] */
 @media (max-width: 960px) {
-
-  .ui-layer {
+  .hero-3d__ui-layer {
     width: 100%;
     padding: 0 20px;
   }
 
-  .tv_container,
-  .toGo_section {
+  .hero-3d__tv-container,
+  .hero-3d__togo-section {
     width: 100%;
     padding: 0 20px;
   }
 
-  .toGo-list {
+  .hero-3d__togo-list {
+    display: flex;
     flex-wrap: wrap;
-    height: auto;
-    border-radius: 12px;
-    padding: 10px;
     gap: 10px;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-radius: 12px;
     background: #fafafc;
   }
 
-  .toGo-list li {
+  .hero-3d__togo-item-wrap {
     flex: 1 1 calc(33.33% - 10px);
     height: 50px;
     border-radius: 10px;
   }
 
-  .toGo-list li::after {
+  .hero-3d__togo-item-wrap::after {
     display: none;
   }
 
-  .hero-welcome-message {
+  .hero-3d__welcome {
     top: 5%;
     width: 90%;
   }
 
-  .hero-welcome-message h2 {
+  .hero-3d__welcome-title {
     font-size: 16px;
   }
 
-  .hero-welcome-message p {
+  .hero-3d__welcome-desc {
     font-size: 28px;
   }
 
-  .fast-diagnosis .process-steps {
+  .fast-diagnosis__steps {
     flex-direction: column;
     align-items: center;
     gap: 24px;
   }
 
-  .fast-diagnosis .process-steps::before {
+  .fast-diagnosis__steps::before {
     display: none;
   }
 
-  .process-step {
+  .fast-diagnosis__step {
     width: 100%;
     max-width: 480px;
     padding: 40px 24px;
@@ -1873,85 +2061,85 @@ main {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .non-surgical-wrapper {
+  .non-surgical__wrapper {
     flex-direction: column;
     align-items: center;
     gap: 30px;
   }
 
-  .treat-detail-container {
+  .non-surgical__detail-container {
     width: 100%;
     max-width: 540px;
   }
 
-  .treat-slider-container {
+  .non-surgical__slider-container {
     width: 100%;
     max-width: 540px;
   }
 
-  .doctor-grid {
+  .doctors__grid {
     grid-template-columns: 1fr;
   }
 
-  .doctor-card {
+  .doctors__card {
     flex-direction: row;
   }
 
-  .doc-image {
+  .doctors__image {
     width: 280px;
     height: auto;
   }
 
-  .self-test-wrap {
+  .self-test__wrapper {
     flex-direction: column;
   }
 
-  .test-result-box {
+  .self-test__result-box {
     width: 100%;
     padding: 30px;
   }
 
-  .health-grid {
+  .health-info__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   /* Brand Slider Responsive (Tablet) */
-  .brand-swiper .swiper-slide {
+  .brand-trust__swiper .brand-trust__slide {
     height: auto;
     padding: 60px 0;
   }
 
-  .slide-container {
+  .brand-trust__container {
     flex-direction: column;
-    padding: 0 40px;
+    align-items: center;
     gap: 30px;
+    padding: 0 40px;
     text-align: center;
+  }
+
+  .brand-trust__content {
     align-items: center;
   }
 
-  .slide-content {
-    align-items: center;
-  }
-
-  .slide-eyebrow {
+  .brand-trust__eyebrow {
     align-self: center;
   }
 
-  .slide-title {
+  .brand-trust__title {
     font-size: 28px;
   }
 
-  .stats-grid {
+  .brand-trust__stats-grid {
     width: 100%;
     max-width: 500px;
   }
 
-  .slide-graphic {
+  .brand-trust__graphic {
     width: 100%;
     max-width: 320px;
   }
 
-  .brand-slider-controls {
+  .brand-trust__controls {
     position: relative;
     bottom: auto;
     left: auto;
@@ -1962,7 +2150,6 @@ main {
 }
 
 @media (max-width: 640px) {
-
   .toGo-list li {
     flex: 1 1 calc(50% - 10px);
   }
@@ -1971,77 +2158,77 @@ main {
     grid-template-columns: 1fr;
   }
 
-  .doctor-card {
+  .doctors__card {
     flex-direction: column;
   }
 
-  .doc-image {
+  .doctors__image {
     width: 100%;
     height: 280px;
   }
 
-  .doc-schedule {
+  .doctors__schedule {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
 
-  .test-questions {
+  .self-test__questions {
     grid-template-columns: 1fr;
   }
 
-  .health-grid {
+  .health-info__grid {
     grid-template-columns: 1fr;
   }
 
   /* Brand Slider Responsive (Mobile) */
-  .brand-swiper .swiper-slide {
+  .brand-trust__swiper .brand-trust__slide {
     height: auto;
     padding: 50px 0;
   }
 
-  .slide-container {
-    padding: 0 20px;
+  .brand-trust__container {
     flex-direction: column;
+    align-items: center;
     gap: 24px;
+    padding: 0 20px;
     text-align: center;
+  }
+
+  .brand-trust__content {
     align-items: center;
   }
 
-  .slide-content {
-    align-items: center;
-  }
-
-  .slide-eyebrow {
+  .brand-trust__eyebrow {
     align-self: center;
   }
 
-  .slide-title {
-    font-size: 22px;
+  .brand-trust__title {
     margin-bottom: 16px;
+    font-size: 22px;
   }
 
-  .stats-grid {
+  .brand-trust__stats-grid {
     flex-direction: column;
-    width: 100%;
     gap: 12px;
+    width: 100%;
   }
 
-  .stat-pill-card {
+  .brand-trust__stat-card {
     padding: 16px;
   }
 
-  .slide-desc {
-    font-size: 14px;
+  .brand-trust__desc {
     margin-bottom: 20px;
+    font-size: 14px;
   }
 
-  .slide-graphic {
+  .brand-trust__graphic {
     width: 100%;
     max-width: 280px;
   }
 
-  .brand-slider-controls {
+  .brand-trust__controls {
     position: relative;
     bottom: auto;
     left: auto;
@@ -2051,9 +2238,7 @@ main {
   }
 }
 
-/* ==========================================================================
-   04. Additional Trust Badges & Layout Modifications
-   ========================================================================== */
+/* 08. Additional Trust Badges & Layout Modifications [START] */
 .flex-title {
   display: flex;
   align-items: center;
@@ -2092,254 +2277,3 @@ main {
   color: rgba(185, 203, 224, 0.5);
   font-weight: 500;
 }
-
-/* ==========================================================================
-   05. Intro Door Animation (Split Door) Style [START]
-   ========================================================================== */
-body.door-locked {
-  overflow: hidden !important;
-  height: 100vh;
-}
-
-#intro-door {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 99999;
-  /* Ensure it is above the header and all panels */
-  overflow: hidden;
-  display: flex;
-  pointer-events: auto;
-}
-
-.door-panel {
-  width: 50vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  background-image: url('../assets/intro_door.png');
-  background-size: 100vw 100vh;
-  background-repeat: no-repeat;
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  align-items: center;
-  z-index: 1;
-}
-
-.door-left {
-  left: 0;
-  background-position: left center;
-  border-right: 1.5px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.4);
-}
-
-.door-right {
-  right: 0;
-  background-position: right center;
-  border-left: 1.5px solid rgba(255, 255, 255, 0.15);
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
-}
-
-.door-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-/* Dark glass filter overlay to enhance text readability over the image */
-.door-panel::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(8, 17, 36, 0.45);
-  pointer-events: none;
-}
-
-/* Central Overlay Card content */
-.intro-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: min(540px, calc(100% - 40px));
-  padding: 50px 30px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1.5px solid rgba(255, 255, 255, 0.08);
-  border-radius: 32px;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  box-shadow:
-    0 30px 60px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-  pointer-events: auto;
-  /* Allow clicking button inside */
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.intro-logo-wrap {
-  margin-bottom: 12px;
-}
-
-.intro-logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.intro-welcome-text {
-  margin-bottom: 32px;
-}
-
-.intro-eyebrow {
-  display: block;
-  font-size: 13px;
-  font-weight: 800;
-  color: #abcfff;
-  letter-spacing: 0.18em;
-  margin-bottom: 14px;
-}
-
-.intro-content h1 {
-  font-size: 34px;
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0 0 16px 0;
-  letter-spacing: -0.03em;
-  line-height: 1.25;
-}
-
-.intro-content p {
-  font-size: 16px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
-  letter-spacing: -0.02em;
-  line-height: 1.6;
-}
-
-.enter-btn-wrap {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.enter-btn {
-  background: #ffffff !important;
-  color: #1b2d5a !important;
-  border: none;
-  font-size: 16px;
-  font-weight: 800;
-  padding: 16px 36px !important;
-  border-radius: 30px !important;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.enter-btn:hover {
-  background: #eaf2ff !important;
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(234, 242, 255, 0.3) !important;
-}
-
-.enter-btn:hover .arrow-icon {
-  transform: translateX(4px);
-}
-
-.arrow-icon {
-  transition: transform 0.3s ease;
-}
-
-.scroll-down-hint {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 36px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.mouse-icon {
-  width: 22px;
-  height: 34px;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  border-radius: 11px;
-  position: relative;
-}
-
-.mouse-icon .wheel {
-  width: 4px;
-  height: 6px;
-  background-color: #ffffff;
-  border-radius: 2px;
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: scrollWheel 1.6s infinite ease-in-out;
-}
-
-@keyframes scrollWheel {
-  0% {
-    top: 6px;
-    opacity: 0;
-  }
-
-  30% {
-    opacity: 1;
-  }
-
-  100% {
-    top: 18px;
-    opacity: 0;
-  }
-}
-
-/* Responsive Styles for Door */
-@media (max-width: 768px) {
-  .intro-content {
-    padding: 36px 20px;
-    border-radius: 24px;
-  }
-
-  .intro-logo-wrap {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 18px;
-  }
-
-  .intro-content h1 {
-    font-size: 26px;
-  }
-
-  .intro-content p {
-    font-size: 14px;
-  }
-
-  .enter-btn {
-    padding: 12px 28px !important;
-    font-size: 15px;
-  }
-}
-
-/* ==========================================================================
-   05. Intro Door Animation (Split Door) Style [END]
-   ========================================================================== */

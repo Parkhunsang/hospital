@@ -20,34 +20,34 @@
 
 <body>
   <!-- 인트로 도어 (병원 입장 효과) -->
-  <div id="intro-door">
-    <div class="door-panel door-left">
-      <div class="door-inner"></div>
+  <div class="intro-door" id="intro-door">
+    <div class="intro-door__panel intro-door__panel--left">
+      <div class="intro-door__inner"></div>
     </div>
-    <div class="door-panel door-right">
-      <div class="door-inner"></div>
+    <div class="intro-door__panel intro-door__panel--right">
+      <div class="intro-door__inner"></div>
     </div>
-    <div class="intro-content">
-      <div class="intro-logo-wrap">
-        <img class="intro-logo-img" src="./assets/logo.png" alt="코어업 로고" />
+    <div class="intro-door__content">
+      <div class="intro-door__logo-wrap">
+        <img class="intro-door__logo-img" src="./assets/logo.png" alt="코어업 로고" />
       </div>
-      <div class="intro-welcome-text">
-
-        <h1>코어업 정형외과</h1>
-        <p>아프지 않은 건강한 일상, 코어업이 함께합니다.</p>
+      <div class="intro-door__welcome-text">
+        <span class="intro-door__eyebrow">COREUP SPINE & PAIN CENTER</span>
+        <h1 class="intro-door__title">코어업 정형외과</h1>
+        <p class="intro-door__desc">아프지 않은 건강한 일상, 코어업이 함께합니다.</p>
       </div>
-      <div class="enter-btn-wrap">
-        <button class="primary-button enter-btn" id="enter-clinic-btn">
+      <div class="intro-door__btn-wrap">
+        <button class="primary-button intro-door__enter-btn" id="enter-clinic-btn">
           병원 입장하기
-          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+          <svg class="intro-door__arrow-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
             style="width: 18px; height: 18px; stroke-width: 2.5; margin-left: 4px;">
             <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" />
           </svg>
         </button>
       </div>
-      <div class="scroll-down-hint">
-        <div class="mouse-icon">
-          <div class="wheel"></div>
+      <div class="intro-door__scroll-hint">
+        <div class="intro-door__mouse-icon">
+          <div class="intro-door__mouse-wheel"></div>
         </div>
         <span>스크롤 또는 버튼을 눌러 입장하세요</span>
       </div>
@@ -55,19 +55,18 @@
   </div>
 
   <header class="topbar">
-    <nav class="nav" aria-label="주요 메뉴">
-      <a class="brand" href="#">
-        <img class="brand-logo-img" src="./assets/logo.png" alt="코어업 로고" />
-
+    <nav class="topbar__nav" aria-label="주요 메뉴">
+      <a class="topbar__brand" href="#">
+        <img class="topbar__logo" src="./assets/logo.png" alt="코어업 로고" />
       </a>
-      <div class="nav-links">
-        <a href="#information">병원 소개</a>
-        <a href="#reservation">진료예약 및 안내</a>
-        <a href="#clinic">클리닉 소개</a>
-        <a href="#clinic">도수재활치료</a>
-        <a href="#board">커뮤니티</a>
+      <div class="topbar__links">
+        <a class="topbar__link" href="#information">병원 소개</a>
+        <a class="topbar__link" href="#reservation">진료예약 및 안내</a>
+        <a class="topbar__link" href="#clinic">클리닉 소개</a>
+        <a class="topbar__link" href="#clinic">도수재활치료</a>
+        <a class="topbar__link" href="#board">커뮤니티</a>
       </div>
-      <div class="nav-actions">
+      <div class="topbar__actions">
         <a class="ghost-button" href="tel:0212345678">전화 상담</a>
         <a class="primary-button" href="#booking">예약하기</a>
       </div>
@@ -76,91 +75,89 @@
 
   <main>
     <!-- 3D Body Map Hero 섹션 -->
-    <section id="hero-3d">
-      <div id="canvas-container"></div>
+    <section class="hero-3d" id="hero-3d">
+      <div class="hero-3d__canvas-container" id="canvas-container"></div>
 
-      <div class="ui-layer">
+      <div class="hero-3d__ui-layer">
         <!-- 3D 인체 맵 중앙 상단 웰컴 메시지 -->
-        <div class="hero-welcome-message">
-
-          <h2>어서오세요 코어업 정형외과 입니다.</h2>
-          <p>어디가 아프신가요?</p>
+        <div class="hero-3d__welcome">
+          <h2 class="hero-3d__welcome-title">어서오세요 코어업 정형외과 입니다.</h2>
+          <p class="hero-3d__welcome-desc">어디가 아프신가요?</p>
         </div>
 
-        <div class="menu-list">
-          <div class="info-text-wrap">
+        <div class="hero-3d__menu">
+          <div class="hero-3d__info-text-wrap">
             <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
               <path fill="currentColor"
                 d="M140 176a4 4 0 0 1-4 4a12 12 0 0 1-12-12v-40a4 4 0 0 0-4-4a4 4 0 0 1 0-8a12 12 0 0 1 12 12v40a4 4 0 0 0 4 4a4 4 0 0 1 4 4m-16-84a8 8 0 1 0-8-8a8 8 0 0 0 8 8m104 36A100 100 0 1 1 128 28a100.11 100.11 0 0 1 100 100m-8 0a92 92 0 1 0-92 92a92.1 92.1 0 0 0 92-92" />
             </svg>
-            <p>통증 부위를 선택해주세요</p>
+            <p class="hero-3d__info-desc">통증 부위를 선택해주세요</p>
           </div>
 
-          <ul class="pain-list">
-            <li data-target="neck">목 통증</li>
-            <li data-target="shoulder">어깨 통증</li>
-            <li data-target="waist">허리 통증</li>
-            <li data-target="wrist">손/손목 통증</li>
-            <li data-target="knee">무릎 통증</li>
-            <li data-target="foot">발/발목 통증</li>
+          <ul class="hero-3d__pain-list">
+            <li class="hero-3d__pain-item" data-target="neck">목 통증</li>
+            <li class="hero-3d__pain-item" data-target="shoulder">어깨 통증</li>
+            <li class="hero-3d__pain-item" data-target="waist">허리 통증</li>
+            <li class="hero-3d__pain-item" data-target="wrist">손/손목 통증</li>
+            <li class="hero-3d__pain-item" data-target="knee">무릎 통증</li>
+            <li class="hero-3d__pain-item" data-target="foot">발/발목 통증</li>
           </ul>
         </div>
-        <div id="info-panel" class="info-panel hidden">
-          <h3 id="info-title">부위명</h3>
-          <ul id="info-disease-list" class="disease-list">
+        <div class="hero-3d__info-panel hero-3d__info-panel--hidden" id="info-panel">
+          <h3 class="hero-3d__info-title" id="info-title">부위명</h3>
+          <ul class="hero-3d__disease-list" id="info-disease-list">
             <!-- JS에서 관련 질환 리스트가 삽입됩니다 -->
           </ul>
-          <div class="panel-actions">
-            <button id="close-panel" class="ghost-button small">
+          <div class="hero-3d__panel-actions">
+            <button id="close-panel" class="ghost-button small hero-3d__close-btn">
               뒤로가기
             </button>
           </div>
         </div>
       </div>
 
-      <div class="tv_wrap">
-
-        <div class="tv_container">
-          <div class="toGo_section">
-            <ul class="toGo-list">
-              <li>
-                <a href="#booking" class="toGo-item">
-                  <div class="toGo-icon">
+      <div class="hero-3d__tv-wrap">
+        <div class="hero-3d__tv-container">
+          <div class="hero-3d__togo-section">
+            <ul class="hero-3d__togo-list">
+              <li class="hero-3d__togo-item-wrap">
+                <a href="#booking" class="hero-3d__togo-item">
+                  <div class="hero-3d__togo-icon">
                     <img src="./assets/reservition.svg" alt="진료시간 예약" aria-hidden="true" />
                   </div>
-                  <span class="toGo-name">진료시간 예약</span>
+                  <span class="hero-3d__togo-name">진료시간 예약</span>
                 </a>
               </li>
-              <li>
-                <a href="#certificate" class="toGo-item">
-                  <div class="toGo-icon">
+              <li class="hero-3d__togo-item-wrap">
+                <a href="#certificate" class="hero-3d__togo-item">
+                  <div class="hero-3d__togo-icon">
                     <img src="./assets/certificate.svg" alt="제증명 발급" aria-hidden="true" />
                   </div>
-                  <span class="toGo-name">제증명 발급</span>
+                  <span class="hero-3d__togo-name">제증명 발급</span>
                 </a>
               </li>
-              <li>
-                <a href="#non-surgical" class="toGo-item">
-                  <div class="toGo-icon">
+              <li class="hero-3d__togo-item-wrap">
+                <a href="#non-surgical" class="hero-3d__togo-item">
+                  <div class="hero-3d__togo-icon">
                     <img src="./assets/non-surgical.svg" alt="비수술 클리닉" aria-hidden="true" />
                   </div>
-                  <span class="toGo-name">비수술 클리닉</span>
+                  <span class="hero-3d__togo-name">비수술 클리닉</span>
                 </a>
               </li>
-              <li>
-                <a href="#reviews" class="toGo-item">
-                  <div class="toGo-icon">
+              <li class="hero-3d__togo-item-wrap">
+                <a href="#reviews" class="hero-3d__togo-item">
+                  <div class="hero-3d__togo-icon">
                     <img src="./assets/coment.svg" alt="고객 후기" aria-hidden="true" />
                   </div>
-                  <span class="toGo-name">고객 후기</span>
+                  <span class="hero-3d__togo-name">고객 후기</span>
                 </a>
               </li>
-              <li>
-                <a href="#location" class="toGo-item">
-                  <div class="toGo-icon">
+              <li class="hero-3d__togo-item-wrap">
+                <a href="#location" class="hero-3d__togo-item">
+                  <div class="hero-3d__togo-icon">
                     <img src="./assets/location.svg" alt="오시는 길" aria-hidden="true" />
                   </div>
-                  <span class="toGo-name">오시는 길</span>
+                  <span class="hero-3d__togo-name">오시는 길</span>
                 </a>
               </li>
             </ul>
@@ -171,256 +168,256 @@
 
     <section class="section fast-diagnosis">
       <div class="container">
-        <div class="section-head center">
-          <div class="section-title">
-            <span class="eyebrow">ONE-STOP DIAGNOSIS SYSTEM</span>
-            <span class="sub-eyebrow">신속하고 정확한 원스톱 진단 시스템</span>
-            <h2>당일 검사부터 결과 분석, 치료까지 <br>단 하루에</h2>
+        <div class="section-head section-head--center">
+          <div class="fast-diagnosis__title-wrap">
+            <span class="fast-diagnosis__eyebrow">ONE-STOP DIAGNOSIS SYSTEM</span>
+            <span class="fast-diagnosis__sub-eyebrow">신속하고 정확한 원스톱 진단 시스템</span>
+            <h2 class="fast-diagnosis__title">당일 검사부터 결과 분석, 치료까지 <br>단 하루에</h2>
           </div>
         </div>
 
-        <ul class="process-steps">
-          <li class="process-step">
-            <div class="step-icon-container">
-              <img src="./assets/diag-step-1-1.png" alt="전문의 진료 & 당일 검사"
+        <ul class="fast-diagnosis__steps">
+          <li class="fast-diagnosis__step">
+            <div class="fast-diagnosis__icon-wrap">
+              <img class="fast-diagnosis__icon" src="./assets/diag-step-1-1.png" alt="전문의 진료 & 당일 검사"
                 style="width: 56px; height: 56px; object-fit: contain;" />
             </div>
-            <div class="step-info">
-              <span class="step-label">Step 01</span>
-              <h3>전문의 진료 & 당일 검사</h3>
-              <p>대학병원급 MRI·CT 당일 정밀 검사 진행</p>
+            <div class="fast-diagnosis__info">
+              <span class="fast-diagnosis__label">Step 01</span>
+              <h3 class="fast-diagnosis__step-title">전문의 진료 & 당일 검사</h3>
+              <p class="fast-diagnosis__step-desc">대학병원급 MRI·CT 당일 정밀 검사 진행</p>
             </div>
           </li>
 
-          <li class="process-step">
-            <div class="step-icon-container">
-              <img src="./assets/diag-step-2-1.png" alt="영상의학과 전문 판독"
+          <li class="fast-diagnosis__step">
+            <div class="fast-diagnosis__icon-wrap">
+              <img class="fast-diagnosis__icon" src="./assets/diag-step-2-1.png" alt="영상의학과 전문 판독"
                 style="width: 56px; height: 56px; object-fit: contain;" />
             </div>
-            <div class="step-info">
-              <span class="step-label">Step 02</span>
-              <h3>영상의학과 전문 판독</h3>
-              <p>영상의학과 전문의 실시간 판독 및 정밀 분석</p>
+            <div class="fast-diagnosis__info">
+              <span class="fast-diagnosis__label">Step 02</span>
+              <h3 class="fast-diagnosis__step-title">영상의학과 전문 판독</h3>
+              <p class="fast-diagnosis__step-desc">영상의학과 전문의 실시간 판독 및 정밀 분석</p>
             </div>
           </li>
 
-          <li class="process-step">
-            <div class="step-icon-container">
-              <img src="./assets/diag-step-3-1.png" alt="통합 협진 & 맞춤 치료"
+          <li class="fast-diagnosis__step">
+            <div class="fast-diagnosis__icon-wrap">
+              <img class="fast-diagnosis__icon" src="./assets/diag-step-3-1.png" alt="통합 협진 & 맞춤 치료"
                 style="width: 56px; height: 56px; object-fit: contain;" />
             </div>
-            <div class="step-info">
-              <span class="step-label">Step 03</span>
-              <h3>통합 협진 & 맞춤 치료</h3>
-              <p>4개과 통합 협진을 통한 당일 비수술 치료</p>
+            <div class="fast-diagnosis__info">
+              <span class="fast-diagnosis__label">Step 03</span>
+              <h3 class="fast-diagnosis__step-title">통합 협진 & 맞춤 치료</h3>
+              <p class="fast-diagnosis__step-desc">4개과 통합 협진을 통한 당일 비수술 치료</p>
             </div>
           </li>
         </ul>
 
-        <div class="fast-features">
-          <div class="feature-tag">정형외과 협진</div>
-          <div class="feature-tag">신경외과 협진</div>
-          <div class="feature-tag">영상의학과 검사</div>
-          <div class="feature-tag">마취통증의학과 연계</div>
+        <div class="fast-diagnosis__features">
+          <div class="fast-diagnosis__feature-tag">정형외과 협진</div>
+          <div class="fast-diagnosis__feature-tag">신경외과 협진</div>
+          <div class="fast-diagnosis__feature-tag">영상의학과 검사</div>
+          <div class="fast-diagnosis__feature-tag">마취통증의학과 연계</div>
         </div>
       </div>
     </section>
 
     <section class="section non-surgical">
       <div class="container">
-        <div class="section-head center">
-          <div class="section-title">
-            <span class="eyebrow">NON-SURGICAL CLINIC</span>
-            <span class="sub-eyebrow">척추·관절 통증 극복의 올바른 시작</span>
-            <h2>수술보다 먼저, 안전한 비수술 치료를 고민합니다</h2>
+        <div class="section-head section-head--center">
+          <div class="non-surgical__title-wrap">
+            <span class="non-surgical__eyebrow">NON-SURGICAL CLINIC</span>
+            <span class="non-surgical__sub-eyebrow">척추·관절 통증 극복의 올바른 시작</span>
+            <h2 class="non-surgical__title">수술보다 먼저, 안전한 비수술 치료를 고민합니다</h2>
           </div>
         </div>
 
-        <div class="non-surgical-wrapper">
+        <div class="non-surgical__wrapper">
           <!-- 좌측: 현재 활성화된 치료 상세 설명 카드 -->
-          <div class="treat-detail-container">
+          <div class="non-surgical__detail-container">
             <!-- 1. 도수치료 -->
-            <div class="treat-detail-card active" data-index="0">
-              <div class="treat-image-placeholder bg-blue"></div>
-              <div class="treat-detail-info">
-                <span class="treat-category">도수재활치료</span>
-                <h3 class="flex-title">도수치료 <span class="badge badge-accent">1:1 맞춤</span><span
+            <div class="non-surgical__detail-card non-surgical__detail-card--active" data-index="0">
+              <div class="non-surgical__image-placeholder bg-blue"></div>
+              <div class="non-surgical__detail-info">
+                <span class="non-surgical__category">도수재활치료</span>
+                <h3 class="non-surgical__flex-title">도수치료 <span class="badge badge-accent">1:1 맞춤</span><span
                     class="badge badge-outline">비수술</span></h3>
-                <p class="treat-summary">숙련된 치료사가 손을 이용해 틀어진 관절과 척추 정렬을 바로잡고 신체 밸런스를 복원하는 전문 치료입니다.</p>
-                <ul class="treat-features">
-                  <li>
-                    <p class="treat-features-text">관절 가동 범위를 점진적으로 증가시켜 움직임 회복</p>
+                <p class="non-surgical__summary">숙련된 치료사가 손을 이용해 틀어진 관절과 척추 정렬을 바로잡고 신체 밸런스를 복원하는 전문 치료입니다.</p>
+                <ul class="non-surgical__features">
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">관절 가동 범위를 점진적으로 증가시켜 움직임 회복</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">긴장된 근막과 굳어있는 인대를 이완해 만성 통증 완화</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">긴장된 근막과 굳어있는 인대를 이완해 만성 통증 완화</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">림프 및 혈액 순환을 활성화하여 부종과 염증 감소</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">림프 및 혈액 순환을 활성화하여 부종과 염증 감소</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">불균형한 체형을 올바르게 교정하여 원인 치료 제공</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">불균형한 체형을 올바르게 교정하여 원인 치료 제공</p>
                   </li>
                 </ul>
               </div>
             </div>
 
             <!-- 2. 신경차단술 -->
-            <div class="treat-detail-card" data-index="1">
-              <div class="treat-image-placeholder bg-pink"></div>
-              <div class="treat-detail-info">
-                <span class="treat-category">비수술 주사요법</span>
-                <h3 class="flex-title">신경차단술 <span class="badge badge-accent">10분 시술</span><span
+            <div class="non-surgical__detail-card" data-index="1">
+              <div class="non-surgical__image-placeholder bg-pink"></div>
+              <div class="non-surgical__detail-info">
+                <span class="non-surgical__category">비수술 주사요법</span>
+                <h3 class="non-surgical__flex-title">신경차단술 <span class="badge badge-accent">10분 시술</span><span
                     class="badge badge-outline">당일 귀가</span></h3>
-                <p class="treat-summary">C-arm(미세 컴퓨터 방사선 장비)을 사용하여 실시간으로 통증의 원인이 되는 신경 부위를 정밀하게 조준해 약물을 주입하는 치료입니다.</p>
-                <ul class="treat-features">
-                  <li>
-                    <p class="treat-features-text">신경 주위의 염증과 부종을 빠르게 가라앉혀 즉각적 진통 효과</p>
+                <p class="non-surgical__summary">C-arm(미세 컴퓨터 방사선 장비)을 사용하여 실시간으로 통증의 원인이 되는 신경 부위를 정밀하게 조준해 약물을 주입하는 치료입니다.</p>
+                <ul class="non-surgical__features">
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">신경 주위의 염증과 부종을 빠르게 가라앉혀 즉각적 진통 효과</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">목·허리 디스크, 협착증으로 인한 극심한 저림과 방사통 완화</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">목·허리 디스크, 협착증으로 인한 극심한 저림과 방사통 완화</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">과민해진 신경절을 안정시키고 신경 정상화 도모</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">과민해진 신경절을 안정시키고 신경 정상화 도모</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">시술 시간이 10분 내외로 짧아 고령 및 만성질환자도 시술 가능</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">시술 시간이 10분 내외로 짧아 고령 및 만성질환자도 시술 가능</p>
                   </li>
                 </ul>
               </div>
             </div>
 
             <!-- 3. 주사치료 -->
-            <div class="treat-detail-card" data-index="2">
-              <div class="treat-image-placeholder bg-purple"></div>
-              <div class="treat-detail-info">
-                <span class="treat-category">통증 주사요법</span>
-                <h3 class="flex-title">주사치료 <span class="badge badge-accent">조직 재생</span><span
+            <div class="non-surgical__detail-card" data-index="2">
+              <div class="non-surgical__image-placeholder bg-purple"></div>
+              <div class="non-surgical__detail-info">
+                <span class="non-surgical__category">통증 주사요법</span>
+                <h3 class="non-surgical__flex-title">주사치료 <span class="badge badge-accent">조직 재생</span><span
                     class="badge badge-outline">안전 인증</span></h3>
-                <p class="treat-summary">관절과 척추 주변 힘줄, 인대 등 손상된 연부조직에 약물을 투입해 재생을 유도하고 근본적인 조직 강화를 돕는 주사 요법입니다.</p>
-                <ul class="treat-features">
-                  <li>
-                    <p class="treat-features-text">인대 증식 치료(프롤로테라피)를 통해 느슨해진 인대를 튼튼하게 자극</p>
+                <p class="non-surgical__summary">관절과 척추 주변 힘줄, 인대 등 손상된 연부조직에 약물을 투입해 재생을 유도하고 근본적인 조직 강화를 돕는 주사 요법입니다.</p>
+                <ul class="non-surgical__features">
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">인대 증식 치료(프롤로테라피)를 통해 느슨해진 인대를 튼튼하게 자극</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">관절 윤활막을 강화하여 뼈와 연골 간의 충격을 차단</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">관절 윤활막을 강화하여 뼈와 연골 간의 충격을 차단</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">만성 염증으로 악화된 근골격계 손상 부위 자가 치유 촉진</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">만성 염증으로 악화된 근골격계 손상 부위 자가 치유 촉진</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">절개 없는 주사식 처방으로 시술 후 부작용 우려 최소화</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">절개 없는 주사식 처방으로 시술 후 부작용 우려 최소화</p>
                   </li>
                 </ul>
               </div>
             </div>
 
             <!-- 4. 재활치료 -->
-            <div class="treat-detail-card" data-index="3">
-              <div class="treat-image-placeholder bg-teal"></div>
-              <div class="treat-detail-info">
-                <span class="treat-category">맞춤 물리치료</span>
-                <h3 class="flex-title">재활치료 <span class="badge badge-accent">코어 강화</span><span
+            <div class="non-surgical__detail-card" data-index="3">
+              <div class="non-surgical__image-placeholder bg-teal"></div>
+              <div class="non-surgical__detail-info">
+                <span class="non-surgical__category">맞춤 물리치료</span>
+                <h3 class="non-surgical__flex-title">재활치료 <span class="badge badge-accent">코어 강화</span><span
                     class="badge badge-outline">재발 방지</span></h3>
-                <p class="treat-summary">비수술 치료 후 혹은 수술 후 약화된 근육을 재교육하고 척추 관절 기능을 회복시켜 정상적인 일상으로 안전하게 복귀시키는 통합 재활
+                <p class="non-surgical__summary">비수술 치료 후 혹은 수술 후 약화된 근육을 재교육하고 척추 관절 기능을 회복시켜 정상적인 일상으로 안전하게 복귀시키는 통합 재활
                   프로그램입니다.</p>
-                <ul class="treat-features">
-                  <li>
-                    <p class="treat-features-text">환자별 손상 상태와 유연성에 맞춘 단계적 근력 강화 설계</p>
+                <ul class="non-surgical__features">
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">환자별 손상 상태와 유연성에 맞춘 단계적 근력 강화 설계</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">단순 통증 차단을 넘어 자세 교정과 코어 근력 자극 제공</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">단순 통증 차단을 넘어 자세 교정과 코어 근력 자극 제공</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">치료 후 발생할 수 있는 2차 손상 및 재발 위험의 근본적 예방</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">치료 후 발생할 수 있는 2차 손상 및 재발 위험의 근본적 예방</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">전문 치료사의 정밀 피드백을 통해 올바른 운동 습관 유도</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">전문 치료사의 정밀 피드백을 통해 올바른 운동 습관 유도</p>
                   </li>
                 </ul>
               </div>
             </div>
 
             <!-- 5. 체외충격파 -->
-            <div class="treat-detail-card" data-index="4">
-              <div class="treat-image-placeholder bg-orange"></div>
-              <div class="treat-detail-info">
-                <span class="treat-category">체외 에너지 치료</span>
-                <h3 class="flex-title">체외충격파 <span class="badge badge-accent">세포 재생</span><span
+            <div class="non-surgical__detail-card" data-index="4">
+              <div class="non-surgical__image-placeholder bg-orange"></div>
+              <div class="non-surgical__detail-info">
+                <span class="non-surgical__category">체외 에너지 치료</span>
+                <h3 class="non-surgical__flex-title">체외충격파 <span class="badge badge-accent">세포 재생</span><span
                     class="badge badge-outline">통증 완화</span></h3>
-                <p class="treat-summary">신체 외부에서 고에너지 충격파를 통증 부위에 집중시켜 미세 혈관 형성을 자극하고 힘줄과 주변 조직의 세포 재생을 촉진하는 첨단 물리
+                <p class="non-surgical__summary">신체 외부에서 고에너지 충격파를 통증 부위에 집중시켜 미세 혈관 형성을 자극하고 힘줄과 주변 조직의 세포 재생을 촉진하는 첨단 물리
                   치료입니다.</p>
-                <ul class="treat-features">
-                  <li>
-                    <p class="treat-features-text">약물이나 시술 없이 순수 외부 충격 에너지로 석회성 건염 및 염증 해결</p>
+                <ul class="non-surgical__features">
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">약물이나 시술 없이 순수 외부 충격 에너지로 석회성 건염 및 염증 해결</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">세포 대사를 활성화하여 만성적 통증 물질의 신속한 분해</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">세포 대사를 활성화하여 만성적 통증 물질의 신속한 분해</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">어깨(오십견), 발꿈치(족저근막염), 팔꿈치(엘보우) 질환에 매우 효과적</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">어깨(오십견), 발꿈치(족저근막염), 팔꿈치(엘보우) 질환에 매우 효과적</p>
                   </li>
-                  <li>
-                    <p class="treat-features-text">치료 강도와 부위의 세밀한 맞춤 조절로 부작용 없는 조직 회복 유도</p>
+                  <li class="non-surgical__feature-item">
+                    <p class="non-surgical__feature-text">치료 강도와 부위의 세밀한 맞춤 조절로 부작용 없는 조직 회복 유도</p>
                   </li>
                 </ul>
               </div>
             </div>
 
             <!-- 인디케이터 도트 페이지네이션 -->
-            <div class="treat-detail-pagination">
-              <span class="dot active" data-index="0"></span>
-              <span class="dot" data-index="1"></span>
-              <span class="dot" data-index="2"></span>
-              <span class="dot" data-index="3"></span>
-              <span class="dot" data-index="4"></span>
+            <div class="non-surgical__pagination">
+              <span class="non-surgical__dot non-surgical__dot--active" data-index="0"></span>
+              <span class="non-surgical__dot" data-index="1"></span>
+              <span class="non-surgical__dot" data-index="2"></span>
+              <span class="non-surgical__dot" data-index="3"></span>
+              <span class="non-surgical__dot" data-index="4"></span>
             </div>
           </div>
 
           <!-- 우측: Swiper 조절 슬라이더 목록 -->
-          <div class="treat-slider-container">
-            <div class="slider-controls">
-              <span class="slider-hint">더 많은 비수술 치료 보기</span>
-              <div class="swiper-nav-custom">
-                <button class="swiper-btn-prev-custom" aria-label="이전 치료법">&lt;</button>
-                <button class="swiper-btn-next-custom" aria-label="다음 치료법">&gt;</button>
+          <div class="non-surgical__slider-container">
+            <div class="non-surgical__slider-controls">
+              <span class="non-surgical__slider-hint">더 많은 비수술 치료 보기</span>
+              <div class="non-surgical__swiper-nav">
+                <button class="swiper-btn-prev-custom non-surgical__swiper-btn--prev" aria-label="이전 치료법">&lt;</button>
+                <button class="swiper-btn-next-custom non-surgical__swiper-btn--next" aria-label="다음 치료법">&gt;</button>
               </div>
             </div>
 
-            <div class="swiper treat-swiper">
+            <div class="swiper non-surgical__swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide" data-slide-index="0">
-                  <div class="treat-thumb-placeholder bg-blue"></div>
-                  <div class="treat-thumb-info">
-                    <h4>도수치료</h4>
-                    <p>도수재활치료</p>
+                  <div class="non-surgical__thumb-placeholder bg-blue"></div>
+                  <div class="non-surgical__thumb-info">
+                    <h4 class="non-surgical__thumb-title">도수치료</h4>
+                    <p class="non-surgical__thumb-category">도수재활치료</p>
                   </div>
                 </div>
                 <div class="swiper-slide" data-slide-index="1">
-                  <div class="treat-thumb-placeholder bg-pink"></div>
-                  <div class="treat-thumb-info">
-                    <h4>신경차단술</h4>
-                    <p>비수술 주사요법</p>
+                  <div class="non-surgical__thumb-placeholder bg-pink"></div>
+                  <div class="non-surgical__thumb-info">
+                    <h4 class="non-surgical__thumb-title">신경차단술</h4>
+                    <p class="non-surgical__thumb-category">비수술 주사요법</p>
                   </div>
                 </div>
                 <div class="swiper-slide" data-slide-index="2">
-                  <div class="treat-thumb-placeholder bg-purple"></div>
-                  <div class="treat-thumb-info">
-                    <h4>주사치료</h4>
-                    <p>통증 주사요법</p>
+                  <div class="non-surgical__thumb-placeholder bg-purple"></div>
+                  <div class="non-surgical__thumb-info">
+                    <h4 class="non-surgical__thumb-title">주사치료</h4>
+                    <p class="non-surgical__thumb-category">통증 주사요법</p>
                   </div>
                 </div>
                 <div class="swiper-slide" data-slide-index="3">
-                  <div class="treat-thumb-placeholder bg-teal"></div>
-                  <div class="treat-thumb-info">
-                    <h4>재활치료</h4>
-                    <p>맞춤 물리치료</p>
+                  <div class="non-surgical__thumb-placeholder bg-teal"></div>
+                  <div class="non-surgical__thumb-info">
+                    <h4 class="non-surgical__thumb-title">재활치료</h4>
+                    <p class="non-surgical__thumb-category">맞춤 물리치료</p>
                   </div>
                 </div>
                 <div class="swiper-slide" data-slide-index="4">
-                  <div class="treat-thumb-placeholder bg-orange"></div>
-                  <div class="treat-thumb-info">
-                    <h4>체외충격파</h4>
-                    <p>체외 에너지 치료</p>
+                  <div class="non-surgical__thumb-placeholder bg-orange"></div>
+                  <div class="non-surgical__thumb-info">
+                    <h4 class="non-surgical__thumb-title">체외충격파</h4>
+                    <p class="non-surgical__thumb-category">체외 에너지 치료</p>
                   </div>
                 </div>
               </div>
@@ -431,35 +428,35 @@
     </section>
 
     <!-- 병원 브랜드 신뢰도 프로모션 슬라이더 섹션 -->
-    <section class="section brand-trust-slider">
-      <div class="swiper brand-swiper">
+    <section class="section brand-trust">
+      <div class="swiper brand-trust__swiper">
         <div class="swiper-wrapper">
           <!-- Slide 1: 신뢰와 실적 (Stats) -->
-          <div class="swiper-slide slide-stats">
-            <div class="slide-container">
-              <div class="slide-content">
-                <span class="slide-eyebrow">Since 2015</span>
-                <h2 class="slide-title">
-                  11년간 <span class="highlight">152,430명</span>의 환자가<br>
+          <div class="swiper-slide brand-trust__slide brand-trust__slide--stats">
+            <div class="brand-trust__container">
+              <div class="brand-trust__content">
+                <span class="brand-trust__eyebrow">Since 2015</span>
+                <h2 class="brand-trust__title">
+                  11년간 <span class="brand-trust__highlight">152,430명</span>의 환자가<br>
                   코어업 정형외과에서 건강을 되찾았습니다
                 </h2>
-                <div class="stats-grid">
-                  <div class="stat-pill-card">
-                    <span class="stat-label">누적 비수술 치료 건수</span>
-                    <span class="stat-val">124,350<small>례</small></span>
+                <div class="brand-trust__stats-grid">
+                  <div class="brand-trust__stat-card">
+                    <span class="brand-trust__stat-label">누적 비수술 치료 건수</span>
+                    <span class="brand-trust__stat-val">124,350<small>례</small></span>
                   </div>
-                  <div class="stat-pill-card">
-                    <span class="stat-label">도수·재활 임상 연구</span>
-                    <span class="stat-val">80<small>여편+</small></span>
+                  <div class="brand-trust__stat-card">
+                    <span class="brand-trust__stat-label">도수·재활 임상 연구</span>
+                    <span class="brand-trust__stat-val">80<small>여편+</small></span>
                   </div>
-                  <div class="stat-pill-card">
-                    <span class="stat-label">시술 후 감염률</span>
-                    <span class="stat-val">0.01<small>% 미만</small></span>
+                  <div class="brand-trust__stat-card">
+                    <span class="brand-trust__stat-label">시술 후 감염률</span>
+                    <span class="brand-trust__stat-val">0.01<small>% 미만</small></span>
                   </div>
                 </div>
               </div>
-              <div class="slide-graphic">
-                <svg class="recovery-wave-svg" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <div class="brand-trust__graphic">
+                <svg class="brand-trust__wave-svg" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M50 250 C150 250, 200 150, 300 100 C380 60, 420 50, 450 40" stroke="rgba(47, 95, 167, 0.2)"
                     stroke-width="4" stroke-linecap="round" stroke-dasharray="8 8" />
                   <path d="M40 280 Q200 280 280 180 T460 60" stroke="#008275" stroke-width="8" stroke-linecap="round"
@@ -472,25 +469,25 @@
           </div>
 
           <!-- Slide 2: 국제 트레이닝 센터 (Training Center) -->
-          <div class="swiper-slide slide-training">
-            <div class="slide-container">
-              <div class="slide-content">
-                <span class="slide-eyebrow">Global Hub</span>
-                <h2 class="slide-title">
+          <div class="swiper-slide brand-trust__slide brand-trust__slide--training">
+            <div class="brand-trust__container">
+              <div class="brand-trust__content">
+                <span class="brand-trust__eyebrow">Global Hub</span>
+                <h2 class="brand-trust__title">
                   세계가 주목하는<br>
-                  <span class="highlight">국제 도수재활 교육 트레이닝 센터</span>
+                  <span class="brand-trust__highlight">국제 도수재활 교육 트레이닝 센터</span>
                 </h2>
-                <p class="slide-desc">
+                <p class="brand-trust__desc">
                   독자적인 1:1 맞춤형 도수·재활 프로그램의 우수성을 인정받아,<br>
                   국내외 의료진들이 참관하고 최신 재활 기법을 직접 교육받는 센터입니다.
                 </p>
               </div>
-              <div class="slide-graphic">
-                <div class="training-graphic-wrap">
-                  <div class="world-map-bg"></div>
-                  <div class="doctor-circle-overlay">
+              <div class="brand-trust__graphic">
+                <div class="brand-trust__training-wrap">
+                  <div class="brand-trust__map-bg"></div>
+                  <div class="brand-trust__img-overlay">
                     <img src="./assets/promo_pt.png" alt="트레이닝 교육 현장" />
-                    <span class="circle-tag">CoreUp Academy</span>
+                    <span class="brand-trust__img-tag">CoreUp Academy</span>
                   </div>
                 </div>
               </div>
@@ -498,20 +495,20 @@
           </div>
 
           <!-- Slide 3: 브랜드 철학 (Philosophy) -->
-          <div class="swiper-slide slide-philosophy">
-            <div class="slide-bg-overlay"></div>
-            <div class="slide-container">
-              <div class="slide-content full-width">
-                <span class="slide-eyebrow color-white">CoreUp Mission</span>
-                <h2 class="slide-title color-white">
+          <div class="swiper-slide brand-trust__slide brand-trust__slide--philosophy">
+            <div class="brand-trust__bg-overlay"></div>
+            <div class="brand-trust__container">
+              <div class="brand-trust__content brand-trust__content--full-width">
+                <span class="brand-trust__eyebrow brand-trust__eyebrow--white">CoreUp Mission</span>
+                <h2 class="brand-trust__title brand-trust__title--white">
                   회복, 일상, 건강한 삶<br>
-                  그리고 <span class="highlight-yellow">행복</span>
+                  그리고 <span class="brand-trust__highlight-yellow">행복</span>
                 </h2>
-                <p class="slide-desc color-white">
+                <p class="brand-trust__desc brand-trust__desc--white">
                   단순한 통증 치료를 넘어, 당신의 소중한 일상이 건강하게 꽃피울 수 있도록<br>
                   코어업의 모든 의료진이 더 깊이 고민하고 끝까지 함께 걷겠습니다.
                 </p>
-                <div class="slide-actions">
+                <div class="brand-trust__actions">
                   <a href="#information" class="primary-button outline-white">병원 철학 자세히 보기</a>
                 </div>
               </div>
@@ -520,30 +517,30 @@
         </div>
 
         <!-- Custom Slider Controller (Cham Podo Namu style) -->
-        <div class="brand-slider-controls">
-          <button class="brand-btn-prev" aria-label="이전 슬라이드">
+        <div class="brand-trust__controls">
+          <button class="brand-trust__btn--prev" aria-label="이전 슬라이드">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
               stroke-linejoin="round">
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </button>
-          <div class="brand-slider-pagination">
-            <span class="curr-index">01</span>
-            <div class="progress-bar-container">
-              <div class="progress-bar-fill"></div>
+          <div class="brand-trust__pagination">
+            <span class="brand-trust__current-index">01</span>
+            <div class="brand-trust__progress-wrap">
+              <div class="brand-trust__progress-fill"></div>
             </div>
-            <span class="total-index">03</span>
+            <span class="brand-trust__total-index">03</span>
           </div>
-          <button class="brand-btn-play-pause" aria-label="자동 재생 정지">
-            <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor">
+          <button class="brand-trust__btn--play-pause" aria-label="자동 재생 정지">
+            <svg class="brand-trust__icon-pause" viewBox="0 0 24 24" fill="currentColor">
               <rect x="6" y="4" width="4" height="16" />
               <rect x="14" y="4" width="4" height="16" />
             </svg>
-            <svg class="icon-play hidden" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="brand-trust__icon-play hidden" viewBox="0 0 24 24" fill="currentColor">
               <path d="M8 5v14l11-7z" />
             </svg>
           </button>
-          <button class="brand-btn-next" aria-label="다음 슬라이드">
+          <button class="brand-trust__btn--next" aria-label="다음 슬라이드">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
               stroke-linejoin="round">
               <polyline points="9 18 15 12 9 6"></polyline>
@@ -553,7 +550,7 @@
       </div>
     </section>
 
-    <section class="section self-test alt">
+    <section class="section self-test self-test--alt">
       <div class="container">
         <div class="section-head">
           <div class="section-title">
@@ -561,46 +558,46 @@
           </div>
         </div>
 
-        <div class="self-test-wrap">
-          <div class="test-questions">
-            <label class="test-checkbox">
+        <div class="self-test__wrapper">
+          <div class="self-test__questions">
+            <label class="self-test__checkbox">
               <input type="checkbox" name="symptom" value="waist" />
-              <span class="checkbox-box"></span>
-              <span class="checkbox-text">허리가 자주 아프다</span>
+              <span class="self-test__checkbox-box"></span>
+              <span class="self-test__checkbox-text">허리가 자주 아프다</span>
             </label>
-            <label class="test-checkbox">
+            <label class="self-test__checkbox">
               <input type="checkbox" name="symptom" value="leg" />
-              <span class="checkbox-box"></span>
-              <span class="checkbox-text">다리가 저리거나 당긴다</span>
+              <span class="self-test__checkbox-box"></span>
+              <span class="self-test__checkbox-text">다리가 저리거나 당긴다</span>
             </label>
-            <label class="test-checkbox">
+            <label class="self-test__checkbox">
               <input type="checkbox" name="symptom" value="sit" />
-              <span class="checkbox-box"></span>
-              <span class="checkbox-text">오래 앉아있기 힘들다</span>
+              <span class="self-test__checkbox-box"></span>
+              <span class="self-test__checkbox-text">오래 앉아있기 힘들다</span>
             </label>
-            <label class="test-checkbox">
+            <label class="self-test__checkbox">
               <input type="checkbox" name="symptom" value="neck" />
-              <span class="checkbox-box"></span>
-              <span class="checkbox-text">목과 어깨가 자주 뻐근하다</span>
+              <span class="self-test__checkbox-box"></span>
+              <span class="self-test__checkbox-text">목과 어깨가 자주 뻐근하다</span>
             </label>
-            <label class="test-checkbox">
+            <label class="self-test__checkbox">
               <input type="checkbox" name="symptom" value="arm" />
-              <span class="checkbox-box"></span>
-              <span class="checkbox-text">팔이나 손이 저릴 때가 있다</span>
+              <span class="self-test__checkbox-box"></span>
+              <span class="self-test__checkbox-text">팔이나 손이 저릴 때가 있다</span>
             </label>
-            <label class="test-checkbox">
+            <label class="self-test__checkbox">
               <input type="checkbox" name="symptom" value="knee" />
-              <span class="checkbox-box"></span>
-              <span class="checkbox-text">계단을 오르내릴 때 무릎 통증이 있다</span>
+              <span class="self-test__checkbox-box"></span>
+              <span class="self-test__checkbox-text">계단을 오르내릴 때 무릎 통증이 있다</span>
             </label>
           </div>
-          <div class="test-result-box">
+          <div class="self-test__result-box">
             <h3>하나라도 해당된다면 관련 진료가 필요할 수 있습니다.</h3>
             <p>
               증상을 방치하지 마시고, 정확한 원인 파악을 위해 전문의의 진료를
               받아보시길 권장합니다.
             </p>
-            <div class="result-actions">
+            <div class="self-test__result-actions">
               <a href="#booking" class="primary-button full-width">진료 예약하기</a>
             </div>
           </div>
@@ -608,7 +605,7 @@
       </div>
     </section>
 
-    <section class="section doctors alt">
+    <section class="section doctors doctors--alt">
       <div class="container">
         <div class="section-head">
           <div class="section-title">
@@ -621,76 +618,76 @@
           </div>
         </div>
 
-        <div class="doctor-grid">
+        <div class="doctors__grid">
 
-          <article class="doctor-card">
-            <div class="doc-image">
+          <article class="doctors__card">
+            <div class="doctors__image">
               <img src="https://via.placeholder.com/400x500/e7f2ff/06366b?text=Doctor+Photo" alt="김코어 대표원장" />
-              <div class="doc-badge">정형외과 전문의</div>
+              <div class="doctors__badge">정형외과 전문의</div>
             </div>
-            <div class="doc-info">
-              <div class="doc-header">
-                <h3>김코어 <small>대표원장</small></h3>
-                <p class="doc-philosophy">
+            <div class="doctors__info">
+              <div class="doctors__header">
+                <h3 class="doctors__name">김코어 <small class="doctors__role">대표원장</small></h3>
+                <p class="doctors__philosophy">
                   "통증의 원인을 정확히 찾고 필요한 치료부터 제안합니다."
                 </p>
               </div>
-              <ul class="doc-specs">
-                <li>
-                  <strong>전문 진료:</strong> 허리디스크, 척추관협착증,
+              <ul class="doctors__specs">
+                <li class="doctors__spec-item">
+                  <strong class="doctors__spec-label">전문 진료:</strong> 허리디스크, 척추관협착증,
                   좌골신경통
                 </li>
-                <li>
-                  <strong>주요 약력:</strong> 서울대학교병원 정형외과 전임의, 前 서울대병원 임상자문교수, 대한정형외과학회 정회원
+                <li class="doctors__spec-item">
+                  <strong class="doctors__spec-label">주요 약력:</strong> 서울대학교병원 정형외과 전임의, 前 서울대병원 임상자문교수, 대한정형외과학회 정회원
                 </li>
               </ul>
-              <div class="doc-schedule">
-                <div class="schedule-head">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
+              <div class="doctors__schedule">
+                <div class="doctors__schedule-head">
+                  <svg class="doctors__schedule-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
                   </svg>
                   <span>오늘 진료 가능 시간</span>
                 </div>
-                <div class="schedule-time">14:00 ~ 18:00</div>
+                <div class="doctors__schedule-time">14:00 ~ 18:00</div>
               </div>
-              <div class="doc-actions">
+              <div class="doctors__actions">
                 <a href="#booking" class="primary-button full-width">진료 예약하기</a>
               </div>
             </div>
           </article>
 
-          <article class="doctor-card">
-            <div class="doc-image">
+          <article class="doctors__card">
+            <div class="doctors__image">
               <img src="https://via.placeholder.com/400x500/e7f2ff/06366b?text=Doctor+Photo" alt="이척추 원장" />
-              <div class="doc-badge">신경외과 전문의</div>
+              <div class="doctors__badge">신경외과 전문의</div>
             </div>
-            <div class="doc-info">
-              <div class="doc-header">
-                <h3>이척추 <small>원장</small></h3>
-                <p class="doc-philosophy">
+            <div class="doctors__info">
+              <div class="doctors__header">
+                <h3 class="doctors__name">이척추 <small class="doctors__role">원장</small></h3>
+                <p class="doctors__philosophy">
                   "수술은 최후의 수단, 비수술 우선 치료를 지향합니다."
                 </p>
               </div>
-              <ul class="doc-specs">
-                <li>
-                  <strong>전문 진료:</strong> 목디스크, 거북목, 신경차단술
+              <ul class="doctors__specs">
+                <li class="doctors__spec-item">
+                  <strong class="doctors__spec-label">전문 진료:</strong> 목디스크, 거북목, 신경차단술
                 </li>
-                <li>
-                  <strong>주요 약력:</strong> 가톨릭대학교 서울성모병원 신경외과 전임의, 前 가톨릭의대 외래교수, 대한척추신경외과학회 정회원
+                <li class="doctors__spec-item">
+                  <strong class="doctors__spec-label">주요 약력:</strong> 가톨릭대학교 서울성모병원 신경외과 전임의, 前 가톨릭의대 외래교수, 대한척추신경외과학회 정회원
                 </li>
               </ul>
-              <div class="doc-schedule">
-                <div class="schedule-head">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
+              <div class="doctors__schedule">
+                <div class="doctors__schedule-head">
+                  <svg class="doctors__schedule-icon" viewBox="0 0 24 24" aria-hidden="true">
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
                   </svg>
                   <span>오늘 진료 가능 시간</span>
                 </div>
-                <div class="schedule-time">09:30 ~ 13:00</div>
+                <div class="doctors__schedule-time">09:30 ~ 13:00</div>
               </div>
-              <div class="doc-actions">
+              <div class="doctors__actions">
                 <a href="#booking" class="primary-button full-width">진료 예약하기</a>
               </div>
             </div>
@@ -699,7 +696,7 @@
       </div>
     </section>
 
-    <section class="section health-info alt">
+    <section class="section health-info health-info--alt">
       <div class="container">
         <div class="section-head">
           <div class="section-title">
@@ -708,43 +705,43 @@
           </div>
         </div>
 
-        <div class="health-grid">
-          <article class="health-card">
-            <div class="health-thumb">
+        <div class="health-info__grid">
+          <article class="health-info__card">
+            <div class="health-info__thumb">
               <img src="https://via.placeholder.com/400x250/e7f2ff/06366b?text=Health+Info" alt="허리디스크 정보" />
-              <span class="health-cat">허리/척추</span>
+              <span class="health-info__cat">허리/척추</span>
             </div>
-            <div class="health-body">
-              <h3>허리디스크와 단순 근육통, 어떻게 다를까?</h3>
-              <p>
+            <div class="health-info__body">
+              <h3 class="health-info__title">허리디스크와 단순 근육통, 어떻게 다를까?</h3>
+              <p class="health-info__desc">
                 허리가 아플 때 가장 먼저 의심하는 허리디스크. 단순 근육통과의
                 차이점과 병원에 가야 할 타이밍을 알아봅니다.
               </p>
             </div>
           </article>
 
-          <article class="health-card">
-            <div class="health-thumb">
+          <article class="health-info__card">
+            <div class="health-info__thumb">
               <img src="https://via.placeholder.com/400x250/e7f2ff/06366b?text=Health+Info" alt="목디스크 정보" />
-              <span class="health-cat">목/어깨</span>
+              <span class="health-info__cat">목/어깨</span>
             </div>
-            <div class="health-body">
-              <h3>팔이 저린데 목디스크라고요?</h3>
-              <p>
-                목이 아닌 팔과 손이 저린 증상으로 병원을 찾았다가 목디스크
+            <div class="health-info__body">
+              <h3 class="health-info__title">팔이 저린데 목디스크라고요?</h3>
+              <p class="health-info__desc">
+                목이 아닌 팔 and 손이 저린 증상으로 병원을 찾았다가 목디스크
                 진단을 받는 경우가 많습니다. 그 이유를 설명해드립니다.
               </p>
             </div>
           </article>
 
-          <article class="health-card">
-            <div class="health-thumb">
+          <article class="health-info__card">
+            <div class="health-info__thumb">
               <img src="https://via.placeholder.com/400x250/e7f2ff/06366b?text=Health+Info" alt="관절염 정보" />
-              <span class="health-cat">무릎/관절</span>
+              <span class="health-info__cat">무릎/관절</span>
             </div>
-            <div class="health-body">
-              <h3>무릎 통증, 방치하면 퇴행성 관절염으로</h3>
-              <p>
+            <div class="health-info__body">
+              <h3 class="health-info__title">무릎 통증, 방치하면 퇴행성 관절염으로</h3>
+              <p class="health-info__desc">
                 계단을 오르내릴 때 시큰거리는 무릎 통증. 초기에 잡지 않으면
                 연골이 닳아 퇴행성 관절염으로 진행될 수 있습니다.
               </p>
