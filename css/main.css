@@ -668,7 +668,6 @@ body.door-locked {
   color: #1a2b3c;
   transition: all 0.3s ease;
 }
-
 .hero-3d__togo-item {
   display: flex;
   align-items: center;
@@ -689,7 +688,7 @@ body.door-locked {
   place-items: center;
 }
 
-/* 03. Fast Diagnosis [START] */
+/* 03. Fast Diagnosis - Start */
 .fast-diagnosis {
   position: relative;
   overflow: hidden;
@@ -731,174 +730,175 @@ body.door-locked {
   word-break: keep-all;
 }
 
+.fast-diagnosis__steps-wrap {
+  position: relative;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+
+
 .fast-diagnosis__steps {
   position: relative;
   display: flex;
   justify-content: center;
   gap: 30px;
   padding: 0;
-  margin: 0 0 60px 0;
+  margin: 0;
   list-style: none;
 }
 
-/* Horizontal timeline connector behind the cards */
-.fast-diagnosis__steps::before {
-  position: absolute;
-  top: 100px;
-  /* Aligned with the center of the 100px icon container */
-  left: 15%;
-  right: 15%;
-  z-index: 1;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    rgba(47, 95, 167, 0.02) 0%,
-    rgba(47, 95, 167, 0.25) 50%,
-    rgba(47, 95, 167, 0.02) 100%
-  );
-  content: "";
-}
-
 .fast-diagnosis__step {
+  /* 1. Positioning */
   position: relative;
-  z-index: 2;
-  overflow: hidden;
+
+  /* 2. Display */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  flex: 1;
-  padding: 50px 30px;
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: rgba(255, 255, 255, 0.55);
-  box-shadow:
-    0 15px 35px rgba(27, 45, 90, 0.03),
-    0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+  justify-content: flex-end;
+  align-items: flex-start;
+  overflow: hidden;
 
-  text-align: center;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* 3. Box Model */
+  height: 480px;
+  flex: 1;
+
+  /* 4. Border/Background */
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(27, 45, 90, 0.04);
+
+  /* 6. Others */
+  opacity: 0;
+}
+
+/* For hover transitions (enabled after reveal completes) */
+.fast-diagnosis__step.is-animated {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fallback state if GSAP is not loaded */
+.fast-diagnosis__step.is-fallback {
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fast-diagnosis__step.is-fallback.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .fast-diagnosis__step:hover {
-  border-color: rgba(47, 95, 167, 0.25);
-  background: rgba(255, 255, 255, 0.85);
+  /* 4. Border/Background */
   box-shadow:
-    0 30px 60px rgba(27, 45, 90, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    0 20px 40px rgba(27, 45, 90, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+
+  /* 6. Others */
   transform: translateY(-10px);
 }
 
-.fast-diagnosis__icon-wrap {
+.fast-diagnosis__image-container {
+  /* 1. Positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  /* 2. Display */
+  overflow: hidden;
+
+  /* 3. Box Model */
+  width: 100%;
+  height: 100%;
+}
+
+.fast-diagnosis__bg-image {
+  /* 3. Box Model */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* 6. Others */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fast-diagnosis__step:hover .fast-diagnosis__bg-image {
+  /* 6. Others */
+  transform: scale(1.06);
+}
+
+.fast-diagnosis__gradient-overlay {
+  /* 1. Positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  /* 3. Box Model */
+  width: 100%;
+  height: 100%;
+
+  /* 4. Border/Background */
+  background: linear-gradient(
+    to bottom,
+    rgba(27, 45, 90, 0) 30%,
+    rgba(27, 45, 90, 0.6) 75%,
+    #1b2d5a 100%
+  );
+}
+
+.fast-diagnosis__content {
+  /* 1. Positioning */
   position: relative;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 100px;
-  height: 100px;
-  margin-bottom: 30px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow:
-    0 10px 20px rgba(27, 45, 90, 0.05),
-    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
+  z-index: 3;
 
-.fast-diagnosis__step:hover .fast-diagnosis__icon-wrap {
-  background: #ffffff;
-  box-shadow:
-    0 15px 30px rgba(47, 95, 167, 0.15),
-    0 0 0 1px rgba(47, 95, 167, 0.1) inset;
-  transform: scale(1.08);
-}
-
-/* SVG 내부 점선이 실선으로 채워지는 효과 */
-.dash-circle {
-  transition:
-    stroke-dasharray 0.4s ease,
-    opacity 0.4s ease;
-}
-
-.fast-diagnosis__step:hover .dash-circle {
-  stroke-dasharray: none;
-  opacity: 1;
-}
-
-.fast-diagnosis__icon-wrap svg {
-  width: 56px;
-  height: 56px;
-}
-
-.fast-diagnosis__info {
-  z-index: 2;
+  /* 2. Display */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+
+  /* 3. Box Model */
+  width: 100%;
+  padding: 40px 30px;
+  box-sizing: border-box;
+
+  /* 5. Typography */
+  text-align: left;
 }
 
 .fast-diagnosis__label {
-  padding: 5px 14px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(47, 95, 167, 0.15);
-  background: rgba(234, 242, 255, 0.8);
-  font-size: 11px;
+  /* 3. Box Model */
+  margin-bottom: 12px;
+
+  /* 5. Typography */
+  font-size: 13px;
   font-weight: 800;
-  color: #2f5fa7;
+  color: #fdb608;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: all 0.3s ease;
-}
-
-.fast-diagnosis__step:hover .fast-diagnosis__label {
-  border-color: #2f5fa7;
-  background: #2f5fa7;
-  box-shadow: 0 4px 12px rgba(47, 95, 167, 0.25);
-  color: #ffffff;
 }
 
 .fast-diagnosis__step-title {
+  /* 3. Box Model */
   margin: 0 0 12px 0;
-  font-size: 22px;
+
+  /* 5. Typography */
+  font-size: 24px;
   font-weight: 800;
-  color: #1b2d5a;
+  color: #ffffff;
   letter-spacing: -0.02em;
 }
 
 .fast-diagnosis__step-desc {
+  /* 3. Box Model */
   margin: 0;
-  max-width: 240px;
+  max-width: 280px;
+
+  /* 5. Typography */
   font-size: 14px;
-  color: var(--muted, #6b7c96);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.6;
   word-break: keep-all;
-}
-
-/* Soft glow backing element inside step */
-.fast-diagnosis__step::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 1;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(234, 242, 255, 0.3) 0%,
-    transparent 70%
-  );
-  content: "";
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-
-.fast-diagnosis__step:hover::after {
-  transform: translate(-50%, -50%) scale(1.5);
 }
 
 .fast-diagnosis__features {
@@ -912,26 +912,41 @@ body.door-locked {
 .fast-diagnosis__feature-tag {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   padding: 14px 28px;
+  border: 1px solid rgba(47, 95, 167, 0.15);
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.65);
+  background: #ffffff;
   box-shadow: 0 4px 12px rgba(27, 45, 90, 0.02);
   font-size: 15px;
   font-weight: 700;
   color: #1b2d5a;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fast-diagnosis__feature-tag::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232f5fa7' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .fast-diagnosis__feature-tag:hover {
-  border-color: rgba(47, 95, 167, 0.2);
+  border-color: #2f5fa7;
   background: #ffffff;
-  box-shadow: 0 8px 20px rgba(27, 45, 90, 0.06);
+  box-shadow: 0 8px 20px rgba(47, 95, 167, 0.08);
   transform: translateY(-2px);
 }
+
+.fast-diagnosis__feature-tag:hover::before {
+  transform: scale(1.25);
+}
+/* 03. Fast Diagnosis [END] */
 
 .non-surgical {
   position: relative;

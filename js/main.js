@@ -3,6 +3,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   initIntroDoor();
   init3DBodyMap();
+  initFastDiagnosis();
   initNonSurgicalSlider();
   initBrandTrustSlider();
 });
@@ -23,22 +24,33 @@ function init3DBodyMap() {
       title: "목",
       diseases: ["목디스크", "거북목 증후군"],
       targetX: 0,
-      targetY: 1.3,
-      camY: -3.5,
+      targetY: 1.2,
+      camX: 0,
+      camY: 1.2,
       camZ: -2.5,
-      image: "",
+      image: "./assets/neck.png",
+      imageOffsetX: 0,
+      imageOffsetY: 0.1,
+      normal: [0, 0, -1],
+      width: 0.3,
+      height: 0.3,
+      maskScale: [1.0, 1.0],
+      zOffset: -0.2,
     },
     shoulder: {
       title: "어깨",
       diseases: ["오십견", "회전근개파열", "석회성 건염", "견관절재발성 탈구"],
+      targetX: -0.4,
       targetY: 1.1,
-      targetX: 0.4,
-      camY: 1.4,
-      camZ: 4.0,
-      image: "./assets/shoulder_joint_illustration.png",
+      camX: -0.4,
+      camY: 1.1,
+      camZ: 2.0,
+      image: "./assets/shoulder.png",
+      imageOffsetX: 0.01,
+      imageOffsetY: -0.18,
       normal: [0, 0, 1],
-      width: 0.8,
-      height: 0.8,
+      width: 0.6,
+      height: 0.6,
       maskScale: [1.0, 1.0],
       zOffset: 0.05,
     },
@@ -54,12 +66,15 @@ function init3DBodyMap() {
       ],
       targetX: -0.1,
       targetY: 0,
-      camY: -3.5,
+      camX: -0.1,
+      camY: 0,
       camZ: -5.5,
-      image: "./assets/vertebrae_illustration.png",
+      image: "./assets/waist.png",
+      imageOffsetX: 0.09,
+      imageOffsetY: 0,
       normal: [0, 0, -1],
-      width: 0.65,
-      height: 1.2,
+      width: 0.8,
+      height: 0.8,
       maskScale: [1.2, 0.7],
       zOffset: -0.05,
     },
@@ -72,13 +87,22 @@ function init3DBodyMap() {
         "골프엘보우",
         "팔꿈치터널증후군",
       ],
-      targetX: 1.1, // 손목 위치에 맞게 시선(타겟)의 X 좌표를 오른쪽으로 이동
-      targetY: 0,
-      camX: 5.0, // 타겟이 우측으로 이동한 만큼 카메라도 우측으로 이동
-      camY: 0.5,
-      camZ: 3.5,
-      image: "",
+      targetX: -1.1,
+      targetY: -0.2,
+      camX: -2.8,
+      camY: -0.2,
+      camZ: 0.0,
+      image: "./assets/wrist.png",
+      imageOffsetX: 0,
+      imageOffsetY: 0.0,
+      imageOffsetZ: -0.1,
+      normal: [-1, 0, 0],
+      width: 0.56,
+      height: 0.56,
+      maskScale: [1.0, 1.0],
+      zOffset: 0.08,
     },
+
     knee: {
       title: "무릎",
       diseases: [
@@ -90,12 +114,15 @@ function init3DBodyMap() {
       ],
       targetY: -1.1,
       targetX: 0.3,
-      camY: 0,
+      camX: 0.3,
+      camY: -1.1,
       camZ: 2.0,
-      image: "./assets/knee_joint_illustration.png",
+      image: "./assets/knee.png",
+      imageOffsetX: 0.03,
+      imageOffsetY: 0,
       normal: [0, 0, 1],
-      width: 0.75,
-      height: 0.75,
+      width: 0.4,
+      height: 0.4,
       maskScale: [1.0, 1.0],
       zOffset: 0.05,
     },
@@ -107,11 +134,20 @@ function init3DBodyMap() {
         "발목 관절염",
         "족저근막염 등 다양한 족부질환",
       ],
+      targetX: 0.2,
       targetY: -2.1,
-      targetX: 0.4,
-      camY: -3.8,
-      camZ: -1.5,
-      image: "",
+      camX: -2.2,
+      camY: -2.1,
+      camZ: 0.0,
+      image: "./assets/foot.png",
+      imageOffsetX: -0.5,
+      imageOffsetY: 0.02,
+      imageOffsetZ: 0.04,
+      normal: [-1, 0, 0],
+      width: 0.8,
+      height: 0.6,
+      maskScale: [0.8, 0.8],
+      zOffset: 0.1,
     },
   };
 
@@ -230,14 +266,15 @@ function init3DBodyMap() {
     
     void main() {
       vec4 texColor = texture2D(tDiffuse, vUv);
+      if (texColor.a < 0.02) discard;
       
       // 중심 (0.5, 0.5)으로부터의 거리 계산
       vec2 centerDist = vUv - vec2(0.5);
       centerDist *= uMaskScale;
       float dist = length(centerDist);
       
-      // 원형 그라데이션 마스크 적용 (중심부는 1.0, 가장자리로 갈수록 0.0)
-      float mask = smoothstep(0.5, 0.15, dist);
+      // 원형 마스킹 (외곽 부드럽게 뭉개기)
+      float mask = smoothstep(0.5, 0.35, dist);
       
       gl_FragColor = vec4(texColor.rgb, texColor.a * mask * uOpacity * uAngleOpacity);
     }
@@ -267,12 +304,31 @@ function init3DBodyMap() {
     }
   `;
 
-  // [홀로그램 텍스처 로딩]
+  // [홀로그램 텍스처 로딩 - 비등방성 필터링 및 밉맵 비활성화로 2D 일러스트 선명도 극대화]
   const textureLoader = new THREE.TextureLoader();
+
+  function loadSharpTexture(path) {
+    const texture = textureLoader.load(path, (tex) => {
+      // 그래픽 카드 지원 최대 배수 비등방성 필터링 적용 (사선 구도 뭉개짐 방지)
+      const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
+      tex.anisotropy = maxAnisotropy;
+
+      // 밉맵(원거리 축소 시 블러링)을 끄고 항상 원본에 가까운 선명한 픽셀 보간을 하도록 지시
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
+    });
+    return texture;
+  }
+
   const illustrationTextures = {
-    shoulder: textureLoader.load("./assets/shoulder_joint_illustration.png"),
-    waist: textureLoader.load("./assets/vertebrae_illustration.png"),
-    knee: textureLoader.load("./assets/knee_joint_illustration.png"),
+    neck: loadSharpTexture("./assets/neck.png"),
+    shoulder: loadSharpTexture("./assets/shoulder.png"),
+    waist: loadSharpTexture("./assets/waist.png"),
+    wrist: loadSharpTexture("./assets/wrist.png"),
+    knee: loadSharpTexture("./assets/knee.png"),
+    foot: loadSharpTexture("./assets/foot.png"),
   };
 
   // [마커] 통증 부위 표시용 빛나는 포인터 및 3D 홀로그램 평면/글로우 생성
@@ -313,12 +369,12 @@ function init3DBodyMap() {
       uMaskScale: { value: new THREE.Vector2(1.0, 1.0) },
     },
     transparent: true,
-    depthTest: true,
+    depthTest: false,
     depthWrite: false,
     side: THREE.DoubleSide,
   });
   const jointPlane = new THREE.Mesh(jointPlaneGeo, jointMat);
-  jointPlane.renderOrder = -1; // 반투명 유리 모델보다 먼저 렌더링하여 서리유리 굴절/블러 효과 유도
+  jointPlane.renderOrder = 1; // 반투명 유리 모델보다 먼저 렌더링하여 서리유리 굴절/블러 효과 유도
   jointPlane.visible = false;
   markerGroup.add(jointPlane);
 
@@ -333,12 +389,12 @@ function init3DBodyMap() {
       uAngleOpacity: { value: 1.0 },
     },
     transparent: true,
-    depthTest: true,
+    depthTest: false,
     depthWrite: false,
     side: THREE.DoubleSide,
   });
   const glowPlane = new THREE.Mesh(glowPlaneGeo, glowPlaneMat);
-  glowPlane.renderOrder = -2; // 일러스트 배후 렌더링
+  glowPlane.renderOrder = 0; // 일러스트 배후 렌더링
   glowPlane.visible = false;
   markerGroup.add(glowPlane);
 
@@ -410,6 +466,78 @@ function init3DBodyMap() {
     renderer.render(scene, camera);
   }
   animate();
+
+  // 카메라 구면 보간(Spherical Interpolation) 애니메이션 함수 (갑작스러운 회전 및 모델 파고들기 방지)
+  function animateCamera(targetCam, targetLook, duration = 1.5) {
+    if (typeof gsap === "undefined") return;
+
+    gsap.killTweensOf(camera.position);
+    gsap.killTweensOf(controls.target);
+
+    const startTarget = controls.target.clone();
+    const endTarget = new THREE.Vector3(
+      targetLook.x,
+      targetLook.y,
+      targetLook.z || 0,
+    );
+
+    const startRelativeCam = camera.position.clone().sub(startTarget);
+    const endRelativeCam = new THREE.Vector3(
+      targetCam.x,
+      targetCam.y,
+      targetCam.z,
+    ).sub(endTarget);
+
+    const startSpherical = new THREE.Spherical().setFromVector3(
+      startRelativeCam,
+    );
+    const endSpherical = new THREE.Spherical().setFromVector3(endRelativeCam);
+
+    // theta의 최단 경로 보정 (180도 이상 휙 돌지 않도록 방지)
+    let diffTheta = endSpherical.theta - startSpherical.theta;
+    diffTheta = Math.atan2(Math.sin(diffTheta), Math.cos(diffTheta));
+    const endTheta = startSpherical.theta + diffTheta;
+
+    const animObj = { progress: 0 };
+    gsap.to(animObj, {
+      progress: 1,
+      duration: duration,
+      ease: "power2.inOut",
+      onUpdate: () => {
+        const t = animObj.progress;
+
+        // 1. 시점 타겟 선형 보간
+        const currTarget = new THREE.Vector3().lerpVectors(
+          startTarget,
+          endTarget,
+          t,
+        );
+        controls.target.copy(currTarget);
+
+        // 2. 구면 좌표계 보간
+        const currRadius = THREE.MathUtils.lerp(
+          startSpherical.radius,
+          endSpherical.radius,
+          t,
+        );
+        const currPhi = THREE.MathUtils.lerp(
+          startSpherical.phi,
+          endSpherical.phi,
+          t,
+        );
+        const currTheta = THREE.MathUtils.lerp(
+          startSpherical.theta,
+          endTheta,
+          t,
+        );
+
+        // 3. 최종 카메라 위치 대입
+        const tempSph = new THREE.Spherical(currRadius, currPhi, currTheta);
+        const relativeCam = new THREE.Vector3().setFromSpherical(tempSph);
+        camera.position.copy(currTarget).add(relativeCam);
+      },
+    });
+  }
 
   // 6. UI 메뉴 클릭과 3D 카메라 연동 로직
   const menuItems = document.querySelectorAll(".hero-3d__pain-item");
@@ -508,23 +636,14 @@ function init3DBodyMap() {
 
         infoPanel.classList.remove("hero-3d__info-panel--hidden");
 
-        // GSAP를 사용해 카메라를 해당 부위로 부드럽게 이동
-        // x: 2.5를 주어 3D 모델이 화면 중앙에서 약간 좌측으로 치우쳐 패널과 안 겹치게 연출
-        gsap.to(camera.position, {
-          x: data.camX !== undefined ? data.camX : 2.5,
-          y: data.camY,
-          z: data.camZ,
-          duration: 1.2,
-          ease: "power3.inOut",
-        });
-        // 카메라 시선(LookAt)을 타겟 부위로 이동
-        gsap.to(controls.target, {
-          x: data.targetX !== undefined ? data.targetX : 0,
-          y: data.targetY,
-          z: 0,
-          duration: 1.2,
-          ease: "power3.inOut",
-        });
+        // 카메라 구면 보간 함수 호출하여 부드럽게 이동
+        const targetCamX = data.camX !== undefined ? data.camX : 2.5;
+        const targetLookX = data.targetX !== undefined ? data.targetX : 0;
+        animateCamera(
+          { x: targetCamX, y: data.camY, z: data.camZ },
+          { x: targetLookX, y: data.targetY, z: 0 },
+          1.5, // 부드러운 전환을 위해 1.5초 설정
+        );
 
         // 테마 색상 애니메이션 적용 (배경 그라데이션 및 정보 패널 색상 동시 전환)
         gsap.to(".hero-3d", {
@@ -578,8 +697,14 @@ function init3DBodyMap() {
           jointPlane.quaternion.copy(quaternion);
           glowPlane.quaternion.copy(quaternion);
 
-          jointPlane.position.set(0, 0, zOff);
-          glowPlane.position.set(0, 0, zOff - 0.02); // 글로우는 일러스트보다 살짝 안쪽(뒤쪽)에 배치
+          const imgOffsetX =
+            data.imageOffsetX !== undefined ? data.imageOffsetX : 0.0;
+          const imgOffsetY =
+            data.imageOffsetY !== undefined ? data.imageOffsetY : 0.0;
+          const imgOffsetZ =
+            data.imageOffsetZ !== undefined ? data.imageOffsetZ : zOff;
+          jointPlane.position.set(imgOffsetX, imgOffsetY, imgOffsetZ);
+          glowPlane.position.set(imgOffsetX, imgOffsetY, imgOffsetZ - 0.02); // 글로우는 일러스트보다 살짝 안쪽(뒤쪽)에 배치
 
           jointPlane.scale.set(activeWidth, activeHeight, 1.0);
           glowPlane.scale.set(activeWidth * 1.6, activeHeight * 1.6, 1.0);
@@ -608,8 +733,8 @@ function init3DBodyMap() {
             { value: 0.5, duration: 0.6, ease: "power2.out" },
           );
         } else {
-          markerMesh.visible = true;
-          glowMesh.visible = true;
+          markerMesh.visible = false;
+          glowMesh.visible = false;
           jointPlane.visible = false;
           glowPlane.visible = false;
           activeNormal = null;
@@ -643,20 +768,12 @@ function init3DBodyMap() {
         );
       }
 
-      gsap.to(camera.position, {
-        x: defaultCamPos.x,
-        y: defaultCamPos.y,
-        z: defaultCamPos.z,
-        duration: 1.2,
-        ease: "power3.inOut",
-      });
-      gsap.to(controls.target, {
-        x: 0,
-        y: 0,
-        z: 0,
-        duration: 1.2,
-        ease: "power3.inOut",
-      });
+      // 카메라 구면 보간 함수 호출하여 원래 위치로 부드럽게 복귀
+      animateCamera(
+        { x: defaultCamPos.x, y: defaultCamPos.y, z: defaultCamPos.z },
+        { x: 0, y: 0, z: 0 },
+        1.5,
+      );
 
       // 기본 테마 색상으로 복구 애니메이션
       gsap.to(".hero-3d", {
@@ -707,6 +824,85 @@ function init3DBodyMap() {
       markerGroup.visible = false;
     }
   });
+}
+
+/* ==========================================================================
+   02-1. 원스톱 진단 시스템 (One-Stop Diagnosis System) 스크롤 인터랙션
+   ========================================================================== */
+function initFastDiagnosis() {
+  const section = document.querySelector(".fast-diagnosis");
+  if (!section) return;
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const steps = section.querySelectorAll(".fast-diagnosis__step");
+          const stepsContainer = section.querySelector(".fast-diagnosis__steps");
+
+          if (typeof gsap !== "undefined" && steps.length > 0) {
+            const containerWidth = stepsContainer.offsetWidth;
+            const stepWidth = steps[0].offsetWidth;
+            const offset = (containerWidth - stepWidth) / 2;
+
+            // 1. 초기 겹침 상태 설정 (중앙에 모이고 회전)
+            steps.forEach((step, idx) => {
+              gsap.set(step, {
+                x: (1 - idx) * offset,
+                rotation: (idx - 1) * 8,
+                scale: 0.9,
+                opacity: 0,
+                transformOrigin: "bottom center",
+                zIndex: 10 - idx
+              });
+            });
+
+            // 2. 타임라인 애니메이션 실행
+            const tl = gsap.timeline();
+            
+            // 중앙 카드들 페이드인 등장
+            tl.to(steps, {
+              opacity: 1,
+              scale: 0.95,
+              duration: 0.6,
+              stagger: 0.1,
+              ease: "power2.out"
+            });
+
+            // 양옆으로 부드럽게 펴지는(팬아웃) 모션
+            tl.to(steps, {
+              x: 0,
+              rotation: 0,
+              scale: 1,
+              duration: 1.0,
+              stagger: 0.1,
+              ease: "back.out(1.2)",
+              onComplete: () => {
+                // 모션 완료 후 CSS 호버 트랜지션 활성화
+                steps.forEach(step => step.classList.add("is-animated"));
+              }
+            }, "-=0.2");
+
+          } else {
+            // CSS 폴백 모션
+            steps.forEach((step, idx) => {
+              step.classList.add("is-fallback");
+              setTimeout(() => {
+                step.classList.add("is-visible");
+                step.classList.add("is-animated");
+              }, idx * 250);
+            });
+          }
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+    },
+  );
+
+  observer.observe(section);
 }
 
 /* ==========================================================================
