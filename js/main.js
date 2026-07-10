@@ -912,143 +912,38 @@ function initNonSurgicalSlider() {
   const swiperContainer = document.querySelector(".non-surgical__swiper");
   if (!swiperContainer) return;
 
-  // Swiper 초기화 (썸네일 목록 슬라이더 - navigation 옵션 제거)
+  // Swiper 초기화 (3D Coverflow Effect 적용 및 접근성 강화)
   const treatSwiper = new Swiper(".non-surgical__swiper", {
-    slidesPerView: 1.2,
-    spaceBetween: 16,
-    watchSlidesProgress: true,
-    breakpoints: {
-      480: {
-        slidesPerView: 2,
-        spaceBetween: 16,
-      },
-      768: {
-        slidesPerView: 2.2,
-        spaceBetween: 20,
-      },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    coverflowEffect: {
+      rotate: 5,
+      stretch: 30,
+      depth: 100,
+      modifier: 1.8,
+      slideShadows: false,
+    },
+    pagination: {
+      el: ".non-surgical__pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".non-surgical__swiper-btn--next",
+      prevEl: ".non-surgical__swiper-btn--prev",
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
+    a11y: {
+      prevSlideMessage: "이전 비수술 치료법",
+      nextSlideMessage: "다음 비수술 치료법",
+      firstSlideMessage: "첫 번째 비수술 치료법입니다",
+      lastSlideMessage: "마지막 비수술 치료법입니다",
     },
   });
-
-  const detailCards = document.querySelectorAll(".non-surgical__detail-card");
-  const paginationDots = document.querySelectorAll(
-    ".non-surgical__pagination .non-surgical__dot",
-  );
-  const slides = document.querySelectorAll(
-    ".non-surgical__swiper .swiper-slide",
-  );
-  const btnPrev = document.querySelector(".non-surgical__swiper-btn--prev");
-  const btnNext = document.querySelector(".non-surgical__swiper-btn--next");
-
-  let currentIdx = 0;
-  const totalSlides = slides.length;
-
-  // 활성화 상태 업데이트 함수
-  function updateActiveTreatment(activeIndex) {
-    currentIdx = activeIndex;
-
-    // 1. 상세 카드 토글 (Fade-in 효과를 위해 active 클래스 제어)
-    detailCards.forEach((card) => {
-      const cardIndex = parseInt(card.getAttribute("data-index"), 10);
-      if (cardIndex === activeIndex) {
-        card.classList.add("non-surgical__detail-card--active");
-      } else {
-        card.classList.remove("non-surgical__detail-card--active");
-      }
-    });
-
-    // 2. 인디케이터 도트 활성화 상태 연동
-    paginationDots.forEach((dot) => {
-      const dotIndex = parseInt(dot.getAttribute("data-index"), 10);
-      if (dotIndex === activeIndex) {
-        dot.classList.add("non-surgical__dot--active");
-      } else {
-        dot.classList.remove("non-surgical__dot--active");
-      }
-    });
-
-    // 3. 우측 썸네일 active 클래스 적용
-    slides.forEach((slide) => {
-      const slideIndex = parseInt(slide.getAttribute("data-slide-index"), 10);
-      if (slideIndex === activeIndex) {
-        slide.classList.add("swiper-slide-thumb-active");
-      } else {
-        slide.classList.remove("swiper-slide-thumb-active");
-      }
-    });
-
-    // 4. Custom Navigation 버튼 상태 업데이트
-    if (btnPrev && btnNext) {
-      if (currentIdx === 0) {
-        btnPrev.classList.add("swiper-button-disabled");
-        btnPrev.setAttribute("disabled", "true");
-      } else {
-        btnPrev.classList.remove("swiper-button-disabled");
-        btnPrev.removeAttribute("disabled");
-      }
-
-      if (currentIdx === totalSlides - 1) {
-        btnNext.classList.add("swiper-button-disabled");
-        btnNext.setAttribute("disabled", "true");
-      } else {
-        btnNext.classList.remove("swiper-button-disabled");
-        btnNext.removeAttribute("disabled");
-      }
-    }
-  }
-
-  // 슬라이드 클릭 시 해당 아이템 활성화 및 Swiper 이동
-  slides.forEach((slide) => {
-    slide.addEventListener("click", () => {
-      const index = parseInt(slide.getAttribute("data-slide-index"), 10);
-      treatSwiper.slideTo(index);
-      updateActiveTreatment(index);
-    });
-  });
-
-  // 페이지네이션 도트 클릭 시 이동
-  paginationDots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      const index = parseInt(dot.getAttribute("data-index"), 10);
-      treatSwiper.slideTo(index);
-      updateActiveTreatment(index);
-    });
-  });
-
-  // Custom 버튼 클릭 이벤트 등록
-  if (btnPrev) {
-    btnPrev.addEventListener("click", () => {
-      if (currentIdx > 0) {
-        const targetIdx = currentIdx - 1;
-        treatSwiper.slideTo(targetIdx);
-        updateActiveTreatment(targetIdx);
-      }
-    });
-  }
-
-  if (btnNext) {
-    btnNext.addEventListener("click", () => {
-      if (currentIdx < totalSlides - 1) {
-        const targetIdx = currentIdx + 1;
-        treatSwiper.slideTo(targetIdx);
-        updateActiveTreatment(targetIdx);
-      }
-    });
-  }
-
-  // Swiper 슬라이드 전환 시 동기화 (터치 스와이프 대응)
-  treatSwiper.on("slideChange", () => {
-    const swiperActiveIdx = treatSwiper.activeIndex;
-    if (currentIdx !== swiperActiveIdx) {
-      updateActiveTreatment(swiperActiveIdx);
-    }
-  });
-
-  // 초기 로드 시 0번 아이템 활성화 상태 주입
-  updateActiveTreatment(0);
 }
 
 /* ==========================================================================
