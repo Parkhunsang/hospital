@@ -20,6 +20,7 @@
     <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script defer src="./js/main.js"></script>
   </head>
 
@@ -115,7 +116,7 @@
           </div>
 
           <div class="hero-3d__menu">
-            <div class="hero-3d__info-text-wrap">
+            <div class="info-badge-wrap">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="256"
@@ -127,7 +128,7 @@
                   d="M140 176a4 4 0 0 1-4 4a12 12 0 0 1-12-12v-40a4 4 0 0 0-4-4a4 4 0 0 1 0-8a12 12 0 0 1 12 12v40a4 4 0 0 0 4 4a4 4 0 0 1 4 4m-16-84a8 8 0 1 0-8-8a8 8 0 0 0 8 8m104 36A100 100 0 1 1 128 28a100.11 100.11 0 0 1 100 100m-8 0a92 92 0 1 0-92 92a92.1 92.1 0 0 0 92-92"
                 />
               </svg>
-              <p class="hero-3d__info-desc">통증 부위를 선택해주세요</p>
+              <p class="info-badge__desc">통증 부위를 선택해주세요</p>
             </div>
 
             <ul class="hero-3d__pain-list">
@@ -283,7 +284,9 @@
                 </div>
                 <div class="fast-diagnosis__content">
                   <span class="fast-diagnosis__label">Step 02</span>
-                  <h3 class="fast-diagnosis__step-title">영상의학과 전문 판독</h3>
+                  <h3 class="fast-diagnosis__step-title">
+                    영상의학과 전문 판독
+                  </h3>
                   <p class="fast-diagnosis__step-desc">
                     영상의학과 전문의 실시간 판독 및 정밀 분석
                   </p>
@@ -338,7 +341,25 @@
           <div class="non-surgical__swiper-container">
             <!-- Swiper 조절 상단 바 -->
             <div class="non-surgical__slider-controls">
-              <span class="non-surgical__slider-hint">드래그하거나 버튼을 눌러 치료법을 확인하세요</span>
+              <!-- <span class="non-surgical__slider-hint"
+                >드래그하거나 버튼을 눌러 치료법을 확인하세요</span
+              > -->
+              <div class="info-badge-wrap">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="256"
+                  height="256"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M140 176a4 4 0 0 1-4 4a12 12 0 0 1-12-12v-40a4 4 0 0 0-4-4a4 4 0 0 1 0-8a12 12 0 0 1 12 12v40a4 4 0 0 0 4 4a4 4 0 0 1 4 4m-16-84a8 8 0 1 0-8-8a8 8 0 0 0 8 8m104 36A100 100 0 1 1 128 28a100.11 100.11 0 0 1 100 100m-8 0a92 92 0 1 0-92 92a92.1 92.1 0 0 0 92-92"
+                  />
+                </svg>
+                <p class="info-badge__desc">
+                  드래그하거나 버튼을 눌러 치료법을 확인하세요.
+                </p>
+              </div>
               <div class="non-surgical__swiper-nav">
                 <button
                   class="swiper-btn-prev-custom non-surgical__swiper-btn--prev"
@@ -359,170 +380,364 @@
             <div class="swiper non-surgical__swiper">
               <div class="swiper-wrapper">
                 <!-- Slide 1: 도수치료 -->
-                <div class="swiper-slide non-surgical__slide" data-slide-index="0">
+                <div
+                  class="swiper-slide non-surgical__slide"
+                  data-slide-index="0"
+                >
                   <div class="non-surgical__card">
                     <div class="non-surgical__card-content">
-                      <span class="non-surgical__card-category">도수재활치료</span>
-                      <h3 class="non-surgical__card-title">
-                        도수치료 <span class="badge badge-accent">1:1 맞춤</span><span class="badge badge-outline">비수술</span>
-                      </h3>
+                      <span class="non-surgical__card-category"
+                        >도수재활치료</span
+                      >
+                      <div class="non-surgical__card-title-wrap">
+                        <h3 class="non-surgical__card-title">도수치료</h3>
+                        <div
+                          clasbrand-trust__stat-vals="non-surgical__card-badges"
+                        >
+                          <span class="badge badge-accent">1:1 맞춤</span>
+                          <span class="badge badge-outline">비수술</span>
+                        </div>
+                      </div>
                       <p class="non-surgical__card-summary">
-                        숙련된 치료사가 손을 이용해 틀어진 관절과 척추 정렬을 바로잡고 신체 밸런스를 복원하는 전문 치료입니다.
+                        숙련된 치료사가 손을 이용해 틀어진 관절과 척추 정렬을
+                        바로잡고 신체 밸런스를 복원하는 전문 치료입니다.
                       </p>
                       <ul class="non-surgical__card-features">
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">관절 가동 범위를 점진적으로 증가시켜 움직임 회복</p>
+                          <p class="non-surgical__card-feature-text">
+                            관절 가동 범위를 점진적으로 증가시켜 움직임 회복
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">긴장된 근막과 굳어있는 인대를 이완해 만성 통증 완화</p>
+                          <p class="non-surgical__card-feature-text">
+                            긴장된 근막과 굳어있는 인대를 이완해 만성 통증 완화
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">림프 및 혈액 순환을 활성화하여 부종과 염증 감소</p>
+                          <p class="non-surgical__card-feature-text">
+                            림프 및 혈액 순환을 활성화하여 부종과 염증 감소
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">불균형한 체형을 올바르게 교정하여 원인 치료 제공</p>
+                          <p class="non-surgical__card-feature-text">
+                            불균형한 체형을 올바르게 교정하여 원인 치료 제공
+                          </p>
                         </li>
                       </ul>
+                      <button type="button" class="non-surgical__card-btn">
+                        도수치료 알아보기
+                        <svg
+                          class="non-surgical__card-btn-icon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </button>
                     </div>
-                    <div class="non-surgical__card-visual bg-blue" aria-hidden="true">
+                    <div
+                      class="non-surgical__card-visual bg-blue"
+                      aria-hidden="true"
+                    >
                       <div class="non-surgical__card-illustration">
-                        <span class="non-surgical__card-bg-letter">M</span>
+                        <img
+                          class="non-surgical__card-img"
+                          src="./assets/non_surgical_1.png"
+                          alt="도수치료 실제 치료 사진"
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Slide 2: 신경차단술 -->
-                <div class="swiper-slide non-surgical__slide" data-slide-index="1">
+                <div
+                  class="swiper-slide non-surgical__slide"
+                  data-slide-index="1"
+                >
                   <div class="non-surgical__card">
                     <div class="non-surgical__card-content">
-                      <span class="non-surgical__card-category">비수술 주사요법</span>
-                      <h3 class="non-surgical__card-title">
-                        신경차단술 <span class="badge badge-accent">10분 시술</span><span class="badge badge-outline">당일 귀가</span>
-                      </h3>
+                      <span class="non-surgical__card-category"
+                        >비수술 주사요법</span
+                      >
+                      <div class="non-surgical__card-title-wrap">
+                        <h3 class="non-surgical__card-title">신경차단술</h3>
+                        <div class="non-surgical__card-badges">
+                          <span class="badge badge-accent">10분 시술</span>
+                          <span class="badge badge-outline">당일 귀가</span>
+                        </div>
+                      </div>
                       <p class="non-surgical__card-summary">
-                        C-arm(미세 컴퓨터 방사선 장비)을 사용하여 실시간으로 통증의 원인이 되는 신경 부위를 정밀하게 조준해 약물을 주입하는 치료입니다.
+                        C-arm(미세 컴퓨터 방사선 장비)을 사용하여 실시간으로
+                        통증의 원인이 되는 신경 부위를 정밀하게 조준해 약물을
+                        주입하는 치료입니다.
                       </p>
                       <ul class="non-surgical__card-features">
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">신경 주위의 염증과 부종을 빠르게 가라앉혀 즉각적 진통 효과</p>
+                          <p class="non-surgical__card-feature-text">
+                            신경 주위의 염증과 부종을 빠르게 가라앉혀 즉각적
+                            진통 효과
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">목·허리 디스크, 협착증으로 인한 극심한 저림과 방사통 완화</p>
+                          <p class="non-surgical__card-feature-text">
+                            목·허리 디스크, 협착증으로 인한 극심한 저림과 방사통
+                            완화
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">과민해진 신경절을 안정시키고 신경 정상화 도모</p>
+                          <p class="non-surgical__card-feature-text">
+                            과민해진 신경절을 안정시키고 신경 정상화 도모
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">시술 시간이 10분 내외로 짧아 고령 및 만성질환자도 시술 가능</p>
+                          <p class="non-surgical__card-feature-text">
+                            시술 시간이 10분 내외로 짧아 고령 및 만성질환자도
+                            시술 가능
+                          </p>
                         </li>
                       </ul>
+                      <button type="button" class="non-surgical__card-btn">
+                        신경차단술 알아보기
+                        <svg
+                          class="non-surgical__card-btn-icon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </button>
                     </div>
-                    <div class="non-surgical__card-visual bg-pink" aria-hidden="true">
+                    <div
+                      class="non-surgical__card-visual bg-pink"
+                      aria-hidden="true"
+                    >
                       <div class="non-surgical__card-illustration">
-                        <span class="non-surgical__card-bg-letter">N</span>
+                        <img
+                          class="non-surgical__card-img"
+                          src="./assets/non_surgical_2.png"
+                          alt="신경차단술 실제 C-arm 수술실 사진"
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Slide 3: 주사치료 -->
-                <div class="swiper-slide non-surgical__slide" data-slide-index="2">
+                <div
+                  class="swiper-slide non-surgical__slide"
+                  data-slide-index="2"
+                >
                   <div class="non-surgical__card">
                     <div class="non-surgical__card-content">
-                      <span class="non-surgical__card-category">통증 주사요법</span>
-                      <h3 class="non-surgical__card-title">
-                        주사치료 <span class="badge badge-accent">조직 재생</span><span class="badge badge-outline">안전 인증</span>
-                      </h3>
+                      <span class="non-surgical__card-category"
+                        >통증 주사요법</span
+                      >
+                      <div class="non-surgical__card-title-wrap">
+                        <h3 class="non-surgical__card-title">주사치료</h3>
+                        <div class="non-surgical__card-badges">
+                          <span class="badge badge-accent">조직 재생</span>
+                          <span class="badge badge-outline">안전 인증</span>
+                        </div>
+                      </div>
                       <p class="non-surgical__card-summary">
-                        관절과 척추 주변 힘줄, 인대 등 손상된 연부조직에 약물을 투입해 재생을 유도하고 근본적인 조직 강화를 돕는 주사 요법입니다.
+                        관절과 척추 주변 힘줄, 인대 등 손상된 연부조직에 약물을
+                        투입해 재생을 유도하고 근본적인 조직 강화를 돕는 주사
+                        요법입니다.
                       </p>
                       <ul class="non-surgical__card-features">
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">인대 증식 치료(프롤로테라피)를 통해 느슨해진 인대를 튼튼하게 자극</p>
+                          <p class="non-surgical__card-feature-text">
+                            인대 증식 치료(프롤로테라피)를 통해 느슨해진 인대를
+                            튼튼하게 자극
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">관절 윤활막을 강화하여 뼈와 연골 간의 충격을 차단</p>
+                          <p class="non-surgical__card-feature-text">
+                            관절 윤활막을 강화하여 뼈와 연골 간의 충격을 차단
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">만성 염증으로 악화된 근골격계 손상 부위 자가 치유 촉진</p>
+                          <p class="non-surgical__card-feature-text">
+                            만성 염증으로 악화된 근골격계 손상 부위 자가 치유
+                            촉진
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">절개 없는 주사식 처방으로 시술 후 부작용 우려 최소화</p>
+                          <p class="non-surgical__card-feature-text">
+                            절개 없는 주사식 처방으로 시술 후 부작용 우려 최소화
+                          </p>
                         </li>
                       </ul>
+                      <button type="button" class="non-surgical__card-btn">
+                        주사치료 알아보기
+                        <svg
+                          class="non-surgical__card-btn-icon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </button>
                     </div>
-                    <div class="non-surgical__card-visual bg-purple" aria-hidden="true">
+                    <div
+                      class="non-surgical__card-visual bg-purple"
+                      aria-hidden="true"
+                    >
                       <div class="non-surgical__card-illustration">
-                        <span class="non-surgical__card-bg-letter">I</span>
+                        <img
+                          class="non-surgical__card-img"
+                          src="./assets/non_surgical_3.png"
+                          alt="주사치료 실제 진료 및 설명 사진"
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Slide 4: 재활치료 -->
-                <div class="swiper-slide non-surgical__slide" data-slide-index="3">
+                <div
+                  class="swiper-slide non-surgical__slide"
+                  data-slide-index="3"
+                >
                   <div class="non-surgical__card">
                     <div class="non-surgical__card-content">
-                      <span class="non-surgical__card-category">맞춤 물리치료</span>
-                      <h3 class="non-surgical__card-title">
-                        재활치료 <span class="badge badge-accent">코어 강화</span><span class="badge badge-outline">재발 방지</span>
-                      </h3>
+                      <span class="non-surgical__card-category"
+                        >맞춤 물리치료</span
+                      >
+                      <div class="non-surgical__card-title-wrap">
+                        <h3 class="non-surgical__card-title">재활치료</h3>
+                        <div class="non-surgical__card-badges">
+                          <span class="badge badge-accent">코어 강화</span>
+                          <span class="badge badge-outline">재발 방지</span>
+                        </div>
+                      </div>
                       <p class="non-surgical__card-summary">
-                        비수술 치료 후 혹은 수술 후 약화된 근육을 재교육하고 척추 관절 기능을 회복시켜 정상적인 일상으로 안전하게 복귀시키는 통합 재활 프로그램입니다.
+                        비수술 치료 후 혹은 수술 후 약화된 근육을 재교육하고
+                        척추 관절 기능을 회복시켜 정상적인 일상으로 안전하게
+                        복귀시키는 통합 재활 프로그램입니다.
                       </p>
                       <ul class="non-surgical__card-features">
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">환자별 손상 상태와 유연성에 맞춘 단계적 근력 강화 설계</p>
+                          <p class="non-surgical__card-feature-text">
+                            환자별 손상 상태와 유연성에 맞춘 단계적 근력 강화
+                            설계
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">단순 통증 차단을 넘어 자세 교정과 코어 근력 자극 제공</p>
+                          <p class="non-surgical__card-feature-text">
+                            단순 통증 차단을 넘어 자세 교정과 코어 근력 자극
+                            제공
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">치료 후 발생할 수 있는 2차 손상 및 재발 위험의 근본적 예방</p>
+                          <p class="non-surgical__card-feature-text">
+                            치료 후 발생할 수 있는 2차 손상 및 재발 위험의
+                            근본적 예방
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">전문 치료사의 정밀 피드백을 통해 올바른 운동 습관 유도</p>
+                          <p class="non-surgical__card-feature-text">
+                            전문 치료사의 정밀 피드백을 통해 올바른 운동 습관
+                            유도
+                          </p>
                         </li>
                       </ul>
+                      <button type="button" class="non-surgical__card-btn">
+                        재활치료 알아보기
+                        <svg
+                          class="non-surgical__card-btn-icon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </button>
                     </div>
-                    <div class="non-surgical__card-visual bg-teal" aria-hidden="true">
+                    <div
+                      class="non-surgical__card-visual bg-teal"
+                      aria-hidden="true"
+                    >
                       <div class="non-surgical__card-illustration">
-                        <span class="non-surgical__card-bg-letter">R</span>
+                        <img
+                          class="non-surgical__card-img"
+                          src="./assets/non_surgical_4.png"
+                          alt="재활치료 실제 물리치료실 사진"
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Slide 5: 체외충격파 -->
-                <div class="swiper-slide non-surgical__slide" data-slide-index="4">
+                <div
+                  class="swiper-slide non-surgical__slide"
+                  data-slide-index="4"
+                >
                   <div class="non-surgical__card">
                     <div class="non-surgical__card-content">
-                      <span class="non-surgical__card-category">체외 에너지 치료</span>
-                      <h3 class="non-surgical__card-title">
-                        체외충격파 <span class="badge badge-accent">세포 재생</span><span class="badge badge-outline">통증 완화</span>
-                      </h3>
+                      <span class="non-surgical__card-category"
+                        >체외 에너지 치료</span
+                      >
+                      <div class="non-surgical__card-title-wrap">
+                        <h3 class="non-surgical__card-title">체외충격파</h3>
+                        <div class="non-surgical__card-badges">
+                          <span class="badge badge-accent">세포 재생</span>
+                          <span class="badge badge-outline">통증 완화</span>
+                        </div>
+                      </div>
                       <p class="non-surgical__card-summary">
-                        신체 외부에서 고에너지 충격파를 통증 부위에 집중시켜 미세 혈관 형성을 자극하고 힘줄과 주변 조직의 세포 재생을 촉진하는 첨단 물리 치료입니다.
+                        신체 외부에서 고에너지 충격파를 통증 부위에 집중시켜
+                        미세 혈관 형성을 자극하고 힘줄과 주변 조직의 세포 재생을
+                        촉진하는 첨단 물리 치료입니다.
                       </p>
                       <ul class="non-surgical__card-features">
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">약물이나 시술 없이 순수 외부 충격 에너지로 석회성 건염 및 염증 해결</p>
+                          <p class="non-surgical__card-feature-text">
+                            약물이나 시술 없이 순수 외부 충격 에너지로 석회성
+                            건염 및 염증 해결
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">세포 대사를 활성화하여 만성적 통증 물질의 신속한 분해</p>
+                          <p class="non-surgical__card-feature-text">
+                            세포 대사를 활성화하여 만성적 통증 물질의 신속한
+                            분해
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">어깨(오십견), 발꿈치(족저근막염), 팔꿈치(엘보우) 질환에 매우 효과적</p>
+                          <p class="non-surgical__card-feature-text">
+                            어깨(오십견), 발꿈치(족저근막염), 팔꿈치(엘보우)
+                            질환에 매우 효과적
+                          </p>
                         </li>
                         <li class="non-surgical__card-feature-item">
-                          <p class="non-surgical__card-feature-text">치료 강도와 부위의 세밀한 맞춤 조절로 부작용 없는 조직 회복 유도</p>
+                          <p class="non-surgical__card-feature-text">
+                            치료 강도와 부위의 세밀한 맞춤 조절로 부작용 없는
+                            조직 회복 유도
+                          </p>
                         </li>
                       </ul>
+                      <button type="button" class="non-surgical__card-btn">
+                        체외충격파 알아보기
+                        <svg
+                          class="non-surgical__card-btn-icon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </button>
                     </div>
-                    <div class="non-surgical__card-visual bg-orange" aria-hidden="true">
+                    <div
+                      class="non-surgical__card-visual bg-orange"
+                      aria-hidden="true"
+                    >
                       <div class="non-surgical__card-illustration">
-                        <span class="non-surgical__card-bg-letter">E</span>
+                        <img
+                          class="non-surgical__card-img"
+                          src="./assets/non_surgical_5.png"
+                          alt="체외충격파 실제 임상 치료 사진"
+                        />
                       </div>
                     </div>
                   </div>
@@ -536,205 +751,248 @@
         </div>
       </section>
 
-      <!-- 병원 브랜드 신뢰도 프로모션 슬라이더 섹션 -->
+      <!-- 병원 브랜드 신뢰도 프로모션 섹션 -->
       <section class="section brand-trust">
-        <div class="swiper brand-trust__swiper">
-          <div class="swiper-wrapper">
-            <!-- Slide 1: 신뢰와 실적 (Stats) -->
-            <div
-              class="swiper-slide brand-trust__slide brand-trust__slide--stats"
-            >
-              <div class="brand-trust__container">
-                <div class="brand-trust__content">
-                  <span class="brand-trust__eyebrow">Since 2015</span>
-                  <h2 class="brand-trust__title">
-                    11년간
-                    <span class="brand-trust__highlight">152,430명</span>의
-                    환자가<br />
-                    코어업 정형외과에서 건강을 되찾았습니다
-                  </h2>
-                  <div class="brand-trust__stats-grid">
-                    <div class="brand-trust__stat-card">
-                      <span class="brand-trust__stat-label"
-                        >누적 비수술 치료 건수</span
-                      >
-                      <span class="brand-trust__stat-val"
-                        >124,350<small>례</small></span
-                      >
-                    </div>
-                    <div class="brand-trust__stat-card">
-                      <span class="brand-trust__stat-label"
-                        >도수·재활 임상 연구</span
-                      >
-                      <span class="brand-trust__stat-val"
-                        >80<small>여편+</small></span
-                      >
-                    </div>
-                    <div class="brand-trust__stat-card">
-                      <span class="brand-trust__stat-label"
-                        >시술 후 감염률</span
-                      >
-                      <span class="brand-trust__stat-val"
-                        >0.01<small>% 미만</small></span
-                      >
+        <div class="brand-trust__sticky-wrap">
+          <!-- 커튼 오프닝용 장막 레이어 -->
+          <div class="brand-trust__left-cover brand-trust__cover"></div>
+          <div class="brand-trust__right-cover brand-trust__cover"></div>
+
+          <!-- 풀스크린 Swiper 슬라이더 -->
+          <div class="swiper brand-trust__swiper">
+            <div class="swiper-wrapper">
+              <!-- Slide 1: Stats (실적) -->
+              <div
+                class="swiper-slide brand-trust__slide brand-trust__slide--stats"
+              >
+                <div class="brand-trust__bg-overlay"></div>
+                <div class="brand-trust__bg-img-box">
+                  <img
+                    class="brand-trust__bg-img"
+                    src="./assets/brand_trust_bg_1.png"
+                    alt="실적 배경"
+                  />
+                </div>
+                <div class="brand-trust__content-container">
+                  <div class="brand-trust__content">
+                    <span class="brand-trust__eyebrow">Since 2015</span>
+                    <h2 class="brand-trust__title">
+                      11년간
+                      <span class="brand-trust__highlight">152,430명</span>의
+                      환자가<br />
+                      코어업 정형외과에서 건강을 되찾았습니다
+                    </h2>
+
+                    <div class="brand-trust__stats-grid">
+                      <div class="brand-trust__stat-card">
+                        <span class="brand-trust__stat-label"
+                          >누적 비수술 치료 건수</span
+                        >
+                        <span
+                          class="brand-trust__stat-val"
+                          data-target="124350"
+                          data-decimals="0"
+                          data-suffix="회"
+                          >124,350<small>회</small></span
+                        >
+                      </div>
+                      <div class="brand-trust__stat-card">
+                        <span class="brand-trust__stat-label"
+                          >도수·재활 임상 연구</span
+                        >
+                        <span
+                          class="brand-trust__stat-val"
+                          data-target="80"
+                          data-decimals="0"
+                          data-suffix="여편+"
+                          >80<small>여편+</small></span
+                        >
+                      </div>
+                      <div class="brand-trust__stat-card">
+                        <span class="brand-trust__stat-label"
+                          >시술 후 감염률</span
+                        >
+                        <span
+                          class="brand-trust__stat-val"
+                          data-target="0.01"
+                          data-decimals="2"
+                          data-suffix="% 미만"
+                          >0.01<small>% 미만</small></span
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="brand-trust__graphic">
-                  <svg
-                    class="brand-trust__wave-svg"
-                    viewBox="0 0 500 300"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+              </div>
+
+              <!-- Slide 2: Training (글로벌 아카데미) -->
+              <div
+                class="swiper-slide brand-trust__slide brand-trust__slide--training"
+              >
+                <div class="brand-trust__bg-overlay"></div>
+                <div class="brand-trust__bg-img-box">
+                  <img
+                    class="brand-trust__bg-img"
+                    src="./assets/brand_trust_bg_2.png"
+                    alt="교육 워크숍 배경"
+                  />
+                </div>
+                <div class="brand-trust__content-container">
+                  <div class="brand-trust__content">
+                    <span class="brand-trust__eyebrow">Global Hub</span>
+                    <h2 class="brand-trust__title">
+                      세계가 주목하는<br />
+                      <span class="brand-trust__highlight-yellow"
+                        >국제 도수재활 교육 트레이닝 센터</span
+                      >
+                    </h2>
+                    <p class="brand-trust__desc">
+                      독자적인 1:1 맞춤형 도수·재활 프로그램의 우수성을
+                      인정받아,<br />
+                      국내외 의료진들이 참관하고 선진 재활 기법을 직접 교육받는
+                      센터입니다.
+                    </p>
+
+                    <div class="brand-trust__features-grid">
+                      <div class="brand-trust__feature-card">
+                        <span class="brand-trust__feature-tag">01</span>
+                        <h4 class="brand-trust__feature-title">
+                          전 치료사 도수재활 국제 인증
+                        </h4>
+                        <p class="brand-trust__feature-desc">
+                          글로벌 기준에 부합하는 정기 교육 워크숍과 엄격한 기술
+                          인증제를 통과한 전문 인력만을 배치합니다.
+                        </p>
+                      </div>
+                      <div class="brand-trust__feature-card">
+                        <span class="brand-trust__feature-tag">02</span>
+                        <h4 class="brand-trust__feature-title">
+                          해외 학술 초청 및 기술 교류
+                        </h4>
+                        <p class="brand-trust__feature-desc">
+                          미국·유럽·일본 등 선진 물리치료 진진과의 정기적인 학술
+                          세미나 교류를 통해 최신 재활 기법을 선도합니다.
+                        </p>
+                      </div>
+                      <div class="brand-trust__feature-card">
+                        <span class="brand-trust__feature-tag">03</span>
+                        <h4 class="brand-trust__feature-title">
+                          대학병원급 첨단 재활 솔루션
+                        </h4>
+                        <p class="brand-trust__feature-desc">
+                          슬링 치료기, 메디컬 필라테스 등 최적의 검증 장비들을
+                          도입하여 과학적이고 정밀한 회복 프로세스를 운영합니다.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3: Philosophy (철학) -->
+              <div
+                class="swiper-slide brand-trust__slide brand-trust__slide--philosophy"
+              >
+                <div class="brand-trust__bg-overlay"></div>
+                <div class="brand-trust__bg-img-box">
+                  <img
+                    class="brand-trust__bg-img"
+                    src="./assets/non_surgical_4.png"
+                    alt="병원 철학 배경"
+                  />
+                </div>
+                <div class="brand-trust__content-container">
+                  <div
+                    class="brand-trust__content brand-trust__content--center"
                   >
-                    <path
-                      d="M50 250 C150 250, 200 150, 300 100 C380 60, 420 50, 450 40"
-                      stroke="rgba(47, 95, 167, 0.2)"
-                      stroke-width="4"
-                      stroke-linecap="round"
-                      stroke-dasharray="8 8"
-                    />
-                    <path
-                      d="M40 280 Q200 280 280 180 T460 60"
-                      stroke="#008275"
-                      stroke-width="8"
-                      stroke-linecap="round"
-                      fill="none"
-                    />
-                    <path
-                      d="M430 65 L460 60 L455 90"
-                      stroke="#008275"
-                      stroke-width="8"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      fill="none"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 2: 국제 트레이닝 센터 (Training Center) -->
-            <div
-              class="swiper-slide brand-trust__slide brand-trust__slide--training"
-            >
-              <div class="brand-trust__container">
-                <div class="brand-trust__content">
-                  <span class="brand-trust__eyebrow">Global Hub</span>
-                  <h2 class="brand-trust__title">
-                    세계가 주목하는<br />
-                    <span class="brand-trust__highlight"
-                      >국제 도수재활 교육 트레이닝 센터</span
+                    <span
+                      class="brand-trust__eyebrow brand-trust__eyebrow--white"
+                      >CoreUp Mission</span
                     >
-                  </h2>
-                  <p class="brand-trust__desc">
-                    독자적인 1:1 맞춤형 도수·재활 프로그램의 우수성을
-                    인정받아,<br />
-                    국내외 의료진들이 참관하고 최신 재활 기법을 직접 교육받는
-                    센터입니다.
-                  </p>
-                </div>
-                <div class="brand-trust__graphic">
-                  <div class="brand-trust__training-wrap">
-                    <div class="brand-trust__map-bg"></div>
-                    <div class="brand-trust__img-overlay">
-                      <img
-                        src="./assets/promo_pt.png"
-                        alt="트레이닝 교육 현장"
-                      />
-                      <span class="brand-trust__img-tag">CoreUp Academy</span>
-                    </div>
+                    <h2 class="brand-trust__title brand-trust__title--white">
+                      회복, 일상, 건강한 삶<br />
+                      그리고
+                      <span class="brand-trust__highlight-yellow">행복</span>
+                    </h2>
+                    <p class="brand-trust__desc brand-trust__desc--white">
+                      단순한 통증 치료를 넘어, 당신의 소중한 일상이 건강하게
+                      꽃피울 수 있도록<br />
+                      코어업의 모든 의료진이 더 깊이 고민하고 끝까지 함께
+                      걷겠습니다.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Slide 3: 브랜드 철학 (Philosophy) -->
-            <div
-              class="swiper-slide brand-trust__slide brand-trust__slide--philosophy"
-            >
-              <div class="brand-trust__bg-overlay"></div>
-              <div class="brand-trust__container">
-                <div
-                  class="brand-trust__content brand-trust__content--full-width"
+            <!-- Custom Swiper Controls (Floating at bottom center) -->
+            <div class="brand-trust__controls">
+              <!-- Pagination (01 -- progress -- 03) -->
+              <div class="brand-trust__pagination">
+                <span class="brand-trust__current-index">01</span>
+                <div class="brand-trust__progress-wrap">
+                  <div class="brand-trust__progress-fill"></div>
+                </div>
+                <span class="brand-trust__total-index">03</span>
+              </div>
+
+              <!-- Divider line -->
+              <div class="brand-trust__controls-divider"></div>
+
+              <!-- Navigation buttons grouped side-by-side -->
+              <div class="brand-trust__buttons-group">
+                <button
+                  class="brand-trust__btn--prev"
+                  aria-label="이전 슬라이드"
                 >
-                  <span class="brand-trust__eyebrow brand-trust__eyebrow--white"
-                    >CoreUp Mission</span
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   >
-                  <h2 class="brand-trust__title brand-trust__title--white">
-                    회복, 일상, 건강한 삶<br />
-                    그리고
-                    <span class="brand-trust__highlight-yellow">행복</span>
-                  </h2>
-                  <p class="brand-trust__desc brand-trust__desc--white">
-                    단순한 통증 치료를 넘어, 당신의 소중한 일상이 건강하게
-                    꽃피울 수 있도록<br />
-                    코어업의 모든 의료진이 더 깊이 고민하고 끝까지 함께
-                    걷겠습니다.
-                  </p>
-                  <div class="brand-trust__actions">
-                    <a href="#information" class="primary-button outline-white"
-                      >병원 철학 자세히 보기</a
-                    >
-                  </div>
-                </div>
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                <button
+                  class="brand-trust__btn--play-pause"
+                  aria-label="자동 재생 제어"
+                >
+                  <svg
+                    class="brand-trust__icon-pause"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+                  <svg
+                    class="brand-trust__icon-play hidden"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+                <button
+                  class="brand-trust__btn--next"
+                  aria-label="다음 슬라이드"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
               </div>
             </div>
-          </div>
-
-          <!-- Custom Slider Controller (Cham Podo Namu style) -->
-          <div class="brand-trust__controls">
-            <button class="brand-trust__btn--prev" aria-label="이전 슬라이드">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-            <div class="brand-trust__pagination">
-              <span class="brand-trust__current-index">01</span>
-              <div class="brand-trust__progress-wrap">
-                <div class="brand-trust__progress-fill"></div>
-              </div>
-              <span class="brand-trust__total-index">03</span>
-            </div>
-            <button
-              class="brand-trust__btn--play-pause"
-              aria-label="자동 재생 정지"
-            >
-              <svg
-                class="brand-trust__icon-pause"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <rect x="6" y="4" width="4" height="16" />
-                <rect x="14" y="4" width="4" height="16" />
-              </svg>
-              <svg
-                class="brand-trust__icon-play hidden"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </button>
-            <button class="brand-trust__btn--next" aria-label="다음 슬라이드">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
           </div>
         </div>
       </section>

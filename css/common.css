@@ -1,5 +1,16 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
 
+:root {
+  --navy: #081a3c;
+  --blue: #2f5fa7;
+  --ink: #1a202c;
+  --white: #ffffff;
+  --muted: #718096;
+  --line: #e2e8f0;
+  --soft: #f7fafc;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
 * {
   box-sizing: border-box;
 }

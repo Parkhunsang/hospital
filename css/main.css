@@ -336,20 +336,19 @@ body.door-locked {
   /* UI 요소들은 클릭 가능하도록 설정 */
 }
 
-.hero-3d__info-text-wrap {
+.info-badge-wrap {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 8px;
-  margin-bottom: 24px;
   padding-left: 10px;
 }
 
-.hero-3d__info-text-wrap svg {
+.info-badge-wrap svg {
   color: #2f5fa7;
 }
 
-.hero-3d__info-desc {
+.info-badge__desc {
   font: 700 15px "pretendard";
   color: #2f5fa7;
   letter-spacing: -0.02em;
@@ -359,9 +358,11 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: 0;
+  padding: 12px 0px 0px 0px;
   margin: 0;
   list-style: none;
+  border-top: 1px solid rgba(47, 95, 167, 0.08);
+  margin-top: 12px;
 }
 
 .hero-3d__pain-item {
@@ -736,8 +737,6 @@ body.door-locked {
   margin-bottom: 60px;
 }
 
-
-
 .fast-diagnosis__steps {
   position: relative;
   display: flex;
@@ -773,13 +772,17 @@ body.door-locked {
 
 /* For hover transitions (enabled after reveal completes) */
 .fast-diagnosis__step.is-animated {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Fallback state if GSAP is not loaded */
 .fast-diagnosis__step.is-fallback {
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .fast-diagnosis__step.is-fallback.is-visible {
@@ -1015,6 +1018,7 @@ body.door-locked {
 .non-surgical__slider-controls {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   align-items: center;
   margin-bottom: 30px;
   padding-bottom: 16px;
@@ -1083,10 +1087,12 @@ body.door-locked {
 }
 
 .non-surgical__slide {
-  width: 820px;
+  width: 1200px;
   height: auto;
   opacity: 0.4;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .non-surgical__slide.swiper-slide-active {
@@ -1130,8 +1136,15 @@ body.door-locked {
   letter-spacing: -0.01em;
 }
 
+.non-surgical__card-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
 .non-surgical__card-title {
-  margin: 0 0 18px 0;
+  margin: 0;
   font-size: 30px;
   font-weight: 800;
   color: #1b2d5a;
@@ -1139,7 +1152,7 @@ body.door-locked {
 }
 
 .non-surgical__card-summary {
-  margin: 0 0 28px 0;
+  margin: 0 0 24px 0;
   font-size: 16px;
   color: #5a6e85;
   line-height: 1.6;
@@ -1190,33 +1203,101 @@ body.door-locked {
   overflow: hidden;
 }
 
-.non-surgical__card-visual.bg-blue { background: linear-gradient(135deg, #2f5fa7, #1e3d6b); }
-.non-surgical__card-visual.bg-pink { background: linear-gradient(135deg, #ec4899, #be185d); }
-.non-surgical__card-visual.bg-purple { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-.non-surgical__card-visual.bg-teal { background: linear-gradient(135deg, #0d9488, #0f766e); }
-.non-surgical__card-visual.bg-orange { background: linear-gradient(135deg, #f97316, #c2410c); }
+.non-surgical__card-visual::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(47, 95, 167, 0.15),
+    rgba(27, 45, 90, 0.35)
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
 
 .non-surgical__card-illustration {
+  /* 2. Display */
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* 3. Box Model */
   width: 100%;
   height: 100%;
 }
 
-.non-surgical__card-bg-letter {
-  font-family: 'Outfit', 'Inter', sans-serif;
-  font-size: 260px;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.08);
-  user-select: none;
-  pointer-events: none;
-  animation: floatLetter 6s infinite ease-in-out alternate;
+.non-surgical__card-img {
+  /* 3. Box Model */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-@keyframes floatLetter {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-15px) rotate(3deg); }
+/* 비수술 치료 카드 버튼 스타일 */
+.non-surgical__card-btn {
+  /* 2. Display */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  /* 3. Box Model */
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 12px 24px;
+
+  /* 4. Border/Background */
+  border: 1px solid rgba(47, 95, 167, 0.2);
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(27, 45, 90, 0.03);
+
+  /* 5. Typography */
+  font-size: 15px;
+  font-weight: 700;
+  color: #2f5fa7;
+
+  /* 6. Others */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.non-surgical__card-btn:hover {
+  /* 4. Border/Background */
+  border-color: #2f5fa7;
+  background-color: #2f5fa7;
+  box-shadow: 0 8px 20px rgba(47, 95, 167, 0.15);
+
+  /* 5. Typography */
+  color: #ffffff;
+
+  /* 6. Others */
+  transform: translateY(-2px);
+}
+
+.non-surgical__card-btn:focus-visible {
+  /* 6. Others */
+  outline: 2px solid #2f5fa7;
+  outline-offset: 2px;
+}
+
+.non-surgical__card-btn-icon {
+  /* 3. Box Model */
+  width: 16px;
+  height: 16px;
+
+  /* 6. Others */
+  transition: transform 0.3s ease;
+}
+
+.non-surgical__card-btn:hover .non-surgical__card-btn-icon {
+  /* 6. Others */
+  transform: translateX(3px);
 }
 
 /* 인디케이터 도트 페이지네이션 */
@@ -1254,406 +1335,521 @@ body.door-locked {
 }
 /* 04. 비수술 치료 솔루션 (Non-Surgical Treatments) [END] */
 
-/* 04-2. 브랜드 신뢰도 프로모션 슬라이더 (Brand Trust Slider) [START] */
+/* 04-2. 브랜드 신뢰도 프로모션 (Brand Trust) [START] */
 .brand-trust {
+  /* 1. Positioning */
   position: relative;
+
+  /* 3. Box Model */
+  width: 100%;
+  height: calc(210vh + 80px);
+
+  /* 4. Border/Background */
+  background-color: #ffffff;
+}
+
+.brand-trust__sticky-wrap {
+  /* 1. Positioning */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  /* 2. Display */
   overflow: hidden;
-  padding: 100px 0;
+
+  /* 3. Box Model */
+  width: 100%;
+  height: 100vh;
+}
+
+.brand-trust__cover {
+  /* 1. Positioning */
+  position: absolute;
+  top: -2px;
+  z-index: 50;
+
+  /* 3. Box Model */
+  width: calc(50% + 4px);
+  height: calc(100% + 4px);
+
+  /* 4. Border/Background */
+  background-color: #ffffff;
+}
+
+.brand-trust__left-cover {
+  /* 1. Positioning */
+  left: -2px;
+}
+
+.brand-trust__right-cover {
+  /* 1. Positioning */
+  right: -2px;
 }
 
 .brand-trust__swiper {
+  /* 1. Positioning */
   position: relative;
-  overflow: hidden;
+  z-index: 10;
+
+  /* 3. Box Model */
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 32px;
-  box-shadow: 0 20px 50px rgba(27, 45, 90, 0.06);
+  height: 100vh;
 }
 
 .brand-trust__slide {
+  /* 1. Positioning */
   position: relative;
+
+  /* 2. Display */
   overflow: hidden;
-  height: 520px;
-  box-sizing: border-box;
-  background: #ffffff;
+
+  /* 3. Box Model */
+  width: 100%;
+  height: 100vh;
 }
 
-/* Slide inner container to align content */
-.brand-trust__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+.brand-trust__bg-overlay {
+  /* 1. Positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  /* 3. Box Model */
   width: 100%;
   height: 100%;
-  padding: 0 60px;
+
+  /* 4. Border/Background */
+  background: linear-gradient(
+    135deg,
+    rgba(8, 26, 60, 0.9) 0%,
+    rgba(27, 45, 90, 0.85) 100%
+  );
+}
+
+.brand-trust__bg-img-box {
+  /* 1. Positioning */
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+
+  /* 3. Box Model */
+  width: 100%;
+  height: 100%;
+}
+
+.brand-trust__bg-img {
+  /* 3. Box Model */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Slide 1 background starts at 0.5 scale for scroll zoom trigger */
+.brand-trust__slide--stats .brand-trust__bg-img {
+  /* 6. Others */
+  transform: scale(0.5);
+}
+
+.brand-trust__content-container {
+  /* 1. Positioning */
+  position: relative;
+  z-index: 10;
+
+  /* 2. Display */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 3. Box Model */
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
   box-sizing: border-box;
 }
 
 .brand-trust__content {
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1.2;
+  /* 3. Box Model */
+  width: 100%;
 }
 
-.brand-trust__content--full-width {
-  align-items: center;
-  flex: 1;
-  max-width: 750px;
-  margin: 0 auto;
+.brand-trust__content--center {
+  /* 5. Typography */
   text-align: center;
 }
 
 .brand-trust__eyebrow {
+  /* 2. Display */
   display: inline-block;
-  align-self: flex-start;
-  padding: 5px 12px;
+
+  /* 3. Box Model */
+  margin-bottom: 20px;
+  padding: 6px 14px;
   border-radius: 20px;
-  margin-bottom: 16px;
-  background: rgba(0, 130, 117, 0.08);
-  font-size: 14px;
+
+  /* 4. Border/Background */
+  background: rgba(255, 255, 255, 0.1);
+
+  /* 5. Typography */
+  font-size: 13px;
   font-weight: 800;
-  color: #008275;
-  /* Primary Teal */
-  letter-spacing: 0.1em;
+  color: #fdb608;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
-.brand-trust__content--full-width .brand-trust__eyebrow {
-  align-self: center;
-}
+.brand-trust .brand-trust__title {
+  /* 3. Box Model */
+  margin: 0 0 28px 0;
 
-.brand-trust__eyebrow--white {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-}
-
-.brand-trust__title {
-  margin: 0 0 24px 0;
-  font-size: 38px;
+  /* 5. Typography */
+  font-size: 40px;
   font-weight: 800;
-  color: #1b2d5a;
-  line-height: 1.35;
-  letter-spacing: -0.03em;
+  color: #ffffff;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
   word-break: keep-all;
 }
 
-.brand-trust__title--white {
-  color: #ffffff;
-}
-
 .brand-trust__highlight {
-  color: #008275;
+  /* 5. Typography */
+  color: #fdb608;
 }
 
 .brand-trust__highlight-yellow {
+  /* 5. Typography */
   color: #ffe066;
 }
 
 .brand-trust__desc {
-  margin: 0 0 32px 0;
-  font-size: 16px;
-  line-height: 1.65;
-  color: #6b7c96;
+  /* 3. Box Model */
+  margin: 0;
+
+  /* 5. Typography */
+  font-size: 18px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.85);
   word-break: keep-all;
 }
 
 .brand-trust__desc--white {
+  /* 5. Typography */
   color: rgba(255, 255, 255, 0.85);
 }
 
-.brand-trust__graphic {
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0.9;
-  height: 100%;
+/* First slide text starts hidden for scroll trigger reveal */
+.brand-trust__slide--stats .brand-trust__content {
+  /* 6. Others */
+  opacity: 0;
 }
 
-/* Slide 1 - Stats Cards layout */
 .brand-trust__stats-grid {
+  /* 2. Display */
   display: flex;
-  gap: 16px;
-  margin-top: 10px;
+
+  /* 3. Box Model */
+  gap: 20px;
+  margin-top: 40px;
 }
 
 .brand-trust__stat-card {
+  /* 2. Display */
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  justify-content: center;
   flex: 1;
-  padding: 24px 20px;
-  border-radius: 24px;
-  border: 1px solid rgba(0, 130, 117, 0.12);
-  background: #ffffff;
-  box-shadow: 0 10px 24px rgba(27, 45, 90, 0.02);
-  text-align: center;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* 3. Box Model */
+  padding: 30px 24px;
+  box-sizing: border-box;
+
+  /* 4. Border/Background */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 35px rgba(8, 26, 60, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* 6. Others */
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .brand-trust__stat-card:hover {
-  border-color: #008275;
-  box-shadow: 0 15px 30px rgba(0, 130, 117, 0.08);
-  transform: translateY(-8px);
+  /* 4. Border/Background */
+  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.15);
+
+  /* 6. Others */
+  transform: translateY(-5px);
 }
 
 .brand-trust__stat-label {
-  font-size: 13px;
+  /* 3. Box Model */
+  margin-bottom: 12px;
+
+  /* 5. Typography */
+  font-size: 14px;
   font-weight: 700;
-  color: #6b7c96;
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: -0.01em;
 }
 
 .brand-trust__stat-val {
-  font-size: 26px;
-  font-weight: 800;
-  color: #008275;
+  /* 5. Typography */
+  font-family: "Outfit", "Inter", sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
 }
 
 .brand-trust__stat-val small {
+  /* 3. Box Model */
   margin-left: 2px;
+
+  /* 5. Typography */
+  font-size: 16px;
+  font-weight: 700;
+  color: #fdb608;
+}
+
+.brand-trust__features-grid {
+  /* 2. Display */
+  display: flex;
+
+  /* 3. Box Model */
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.brand-trust__feature-card {
+  /* 2. Display */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  /* 3. Box Model */
+  padding: 24px;
+  box-sizing: border-box;
+
+  /* 4. Border/Background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+
+  /* 6. Others */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.brand-trust__feature-card:hover {
+  /* 4. Border/Background */
+  border-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.brand-trust__feature-tag {
+  /* 2. Display */
+  display: inline-block;
+
+  /* 3. Box Model */
+  margin-bottom: 12px;
+
+  /* 5. Typography */
+  font-family: "Outfit", sans-serif;
   font-size: 14px;
+  font-weight: 800;
+  color: #fdb608;
+}
+
+.brand-trust__feature-title {
+  /* 3. Box Model */
+  margin: 0 0 8px 0;
+
+  /* 5. Typography */
+  font-size: 16px;
   font-weight: 700;
-}
-
-.brand-trust__wave-svg {
-  width: 100%;
-  max-width: 440px;
-  height: auto;
-}
-
-/* Slide 2 - Training Center Graphic */
-.brand-trust__training-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 440px;
-  height: 320px;
-}
-
-.brand-trust__map-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, #008275 10%, transparent 11%);
-  background-size: 12px 12px;
-  opacity: 0.15;
-  mask-image: radial-gradient(circle, black, transparent 80%);
-  -webkit-mask-image: radial-gradient(circle, black, transparent 80%);
-}
-
-.brand-trust__img-overlay {
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  border: 6px solid #ffffff;
-  box-shadow: 0 20px 45px rgba(27, 45, 90, 0.12);
-  transition: transform 0.5s ease;
-}
-
-.brand-trust__img-overlay:hover {
-  transform: scale(1.04);
-}
-
-.brand-trust__img-overlay img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.brand-trust__img-tag {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  z-index: 5;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background: #008275;
-  box-shadow: 0 4px 10px rgba(0, 130, 117, 0.3);
   color: #ffffff;
-  font-size: 12px;
-  font-weight: 700;
-  transform: translateX(-50%);
-  white-space: nowrap;
 }
 
-/* Slide 3 - Philosophy Background */
-.brand-trust__slide--philosophy {
-  background: url("../assets/visual-slide-03.png") no-repeat center/cover;
+.brand-trust__feature-desc {
+  /* 3. Box Model */
+  margin: 0;
+
+  /* 5. Typography */
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  word-break: keep-all;
 }
 
-.brand-trust__bg-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(8, 26, 60, 0.85) 0%,
-    rgba(27, 45, 90, 0.7) 100%
-  );
-}
-
-.brand-trust__actions {
-  display: flex;
-  gap: 16px;
-}
-
-/* Custom Swiper Controls (Cham Podo Namu style) */
+/* Custom Swiper Controls (Floating at bottom center) */
 .brand-trust__controls {
+  /* 1. Positioning */
   position: absolute;
-  bottom: 40px;
-  left: 60px;
-  z-index: 20;
+  bottom: 50px;
+  left: 50%;
+  z-index: 100;
+
+  /* 2. Display */
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 10px 20px;
-  border-radius: 30px;
+
+  /* 3. Box Model */
+  gap: 20px; /* 조절 가능: 전체 패널 내부 구성요소 간의 간격 */
+  padding: 12px 24px; /* 조절 가능: 전체 패널 내부 여백 (세로, 가로) */
+  box-sizing: border-box;
+
+  /* 4. Border/Background */
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(8, 26, 60, 0.05);
-  color: #1b2d5a;
+  box-shadow: 0 10px 30px rgba(8, 26, 60, 0.2);
+
+  /* 5. Typography */
+  color: #ffffff;
+
+  /* 6. Others */
+  transform: translateX(-50%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+}
+
+/* 컨트롤러 내 버튼 그룹 (이전, 재생/일시정지, 다음 나란히 배치) */
+.brand-trust__buttons-group {
+  /* 2. Display */
+  display: flex;
+  align-items: center;
+
+  /* 3. Box Model */
+  gap: 16px; /* 조절 가능: 버튼과 버튼 사이 간격 */
+}
+
+/* 컨트롤러 내 세로 구분선 */
+.brand-trust__controls-divider {
+  /* 3. Box Model */
+  width: 1px;
+  height: 16px; /* 조절 가능: 구분선 높이 */
+
+  /* 4. Border/Background */
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .brand-trust__btn--prev,
 .brand-trust__btn--next,
 .brand-trust__btn--play-pause {
+  /* 2. Display */
   display: grid;
   place-items: center;
+
+  /* 3. Box Model */
   padding: 0;
-  background: transparent;
+
+  /* 4. Border/Background */
   border: none;
+  background: transparent;
+
+  /* 5. Typography */
   color: inherit;
+
+  /* 6. Others */
   cursor: pointer;
   transition:
     transform 0.2s ease,
     opacity 0.2s ease;
 }
 
+/* 조절 가능: 이전/다음 버튼 크기 */
 .brand-trust__btn--prev svg,
 .brand-trust__btn--next svg {
-  width: 20px;
-  height: 20px;
+  /* 3. Box Model */
+  width: 20px; /* 조절 가능: 이전/다음 화살표 너비 */
+  height: 20px; /* 조절 가능: 이전/다음 화살표 높이 */
 }
 
+/* 조절 가능: 재생 및 일시정지 버튼 크기 */
 .brand-trust__btn--play-pause svg {
-  width: 14px;
-  height: 14px;
+  /* 3. Box Model */
+  width: 14px; /* 조절 가능: 재생/일시정지 아이콘 너비 */
+  height: 14px; /* 조절 가능: 재생/일시정지 아이콘 높이 */
+}
+
+/* 재생/일시정지 중 비활성화 상태의 아이콘 숨김 처리 */
+.brand-trust__btn--play-pause svg.hidden {
+  /* 2. Display */
+  display: none !important;
 }
 
 .brand-trust__btn--prev:hover,
 .brand-trust__btn--next:hover,
 .brand-trust__btn--play-pause:hover {
-  transform: scale(1.1);
+  /* 6. Others */
+  transform: scale(1.15);
 }
 
 .brand-trust__pagination {
+  /* 2. Display */
   display: flex;
   align-items: center;
+
+  /* 3. Box Model */
   gap: 12px;
 }
 
 .brand-trust__current-index,
 .brand-trust__total-index {
-  font-family: "Pretendard", sans-serif;
+  /* 5. Typography */
+  font-family: "Outfit", sans-serif;
   font-size: 14px;
   font-weight: 800;
 }
 
+/* 조절 가능: 페이지네이션 가로 게이지 바 설정 */
 .brand-trust__progress-wrap {
+  /* 1. Positioning */
   position: relative;
+
+  /* 2. Display */
   overflow: hidden;
-  width: 60px;
-  height: 2px;
+
+  /* 3. Box Model */
+  width: 60px; /* 조절 가능: 게이지 바 가로 길이 */
+  height: 2px; /* 조절 가능: 게이지 바 두께 */
   border-radius: 1px;
-  background: rgba(0, 0, 0, 0.1);
-}
 
-.brand-trust__progress-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 33.33%;
-  height: 100%;
-  background: #008275;
-  transition: width 0.3s ease;
-}
-
-/* Adapt slider control colors based on active slide theme */
-.brand-trust__swiper--dark-theme .brand-trust__controls {
-  border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(0, 0, 0, 0.3);
-  color: #ffffff;
-}
-
-.brand-trust__swiper--dark-theme .brand-trust__progress-wrap {
+  /* 4. Border/Background */
   background: rgba(255, 255, 255, 0.2);
 }
 
-.brand-trust__swiper--dark-theme .brand-trust__progress-fill {
-  background: #ffe066;
+.brand-trust__progress-fill {
+  /* 1. Positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* 3. Box Model */
+  width: 33.33%;
+  height: 100%;
+
+  /* 4. Border/Background */
+  background: #fdb608;
+
+  /* 6. Others */
+  transition: width 0.3s ease;
 }
-
-/* Micro-Animations: Slide Element Transitions */
-.brand-trust__swiper .swiper-slide .brand-trust__eyebrow,
-.brand-trust__swiper .swiper-slide .brand-trust__title,
-.brand-trust__swiper .swiper-slide .brand-trust__stats-grid,
-.brand-trust__swiper .swiper-slide .brand-trust__desc,
-.brand-trust__swiper .swiper-slide .brand-trust__actions,
-.brand-trust__swiper .swiper-slide .brand-trust__graphic {
-  opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.brand-trust__swiper .swiper-slide-active .brand-trust__eyebrow,
-.brand-trust__swiper .swiper-slide-active .brand-trust__title,
-.brand-trust__swiper .swiper-slide-active .brand-trust__stats-grid,
-.brand-trust__swiper .swiper-slide-active .brand-trust__desc,
-.brand-trust__swiper .swiper-slide-active .brand-trust__actions,
-.brand-trust__swiper .swiper-slide-active .brand-trust__graphic {
-  opacity: 1;
-
-  transform: translateY(0);
-}
-
-.brand-trust__swiper .swiper-slide-active .brand-trust__eyebrow {
-  transition-delay: 0.1s;
-}
-
-.brand-trust__swiper .swiper-slide-active .brand-trust__title {
-  transition-delay: 0.2s;
-}
-
-.brand-trust__swiper .swiper-slide-active .brand-trust__stats-grid,
-.brand-trust__swiper .swiper-slide-active .brand-trust__desc {
-  transition-delay: 0.3s;
-}
-
-.brand-trust__swiper .swiper-slide-active .brand-trust__actions,
-.brand-trust__swiper .swiper-slide-active .brand-trust__graphic {
-  transition-delay: 0.4s;
-}
-
-/* 04-2. 브랜드 신뢰도 프로모션 슬라이더 (Brand Trust Slider) [END] */
+/* 04-2. 브랜드 신뢰도 프로모션 (Brand Trust) [END] */
 
 /* 05. 의료진 소개 및 오늘 진료 가능 일정 (Doctors) [START] */
 .doctors__grid {
@@ -2116,49 +2312,68 @@ body.door-locked {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Brand Slider Responsive (Tablet) */
-  .brand-trust__swiper .brand-trust__slide {
-    height: auto;
-    padding: 60px 0;
+  /* Brand Trust Responsive (Tablet) */
+  .brand-trust {
+    height: 100vh;
   }
 
-  .brand-trust__container {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    padding: 0 40px;
-    text-align: center;
+  .brand-trust__sticky-wrap {
+    position: relative;
+    height: 100vh;
   }
 
-  .brand-trust__content {
-    align-items: center;
+  .brand-trust__cover {
+    display: none !important;
   }
 
-  .brand-trust__eyebrow {
-    align-self: center;
+  .brand-trust__slide--stats .brand-trust__bg-img {
+    transform: scale(1) !important;
+  }
+
+  .brand-trust__slide--stats .brand-trust__content {
+    opacity: 1 !important;
   }
 
   .brand-trust__title {
     font-size: 28px;
   }
 
-  .brand-trust__stats-grid {
-    width: 100%;
-    max-width: 500px;
+  .brand-trust__desc {
+    font-size: 15px;
   }
 
-  .brand-trust__graphic {
-    width: 100%;
-    max-width: 320px;
+  .brand-trust__stats-grid {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .brand-trust__stat-card {
+    padding: 16px 20px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .brand-trust__stat-label {
+    margin-bottom: 0;
+  }
+
+  .brand-trust__stat-val {
+    font-size: 24px;
+  }
+
+  .brand-trust__features-grid {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .brand-trust__feature-card {
+    padding: 16px;
   }
 
   .brand-trust__controls {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    margin: 30px auto 0;
-    justify-content: center;
-    width: fit-content;
+    bottom: 30px;
   }
 }
 
@@ -2231,60 +2446,29 @@ body.door-locked {
     font-size: 22px;
   }
 
-  /* Brand Slider Responsive (Mobile) */
-  .brand-trust__swiper .brand-trust__slide {
-    height: auto;
-    padding: 50px 0;
-  }
-
-  .brand-trust__container {
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    padding: 0 20px;
-    text-align: center;
-  }
-
-  .brand-trust__content {
-    align-items: center;
-  }
-
-  .brand-trust__eyebrow {
-    align-self: center;
-  }
-
+  /* Brand Trust Responsive (Mobile) */
   .brand-trust__title {
-    margin-bottom: 16px;
     font-size: 22px;
   }
 
-  .brand-trust__stats-grid {
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-  }
-
-  .brand-trust__stat-card {
-    padding: 16px;
-  }
-
   .brand-trust__desc {
-    margin-bottom: 20px;
     font-size: 14px;
   }
 
-  .brand-trust__graphic {
-    width: 100%;
-    max-width: 280px;
+  .brand-trust__stat-label {
+    font-size: 12px;
   }
 
-  .brand-trust__controls {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    margin: 20px auto 0;
-    justify-content: center;
-    width: fit-content;
+  .brand-trust__stat-val {
+    font-size: 20px;
+  }
+
+  .brand-trust__feature-title {
+    font-size: 14px;
+  }
+
+  .brand-trust__feature-desc {
+    font-size: 12px;
   }
 }
 
@@ -2300,7 +2484,7 @@ body.door-locked {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   padding: 6px 10px;
   border-radius: 6px;

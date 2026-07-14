@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   init3DBodyMap();
   initFastDiagnosis();
   initNonSurgicalSlider();
-  initBrandTrustSlider();
+  initBrandTrustPartners();
 });
 
 function init3DBodyMap() {
@@ -32,8 +32,8 @@ function init3DBodyMap() {
       imageOffsetX: 0,
       imageOffsetY: 0.1,
       normal: [0, 0, -1],
-      width: 0.3,
-      height: 0.3,
+      width: 0.2,
+      height: 0.2,
       maskScale: [1.0, 1.0],
       zOffset: -0.2,
     },
@@ -49,8 +49,8 @@ function init3DBodyMap() {
       imageOffsetX: 0.01,
       imageOffsetY: -0.18,
       normal: [0, 0, 1],
-      width: 0.6,
-      height: 0.6,
+      width: 0.3,
+      height: 0.7,
       maskScale: [1.0, 1.0],
       zOffset: 0.05,
     },
@@ -73,8 +73,8 @@ function init3DBodyMap() {
       imageOffsetX: 0.09,
       imageOffsetY: 0,
       normal: [0, 0, -1],
-      width: 0.8,
-      height: 0.8,
+      width: 1.8,
+      height: 0.9,
       maskScale: [1.2, 0.7],
       zOffset: -0.05,
     },
@@ -97,8 +97,8 @@ function init3DBodyMap() {
       imageOffsetY: 0.0,
       imageOffsetZ: -0.1,
       normal: [-1, 0, 0],
-      width: 0.56,
-      height: 0.56,
+      width: 0.34,
+      height: 0.73,
       maskScale: [1.0, 1.0],
       zOffset: 0.08,
     },
@@ -121,8 +121,8 @@ function init3DBodyMap() {
       imageOffsetX: 0.03,
       imageOffsetY: 0,
       normal: [0, 0, 1],
-      width: 0.4,
-      height: 0.4,
+      width: 0.3,
+      height: 0.65,
       maskScale: [1.0, 1.0],
       zOffset: 0.05,
     },
@@ -145,7 +145,7 @@ function init3DBodyMap() {
       imageOffsetZ: 0.04,
       normal: [-1, 0, 0],
       width: 0.8,
-      height: 0.6,
+      height: 0.44,
       maskScale: [0.8, 0.8],
       zOffset: 0.1,
     },
@@ -676,6 +676,14 @@ function init3DBodyMap() {
           // 데이터 기반 파라미터 적용
           activeWidth = data.width || 0.8;
           activeHeight = data.height || 0.8;
+
+          // 이미지 실제 가로세로 비율에 맞춰 높이(height)를 자동 조정 (찌그러짐 방지)
+          const tex = illustrationTextures[targetId];
+          if (tex && tex.image && tex.image.width && tex.image.height) {
+            const imgAspect = tex.image.width / tex.image.height;
+            activeHeight = activeWidth / imgAspect;
+          }
+
           const zOff = data.zOffset || 0.05;
           const maskS = data.maskScale || [1.0, 1.0];
 
@@ -838,7 +846,9 @@ function initFastDiagnosis() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const steps = section.querySelectorAll(".fast-diagnosis__step");
-          const stepsContainer = section.querySelector(".fast-diagnosis__steps");
+          const stepsContainer = section.querySelector(
+            ".fast-diagnosis__steps",
+          );
 
           if (typeof gsap !== "undefined" && steps.length > 0) {
             const containerWidth = stepsContainer.offsetWidth;
@@ -853,36 +863,39 @@ function initFastDiagnosis() {
                 scale: 0.9,
                 opacity: 0,
                 transformOrigin: "bottom center",
-                zIndex: 10 - idx
+                zIndex: 10 - idx,
               });
             });
 
             // 2. 타임라인 애니메이션 실행
             const tl = gsap.timeline();
-            
+
             // 중앙 카드들 페이드인 등장
             tl.to(steps, {
               opacity: 1,
               scale: 0.95,
               duration: 0.6,
               stagger: 0.1,
-              ease: "power2.out"
+              ease: "power2.out",
             });
 
             // 양옆으로 부드럽게 펴지는(팬아웃) 모션
-            tl.to(steps, {
-              x: 0,
-              rotation: 0,
-              scale: 1,
-              duration: 1.0,
-              stagger: 0.1,
-              ease: "back.out(1.2)",
-              onComplete: () => {
-                // 모션 완료 후 CSS 호버 트랜지션 활성화
-                steps.forEach(step => step.classList.add("is-animated"));
-              }
-            }, "-=0.2");
-
+            tl.to(
+              steps,
+              {
+                x: 0,
+                rotation: 0,
+                scale: 1,
+                duration: 1.0,
+                stagger: 0.1,
+                ease: "back.out(1.2)",
+                onComplete: () => {
+                  // 모션 완료 후 CSS 호버 트랜지션 활성화
+                  steps.forEach((step) => step.classList.add("is-animated"));
+                },
+              },
+              "-=0.2",
+            );
           } else {
             // CSS 폴백 모션
             steps.forEach((step, idx) => {
@@ -964,7 +977,6 @@ function initIntroDoor() {
   // 메인 콘텐츠 요소 초기 상태 설정 (깜빡임 현상 방지)
   if (typeof gsap !== "undefined") {
     gsap.set(".topbar", { opacity: 0, y: -80 });
-    gsap.set(".hero-welcome-message", { opacity: 0, y: -30 });
     gsap.set(".hero-3d__menu", { opacity: 0, x: -50 });
     gsap.set(".hero-3d__tv-wrap", { opacity: 0, y: 50 });
     gsap.set(".hero-3d__welcome", { opacity: 0, y: -50 });
@@ -1036,17 +1048,6 @@ function initIntroDoor() {
 
       // 4. 메인 Welcome 텍스트 및 인체 맵 UI 등장
       tl.to(
-        ".hero-welcome-message",
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.0,
-          ease: "power3.out",
-        },
-        "-=0.7",
-      );
-
-      tl.to(
         [".hero-3d__menu", ".hero-3d__tv-wrap", ".hero-3d__welcome"],
         {
           opacity: 1,
@@ -1056,7 +1057,7 @@ function initIntroDoor() {
           stagger: 0.15,
           ease: "power3.out",
         },
-        "-=0.8",
+        "-=0.5",
       );
     } else {
       // GSAP 비활성화 시 Fallback (기본 브라우저 css 전환)
@@ -1073,7 +1074,7 @@ function initIntroDoor() {
           topbar.style.transform = "none";
         }
 
-        const welcome = document.querySelector(".hero-welcome-message");
+        const welcome = document.querySelector(".hero-3d__welcome");
         if (welcome) {
           welcome.style.opacity = "1";
           welcome.style.transform = "none";
@@ -1123,87 +1124,179 @@ function initIntroDoor() {
 }
 
 /* ==========================================================================
-   Brand Trust Slider (Branding & Stats Swiper) Logic
+   Brand Trust Scroll Curtain & Fullscreen Swiper Slider Logic
    ========================================================================== */
-function initBrandTrustSlider() {
-  const swiperContainer = document.querySelector(".brand-trust__swiper");
-  if (!swiperContainer) return;
+function initBrandTrustPartners() {
+  const section = document.querySelector(".brand-trust");
+  if (!section) return;
 
-  // Swiper 초기화
-  const brandSwiper = new Swiper(".brand-trust__swiper", {
-    loop: true,
+  let counterTriggered = false;
+
+  // Helper function to update custom Swiper pagination and progress bar
+  function updateBTControls(swiper) {
+    const current = section.querySelector(".brand-trust__current-index");
+    const total = section.querySelector(".brand-trust__total-index");
+    const progressFill = section.querySelector(".brand-trust__progress-fill");
+
+    if (!current || !total) return;
+
+    const realIndex = swiper.realIndex + 1;
+    const totalSlides = 3; // stats, training, philosophy
+
+    current.textContent = String(realIndex).padStart(2, "0");
+    total.textContent = String(totalSlides).padStart(2, "0");
+    if (progressFill) {
+      progressFill.style.width = `${(realIndex / totalSlides) * 100}%`;
+    }
+  }
+
+  // Helper function to animate Slide 1 counter numbers (including clones)
+  function runStatsAnimation() {
+    const valElements = section.querySelectorAll(".brand-trust__stat-val");
+    valElements.forEach((el) => {
+      const target = parseFloat(el.getAttribute("data-target"));
+      const decimals = parseInt(el.getAttribute("data-decimals") || "0");
+      const suffix = el.getAttribute("data-suffix") || "";
+
+      const counterObj = { value: 0 };
+      gsap.killTweensOf(counterObj);
+
+      gsap.to(counterObj, {
+        value: target,
+        duration: 1.8,
+        ease: "power2.out",
+        onUpdate: () => {
+          let formattedVal = "";
+          if (decimals > 0) {
+            formattedVal = counterObj.value.toFixed(decimals);
+          } else {
+            formattedVal = Math.floor(counterObj.value).toLocaleString();
+          }
+          el.innerHTML = `${formattedVal}<small>${suffix}</small>`;
+        },
+      });
+    });
+  }
+
+  // 1. Initialize Swiper
+  const btSwiper = new Swiper(".brand-trust__swiper", {
+    effect: "slide",
     speed: 800,
+    loop: true,
     autoplay: {
       delay: 5000,
       disableOnInteraction: false,
     },
+    navigation: {
+      nextEl: ".brand-trust__btn--next",
+      prevEl: ".brand-trust__btn--prev",
+    },
+    on: {
+      init: function () {
+        updateBTControls(this);
+      },
+      slideChange: function () {
+        updateBTControls(this);
+        // Play counter-up animation when user slides back to Slide 1
+        const isDesktop = window.matchMedia("(min-width: 769px)");
+        if (this.realIndex === 0 && (!isDesktop.matches || counterTriggered)) {
+          runStatsAnimation();
+        }
+      },
+    },
   });
 
-  const btnPrev = document.querySelector(".brand-trust__btn--prev");
-  const btnNext = document.querySelector(".brand-trust__btn--next");
-  const btnPlayPause = document.querySelector(".brand-trust__btn--play-pause");
-  const currIndexEl = document.querySelector(".brand-trust__current-index");
-  const progressBarFillEl = document.querySelector(
-    ".brand-trust__progress-fill",
-  );
-  const iconPause = document.querySelector(".brand-trust__icon-pause");
-  const iconPlay = document.querySelector(".brand-trust__icon-play");
+  // Play/Pause button click handler
+  const playPauseBtn = section.querySelector(".brand-trust__btn--play-pause");
+  if (playPauseBtn) {
+    const iconPause = playPauseBtn.querySelector(".brand-trust__icon-pause");
+    const iconPlay = playPauseBtn.querySelector(".brand-trust__icon-play");
 
-  const totalSlides = 3;
-
-  function updateSliderControls(realIndex) {
-    if (currIndexEl) {
-      currIndexEl.textContent = String(realIndex + 1).padStart(2, "0");
-    }
-
-    if (progressBarFillEl) {
-      const fillPercentage = ((realIndex + 1) / totalSlides) * 100;
-      progressBarFillEl.style.width = `${fillPercentage}%`;
-    }
-
-    if (realIndex === 2) {
-      swiperContainer.classList.add("brand-trust__swiper--dark-theme");
-    } else {
-      swiperContainer.classList.remove("brand-trust__swiper--dark-theme");
-    }
-  }
-
-  brandSwiper.on("slideChange", () => {
-    updateSliderControls(brandSwiper.realIndex);
-  });
-
-  if (btnPrev) {
-    btnPrev.addEventListener("click", () => {
-      brandSwiper.slidePrev();
-    });
-  }
-
-  if (btnNext) {
-    btnNext.addEventListener("click", () => {
-      brandSwiper.slideNext();
-    });
-  }
-
-  let isPlaying = true;
-  if (btnPlayPause) {
-    btnPlayPause.addEventListener("click", () => {
-      if (isPlaying) {
-        brandSwiper.autoplay.stop();
-        isPlaying = false;
-
-        if (iconPause) iconPause.classList.add("hidden");
-        if (iconPlay) iconPlay.classList.remove("hidden");
-        btnPlayPause.setAttribute("aria-label", "자동 재생 시작");
+    playPauseBtn.addEventListener("click", () => {
+      if (btSwiper.autoplay.running) {
+        btSwiper.autoplay.stop();
+        iconPause.classList.add("hidden");
+        iconPlay.classList.remove("hidden");
       } else {
-        brandSwiper.autoplay.start();
-        isPlaying = true;
-
-        if (iconPause) iconPause.classList.remove("hidden");
-        if (iconPlay) iconPlay.classList.add("hidden");
-        btnPlayPause.setAttribute("aria-label", "자동 재생 정지");
+        btSwiper.autoplay.start();
+        iconPause.classList.remove("hidden");
+        iconPlay.classList.add("hidden");
       }
     });
   }
 
-  updateSliderControls(0);
+  // 2. GSAP ScrollTrigger timelines for Desktop (width > 768px)
+  const isDesktop = window.matchMedia("(min-width: 769px)");
+
+  if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined" && isDesktop.matches) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    ScrollTrigger.create({
+      trigger: ".brand-trust",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+      pin: false,
+      onUpdate: (self) => {
+        const progress = self.progress;
+
+        // 1) Animate curtain widths (fully open by progress = 0.5)
+        const leftCover = section.querySelector(".brand-trust__left-cover");
+        const rightCover = section.querySelector(".brand-trust__right-cover");
+        if (leftCover && rightCover) {
+          const curtainProgress = Math.min(progress / 0.5, 1);
+          const currentWidth = (1 - curtainProgress) * 50;
+          leftCover.style.width = currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
+          rightCover.style.width = currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
+        }
+
+        // 2) Animate scale of background image on Slide 1 (reaches 1.0 by progress = 0.6)
+        const bgImages = section.querySelectorAll(".brand-trust__slide--stats .brand-trust__bg-img");
+        bgImages.forEach((img) => {
+          const scaleProgress = Math.min(progress / 0.6, 1);
+          const scale = 0.5 + scaleProgress * 0.5;
+          img.style.transform = `scale(${scale})`;
+        });
+
+        // 3) Animate content opacity of Slide 1 (fully visible by progress = 0.6)
+        const contents = section.querySelectorAll(".brand-trust__slide--stats .brand-trust__content");
+        contents.forEach((content) => {
+          const fadeProgress = Math.min(progress / 0.6, 1);
+          content.style.opacity = fadeProgress;
+          content.style.transform = `translateY(${(1 - fadeProgress) * 30}px)`;
+        });
+
+        // 4) Trigger stats counter count-up when curtain is fully open (>0.5)
+        if (progress > 0.5) {
+          if (!counterTriggered) {
+            counterTriggered = true;
+            runStatsAnimation();
+          }
+        } else if (progress < 0.2) {
+          counterTriggered = false; // Reset trigger so it can re-animate when scrolling down again
+        }
+      },
+    });
+  } else {
+    // Mobile/Tablet Fallback: Fully open curtains & scale bg to 1
+    const leftCover = section.querySelector(".brand-trust__left-cover");
+    const rightCover = section.querySelector(".brand-trust__right-cover");
+    const bgImages = section.querySelectorAll(".brand-trust__slide--stats .brand-trust__bg-img");
+    const contents = section.querySelectorAll(".brand-trust__slide--stats .brand-trust__content");
+
+    if (leftCover) leftCover.style.width = "0";
+    if (rightCover) rightCover.style.width = "0";
+    
+    bgImages.forEach((img) => {
+      img.style.transform = "scale(1)";
+    });
+    
+    contents.forEach((content) => {
+      content.style.opacity = "1";
+      content.style.transform = "none";
+    });
+
+    // Trigger stats counter immediately on mobile fallback
+    runStatsAnimation();
+  }
 }
