@@ -1213,8 +1213,8 @@ body.door-locked {
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(47, 95, 167, 0.15),
-    rgba(27, 45, 90, 0.35)
+    rgb(255 255 255 / 15%),
+    rgb(182 186 195 / 35%)
   );
   mix-blend-mode: multiply;
   pointer-events: none;

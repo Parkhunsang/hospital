@@ -8,7 +8,8 @@
   --muted: #718096;
   --line: #e2e8f0;
   --soft: #f7fafc;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 * {
@@ -152,10 +153,6 @@ select {
   max-width: 620px;
 }
 
-.section-title .eyebrow {
-  margin-bottom: 18px;
-}
-
 .section h2 {
   font-size: 38px;
   line-height: 1.24;
@@ -167,23 +164,59 @@ select {
   margin-bottom: 60px;
 }
 
-.section-title .eyebrow {
+/* ==========================================================================
+   Eyebrow Component (공통 소타이틀)
+   ========================================================================== */
+.eyebrow {
   display: block;
+  margin-bottom: 12px;
   font-size: 13px;
   font-weight: 800;
   color: #2f5fa7;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-bottom: 12px;
 }
 
-.section-title .sub-eyebrow {
+/* Eyebrow Modifier: 라인 연출 타입 */
+.eyebrow--line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--blue, #2f5fa7);
+  text-transform: none;
+}
+
+.eyebrow--line::after {
+  width: 42px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+  content: "";
+}
+
+/* Eyebrow Modifier: 알약 형태 뱃지 타입 */
+.eyebrow--badge {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fdb608;
+}
+
+.eyebrow--white {
+  color: #ffffff;
+}
+
+/* Sub-eyebrow Component */
+.sub-eyebrow {
   display: block;
+  margin-bottom: 16px;
   font-size: 15px;
   font-weight: 500;
   color: var(--muted, #6b7c96);
   letter-spacing: -0.01em;
-  margin-bottom: 16px;
 }
 
 .section-title h2 {
@@ -202,23 +235,6 @@ select {
   font-size: 17px;
   line-height: 1.75;
   font-weight: 600;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--blue);
-  font-size: 15px;
-  font-weight: 800;
-}
-
-.eyebrow::after {
-  content: "";
-  width: 42px;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.55;
 }
 
 svg {
