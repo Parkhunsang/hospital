@@ -1123,10 +1123,17 @@ body.door-locked {
   align-items: center;
   gap: 24px;
   margin-bottom: 32px;
+.non-surgical__card-title {
+  /* 3. Box Model */
+  margin: 0;
+
+  /* 5. Typography */
+  font-size: 30px;
+  font-weight: 800;
+  color: #1b2d5a;
+  letter-spacing: -0.02em;
 }
 
-
-.non-surgical__card-summary {
   margin: 0 0 24px 0;
   font-size: 16px;
   color: #5a6e85;
@@ -2253,7 +2260,7 @@ body.door-locked {
     padding: 32px 30px;
   }
 
-  .section-heading--sm {
+  .non-surgical__card-title {
     font-size: 26px;
   }
 
@@ -2417,7 +2424,7 @@ body.door-locked {
     padding: 24px 20px;
   }
 
-  .section-heading--sm {
+  .non-surgical__card-title {
     font-size: 22px;
   }
 
