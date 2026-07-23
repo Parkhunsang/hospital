@@ -691,50 +691,155 @@ body.door-locked {
 
 /* 03. Fast Diagnosis - Start */
 .fast-diagnosis {
+  /* 1. Positioning */
   position: relative;
+
+  /* 2. Display */
   overflow: hidden;
-  padding: 100px 0;
+
+  /* 3. Box Model */
+  box-sizing: border-box;
+  width: 100%;
+  padding: 240px 4% calc(20vh + 240px);
+
+  /* 4. Border/Background */
   background: radial-gradient(circle at top, #f6f9fc 0%, #ffffff 100%);
 }
 
-.fast-diagnosis__title-wrap {
-  margin-bottom: 60px;
-  text-align: center;
+.fast-diagnosis__conwrap {
+  /* 2. Display */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  /* 3. Box Model */
+  width: 100%;
 }
 
-.fast-diagnosis__eyebrow {
+/* Left Sticky Title Area (width: 30%) */
+.fast-diagnosis__title {
+  /* 1. Positioning */
+  position: relative;
+  z-index: 10;
+
+  /* 3. Box Model */
+  width: 30%;
+}
+
+.fast-diagnosis__title .eyebrow {
+  /* 2. Display */
   display: block;
+
+  /* 3. Box Model */
   margin-bottom: 12px;
-  font-size: 13px;
+
+  /* 5. Typography */
+  font-size: 0.8125rem;
   font-weight: 800;
   color: #2f5fa7;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
-.fast-diagnosis__sub-eyebrow {
+.fast-diagnosis__title .sub-eyebrow {
+  /* 2. Display */
   display: block;
+
+  /* 3. Box Model */
   margin-bottom: 16px;
-  font-size: 15px;
+
+  /* 5. Typography */
+  font-size: 0.9375rem;
   font-weight: 500;
   color: var(--muted, #6b7c96);
   letter-spacing: -0.01em;
 }
 
+.fast-diagnosis__title .section-title__title {
+  /* 3. Box Model */
+  margin: 20px 0 24px 0;
 
-.fast-diagnosis__steps-wrap {
-  position: relative;
-  width: 100%;
-  margin-bottom: 60px;
+  /* 5. Typography */
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1b2d5a;
+  word-break: keep-all;
+}
+
+.fast-diagnosis__title .section-title__title .dot {
+  /* 1. Positioning */
+  vertical-align: top;
+
+  /* 2. Display */
+  display: inline-block;
+
+  /* 3. Box Model */
+  width: 8px;
+  height: 8px;
+  margin: 22px 0 0 8px;
+
+  /* 4. Border/Background */
+  border-radius: 50%;
+  background: #2f5fa7;
+}
+
+.fast-diagnosis__btn-more {
+  /* 2. Display */
+  display: inline-flex;
+  align-items: center;
+
+  /* 5. Typography */
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #1b2d5a;
+  text-decoration: none;
+
+  /* 6. Others */
+  transition: color 0.3s ease;
+}
+
+.fast-diagnosis__btn-more:hover {
+  color: #2f5fa7;
+}
+
+.fast-diagnosis__btn-more:focus-visible {
+  outline: 2px solid #2f5fa7;
+  outline-offset: 4px;
+}
+
+.fast-diagnosis__btn-more i {
+  /* 2. Display */
+  display: inline-block;
+
+  /* 3. Box Model */
+  margin-left: 8px;
+
+  /* 6. Others */
+  transition: transform 0.3s ease;
+}
+
+.fast-diagnosis__btn-more:hover i {
+  transform: translateX(4px);
+}
+
+/* Right Cards Container Area (width: 69%) */
+.fast-diagnosis__con {
+  /* 3. Box Model */
+  width: 69%;
 }
 
 .fast-diagnosis__steps {
-  position: relative;
+  /* 2. Display */
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  /* 3. Box Model */
   margin: 0;
+  padding: 0;
+
+  /* 6. Others */
   list-style: none;
 }
 
@@ -743,52 +848,34 @@ body.door-locked {
   position: relative;
 
   /* 2. Display */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
   overflow: hidden;
 
   /* 3. Box Model */
-  height: 480px;
-  flex: 1;
+  width: 48.25%;
+  height: 50vh;
+  min-height: 420px;
+  margin-bottom: 120px;
 
   /* 4. Border/Background */
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(27, 45, 90, 0.04);
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(27, 45, 90, 0.08);
 
   /* 6. Others */
-  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* For hover transitions (enabled after reveal completes) */
-.fast-diagnosis__step.is-animated {
-  transition:
-    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Fallback state if GSAP is not loaded */
-.fast-diagnosis__step.is-fallback {
-  transform: translateY(30px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
-}
-
-.fast-diagnosis__step.is-fallback.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Staggered Offset for Even-numbered Cards */
+.fast-diagnosis__step:nth-child(2) {
+  transform: translateY(35vh);
 }
 
 .fast-diagnosis__step:hover {
-  /* 4. Border/Background */
-  box-shadow:
-    0 20px 40px rgba(27, 45, 90, 0.12),
-    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  box-shadow: 0 20px 40px rgba(27, 45, 90, 0.16);
+  transform: translateY(-8px);
+}
 
-  /* 6. Others */
-  transform: translateY(-10px);
+.fast-diagnosis__step:nth-child(2):hover {
+  transform: translateY(calc(35vh - 8px));
 }
 
 .fast-diagnosis__image-container {
@@ -804,21 +891,25 @@ body.door-locked {
   /* 3. Box Model */
   width: 100%;
   height: 100%;
+
+  /* 4. Border/Background */
+  border-radius: 30px;
 }
 
 .fast-diagnosis__bg-image {
+  /* 2. Display */
+  object-fit: cover;
+
   /* 3. Box Model */
   width: 100%;
   height: 100%;
-  object-fit: cover;
 
   /* 6. Others */
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fast-diagnosis__step:hover .fast-diagnosis__bg-image {
-  /* 6. Others */
-  transform: scale(1.06);
+  transform: scale(1.08);
 }
 
 .fast-diagnosis__gradient-overlay {
@@ -835,8 +926,8 @@ body.door-locked {
   /* 4. Border/Background */
   background: linear-gradient(
     to bottom,
-    rgba(27, 45, 90, 0) 30%,
-    rgba(27, 45, 90, 0.6) 75%,
+    rgba(27, 45, 90, 0) 25%,
+    rgba(27, 45, 90, 0.65) 70%,
     #1b2d5a 100%
   );
 }
@@ -849,12 +940,13 @@ body.door-locked {
   /* 2. Display */
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: flex-end;
 
   /* 3. Box Model */
-  width: 100%;
-  padding: 40px 30px;
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 40px 32px;
 
   /* 5. Typography */
   text-align: left;
@@ -862,10 +954,10 @@ body.door-locked {
 
 .fast-diagnosis__label {
   /* 3. Box Model */
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 
   /* 5. Typography */
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 800;
   color: #fdb608;
   letter-spacing: 0.1em;
@@ -874,11 +966,12 @@ body.door-locked {
 
 .fast-diagnosis__step-title {
   /* 3. Box Model */
-  margin: 0 0 12px 0;
+  margin: 0 0 10px 0;
 
   /* 5. Typography */
-  font-size: 24px;
-  font-weight: 800;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.35;
   color: #ffffff;
   letter-spacing: -0.02em;
 }
@@ -886,60 +979,14 @@ body.door-locked {
 .fast-diagnosis__step-desc {
   /* 3. Box Model */
   margin: 0;
-  max-width: 280px;
 
   /* 5. Typography */
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
   line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
   word-break: keep-all;
 }
-
-.fast-diagnosis__features {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.fast-diagnosis__feature-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 14px 28px;
-  border: 1px solid rgba(47, 95, 167, 0.15);
-  border-radius: 30px;
-  background: #ffffff;
-  box-shadow: 0 4px 12px rgba(27, 45, 90, 0.02);
-  font-size: 15px;
-  font-weight: 700;
-  color: #1b2d5a;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.fast-diagnosis__feature-tag::before {
-  content: "";
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin-right: 8px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232f5fa7' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.fast-diagnosis__feature-tag:hover {
-  border-color: #2f5fa7;
-  background: #ffffff;
-  box-shadow: 0 8px 20px rgba(47, 95, 167, 0.08);
-  transform: translateY(-2px);
-}
-
-.fast-diagnosis__feature-tag:hover::before {
-  transform: scale(1.25);
-}
+/* 03. Fast Diagnosis - End */
 /* 03. Fast Diagnosis [END] */
 
 .non-surgical {
@@ -985,7 +1032,6 @@ body.door-locked {
   color: #6b7c96;
   letter-spacing: -0.01em;
 }
-
 
 /* Swiper 컨테이너 */
 .non-surgical__swiper-container {
@@ -1123,6 +1169,7 @@ body.door-locked {
   align-items: center;
   gap: 24px;
   margin-bottom: 32px;
+}
 .non-surgical__card-title {
   /* 3. Box Model */
   margin: 0;
@@ -1134,6 +1181,7 @@ body.door-locked {
   letter-spacing: -0.02em;
 }
 
+.non-surgical__card-summary {
   margin: 0 0 24px 0;
   font-size: 16px;
   color: #5a6e85;
@@ -2213,20 +2261,47 @@ body.door-locked {
     font-size: 28px;
   }
 
-  .fast-diagnosis__steps {
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
+  .fast-diagnosis {
+    padding: 100px 20px;
   }
 
-  .fast-diagnosis__steps::before {
-    display: none;
+  .fast-diagnosis__conwrap {
+    flex-direction: column;
+  }
+
+  .fast-diagnosis__title {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .fast-diagnosis__title .section-title__title {
+    font-size: 2.125rem;
+    margin: 16px 0;
+  }
+
+  .fast-diagnosis__con {
+    width: 100%;
+  }
+
+  .fast-diagnosis__steps {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
   }
 
   .fast-diagnosis__step {
     width: 100%;
-    max-width: 480px;
-    padding: 40px 24px;
+    height: 380px;
+    min-height: auto;
+    margin-bottom: 30px;
+  }
+
+  .fast-diagnosis__step:nth-child(2) {
+    transform: translateY(0);
+  }
+
+  .fast-diagnosis__step:nth-child(2):hover {
+    transform: translateY(-6px);
   }
 
   .equip-grid {

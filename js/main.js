@@ -1300,3 +1300,32 @@ function initBrandTrustPartners() {
     runStatsAnimation();
   }
 }
+
+function initFastDiagnosis() {
+  const section = document.querySelector(".fast-diagnosis");
+  if (!section) return;
+
+  const titleEl = section.querySelector(".fast-diagnosis__title");
+  if (!titleEl) return;
+
+  if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+
+    ScrollTrigger.matchMedia({
+      // Desktop & Laptop (min-width: 1024px) -> Sticky Pin Title
+      "(min-width: 1024px)": function () {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: ".fast-diagnosis",
+            start: "top top",
+            end: "+=100%",
+            pin: ".fast-diagnosis__title",
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+      },
+    });
+  }
+}
+
