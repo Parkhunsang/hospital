@@ -241,12 +241,14 @@
             <span class="eyebrow">ONE-STOP DIAGNOSIS SYSTEM</span>
             <span class="sub-eyebrow">신속하고 정확한 원스톱 진단 시스템</span>
             <h2 class="section-title__title">
-              당일 검사부터<span class="dot"></span><br />
+              당일 검사부터<br />
               결과 분석, 치료까지<br />
               단 하루에
             </h2>
             <a class="btnMore fast-diagnosis__btn-more" href="#booking">
-              <span>진료 예약 및 안내 <i class="arr" aria-hidden="true">→</i></span>
+              <span
+                >진료 예약 및 안내 <i class="arr" aria-hidden="true">→</i></span
+              >
             </a>
           </div>
           <div class="fast-diagnosis__con">
@@ -261,8 +263,9 @@
                   <div class="fast-diagnosis__gradient-overlay"></div>
                 </div>
                 <div class="fast-diagnosis__content">
-                  <span class="fast-diagnosis__label">Step 01</span>
-                  <h3 class="fast-diagnosis__step-title">전문의 진료 & 당일 검사</h3>
+                  <h3 class="fast-diagnosis__step-title">
+                    전문의 진료 & 당일 검사
+                  </h3>
                   <p class="fast-diagnosis__step-desc">
                     대학병원급 MRI·CT 당일 정밀 검사를 진행합니다.
                   </p>
@@ -279,8 +282,9 @@
                   <div class="fast-diagnosis__gradient-overlay"></div>
                 </div>
                 <div class="fast-diagnosis__content">
-                  <span class="fast-diagnosis__label">Step 02</span>
-                  <h3 class="fast-diagnosis__step-title">영상의학과 전문 판독</h3>
+                  <h3 class="fast-diagnosis__step-title">
+                    영상의학과 전문 판독
+                  </h3>
                   <p class="fast-diagnosis__step-desc">
                     영상의학과 전문의가 실시간으로 판독 및 정밀 분석합니다.
                   </p>
@@ -297,10 +301,30 @@
                   <div class="fast-diagnosis__gradient-overlay"></div>
                 </div>
                 <div class="fast-diagnosis__content">
-                  <span class="fast-diagnosis__label">Step 03</span>
-                  <h3 class="fast-diagnosis__step-title">통합 협진 & 맞춤 치료</h3>
+                  <h3 class="fast-diagnosis__step-title">
+                    통합 협진 & 맞춤 치료
+                  </h3>
                   <p class="fast-diagnosis__step-desc">
-                    4개과 전문의 통합 협진을 통한 당일 맞춤 비수술 치료를 시행합니다.
+                    4개과 전문의 통합 협진을 통한 당일 맞춤 비수술 치료를
+                    시행합니다.
+                  </p>
+                </div>
+              </li>
+
+              <li class="fast-diagnosis__step">
+                <div class="fast-diagnosis__image-container">
+                  <img
+                    class="fast-diagnosis__bg-image"
+                    src="./assets/diag_bg_4.png"
+                    alt="사후 관리 및 케어 시스템 안내"
+                  />
+                  <div class="fast-diagnosis__gradient-overlay"></div>
+                </div>
+                <div class="fast-diagnosis__content">
+                  <h3 class="fast-diagnosis__step-title">체계적인 사후 관리</h3>
+                  <p class="fast-diagnosis__step-desc">
+                    전담 의료진의 1:1 맞춤 케어로 재발을 방지하고 빠른 회복을
+                    도웁니다.
                   </p>
                 </div>
               </li>
@@ -361,9 +385,9 @@
 
             <!-- 메인 Swiper 슬라이더 -->
             <div class="swiper non-surgical__swiper">
-              <div class="swiper-wrapper">
+              <ul class="swiper-wrapper">
                 <!-- Slide 1: 도수치료 -->
-                <div
+                <li
                   class="swiper-slide non-surgical__slide"
                   data-slide-index="0"
                 >
@@ -376,10 +400,7 @@
                         <h3 class="non-surgical__card-title">도수치료</h3>
                         <div
                           clasbrand-trust__stat-vals="non-surgical__card-badges"
-                        >
-                          <span class="badge badge-accent">1:1 맞춤</span>
-                          <span class="badge badge-outline">비수술</span>
-                        </div>
+                        ></div>
                       </div>
                       <p class="non-surgical__card-summary">
                         숙련된 치료사가 손을 이용해 틀어진 관절과 척추 정렬을
@@ -431,10 +452,10 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </li>
 
                 <!-- Slide 2: 신경차단술 -->
-                <div
+                <li
                   class="swiper-slide non-surgical__slide"
                   data-slide-index="1"
                 >
@@ -445,10 +466,7 @@
                       >
                       <div class="non-surgical__card-title-wrap">
                         <h3 class="non-surgical__card-title">신경차단술</h3>
-                        <div class="non-surgical__card-badges">
-                          <span class="badge badge-accent">10분 시술</span>
-                          <span class="badge badge-outline">당일 귀가</span>
-                        </div>
+                        <div class="non-surgical__card-badges"></div>
                       </div>
                       <p class="non-surgical__card-summary">
                         C-arm(미세 컴퓨터 방사선 장비)을 사용하여 실시간으로
@@ -504,10 +522,10 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </li>
 
                 <!-- Slide 3: 주사치료 -->
-                <div
+                <li
                   class="swiper-slide non-surgical__slide"
                   data-slide-index="2"
                 >
@@ -518,10 +536,7 @@
                       >
                       <div class="non-surgical__card-title-wrap">
                         <h3 class="non-surgical__card-title">주사치료</h3>
-                        <div class="non-surgical__card-badges">
-                          <span class="badge badge-accent">조직 재생</span>
-                          <span class="badge badge-outline">안전 인증</span>
-                        </div>
+                        <div class="non-surgical__card-badges"></div>
                       </div>
                       <p class="non-surgical__card-summary">
                         관절과 척추 주변 힘줄, 인대 등 손상된 연부조직에 약물을
@@ -576,10 +591,10 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </li>
 
                 <!-- Slide 4: 재활치료 -->
-                <div
+                <li
                   class="swiper-slide non-surgical__slide"
                   data-slide-index="3"
                 >
@@ -590,10 +605,7 @@
                       >
                       <div class="non-surgical__card-title-wrap">
                         <h3 class="non-surgical__card-title">재활치료</h3>
-                        <div class="non-surgical__card-badges">
-                          <span class="badge badge-accent">코어 강화</span>
-                          <span class="badge badge-outline">재발 방지</span>
-                        </div>
+                        <div class="non-surgical__card-badges"></div>
                       </div>
                       <p class="non-surgical__card-summary">
                         비수술 치료 후 혹은 수술 후 약화된 근육을 재교육하고
@@ -650,10 +662,10 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </li>
 
                 <!-- Slide 5: 체외충격파 -->
-                <div
+                <li
                   class="swiper-slide non-surgical__slide"
                   data-slide-index="4"
                 >
@@ -664,10 +676,7 @@
                       >
                       <div class="non-surgical__card-title-wrap">
                         <h3 class="non-surgical__card-title">체외충격파</h3>
-                        <div class="non-surgical__card-badges">
-                          <span class="badge badge-accent">세포 재생</span>
-                          <span class="badge badge-outline">통증 완화</span>
-                        </div>
+                        <div class="non-surgical__card-badges"></div>
                       </div>
                       <p class="non-surgical__card-summary">
                         신체 외부에서 고에너지 충격파를 통증 부위에 집중시켜
@@ -724,8 +733,8 @@
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
 
             <!-- 인디케이터 도트 페이지네이션 -->
@@ -743,9 +752,9 @@
 
           <!-- 풀스크린 Swiper 슬라이더 -->
           <div class="swiper brand-trust__swiper">
-            <div class="swiper-wrapper">
+            <ul class="swiper-wrapper">
               <!-- Slide 1: Stats (실적) -->
-              <div
+              <li
                 class="swiper-slide brand-trust__slide brand-trust__slide--stats"
               >
                 <div class="brand-trust__bg-overlay"></div>
@@ -806,10 +815,10 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </li>
 
               <!-- Slide 2: Training (글로벌 아카데미) -->
-              <div
+              <li
                 class="swiper-slide brand-trust__slide brand-trust__slide--training"
               >
                 <div class="brand-trust__bg-overlay"></div>
@@ -870,10 +879,10 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </li>
 
               <!-- Slide 3: Philosophy (철학) -->
-              <div
+              <li
                 class="swiper-slide brand-trust__slide brand-trust__slide--philosophy"
               >
                 <div class="brand-trust__bg-overlay"></div>
@@ -904,8 +913,8 @@
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
 
             <!-- Custom Swiper Controls (Floating at bottom center) -->
             <div class="brand-trust__controls">
@@ -1059,103 +1068,253 @@
           </div>
 
           <div class="doctors__grid">
-            <article class="doctors__card">
-              <div class="doctors__image">
-                <img
-                  src="https://via.placeholder.com/400x500/e7f2ff/06366b?text=Doctor+Photo"
-                  alt="김코어 대표원장"
-                />
-                <div class="doctors__badge">정형외과 전문의</div>
-              </div>
-              <div class="doctors__info">
+            <article class="doctors__card" tabindex="0">
+              <span class="doctors__number">01</span>
+              <div class="doctors__content">
                 <div class="doctors__header">
                   <h3 class="doctors__name">
-                    김코어 <small class="doctors__role">대표원장</small>
+                    강현우 <small class="doctors__role">대표원장</small>
                   </h3>
-                  <p class="doctors__philosophy">
-                    "통증의 원인을 정확히 찾고 필요한 치료부터 제안합니다."
-                  </p>
                 </div>
-                <ul class="doctors__specs">
-                  <li class="doctors__spec-item">
-                    <strong class="doctors__spec-label">전문 진료:</strong>
-                    허리디스크, 척추관협착증, 좌골신경통
-                  </li>
-                  <li class="doctors__spec-item">
-                    <strong class="doctors__spec-label">주요 약력:</strong>
-                    서울대학교병원 정형외과 전임의, 前 서울대병원 임상자문교수,
-                    대한정형외과학회 정회원
-                  </li>
-                </ul>
-                <div class="doctors__schedule">
-                  <div class="doctors__schedule-head">
-                    <svg
-                      class="doctors__schedule-icon"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                    <span>오늘 진료 가능 시간</span>
+                <div class="doctors__info">
+                  <ul class="doctors__specs">
+                    <li class="doctors__spec-item">
+                      <strong class="doctors__spec-label">전문 분야:</strong>
+                      척추관협착증, 허리디스크, 고난도 비수술 치료
+                    </li>
+                    <li class="doctors__spec-item">
+                      <strong class="doctors__spec-label">주요 약력:</strong>
+                      서울대학교 의과대학 졸업, 서울대학교병원 정형외과 전임의,
+                      대한척추외과학회 정회원
+                    </li>
+                  </ul>
+                  <div class="doctors__schedule">
+                    <div class="doctors__schedule-head">
+                      <svg
+                        class="doctors__schedule-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                      </svg>
+                      <span>오늘 진료 가능 시간</span>
+                    </div>
+                    <div class="doctors__schedule-time">09:00 ~ 18:00</div>
                   </div>
-                  <div class="doctors__schedule-time">14:00 ~ 18:00</div>
+                  <div class="doctors__actions">
+                    <a href="#booking" class="primary-button full-width"
+                      >진료 예약하기</a
+                    >
+                  </div>
                 </div>
-                <div class="doctors__actions">
-                  <a href="#booking" class="primary-button full-width"
-                    >진료 예약하기</a
-                  >
-                </div>
+              </div>
+              <div class="doctors__image-container">
+                <img
+                  class="doctors__bg-image"
+                  src="./assets/doctor_1.png"
+                  alt="강현우 대표원장 프로필 사진"
+                />
               </div>
             </article>
 
-            <article class="doctors__card">
-              <div class="doctors__image">
-                <img
-                  src="https://via.placeholder.com/400x500/e7f2ff/06366b?text=Doctor+Photo"
-                  alt="이척추 원장"
-                />
-                <div class="doctors__badge">신경외과 전문의</div>
-              </div>
-              <div class="doctors__info">
+            <article class="doctors__card" tabindex="0">
+              <span class="doctors__number">02</span>
+              <div class="doctors__content">
                 <div class="doctors__header">
                   <h3 class="doctors__name">
-                    이척추 <small class="doctors__role">원장</small>
+                    이종혜 <small class="doctors__role">원장</small>
                   </h3>
-                  <p class="doctors__philosophy">
-                    "수술은 최후의 수단, 비수술 우선 치료를 지향합니다."
-                  </p>
                 </div>
-                <ul class="doctors__specs">
-                  <li class="doctors__spec-item">
-                    <strong class="doctors__spec-label">전문 진료:</strong>
-                    목디스크, 거북목, 신경차단술
-                  </li>
-                  <li class="doctors__spec-item">
-                    <strong class="doctors__spec-label">주요 약력:</strong>
-                    가톨릭대학교 서울성모병원 신경외과 전임의, 前 가톨릭의대
-                    외래교수, 대한척추신경외과학회 정회원
-                  </li>
-                </ul>
-                <div class="doctors__schedule">
-                  <div class="doctors__schedule-head">
-                    <svg
-                      class="doctors__schedule-icon"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                    <span>오늘 진료 가능 시간</span>
+                <div class="doctors__info">
+                  <ul class="doctors__specs">
+                    <li class="doctors__spec-item">
+                      <strong class="doctors__spec-label">전문 분야:</strong>
+                      무릎 및 어깨 관절염, 비수술 관절 재생 요법, 체외충격파
+                    </li>
+                    <li class="doctors__spec-item">
+                      <strong class="doctors__spec-label">주요 약력:</strong>
+                      연세대학교 의과대학 졸업, 세브란스병원 정형외과 외래교수,
+                      대한관절경학회 정회원
+                    </li>
+                  </ul>
+                  <div class="doctors__schedule">
+                    <div class="doctors__schedule-head">
+                      <svg
+                        class="doctors__schedule-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                      </svg>
+                      <span>오늘 진료 가능 시간</span>
+                    </div>
+                    <div class="doctors__schedule-time">09:30 ~ 17:30</div>
                   </div>
-                  <div class="doctors__schedule-time">09:30 ~ 13:00</div>
+                  <div class="doctors__actions">
+                    <a href="#booking" class="primary-button full-width"
+                      >진료 예약하기</a
+                    >
+                  </div>
                 </div>
-                <div class="doctors__actions">
-                  <a href="#booking" class="primary-button full-width"
-                    >진료 예약하기</a
-                  >
+              </div>
+              <div class="doctors__image-container">
+                <img
+                  class="doctors__bg-image"
+                  src="./assets/doctor_2.png"
+                  alt="이종혜 원장 프로필 사진"
+                />
+              </div>
+            </article>
+
+            <article class="doctors__card" tabindex="0">
+              <span class="doctors__number">03</span>
+              <div class="doctors__content">
+                <div class="doctors__header">
+                  <h3 class="doctors__name">
+                    김준우 <small class="doctors__role">원장</small>
+                  </h3>
                 </div>
+                <div class="doctors__info">
+                  <ul class="doctors__specs">
+                    <li class="doctors__spec-item">
+                      <strong class="doctors__spec-label">전문 분야:</strong>
+                      목디스크, 거북목 증후군, 신경차단술 및 만성 신경통
+                    </li>
+                    <li class="doctors__spec-item">
+                      <strong class="doctors__spec-label">주요 약력:</strong>
+                      고려대학교 의과대학 졸업, 고려대학교 안암병원 신경외과
+                      외래교수, 대한신경외과학회 정회원
+                    </li>
+                  </ul>
+                  <div class="doctors__schedule">
+                    <div class="doctors__schedule-head">
+                      <svg
+                        class="doctors__schedule-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                      </svg>
+                      <span>오늘 진료 가능 시간</span>
+                    </div>
+                    <div class="doctors__schedule-time">10:00 ~ 19:00</div>
+                  </div>
+                  <div class="doctors__actions">
+                    <a href="#booking" class="primary-button full-width"
+                      >진료 예약하기</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="doctors__image-container">
+                <img
+                  class="doctors__bg-image"
+                  src="./assets/doctor_3.png"
+                  alt="김준우 원장 프로필 사진"
+                />
+              </div>
+            </article>
+
+            <article class="doctors__card" tabindex="0">
+              <span class="doctors__number">04</span>
+              <div class="doctors__content">
+                <div class="doctors__header">
+                  <h3 class="doctors__name">
+                    김서연 <small class="doctors__role">부원장</small>
+                  </h3>
+                </div>
+                <div class="doctors__info">
+                  <ul class="doctors__specs">
+                    <li class="doctors__spec-item">
+                      <strong class="doctors__spec-label">전문 분야:</strong>
+                      근골격계 초음파 및 MRI 정밀 판독, 실시간 C-arm 판독
+                    </li>
+                    <li class="doctors__spec-item">
+                      <strong class="doctors__spec-label">주요 약력:</strong>
+                      이화여자대학교 의과대학 졸업, 이대목동병원 영상의학과
+                      전문의, 대한영상의학회 정회원
+                    </li>
+                  </ul>
+                  <div class="doctors__schedule">
+                    <div class="doctors__schedule-head">
+                      <svg
+                        class="doctors__schedule-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                      </svg>
+                      <span>오늘 진료 가능 시간</span>
+                    </div>
+                    <div class="doctors__schedule-time">09:00 ~ 17:00</div>
+                  </div>
+                  <div class="doctors__actions">
+                    <a href="#booking" class="primary-button full-width"
+                      >진료 예약하기</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="doctors__image-container">
+                <img
+                  class="doctors__bg-image"
+                  src="./assets/doctor_4.png"
+                  alt="김서연 부원장 프로필 사진"
+                />
+              </div>
+            </article>
+
+            <article class="doctors__card" tabindex="0">
+              <span class="doctors__number">05</span>
+              <div class="doctors__content">
+                <div class="doctors__header">
+                  <h3 class="doctors__name">
+                    이충혁 <small class="doctors__role">과장</small>
+                  </h3>
+                </div>
+                <div class="doctors__info">
+                  <ul class="doctors__specs">
+                    <li class="doctors__spec-item">
+                      <strong class="doctors__spec-label">전문 분야:</strong>
+                      척추·관절 도수재활치료, 스포츠 재활, 근육 통증 완화
+                    </li>
+                    <li class="doctors__spec-item">
+                      <strong class="doctors__spec-label">주요 약력:</strong>
+                      한양대학교 의과대학 졸업, 한양대학교병원 재활의학과
+                      전문의, 대한재활의학회 정회원
+                    </li>
+                  </ul>
+                  <div class="doctors__schedule">
+                    <div class="doctors__schedule-head">
+                      <svg
+                        class="doctors__schedule-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                      </svg>
+                      <span>오늘 진료 가능 시간</span>
+                    </div>
+                    <div class="doctors__schedule-time">09:00 ~ 18:00</div>
+                  </div>
+                  <div class="doctors__actions">
+                    <a href="#booking" class="primary-button full-width"
+                      >진료 예약하기</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="doctors__image-container">
+                <img
+                  class="doctors__bg-image"
+                  src="./assets/doctor_5.png"
+                  alt="이충혁 과장 프로필 사진"
+                />
               </div>
             </article>
           </div>

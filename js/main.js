@@ -1250,20 +1250,17 @@ function initBrandTrustPartners() {
           rightCover.style.width = currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
         }
 
-        // 2) Animate scale of background image on Slide 1 (reaches 1.0 by progress = 0.6)
-        const bgImages = section.querySelectorAll(".brand-trust__slide--stats .brand-trust__bg-img");
+        // 2) Ensure background images remain 100% full screen (scale 1.0)
+        const bgImages = section.querySelectorAll(".brand-trust__bg-img");
         bgImages.forEach((img) => {
-          const scaleProgress = Math.min(progress / 0.6, 1);
-          const scale = 0.5 + scaleProgress * 0.5;
-          img.style.transform = `scale(${scale})`;
+          img.style.transform = "scale(1)";
         });
 
-        // 3) Animate content opacity of Slide 1 (fully visible by progress = 0.6)
-        const contents = section.querySelectorAll(".brand-trust__slide--stats .brand-trust__content");
+        // 3) Ensure content remains fully visible
+        const contents = section.querySelectorAll(".brand-trust__content");
         contents.forEach((content) => {
-          const fadeProgress = Math.min(progress / 0.6, 1);
-          content.style.opacity = fadeProgress;
-          content.style.transform = `translateY(${(1 - fadeProgress) * 30}px)`;
+          content.style.opacity = "1";
+          content.style.transform = "none";
         });
 
         // 4) Trigger stats counter count-up when curtain is fully open (>0.5)
@@ -1312,17 +1309,15 @@ function initFastDiagnosis() {
     gsap.registerPlugin(ScrollTrigger);
 
     ScrollTrigger.matchMedia({
-      // Desktop & Laptop (min-width: 1024px) -> Sticky Pin Title
       "(min-width: 1024px)": function () {
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: ".fast-diagnosis",
-            start: "top top",
-            end: "+=100%",
-            pin: ".fast-diagnosis__title",
-            scrub: 1,
-            invalidateOnRefresh: true,
-          },
+        ScrollTrigger.create({
+          trigger: ".fast-diagnosis__conwrap",
+          start: "top 140px",
+          end: "bottom bottom",
+          pin: ".fast-diagnosis__title",
+          pinSpacing: false,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
         });
       },
     });

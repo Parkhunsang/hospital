@@ -46,6 +46,15 @@ select {
   font: inherit;
 }
 
+ul.swiper-wrapper {
+  /* 3. Box Model */
+  margin: 0;
+  padding: 0;
+
+  /* 6. Others */
+  list-style: none;
+}
+
 .container {
   width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
