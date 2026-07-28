@@ -187,30 +187,6 @@ body.door-locked {
   transform: translateX(-50%);
   animation: scrollWheel 1.6s infinite ease-in-out;
 }
-
-/* Responsive Styles for Door */
-@media (max-width: 768px) {
-  .intro-door__content {
-    padding: 36px 20px;
-    border-radius: 24px;
-  }
-
-  .intro-door__logo-wrap {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 18px;
-  }
-
-  .intro-door__desc {
-    font-size: 14px;
-  }
-
-  .intro-door__enter-btn {
-    padding: 12px 28px !important;
-    font-size: 15px;
-  }
-}
-
 /* 인트로 도어 끝 */
 
 /* 02. 3D Body Map Hero Section [START] */
@@ -226,7 +202,6 @@ body.door-locked {
     var(--bg-start) 0%,
     var(--bg-end) 100%
   );
-  /* 깊이감 있는 밝은 스튜디오 그라데이션 배경 */
 }
 
 .hero-3d__canvas-container {
@@ -248,7 +223,6 @@ body.door-locked {
   box-sizing: border-box;
   transform: translateX(-50%);
   pointer-events: none;
-  /* 배경의 3D 캔버스 드래그를 방해하지 않음 */
 }
 
 .hero-3d__welcome {
@@ -713,51 +687,27 @@ body.door-locked {
 }
 
 /* Left Sticky Title Area */
-.fast-diagnosis__title {
+.fast-diagnosis .section-title {
   position: relative;
   z-index: 10;
 
   width: 28%;
+  margin-right: 0;
+  margin-left: 0;
+
+  text-align: left;
 }
 
 @media (min-width: 1024px) {
-  .fast-diagnosis__title {
+  .fast-diagnosis .section-title {
     position: sticky;
     top: 140px;
   }
 }
 
-.fast-diagnosis__title .eyebrow {
-  display: block;
-
-  margin-bottom: 12px;
-
-  font-size: 0.8125rem;
-  font-weight: 800;
-  color: #2f5fa7;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.fast-diagnosis__title .sub-eyebrow {
-  display: block;
-
-  margin-bottom: 16px;
-
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--muted, #6b7c96);
-  letter-spacing: -0.01em;
-}
-
-.fast-diagnosis__title .section-title__title {
+.fast-diagnosis .section-title__title {
+  /* 3. Box Model */
   margin: 20px 0 24px 0;
-
-  font-size: 2.75rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: #1b2d5a;
-  word-break: keep-all;
 }
 
 .fast-diagnosis__btn-more {
@@ -942,28 +892,9 @@ body.door-locked {
   opacity: 0.08;
 }
 
-.non-surgical__title-wrap {
+.non-surgical .section-title {
+  /* 3. Box Model */
   margin-bottom: 60px;
-  text-align: center;
-}
-
-.non-surgical__eyebrow {
-  display: block;
-  margin-bottom: 12px;
-  font-size: 13px;
-  font-weight: 800;
-  color: #2f5fa7;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.non-surgical__sub-eyebrow {
-  display: block;
-  margin-bottom: 16px;
-  font-size: 15px;
-  font-weight: 500;
-  color: #6b7c96;
-  letter-spacing: -0.01em;
 }
 
 /* Swiper 컨테이너 */
@@ -1701,40 +1632,26 @@ body.door-locked {
 
 /* 05. 의료진 소개 및 오늘 진료 가능 일정 (Doctors) [START] */
 .doctors__grid {
-  /* 2. Display */
   display: flex;
   overflow: hidden;
-
-  /* 3. Box Model */
   width: 100%;
   height: 720px;
-
-  /* 4. Border/Background */
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
 .doctors__card {
-  /* 1. Positioning */
   position: relative;
-
-  /* 2. Display */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
-
-  /* 3. Box Model */
   flex: 1;
   height: 100%;
   padding: 40px 24px;
   box-sizing: border-box;
-
-  /* 4. Border/Background */
   background: var(--white);
-
-  /* 6. Others */
   transition:
     flex 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     background-color 0.5s ease,
@@ -1743,36 +1660,26 @@ body.door-locked {
 }
 
 .doctors__card + .doctors__card {
-  /* 4. Border/Background */
   border-left: 1px solid var(--line);
 }
 
 .doctors__card:hover,
 .doctors__card:focus-within {
-  /* 3. Box Model */
   flex: 2.2;
   padding: 36px 28px;
-
-  /* 4. Border/Background */
   background-color: var(--navy);
   box-shadow: var(--shadow);
+  justify-content: space-evenly;
 }
 
 .doctors__number {
-  /* 2. Display */
   display: block;
   order: 1;
-
-  /* 3. Box Model */
   margin-bottom: 20px;
-
-  /* 5. Typography */
   font-family: "Outfit", sans-serif;
   font-size: 2.25rem;
   font-weight: 800;
   color: var(--blue);
-
-  /* 6. Others */
   opacity: 0.35;
   transition:
     opacity 0.4s ease,
@@ -1783,163 +1690,107 @@ body.door-locked {
 
 .doctors__card:hover .doctors__number,
 .doctors__card:focus-within .doctors__number {
-  /* 3. Box Model */
   margin-bottom: 0;
-
-  /* 6. Others */
   opacity: 0;
   transform: translateY(-20px);
   height: 0;
 }
 
 .doctors__content {
-  /* 1. Positioning */
   position: relative;
   z-index: 3;
-  order: 2;
-
-  /* 2. Display */
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* 3. Box Model */
+  order: 2;
   width: 100%;
-  transition: order 0.5s ease;
-}
-
-.doctors__card:hover .doctors__content,
-.doctors__card:focus-within .doctors__content {
-  /* 2. Display */
-  order: 3;
 }
 
 .doctors__header {
-  /* 3. Box Model */
   margin-bottom: 24px;
   text-align: center;
-
-  /* 6. Others */
-  transition: margin-bottom 0.4s ease;
-}
-
-.doctors__card:hover .doctors__header,
-.doctors__card:focus-within .doctors__header {
-  /* 3. Box Model */
-  margin-bottom: 16px;
 }
 
 .doctors__name {
-  /* 2. Display */
   display: flex;
   align-items: baseline;
   justify-content: center;
-
-  /* 3. Box Model */
   gap: 8px;
   margin: 0;
-
-  /* 5. Typography */
   font-size: 1.75rem;
   font-weight: 800;
   color: var(--ink);
-
-  /* 6. Others */
   transition: color 0.5s ease;
 }
 
 .doctors__card:hover .doctors__name,
 .doctors__card:focus-within .doctors__name {
-  /* 5. Typography */
   color: var(--white);
 }
 
 .doctors__role {
-  /* 5. Typography */
   font-size: 1rem;
   font-weight: 600;
   color: var(--muted);
-
-  /* 6. Others */
   transition: color 0.5s ease;
 }
 
 .doctors__card:hover .doctors__role,
 .doctors__card:focus-within .doctors__role {
-  /* 5. Typography */
   color: rgba(255, 255, 255, 0.7);
 }
 
 .doctors__info {
-  /* 2. Display */
   overflow: hidden;
-
-  /* 3. Box Model */
   width: 100%;
+  max-width: 100%;
   height: 0;
-
-  /* 5. Typography */
+  margin-top: 0;
   text-align: left;
-
-  /* 6. Others */
   opacity: 0;
   transition:
-    height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.4s ease;
+    height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-top 0.4s ease,
+    opacity 0.15s ease;
 }
 
 .doctors__card:hover .doctors__info,
 .doctors__card:focus-within .doctors__info {
-  /* 3. Box Model */
   height: 380px;
   margin-top: 10px;
-
-  /* 6. Others */
   opacity: 1;
   transition:
-    height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.5s ease 0.15s;
+    height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-top 0.45s ease,
+    opacity 0.3s ease 0.15s;
 }
 
 .doctors__specs {
-  /* 3. Box Model */
   margin: 0 0 20px 0;
   padding: 0;
-
-  /* 6. Others */
   list-style: none;
 }
 
 .doctors__spec-item {
-  /* 3. Box Model */
   margin-bottom: 8px;
-
-  /* 5. Typography */
   font-size: 0.9375rem;
-  color: rgba(255, 255, 255, 0.85);
   line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  word-break: keep-all;
 }
 
 .doctors__spec-label {
-  /* 3. Box Model */
   margin-right: 6px;
-
-  /* 5. Typography */
   color: var(--white);
   font-weight: 700;
 }
 
 .doctors__schedule {
-  /* 2. Display */
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  /* 3. Box Model */
   margin-bottom: 20px;
   padding: 12px 18px;
-
-  /* 4. Border/Background */
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
@@ -1948,106 +1799,67 @@ body.door-locked {
 }
 
 .doctors__schedule-head {
-  /* 2. Display */
   display: flex;
   align-items: center;
-
-  /* 3. Box Model */
   gap: 8px;
-
-  /* 5. Typography */
   color: rgba(255, 255, 255, 0.9);
   font-size: 0.875rem;
   font-weight: 700;
 }
 
 .doctors__schedule-icon {
-  /* 3. Box Model */
   width: 18px;
   height: 18px;
 }
 
 .doctors__schedule-time {
-  /* 5. Typography */
   font-size: 0.9375rem;
   font-weight: 800;
   color: #ffe066;
 }
 
 .doctors__actions {
-  /* 2. Display */
   display: flex;
 }
 
 .doctors__actions .primary-button.full-width {
-  /* 2. Display */
   justify-content: center;
-
-  /* 3. Box Model */
   width: 100%;
 }
 
 .doctors__card:hover .primary-button,
 .doctors__card:focus-within .primary-button {
-  /* 4. Border/Background */
   background: var(--white) !important;
   box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15) !important;
-
-  /* 5. Typography */
   color: var(--navy) !important;
 }
 
 .doctors__card:hover .primary-button:hover,
 .doctors__card:focus-within .primary-button:hover {
-  /* 4. Border/Background */
   background: #f0f4f8 !important;
 }
 
 .doctors__image-container {
-  /* 2. Display */
   display: block;
   overflow: hidden;
   order: 3;
-
-  /* 3. Box Model */
   width: 180px;
   height: 180px;
   margin-top: auto;
-
-  /* 4. Border/Background */
   border: 1px solid var(--line);
   border-radius: 50%;
   background-color: var(--soft);
-
-  /* 6. Others */
-  transition:
-    width 0.4s ease,
-    height 0.4s ease,
-    margin 0.4s ease,
-    border-color 0.4s ease;
+  transition: border-color 0.4s ease;
 }
 
 .doctors__card:hover .doctors__image-container,
 .doctors__card:focus-within .doctors__image-container {
-  /* 2. Display */
-  order: 2;
-
-  /* 3. Box Model */
-  width: 120px;
-  height: 120px;
-  margin-top: 0;
-  margin-bottom: 16px;
-
-  /* 4. Border/Background */
   border-color: rgba(255, 255, 255, 0.2);
 }
 
 .doctors__bg-image {
-  /* 2. Display */
   object-fit: cover;
   object-position: top center;
-
-  /* 3. Box Model */
   width: 100%;
   height: 100%;
 }
@@ -2089,7 +1901,6 @@ body.door-locked {
 
 .self-test__checkbox-box {
   position: relative;
-
   width: 26px;
   height: 26px;
   border-radius: 6px;
@@ -2230,7 +2041,6 @@ body.door-locked {
   line-height: 1.6;
   word-break: keep-all;
 }
-
 /* 07. 통증 건강정보 (Health Information) [END] */
 
 /* Responsive Media Queries (Responsive Styles) [START] */
@@ -2288,14 +2098,14 @@ body.door-locked {
     flex-direction: column;
   }
 
-  .fast-diagnosis__title {
+  .fast-diagnosis .section-title {
     width: 100%;
     margin-bottom: 50px;
   }
 
-  .fast-diagnosis__title .section-title__title {
-    font-size: 2.125rem;
+  .fast-diagnosis .section-title__title {
     margin: 16px 0;
+    font-size: 2.125rem;
   }
 
   .fast-diagnosis__con {
@@ -2549,6 +2359,28 @@ body.door-locked {
 
   .brand-trust__controls {
     bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-door__content {
+    padding: 36px 20px;
+    border-radius: 24px;
+  }
+
+  .intro-door__logo-wrap {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 18px;
+  }
+
+  .intro-door__desc {
+    font-size: 14px;
+  }
+
+  .intro-door__enter-btn {
+    padding: 12px 28px !important;
+    font-size: 15px;
   }
 }
 
