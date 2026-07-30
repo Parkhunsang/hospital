@@ -45,11 +45,21 @@ function init3DBodyMap() {
       title: "어깨",
       diseases: ["오십견", "회전근개파열", "석회성 건염", "견관절재발성 탈구"],
 
+      /* [데스크톱/태블릿 기본 카메라 시점] */
       targetX: -0.42,
       targetY: 1.06,
       camX: -0.42,
       camY: 1.06,
       camZ: 2.0,
+
+      /* [모바일 640px 이하 전용 카메라 줌아웃 & 시선 오프셋] */
+      mobile: {
+        targetX: -0.42, // 카메라가 바라보는 시선 중심점의 좌/우 위치 (음수: 오른쪽, 양수: 왼쪽)
+        targetY: 0.8, // 카메라가 바라보는 시선 중심점의 상/하 높이 (양수: 위로 들어올림, 음수: 아래)
+        camX: -0.42, // 3D 카메라 렌즈 본체의 좌/우 위치 (targetX와 동일 시 정면 바라봄)
+        camY: 1.25, // 3D 카메라 렌즈 본체의 상/하 높이 (targetY와 동일 시 수평 높이)
+        camZ: 3.2, // 3D 카메라와의 앞/뒤 거리 줌 수치 (절대값이 클수록 멀어지는 줌아웃)
+      },
 
       image: "./assets/shoulder.png",
       imageOffsetX: 0.075,
@@ -73,11 +83,21 @@ function init3DBodyMap() {
         "골다공증성 압박골절",
       ],
 
+      /* [데스크톱/태블릿 기본 카메라 시점] */
       targetX: -0.02,
       targetY: 0,
       camX: -0.02,
       camY: 0,
       camZ: -3.8,
+
+      /* [모바일 640px 이하 전용 카메라 줌아웃 & 시선 오프셋] */
+      mobile: {
+        targetX: -0.02, // 모바일 카메라가 바라보는 시선 X축
+        targetY: -0.2, // 모바일 카메라가 바라보는 시선 Y축 (위로 살짝 올림)
+        camX: -0.02, // 모바일 3D 카메라 렌즈 위치 X축
+        camY: 0.25, // 모바일 3D 카메라 렌즈 높이 Y축
+        camZ: -4.8, // 모바일 줌아웃 거리 (더 멀어짐)
+      },
 
       image: "./assets/waist.png",
       imageOffsetX: 0,
@@ -100,11 +120,21 @@ function init3DBodyMap() {
         "팔꿈치터널증후군",
       ],
 
+      /* [데스크톱/태블릿 기본 카메라 시점] */
       targetX: -1.1,
       targetY: -0.2,
       camX: -2.8,
       camY: -0.2,
       camZ: 0.0,
+
+      /* [모바일 640px 이하 전용 카메라 줌아웃 & 시선 오프셋] */
+      mobile: {
+        targetX: -0.8, // 모바일 시선 중심점 X축 (손목 측면)
+        targetY: -0.4, // 모바일 시선 중심점 Y축
+        camX: -3.6, // 모바일 카메라 렌즈 X축 (더 멀리 줌아웃)
+        camY: -0.1, // 모바일 카메라 렌즈 Y축
+        camZ: 0.0, // 모바일 카메라 렌즈 Z축
+      },
 
       image: "./assets/wrist.png",
       imageOffsetX: 0,
@@ -128,11 +158,21 @@ function init3DBodyMap() {
         "퇴행성 관절염",
       ],
 
+      /* [데스크톱/태블릿 기본 카메라 시점] */
       targetY: -1.1,
       targetX: 0.3,
       camX: 0.3,
       camY: -1.1,
       camZ: 2.0,
+
+      /* [모바일 640px 이하 전용 카메라 줌아웃 & 시선 오프셋] */
+      mobile: {
+        targetX: 0.3, // 모바일 시선 중심점 X축
+        targetY: -1.2, // 모바일 시선 중심점 Y축 (상단으로 들어올림)
+        camX: 0.3, // 모바일 카메라 렌즈 X축
+        camY: -0.85, // 모바일 카메라 렌즈 Y축
+        camZ: 3.2, // 모바일 전면 줌아웃 수치
+      },
 
       image: "./assets/knee.png",
       imageOffsetX: 0.03,
@@ -144,6 +184,7 @@ function init3DBodyMap() {
       height: 0.65,
       maskScale: [1.0, 1.0],
     },
+
     foot: {
       title: "발/ 발목",
       diseases: [
@@ -152,11 +193,22 @@ function init3DBodyMap() {
         "발목 관절염",
         "족저근막염 등 다양한 족부질환",
       ],
+
+      /* [데스크톱/태블릿 기본 카메라 시점] */
       targetX: 0.2,
       targetY: -2.1,
       camX: -2.2,
       camY: -2.1,
       camZ: 0.0,
+
+      /* [모바일 640px 이하 전용 카메라 줌아웃 & 시선 오프셋] */
+      mobile: {
+        targetX: 0.2, // 모바일 시선 중심점 X축
+        targetY: -2.4, // 모바일 시선 중심점 Y축 (상단으로 들어올림)
+        camX: -3.4, // 모바일 카메라 렌즈 X축 (더 멀리 줌아웃)
+        camY: -1.8, // 모바일 카메라 렌즈 Y축
+        camZ: 0.0, // 모바일 카메라 렌즈 Z축
+      },
 
       image: "./assets/foot.png",
       imageOffsetX: -0.5,
@@ -654,17 +706,38 @@ function init3DBodyMap() {
           });
         }
 
+        infoPanel.setAttribute("data-part", targetId);
         infoPanel.classList.remove("hero-3d__info-panel--hidden");
 
         // 통증 부위 선택 시 마우스 드래그/회전 조작으로 카메라 시점이 틀어지지 않도록 고정(잠금)
         controls.enabled = false;
 
-        // 카메라 구면 보간 함수 호출하여 부드럽게 이동
-        const targetCamX = data.camX !== undefined ? data.camX : 2.5;
-        const targetLookX = data.targetX !== undefined ? data.targetX : 0;
+        /* --- [모바일 640px 이하 전용 시점 감지 및 3D 카메라 이동] --- */
+        const isMobile640 = window.innerWidth <= 640;
+        const mob = isMobile640 && data.mobile ? data.mobile : null;
+
+        // 모바일(640px 이하)이고 data.mobile이 존재하면 모바일 전용 시점 사용, 그 외(데스크톱/태블릿)는 원본 데이터 100% 사용
+        const targetCamX =
+          mob && mob.camX !== undefined
+            ? mob.camX
+            : data.camX !== undefined
+              ? data.camX
+              : 2.5;
+        const targetCamY = mob && mob.camY !== undefined ? mob.camY : data.camY;
+        const targetCamZ = mob && mob.camZ !== undefined ? mob.camZ : data.camZ;
+
+        const targetLookX =
+          mob && mob.targetX !== undefined
+            ? mob.targetX
+            : data.targetX !== undefined
+              ? data.targetX
+              : 0;
+        const targetLookY =
+          mob && mob.targetY !== undefined ? mob.targetY : data.targetY;
+
         animateCamera(
-          { x: targetCamX, y: data.camY, z: data.camZ },
-          { x: targetLookX, y: data.targetY, z: 0 },
+          { x: targetCamX, y: targetCamY, z: targetCamZ },
+          { x: targetLookX, y: targetLookY, z: 0 },
           1.5, // 부드러운 전환을 위해 1.5초 설정
         );
 
@@ -865,7 +938,7 @@ function init3DBodyMap() {
       markerGroup.visible = false;
     }
   });
-};
+}
 
 /* ==========================================================================
    02-1. 원스톱 진단 시스템 (One-Stop Diagnosis System) 스크롤 인터랙션

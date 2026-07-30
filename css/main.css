@@ -978,7 +978,7 @@ body.door-locked {
 }
 
 .non-surgical__slide {
-  width: 1200px;
+  width: 100%;
   height: auto;
   opacity: 0.4;
   transition:
@@ -1090,7 +1090,7 @@ body.door-locked {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0.8;
+  flex: 1;
   overflow: hidden;
 }
 
@@ -2184,33 +2184,40 @@ body.door-locked {
 
   .hero-3d__pain-list {
     gap: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
     padding-top: 10px;
     margin-top: 10px;
   }
 
   .hero-3d__pain-item {
+    box-sizing: border-box;
     min-height: 44px;
-    padding: 12px 24px;
+    padding: 12px 20px;
     font-size: 15px;
+    white-space: nowrap;
   }
 
+  /* Jaseng info_box style 슬림 조율 */
   .hero-3d__info-panel {
-    width: 300px;
-    padding: 24px 20px;
+    width: 290px;
+    padding: 22px 18px;
+    border-radius: 20px;
   }
 
   .hero-3d__info-title {
-    margin-bottom: 12px;
-    font-size: 20px;
+    margin-bottom: 10px;
+    font-size: 19px;
   }
 
   .hero-3d__disease-list {
-    margin: 12px 0 20px;
+    margin: 10px 0 16px;
   }
 
   .hero-3d__disease-link {
     min-height: 44px;
-    padding: 12px 16px;
+    padding: 10px 14px;
     font-size: 14px;
   }
 
@@ -2361,7 +2368,7 @@ body.door-locked {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* 비수술 치료 3D Coverflow 슬라이더 태블릿 반응형 */
+  /* 비수술 치료 3D Coverflow 슬라이더 태블릿 반응형 (960px) */
   .non-surgical__swiper-container {
     padding: 0;
   }
@@ -2377,15 +2384,14 @@ body.door-locked {
   }
 
   .non-surgical__card-visual {
-    height: 220px;
-  }
-
-  .non-surgical__card-bg-letter {
-    font-size: 180px;
+    flex: none;
+    width: 100%;
+    height: 350px;
   }
 
   .non-surgical__card-content {
     padding: 32px 30px;
+    gap: 12px;
   }
 
   .non-surgical__card-title {
@@ -2609,6 +2615,124 @@ body.door-locked {
 }
 
 @media (max-width: 640px) {
+  /* 02. 3D Body Map Hero Section - 640px Mobile Responsive (Jaseng clinic_sect style) */
+  .hero-3d {
+    height: 100vh;
+    min-height: 560px;
+  }
+
+  .hero-3d__canvas-container {
+    height: 100%;
+  }
+
+  .hero-3d__welcome {
+    top: 4%;
+    width: min(92%, 280px);
+    padding: 8px 12px;
+  }
+
+  .hero-3d__welcome-title {
+    font-size: 13px;
+  }
+
+  .hero-3d__welcome-desc {
+    font-size: 17px;
+  }
+
+  .info-badge-wrap {
+    display: none;
+  }
+
+  .hero-3d__menu {
+    position: absolute;
+    top: 110px;
+    left: 0;
+    z-index: 20;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 16px;
+  }
+
+  /* 6개 통증 부위 짤림 방지: 3x2 2줄 스마트 그리드 레이아웃 (스크롤 없이 6개 한눈에 노출) */
+  .hero-3d__pain-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding: 8px;
+    margin-top: 0;
+    border-top: none;
+  }
+
+  .hero-3d__pain-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 4px;
+    border-radius: 12px;
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .hero-3d__pain-item:hover {
+    transform: none;
+  }
+
+  /* Jaseng info_box style: 부위별 3D 홀로그램 반대편으로 플로팅되는 스마트 오버레이 패널 */
+  /* hero-3d__togo-section 하단 목록과 최소 15px 이격되는 하단 고정 오버레이 패널 */
+  .hero-3d__info-panel {
+    position: absolute;
+    bottom: 165px;
+    left: 50%;
+    right: auto;
+    z-index: 25;
+    box-sizing: border-box;
+    width: min(calc(100% - 32px), 260px);
+    max-width: 320px;
+    padding: 16px 16px;
+    border-radius: 18px;
+    background: rgba(248, 250, 253, 0.94);
+    box-shadow: 0 8px 32px rgba(27, 45, 90, 0.16);
+    transform: translateX(-50%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .hero-3d__info-panel--hidden {
+    opacity: 0;
+    transform: translate(-50%, 30px);
+    pointer-events: none;
+  }
+
+  .hero-3d__info-title {
+    margin-bottom: 8px;
+    font-size: 17px;
+  }
+
+  .hero-3d__disease-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 110px;
+    margin: 8px 0 12px 0;
+  }
+
+  .hero-3d__disease-link {
+    min-height: 44px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
   .toGo-list li {
     flex: 1 1 calc(50% - 10px);
   }
@@ -2689,10 +2813,6 @@ body.door-locked {
   .non-surgical__card {
     flex-direction: column-reverse;
     height: auto;
-  }
-
-  .non-surgical__card-visual {
-    height: 180px;
   }
 
   .non-surgical__card-bg-letter {
