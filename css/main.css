@@ -275,8 +275,7 @@ body.door-locked {
 }
 
 .hero-3d__welcome-title {
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 18px;
+  font-size: var(--font-lg);
   font-weight: 600;
   color: #6b7c96;
   letter-spacing: -0.01em;
@@ -284,11 +283,10 @@ body.door-locked {
 
 .hero-3d__welcome-desc {
   margin: 0;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 26px;
+  font-size: var(--font-3xl);
   font-weight: 800;
-  color: #1b2d5a;
   line-height: 1.2;
+  color: #1b2d5a;
   letter-spacing: -0.03em;
 }
 
@@ -322,7 +320,9 @@ body.door-locked {
 }
 
 .info-badge__desc {
-  font: 700 15px "pretendard";
+  font-size: var(--font-md);
+  font-weight: 700;
+  font-family: "Pretendard", sans-serif;
   color: #2f5fa7;
   letter-spacing: -0.02em;
 }
@@ -350,7 +350,7 @@ body.door-locked {
   border: 1px solid #eaf2ff;
   background: #ffffff;
   box-shadow: 0 8px 24px rgba(27, 45, 90, 0.04);
-  font-size: 16px;
+  font-size: var(--font-base);
   font-weight: 700;
   color: #243041;
   cursor: pointer;
@@ -518,7 +518,7 @@ body.door-locked {
   border: 1px solid var(--panel-border);
   background-color: #ffffff;
   box-shadow: 0 2px 8px rgba(27, 45, 90, 0.02);
-  font-size: 15px;
+  font-size: var(--font-md);
   font-weight: 600;
   color: #243041;
   text-decoration: none;
@@ -526,7 +526,7 @@ body.door-locked {
 }
 
 .hero-3d__disease-link::after {
-  font-size: 16px;
+  font-size: var(--font-base);
   color: var(--panel-text);
   content: "→";
   transition:
@@ -637,7 +637,7 @@ body.door-locked {
 }
 
 .hero-3d__togo-name {
-  font-size: 17px;
+  font-size: var(--font-base);
   font-weight: 700;
   color: #1a2b3c;
   transition: all 0.3s ease;
@@ -675,14 +675,10 @@ body.door-locked {
 
 .fast-diagnosis__conwrap {
   position: relative;
-
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-
-  width: min(1200px, calc(100% - 40px));
-  margin: 0 auto;
 }
 
 /* Left Sticky Title Area */
@@ -873,7 +869,6 @@ body.door-locked {
 
 .non-surgical {
   position: relative;
-  padding: 100px 0;
   background-color: #f8fafd;
   overflow: hidden;
 }
@@ -902,7 +897,6 @@ body.door-locked {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
 }
 
 /* 상단 컨트롤 바 */
@@ -1021,7 +1015,7 @@ body.door-locked {
   border-radius: 20px;
   margin-bottom: 20px;
   background-color: rgba(234, 242, 255, 0.8);
-  font-size: 13px;
+  font-size: var(--font-xs);
   font-weight: 700;
   color: #2f5fa7;
   letter-spacing: -0.01em;
@@ -1036,7 +1030,7 @@ body.door-locked {
 .non-surgical__card-title {
   margin: 0;
 
-  font-size: 30px;
+  font-size: var(--font-3xl);
   font-weight: 800;
   color: #1b2d5a;
   letter-spacing: -0.02em;
@@ -1044,7 +1038,7 @@ body.door-locked {
 
 .non-surgical__card-summary {
   margin: 0 0 24px 0;
-  font-size: 16px;
+  font-size: var(--font-base);
   color: #5a6e85;
   line-height: 1.6;
   word-break: keep-all;
@@ -1067,18 +1061,18 @@ body.door-locked {
 
 .non-surgical__card-feature-item::before {
   position: absolute;
+  top: 0.125em;
   left: 0;
-  top: 2px;
   content: "•";
   color: #2f5fa7;
   font-weight: 800;
-  font-size: 18px;
+  font-size: var(--font-lg);
   line-height: 1;
 }
 
 .non-surgical__card-feature-text {
   margin: 0;
-  font-size: 15px;
+  font-size: var(--font-md);
   font-weight: 600;
   color: #1b2d5a;
   line-height: 1.5;
@@ -1142,7 +1136,7 @@ body.door-locked {
   background-color: #ffffff;
   box-shadow: 0 4px 12px rgba(27, 45, 90, 0.03);
 
-  font-size: 15px;
+  font-size: var(--font-md);
   font-weight: 700;
   color: #2f5fa7;
 
@@ -2228,9 +2222,17 @@ body.door-locked {
     outline: 2px solid #2f5fa7;
     outline-offset: 3px;
   }
+
+  .hero-3d__tv-container {
+    padding: 0 24px;
+  }
 }
 
 @media (max-width: 960px) {
+  html {
+    font-size: 15px;
+  }
+
   /* 02. 3D Body Map Hero Section - 960px Responsive */
   .hero-3d__ui-layer {
     box-sizing: border-box;
@@ -2322,11 +2324,12 @@ body.door-locked {
   }
 
   .fast-diagnosis {
-    padding: 100px 20px;
+    padding: 100px 24px;
   }
 
   .fast-diagnosis__conwrap {
     flex-direction: column;
+    width: 100%;
   }
 
   .fast-diagnosis .section-title {
@@ -2615,6 +2618,10 @@ body.door-locked {
 }
 
 @media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+
   /* 02. 3D Body Map Hero Section - 640px Mobile Responsive (Jaseng clinic_sect style) */
   .hero-3d {
     height: 100vh;
@@ -2657,7 +2664,7 @@ body.door-locked {
   /* 6개 통증 부위 짤림 방지: 3x2 2줄 스마트 그리드 레이아웃 (스크롤 없이 6개 한눈에 노출) */
   .hero-3d__pain-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 6px;
     box-sizing: border-box;
     width: 100%;
@@ -2689,7 +2696,7 @@ body.door-locked {
   /* hero-3d__togo-section 하단 목록과 최소 15px 이격되는 하단 고정 오버레이 패널 */
   .hero-3d__info-panel {
     position: absolute;
-    bottom: 165px;
+    bottom: clamp(140px, 18vh, 175px);
     left: 50%;
     right: auto;
     z-index: 25;
@@ -2850,6 +2857,94 @@ body.door-locked {
 
   .brand-trust__feature-desc {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 507px) {
+  .hero-3d__info-panel {
+    position: absolute;
+    left: 50%;
+    right: auto;
+    z-index: 25;
+    bottom: clamp(216px, 18vh, 175px);
+    box-sizing: border-box;
+    width: min(calc(100% - 32px), 480px);
+    max-width: 480px;
+    padding: 12px 14px 10px;
+    border-radius: 16px;
+    background: rgba(248, 250, 253, 0.96);
+    box-shadow: 0 8px 28px rgba(27, 45, 90, 0.18);
+    transform: translateX(-50%);
+  }
+  .hero-3d__close-button {
+    width: 100%;
+  }
+  .hero-3d__info-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .hero-3d__info-title {
+    margin-bottom: 0;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .hero-3d__disease-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-height: none;
+    margin: 6px 0 8px 0;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .hero-3d__disease-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-3d__disease-item {
+    flex: 0 0 20%;
+    scroll-snap-align: start;
+    width: auto;
+  }
+
+  .hero-3d__disease-link {
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .hero-3d__disease-link::after {
+    font-size: 14px;
+  }
+
+  .hero-3d__panel-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2px;
+  }
+
+  .hero-3d__panel-actions .ghost-button {
+    min-height: 44px;
+    padding: 6px 16px;
+    font-size: 12px;
+  }
+
+  .hero-3d__tv-container {
+    padding: 0 16px;
   }
 }
 

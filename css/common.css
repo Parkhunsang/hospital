@@ -10,6 +10,16 @@
   --soft: #f7fafc;
   --shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  --font-xs: 0.75rem; /* 12px - 캡션, 뱃지, 미세 부가정보 */
+  --font-sm: 0.875rem; /* 14px - 서브 텍스트, 카테고리 태그 */
+  --font-md: 0.9375rem; /* 15px - 카드 본문, 메뉴 텍스트 */
+  --font-base: 1rem; /* 16px - 기본 본문 (Body default) */
+  --font-lg: 1.125rem; /* 18px - 강조 본문, 카드 소타이틀 */
+  --font-xl: 1.25rem; /* 20px - 서브 헤딩, 카드 헤더 */
+  --font-2xl: 1.5rem; /* 24px - 섹션 서브 타이틀 */
+  --font-3xl: 1.875rem; /* 30px - 섹션 메인 타이틀 */
+  --font-4xl: 2.25rem; /* 36px - 메인 히어로 대형 헤딩 */
 }
 
 * {
@@ -17,20 +27,13 @@
 }
 
 html {
+  font-size: 16px;
   scroll-behavior: smooth;
 }
 
 body {
   color: var(--ink);
-  font-family:
-    "Pretendard Variable",
-    "Pretendard",
-    "Noto Sans KR",
-    "Apple SD Gothic Neo",
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   background: var(--white);
   letter-spacing: -0.02em;
 }
@@ -53,7 +56,7 @@ ul.swiper-wrapper {
 }
 
 .container {
-  width: min(1200px, calc(100% - 40px));
+  width: min(1200px, calc(100% - 48px));
   margin: 0 auto;
 }
 
@@ -243,12 +246,12 @@ svg {
 
 .footer::before {
   position: absolute;
-  top: -150px;
-  right: -100px;
+  top: -12vh;
+  right: -5vw;
   z-index: 0;
   display: block;
-  width: 500px;
-  height: 500px;
+  width: min(500px, 50vw);
+  height: min(500px, 50vw);
   border-radius: 50%;
   background: radial-gradient(
     circle,
@@ -261,7 +264,7 @@ svg {
 
 .footer__watermark {
   position: absolute;
-  bottom: 20px;
+  bottom: 1.25rem;
   left: 50%;
   z-index: 0;
   width: 100%;
@@ -745,7 +748,7 @@ svg {
   .topbar__nav,
   .container,
   .footer-inner {
-    width: min(100% - 28px, 1180px);
+    width: min(100% - 32px, 1180px);
   }
 
   .topbar__brand-subtext,
