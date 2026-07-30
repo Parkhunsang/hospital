@@ -23,37 +23,45 @@ function init3DBodyMap() {
     neck: {
       title: "목",
       diseases: ["목디스크", "거북목 증후군"],
-      targetX: 0,
-      targetY: 1.2,
-      camX: 0,
-      camY: 1.2,
-      camZ: -2.5,
+      // [카메라 시점 설정]
+      targetX: 0, // 카메라가 바라보는 3D 포커스 중심 X좌표 (음수: 오른쪽, 양수: 왼쪽)
+      targetY: 1.2, // 카메라가 바라보는 3D 포커스 중심 Y좌표 (양수: 위, 음수: 아래)
+      camX: 0, // 카메라의 3D 위치 X좌표 (targetX와 동일하게 설정 시 정면 바라봄)
+      camY: 1.2, // 카메라의 3D 위치 Y좌표 (targetY와 동일하게 설정)
+      camZ: -2.5, // 카메라 거리/줌 수치 (숫자가 클수록 멀어지고 작을수록 확대)
+
+      // [홀로그램 이미지 파일 및 위치 미세조정]
       image: "./assets/neck.png",
-      imageOffsetX: 0,
-      imageOffsetY: 0.1,
-      normal: [0, 0, -1],
-      width: 0.2,
-      height: 0.2,
-      maskScale: [1.0, 1.0],
-      zOffset: -0.2,
+      imageOffsetX: 0, // 일러스트 좌/우 미세 위치 조정 (양수: 오른쪽, 음수: 왼쪽)
+      imageOffsetY: 0.1, // 일러스트 위/아래 미세 위치 조정 (양수: 위쪽, 음수: 아래쪽)
+      normal: [0, 0, -1], // 이미지가 바라보는 방향 [X, Y, Z] ([0,0,1]: 앞면, [0,0,-1]: 뒷면)
+      width: 0.2, // 일러스트 가로 표시 크기
+      height: 0.2, // 일러스트 세로 표시 크기
+      maskScale: [1.0, 1.0], // 가장자리 부드러운 투명 마스크 범위 [가로, 세로]
+      zOffset: -0.2, // 3D 모델 몸체 표면으로부터 앞/뒤 튀어나오는 깊이 거리
     },
+
     shoulder: {
       title: "어깨",
       diseases: ["오십견", "회전근개파열", "석회성 건염", "견관절재발성 탈구"],
-      targetX: -0.4,
-      targetY: 1.1,
-      camX: -0.4,
-      camY: 1.1,
+
+      targetX: -0.42,
+      targetY: 1.06,
+      camX: -0.42,
+      camY: 1.06,
       camZ: 2.0,
+
       image: "./assets/shoulder.png",
-      imageOffsetX: 0.01,
-      imageOffsetY: -0.18,
-      normal: [0, 0, 1],
-      width: 0.3,
-      height: 0.7,
-      maskScale: [1.0, 1.0],
+      imageOffsetX: 0.075,
+      imageOffsetY: -0.15,
       zOffset: 0.05,
+
+      normal: [0, 0, 1],
+      width: 0.48,
+      height: 0.48,
+      maskScale: [1.0, 1.0],
     },
+
     waist: {
       title: "허리",
       diseases: [
@@ -64,20 +72,24 @@ function init3DBodyMap() {
         "척추 골절",
         "골다공증성 압박골절",
       ],
-      targetX: -0.1,
+
+      targetX: -0.02,
       targetY: 0,
-      camX: -0.1,
+      camX: -0.02,
       camY: 0,
-      camZ: -5.5,
+      camZ: -3.8,
+
       image: "./assets/waist.png",
-      imageOffsetX: 0.09,
-      imageOffsetY: 0,
-      normal: [0, 0, -1],
-      width: 1.8,
-      height: 0.9,
-      maskScale: [1.2, 0.7],
+      imageOffsetX: 0,
+      imageOffsetY: -0.02,
       zOffset: -0.05,
+
+      normal: [0, 0, -1],
+      width: 0.7,
+      height: 0.7,
+      maskScale: [1.0, 1.0],
     },
+
     wrist: {
       title: "손목",
       diseases: [
@@ -87,20 +99,23 @@ function init3DBodyMap() {
         "골프엘보우",
         "팔꿈치터널증후군",
       ],
+
       targetX: -1.1,
       targetY: -0.2,
       camX: -2.8,
       camY: -0.2,
       camZ: 0.0,
+
       image: "./assets/wrist.png",
       imageOffsetX: 0,
-      imageOffsetY: 0.0,
+      imageOffsetY: 0.05,
       imageOffsetZ: -0.1,
+      zOffset: 0.08,
+
       normal: [-1, 0, 0],
-      width: 0.34,
+      width: 0.36,
       height: 0.73,
       maskScale: [1.0, 1.0],
-      zOffset: 0.08,
     },
 
     knee: {
@@ -112,19 +127,22 @@ function init3DBodyMap() {
         "줄기세포 수술",
         "퇴행성 관절염",
       ],
+
       targetY: -1.1,
       targetX: 0.3,
       camX: 0.3,
       camY: -1.1,
       camZ: 2.0,
+
       image: "./assets/knee.png",
       imageOffsetX: 0.03,
       imageOffsetY: 0,
+      zOffset: 0.05,
+
       normal: [0, 0, 1],
       width: 0.3,
       height: 0.65,
       maskScale: [1.0, 1.0],
-      zOffset: 0.05,
     },
     foot: {
       title: "발/ 발목",
@@ -139,15 +157,17 @@ function init3DBodyMap() {
       camX: -2.2,
       camY: -2.1,
       camZ: 0.0,
+
       image: "./assets/foot.png",
       imageOffsetX: -0.5,
-      imageOffsetY: 0.02,
+      imageOffsetY: -0.06,
       imageOffsetZ: 0.04,
+      zOffset: 0.1,
+
       normal: [-1, 0, 0],
       width: 0.8,
       height: 0.44,
       maskScale: [0.8, 0.8],
-      zOffset: 0.1,
     },
   };
 
@@ -636,6 +656,9 @@ function init3DBodyMap() {
 
         infoPanel.classList.remove("hero-3d__info-panel--hidden");
 
+        // 통증 부위 선택 시 마우스 드래그/회전 조작으로 카메라 시점이 틀어지지 않도록 고정(잠금)
+        controls.enabled = false;
+
         // 카메라 구면 보간 함수 호출하여 부드럽게 이동
         const targetCamX = data.camX !== undefined ? data.camX : 2.5;
         const targetLookX = data.targetX !== undefined ? data.targetX : 0;
@@ -660,7 +683,6 @@ function init3DBodyMap() {
           ease: "power3.inOut",
         });
 
-        // 마커 위치 지정 및 보이기
         // 마커 위치 지정 및 보이기
         markerGroup.position.set(
           data.targetX !== undefined ? data.targetX : 0,
@@ -759,6 +781,9 @@ function init3DBodyMap() {
     menuItems.forEach((li) =>
       li.classList.remove("hero-3d__pain-item--active"),
     );
+
+    // 전체 인체 3D 화면으로 복귀할 때 마우스 드래그/회전 조작 잠금 해제
+    controls.enabled = true;
 
     if (typeof gsap !== "undefined") {
       // 웰컴 메시지 위에서 아래로 복귀하며 페이드 인
@@ -1228,7 +1253,11 @@ function initBrandTrustPartners() {
   // 2. GSAP ScrollTrigger timelines for Desktop (width > 768px)
   const isDesktop = window.matchMedia("(min-width: 769px)");
 
-  if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined" && isDesktop.matches) {
+  if (
+    typeof gsap !== "undefined" &&
+    typeof ScrollTrigger !== "undefined" &&
+    isDesktop.matches
+  ) {
     gsap.registerPlugin(ScrollTrigger);
 
     ScrollTrigger.create({
@@ -1246,8 +1275,10 @@ function initBrandTrustPartners() {
         if (leftCover && rightCover) {
           const curtainProgress = Math.min(progress / 0.5, 1);
           const currentWidth = (1 - curtainProgress) * 50;
-          leftCover.style.width = currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
-          rightCover.style.width = currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
+          leftCover.style.width =
+            currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
+          rightCover.style.width =
+            currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
         }
 
         // 2) Ensure background images remain 100% full screen (scale 1.0)
@@ -1278,16 +1309,20 @@ function initBrandTrustPartners() {
     // Mobile/Tablet Fallback: Fully open curtains & scale bg to 1
     const leftCover = section.querySelector(".brand-trust__left-cover");
     const rightCover = section.querySelector(".brand-trust__right-cover");
-    const bgImages = section.querySelectorAll(".brand-trust__slide--stats .brand-trust__bg-img");
-    const contents = section.querySelectorAll(".brand-trust__slide--stats .brand-trust__content");
+    const bgImages = section.querySelectorAll(
+      ".brand-trust__slide--stats .brand-trust__bg-img",
+    );
+    const contents = section.querySelectorAll(
+      ".brand-trust__slide--stats .brand-trust__content",
+    );
 
     if (leftCover) leftCover.style.width = "0";
     if (rightCover) rightCover.style.width = "0";
-    
+
     bgImages.forEach((img) => {
       img.style.transform = "scale(1)";
     });
-    
+
     contents.forEach((content) => {
       content.style.opacity = "1";
       content.style.transform = "none";
@@ -1323,4 +1358,3 @@ function initFastDiagnosis() {
     });
   }
 }
-
