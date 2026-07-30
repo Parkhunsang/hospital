@@ -590,7 +590,7 @@ function init3DBodyMap() {
   };
 
   menuItems.forEach((item) => {
-    item.addEventListener("click", () => {
+    const handleSelect = () => {
       // 기존 활성화 해제 및 현재 항목 활성화
       menuItems.forEach((li) =>
         li.classList.remove("hero-3d__pain-item--active"),
@@ -772,6 +772,14 @@ function init3DBodyMap() {
 
         markerGroup.visible = true;
       }
+    };
+
+    item.addEventListener("click", handleSelect);
+    item.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleSelect();
+      }
     });
   });
 
@@ -857,7 +865,7 @@ function init3DBodyMap() {
       markerGroup.visible = false;
     }
   });
-}
+};
 
 /* ==========================================================================
    02-1. 원스톱 진단 시스템 (One-Stop Diagnosis System) 스크롤 인터랙션

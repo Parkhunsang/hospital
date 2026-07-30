@@ -43,7 +43,6 @@ body.door-locked {
 .intro-door__panel--right {
   right: 0;
   background-position: right center;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
 }
 
 .intro-door__inner {
@@ -60,7 +59,7 @@ body.door-locked {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgb(98 105 119 / 45%);
+  background: rgb(134 137 143 / 45%);
   content: "";
   pointer-events: none;
 }
@@ -573,7 +572,7 @@ body.door-locked {
 .hero-3d__togo-section {
   display: flex;
   align-items: center;
-  width: 1200px;
+  width: 100%;
   height: 80px;
   margin-bottom: 30px;
   pointer-events: auto;
@@ -2159,42 +2158,20 @@ body.door-locked {
 /* 07. 공지사항 및 건강 정보 (News & Health) [END] */
 
 /* Responsive Media Queries (Responsive Styles) [START] */
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
+  /* 02. 3D Body Map Hero Section - UI Layer 1200px Responsive */
   .hero-3d__ui-layer {
+    left: 50%;
+    box-sizing: border-box;
     width: 100%;
-    padding: 0 20px;
-  }
-
-  .hero-3d__tv-container,
-  .hero-3d__togo-section {
-    width: 100%;
-    padding: 0 20px;
-  }
-
-  .hero-3d__togo-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    border-radius: 12px;
-    background: #fafafc;
-  }
-
-  .hero-3d__togo-item-wrap {
-    flex: 1 1 calc(33.33% - 10px);
-    height: 50px;
-    border-radius: 10px;
-  }
-
-  .hero-3d__togo-item-wrap::after {
-    display: none;
+    max-width: 100%;
+    padding: 0 24px;
   }
 
   .hero-3d__welcome {
-    top: 5%;
-    width: 90%;
+    top: 6%;
+    width: min(90%, 320px);
+    padding: 10px;
   }
 
   .hero-3d__welcome-title {
@@ -2202,7 +2179,139 @@ body.door-locked {
   }
 
   .hero-3d__welcome-desc {
-    font-size: 28px;
+    font-size: 22px;
+  }
+
+  .hero-3d__pain-list {
+    gap: 10px;
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+
+  .hero-3d__pain-item {
+    min-height: 44px;
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+
+  .hero-3d__info-panel {
+    width: 300px;
+    padding: 24px 20px;
+  }
+
+  .hero-3d__info-title {
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+
+  .hero-3d__disease-list {
+    margin: 12px 0 20px;
+  }
+
+  .hero-3d__disease-link {
+    min-height: 44px;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  /* 웹 접근성 포커스 스타일링 */
+  .hero-3d__pain-item:focus-visible,
+  .hero-3d__disease-link:focus-visible,
+  .hero-3d__close-btn:focus-visible {
+    outline: 2px solid #2f5fa7;
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 960px) {
+  /* 02. 3D Body Map Hero Section - 960px Responsive */
+  .hero-3d__ui-layer {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .hero-3d__welcome {
+    top: 5%;
+    width: min(90%, 300px);
+  }
+
+  .hero-3d__welcome-title {
+    font-size: 15px;
+  }
+
+  .hero-3d__welcome-desc {
+    font-size: 20px;
+  }
+
+  .hero-3d__tv-container {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .hero-3d__togo-section {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .hero-3d__togo-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-radius: 16px;
+    background: rgba(250, 250, 252, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* 5개 li 항목 유기적 반응형 레이아웃 */
+  .hero-3d__togo-item-wrap {
+    flex: 1 1 calc(20% - 10px);
+    min-width: 140px;
+    min-height: 48px;
+    border: 1px solid rgba(27, 45, 90, 0.08);
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(27, 45, 90, 0.04);
+    transition: all 0.25s ease;
+  }
+
+  .hero-3d__togo-item-wrap:nth-child(1),
+  .hero-3d__togo-item-wrap:nth-child(5) {
+    border-radius: 12px;
+  }
+
+  .hero-3d__togo-item-wrap::after {
+    display: none;
+  }
+
+  .hero-3d__togo-item {
+    min-height: 44px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .hero-3d__togo-name {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .hero-3d__togo-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* 웹 접근성 포커스 스타일링 */
+  .hero-3d__togo-item:focus-visible {
+    outline: 2px solid #2f5fa7;
+    outline-offset: 2px;
   }
 
   .fast-diagnosis {
@@ -2650,511 +2759,4 @@ body.door-locked {
   font-size: 12px;
   color: rgba(185, 203, 224, 0.5);
   font-weight: 500;
-}
-
-/* ==========================================================================
-   Footer Styles (코어업 척추통증센터 모던 풋터)
-   ========================================================================== */
-.footer {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  padding: 90px 0 50px;
-  box-sizing: border-box;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(135deg, #071527 0%, #0c203b 50%, #061120 100%);
-  font-family:
-    "Pretendard Variable",
-    "Pretendard",
-    "Outfit",
-    -apple-system,
-    sans-serif;
-  color: #ffffff;
-}
-
-.footer::before {
-  position: absolute;
-  top: -150px;
-  right: -100px;
-  z-index: 0;
-  display: block;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(56, 189, 248, 0.08) 0%,
-    rgba(0, 0, 0, 0) 70%
-  );
-  pointer-events: none;
-  content: "";
-}
-
-.footer__watermark {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  z-index: 0;
-  width: 100%;
-  font-family: "Outfit", sans-serif;
-  font-size: clamp(40px, 8vw, 120px);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.02);
-  text-align: center;
-  white-space: nowrap;
-  transform: translateX(-50%);
-  user-select: none;
-  pointer-events: none;
-}
-
-.footer-inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 32px;
-  box-sizing: border-box;
-}
-
-.footer-brand-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.footer-brand-header__left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.footer-brand-header__logo {
-  width: auto;
-  height: 40px;
-  filter: brightness(0) invert(1);
-}
-
-.footer-brand-header__tagline {
-  padding-left: 16px;
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
-  font-size: 15px;
-  font-weight: 500;
-  color: #94a3b8;
-}
-
-@keyframes pulse-dot {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.4;
-    transform: scale(1.3);
-  }
-}
-
-.footer-top {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-}
-
-/* Common Card Box Styling */
-.footer-card {
-  display: flex;
-  flex-direction: column;
-  padding: 28px;
-  box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  background-color: rgba(15, 23, 42, 0.5);
-  backdrop-filter: blur(10px);
-  transition:
-    border-color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.footer-card:hover {
-  border-color: rgba(56, 189, 248, 0.25);
-  transform: translateY(-2px);
-}
-
-.footer-card .title-box {
-  margin-bottom: 20px;
-}
-
-.footer-card .title-box h5 {
-  margin-bottom: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: 0.05em;
-  color: #38bdf8;
-  text-transform: uppercase;
-}
-
-.footer-card .title-box p {
-  font-family: "Outfit", "Pretendard", sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: #ffffff;
-}
-
-/* time-area */
-.footer-top .time-area {
-  grid-column: span 1;
-}
-
-.footer-top .time-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.footer-top .time-box .item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 8px;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
-}
-
-.footer-top .time-box .item:last-child {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.footer-top .time-box .item p {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 500;
-  color: #cbd5e1;
-}
-
-.footer-top .time-box .item strong {
-  font-family: "Outfit", "Pretendard", sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.footer-top .time-box .item .circle-box {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 6px;
-  padding: 2px 8px;
-  border-radius: 9999px;
-  background-color: rgba(239, 68, 68, 0.2);
-  font-size: 11px;
-  font-weight: 600;
-  color: #f87171;
-}
-
-.footer-top .addr-box {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.footer-top .addr-box p {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 13px;
-  line-height: 1.5;
-  color: #94a3b8;
-}
-
-.footer-top .addr-box p span {
-  font-size: inherit;
-  color: #94a3b8;
-}
-
-/* map-area */
-.footer-top .map-area {
-  grid-column: span 1;
-}
-
-.footer-top .map-box {
-  position: relative;
-  overflow: hidden;
-  display: block;
-  width: 100%;
-  height: 140px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  background: url("../assets/img-map.webp") no-repeat center center / cover;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.footer-top .map-box::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(15, 23, 42, 0.4);
-  font-size: 13px;
-  font-weight: 600;
-  color: #ffffff;
-  transition: background-color 0.3s ease;
-  content: "지도 바로가기 ↗";
-}
-
-.footer-top .map-box:hover::after {
-  background-color: rgba(15, 23, 42, 0.1);
-}
-
-.footer-top .map-info-badges {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 14px;
-}
-
-.footer-top .map-info-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: #94a3b8;
-}
-
-.footer-top .map-info-item strong {
-  padding: 2px 6px;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.1);
-  font-size: 11px;
-  font-weight: 600;
-  color: #e2e8f0;
-}
-
-/* number-area */
-.footer-top .number-area {
-  grid-column: span 1;
-}
-
-.footer-top .number-area .title-box p {
-  font-family: "Outfit", sans-serif;
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #38bdf8;
-}
-
-.footer-top .link-box {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: auto;
-}
-
-.footer-top .link-box a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  height: 48px;
-  padding: 0 16px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: -0.3px;
-  text-decoration: none;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.footer-top .link-box .kakao {
-  background-color: #fee500;
-  color: #191919;
-}
-
-.footer-top .link-box .kakao:hover {
-  background-color: #fada00;
-  box-shadow: 0 6px 16px rgba(254, 229, 0, 0.25);
-  transform: translateY(-2px);
-}
-
-.footer-top .link-box .naver {
-  background-color: #03c75a;
-  color: #ffffff;
-}
-
-.footer-top .link-box .naver:hover {
-  background-color: #02b350;
-  box-shadow: 0 6px 16px rgba(3, 199, 90, 0.3);
-  transform: translateY(-2px);
-}
-
-/* channel-area */
-.footer-top .channel-area {
-  grid-column: span 1;
-}
-
-.footer-top .sns-box {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.footer-top .sns-box .sns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.05);
-  transition: all 0.2s ease;
-}
-
-.footer-top .sns-box .sns:hover {
-  border-color: rgba(56, 189, 248, 0.5);
-  background-color: rgba(56, 189, 248, 0.2);
-  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
-  transform: translateY(-2px);
-}
-
-.footer-top .sns-box .sns svg {
-  width: 18px;
-  height: 18px;
-}
-
-.footer-top .sns-box .sns svg path,
-.footer-top .sns-box .sns svg circle {
-  transition: fill 0.2s ease;
-}
-
-.footer-top .sns-box .sns:hover svg path,
-.footer-top .sns-box .sns:hover svg circle {
-  fill: #38bdf8;
-}
-
-/* footer-bottom */
-.footer-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.footer-bottom .info-link-area {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-}
-
-.footer-bottom .info-link-area a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #94a3b8;
-  text-decoration: none;
-  transition: color 0.2s ease, background-color 0.2s ease;
-}
-
-.footer-bottom .info-link-area a:hover {
-  color: #ffffff;
-}
-
-.footer-bottom .info-link-area a.highlight {
-  font-weight: 600;
-  color: #38bdf8;
-}
-
-/* 웹 접근성 포커스 스타일링 */
-.footer a:focus-visible,
-.footer button:focus-visible {
-  outline: 2px solid #38bdf8;
-  outline-offset: 3px;
-}
-
-.footer-bottom .logo-bottom {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.footer-bottom .logo-bottom .footer__logo-img {
-  width: auto;
-  height: 32px;
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
-  filter: brightness(0) invert(1);
-}
-
-.footer-bottom .logo-bottom .footer__logo-img:hover {
-  opacity: 1;
-}
-
-.footer-bottom__copy {
-  font-size: 13px;
-  color: #64748b;
-}
-
-/* Responsive Media Queries */
-@media (max-width: 1200px) {
-  .footer-top {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .footer {
-    padding: 60px 0 40px;
-  }
-
-  .footer-top {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .footer-brand-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-bottom {
-    flex-direction: column-reverse;
-    align-items: flex-start;
-    gap: 16px;
-  }
 }

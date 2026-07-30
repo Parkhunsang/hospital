@@ -122,6 +122,7 @@
                 width="256"
                 height="256"
                 viewBox="0 0 256 256"
+                aria-hidden="true"
               >
                 <path
                   fill="currentColor"
@@ -131,17 +132,17 @@
               <p class="info-badge__desc">통증 부위를 선택해주세요</p>
             </div>
 
-            <ul class="hero-3d__pain-list">
-              <li class="hero-3d__pain-item" data-target="neck">목 통증</li>
-              <li class="hero-3d__pain-item" data-target="shoulder">
+            <ul class="hero-3d__pain-list" role="list">
+              <li class="hero-3d__pain-item" data-target="neck" role="button" tabindex="0" aria-label="목 통증 정보 보기">목 통증</li>
+              <li class="hero-3d__pain-item" data-target="shoulder" role="button" tabindex="0" aria-label="어깨 통증 정보 보기">
                 어깨 통증
               </li>
-              <li class="hero-3d__pain-item" data-target="waist">허리 통증</li>
-              <li class="hero-3d__pain-item" data-target="wrist">
+              <li class="hero-3d__pain-item" data-target="waist" role="button" tabindex="0" aria-label="허리 통증 정보 보기">허리 통증</li>
+              <li class="hero-3d__pain-item" data-target="wrist" role="button" tabindex="0" aria-label="손 및 손목 통증 정보 보기">
                 손/손목 통증
               </li>
-              <li class="hero-3d__pain-item" data-target="knee">무릎 통증</li>
-              <li class="hero-3d__pain-item" data-target="foot">
+              <li class="hero-3d__pain-item" data-target="knee" role="button" tabindex="0" aria-label="무릎 통증 정보 보기">무릎 통증</li>
+              <li class="hero-3d__pain-item" data-target="foot" role="button" tabindex="0" aria-label="발 및 발목 통증 정보 보기">
                 발/발목 통증
               </li>
             </ul>
@@ -149,6 +150,7 @@
           <div
             class="hero-3d__info-panel hero-3d__info-panel--hidden"
             id="info-panel"
+            aria-live="polite"
           >
             <h3 class="hero-3d__info-title" id="info-title">부위명</h3>
             <ul class="hero-3d__disease-list" id="info-disease-list">
@@ -156,8 +158,10 @@
             </ul>
             <div class="hero-3d__panel-actions">
               <button
+                type="button"
                 id="close-panel"
                 class="ghost-button small hero-3d__close-btn"
+                aria-label="정보 패널 닫기 및 메인 화면으로 돌아가기"
               >
                 뒤로가기
               </button>
@@ -168,7 +172,7 @@
         <div class="hero-3d__tv-wrap">
           <div class="hero-3d__tv-container">
             <div class="hero-3d__togo-section">
-              <ul class="hero-3d__togo-list">
+              <ul class="hero-3d__togo-list" role="list">
                 <li class="hero-3d__togo-item-wrap">
                   <a href="#booking" class="hero-3d__togo-item">
                     <div class="hero-3d__togo-icon">
