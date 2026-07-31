@@ -6,7 +6,48 @@ document.addEventListener("DOMContentLoaded", () => {
   initFastDiagnosis();
   initNonSurgicalSlider();
   initBrandTrustPartners();
+  initLocationSlider();
 });
+
+function initLocationSlider() {
+  const container = document.querySelector(".location__swiper");
+  if (!container) return;
+
+  const locationSwiper = new Swiper(".location__swiper", {
+    slidesPerView: 1.15,
+    spaceBetween: 20,
+    grabCursor: true,
+    speed: 400,
+    navigation: {
+      nextEl: ".location__nav-btn--next",
+      prevEl: ".location__nav-btn--prev",
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 1.8,
+        spaceBetween: 24,
+      },
+      960: {
+        slidesPerView: 2.3,
+        spaceBetween: 28,
+      },
+      1200: {
+        slidesPerView: 2.6,
+        spaceBetween: 32,
+      },
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
+    a11y: {
+      prevSlideMessage: "이전 장소 및 시설 보기",
+      nextSlideMessage: "다음 장소 및 시설 보기",
+      firstSlideMessage: "첫 번째 장소입니다",
+      lastSlideMessage: "마지막 장소입니다",
+    },
+  });
+}
 
 function init3DBodyMap() {
   const container = document.getElementById("canvas-container");

@@ -681,19 +681,16 @@ body.door-locked {
   align-items: flex-start;
 }
 
-/* Left Sticky Title Area */
 .fast-diagnosis .section-title {
   position: relative;
   z-index: 10;
-
   width: 28%;
   margin-right: 0;
   margin-left: 0;
-
   text-align: left;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 960px) {
   .fast-diagnosis .section-title {
     position: sticky;
     top: 140px;
@@ -701,19 +698,16 @@ body.door-locked {
 }
 
 .fast-diagnosis .section-title__title {
-  /* 3. Box Model */
   margin: 20px 0 24px 0;
 }
 
 .fast-diagnosis__btn-more {
   display: inline-flex;
   align-items: center;
-
   font-size: 0.9375rem;
   font-weight: 700;
   color: #1b2d5a;
   text-decoration: none;
-
   transition: color 0.3s ease;
 }
 
@@ -728,9 +722,7 @@ body.door-locked {
 
 .fast-diagnosis__btn-more i {
   display: inline-block;
-
   margin-left: 8px;
-
   transition: transform 0.3s ease;
 }
 
@@ -738,7 +730,6 @@ body.door-locked {
   transform: translateX(4px);
 }
 
-/* Right Cards Container Area */
 .fast-diagnosis__con {
   width: 68%;
 }
@@ -747,32 +738,25 @@ body.door-locked {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
   margin: 0;
   padding: 0;
-
   list-style: none;
 }
 
 .fast-diagnosis__step {
   position: relative;
-
   overflow: hidden;
-
   width: 45.25%;
   height: 430px;
   min-height: 380px;
   margin-bottom: 120px;
-
   border-radius: 30px;
   box-shadow: 0 10px 30px rgba(27, 45, 90, 0.08);
-
   transition:
     transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Staggered Offset for Even-numbered Cards */
 .fast-diagnosis__step:nth-child(even) {
   transform: translateY(28vh);
 }
@@ -791,21 +775,16 @@ body.door-locked {
   top: 0;
   left: 0;
   z-index: 1;
-
   overflow: hidden;
-
   width: 100%;
   height: 100%;
-
   border-radius: 30px;
 }
 
 .fast-diagnosis__bg-image {
   object-fit: cover;
-
   width: 100%;
   height: 100%;
-
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -818,10 +797,8 @@ body.door-locked {
   top: 0;
   left: 0;
   z-index: 2;
-
   width: 100%;
   height: 100%;
-
   background: linear-gradient(
     to bottom,
     rgba(27, 45, 90, 0) 25%,
@@ -833,22 +810,18 @@ body.door-locked {
 .fast-diagnosis__content {
   position: relative;
   z-index: 3;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   padding: 40px 32px;
-
   text-align: left;
 }
 
 .fast-diagnosis__step-title {
   margin: 0 0 10px 0;
-
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 1.35;
@@ -858,15 +831,13 @@ body.door-locked {
 
 .fast-diagnosis__step-desc {
   margin: 0;
-
   font-size: 1rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.88);
   word-break: keep-all;
 }
-/* 03. Fast Diagnosis - End */
-/* 03. Fast Diagnosis [END] */
 
+/* 03. Fast Diagnosis [END] */
 .non-surgical {
   position: relative;
   background-color: #f8fafd;
@@ -887,11 +858,9 @@ body.door-locked {
 }
 
 .non-surgical .section-title {
-  /* 3. Box Model */
   margin-bottom: 60px;
 }
 
-/* Swiper 컨테이너 */
 .non-surgical__swiper-container {
   position: relative;
   width: 100%;
@@ -899,7 +868,6 @@ body.door-locked {
   margin: 0 auto;
 }
 
-/* 상단 컨트롤 바 */
 .non-surgical__slider-controls {
   display: flex;
   justify-content: space-between;
@@ -964,7 +932,6 @@ body.door-locked {
   pointer-events: none;
 }
 
-/* Swiper 슬라이더 정의 */
 .non-surgical__swiper {
   width: 100%;
   padding: 20px 0 60px 0;
@@ -984,7 +951,6 @@ body.door-locked {
   opacity: 1;
 }
 
-/* 3D 카드 디자인 */
 .non-surgical__card {
   display: flex;
   overflow: hidden;
@@ -1001,7 +967,6 @@ body.door-locked {
   box-shadow: 0 20px 50px rgba(27, 45, 90, 0.1);
 }
 
-/* 카드 콘텐츠(왼쪽) */
 .non-surgical__card-content {
   display: flex;
   flex-direction: column;
@@ -1029,7 +994,6 @@ body.door-locked {
 }
 .non-surgical__card-title {
   margin: 0;
-
   font-size: var(--font-3xl);
   font-weight: 800;
   color: #1b2d5a;
@@ -1078,7 +1042,6 @@ body.door-locked {
   line-height: 1.5;
 }
 
-/* 카드 비주얼(오른쪽) */
 .non-surgical__card-visual {
   position: relative;
   display: flex;
@@ -1109,7 +1072,6 @@ body.door-locked {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 100%;
   height: 100%;
 }
@@ -1120,26 +1082,21 @@ body.door-locked {
   object-fit: cover;
 }
 
-/* 비수술 치료 카드 버튼 스타일 */
 .non-surgical__card-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   align-self: flex-start;
   margin-top: auto;
   padding: 12px 24px;
-
   border: 1px solid rgba(47, 95, 167, 0.2);
   border-radius: 12px;
   background-color: #ffffff;
   box-shadow: 0 4px 12px rgba(27, 45, 90, 0.03);
-
   font-size: var(--font-md);
   font-weight: 700;
   color: #2f5fa7;
-
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -1148,9 +1105,7 @@ body.door-locked {
   border-color: #2f5fa7;
   background-color: #2f5fa7;
   box-shadow: 0 8px 20px rgba(47, 95, 167, 0.15);
-
   color: #ffffff;
-
   transform: translateY(-2px);
 }
 
@@ -1162,7 +1117,6 @@ body.door-locked {
 .non-surgical__card-btn-icon {
   width: 16px;
   height: 16px;
-
   transition: transform 0.3s ease;
 }
 
@@ -1170,7 +1124,6 @@ body.door-locked {
   transform: translateX(3px);
 }
 
-/* 인디케이터 도트 페이지네이션 */
 .non-surgical__pagination {
   display: flex;
   justify-content: center;
@@ -1203,15 +1156,13 @@ body.door-locked {
   outline: 2px solid #2f5fa7;
   outline-offset: 3px;
 }
-/* 04. 비수술 치료 솔루션 (Non-Surgical Treatments) [END] */
+/* 04. 비수술 치료 솔루션 [END] */
 
-/* 04-2. 브랜드 신뢰도 프로모션 (Brand Trust) [START] */
+/* 04-2. 브랜드 신뢰도 프로모션[START] */
 .brand-trust {
   position: relative;
-
   width: 100%;
   height: calc(210vh + 80px);
-
   background-color: #ffffff;
 }
 
@@ -1219,9 +1170,7 @@ body.door-locked {
   position: sticky;
   top: 0;
   z-index: 1;
-
   overflow: hidden;
-
   width: 100%;
   height: 100vh;
 }
@@ -1230,10 +1179,8 @@ body.door-locked {
   position: absolute;
   top: -2px;
   z-index: 50;
-
   width: calc(50% + 4px);
   height: calc(100% + 4px);
-
   background-color: #ffffff;
 }
 
@@ -1248,16 +1195,13 @@ body.door-locked {
 .brand-trust__swiper {
   position: relative;
   z-index: 10;
-
   width: 100%;
   height: 100vh;
 }
 
 .brand-trust__slide {
   position: relative;
-
   overflow: hidden;
-
   width: 100%;
   height: 100vh;
 }
@@ -1267,10 +1211,8 @@ body.door-locked {
   top: 0;
   left: 0;
   z-index: 2;
-
   width: 100%;
   height: 100%;
-
   background: linear-gradient(
     135deg,
     rgba(8, 26, 60, 0.9) 0%,
@@ -1283,7 +1225,6 @@ body.door-locked {
   left: 0;
   top: 0;
   z-index: 1;
-
   width: 100%;
   height: 100%;
 }
@@ -1295,7 +1236,6 @@ body.door-locked {
   object-position: center;
 }
 
-/* Slide 1 background scale */
 .brand-trust__slide--stats .brand-trust__bg-img {
   transform: scale(1);
 }
@@ -1303,11 +1243,9 @@ body.door-locked {
 .brand-trust__content-container {
   position: relative;
   z-index: 10;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 100%;
   height: 100%;
   max-width: 1200px;
@@ -1326,13 +1264,10 @@ body.door-locked {
 
 .brand-trust__eyebrow {
   display: inline-block;
-
   margin-bottom: 20px;
   padding: 6px 14px;
   border-radius: 20px;
-
   background: rgba(255, 255, 255, 0.1);
-
   font-size: 13px;
   font-weight: 800;
   color: #fdb608;
@@ -1342,7 +1277,6 @@ body.door-locked {
 
 .brand-trust .brand-trust__title {
   margin: 0 0 28px 0;
-
   font-size: 40px;
   font-weight: 800;
   color: #ffffff;
@@ -1361,7 +1295,6 @@ body.door-locked {
 
 .brand-trust__desc {
   margin: 0;
-
   font-size: 18px;
   line-height: 1.75;
   color: rgba(255, 255, 255, 0.85);
@@ -1389,17 +1322,14 @@ body.door-locked {
   align-items: center;
   justify-content: center;
   flex: 1;
-
   padding: 30px 24px;
   box-sizing: border-box;
-
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 15px 35px rgba(8, 26, 60, 0.25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
@@ -1415,7 +1345,6 @@ body.door-locked {
 
 .brand-trust__stat-label {
   margin-bottom: 12px;
-
   font-size: 14px;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.7);
@@ -1432,7 +1361,6 @@ body.door-locked {
 
 .brand-trust__stat-val small {
   margin-left: 2px;
-
   font-size: 16px;
   font-weight: 700;
   color: #fdb608;
@@ -1440,7 +1368,6 @@ body.door-locked {
 
 .brand-trust__features-grid {
   display: flex;
-
   gap: 20px;
   margin-top: 40px;
 }
@@ -1449,14 +1376,11 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   flex: 1;
-
   padding: 24px;
   box-sizing: border-box;
-
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   background-color: rgba(255, 255, 255, 0.05);
-
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   transition:
@@ -1471,9 +1395,7 @@ body.door-locked {
 
 .brand-trust__feature-tag {
   display: inline-block;
-
   margin-bottom: 12px;
-
   font-family: "Outfit", sans-serif;
   font-size: 14px;
   font-weight: 800;
@@ -1482,7 +1404,6 @@ body.door-locked {
 
 .brand-trust__feature-title {
   margin: 0 0 8px 0;
-
   font-size: 16px;
   font-weight: 700;
   color: #ffffff;
@@ -1497,45 +1418,35 @@ body.door-locked {
   word-break: keep-all;
 }
 
-/* Custom Swiper Controls (Floating at bottom center) */
 .brand-trust__controls {
   position: absolute;
   bottom: 50px;
   left: 50%;
   z-index: 100;
-
   display: flex;
   align-items: center;
-
-  gap: 20px; /* 조절 가능: 전체 패널 내부 구성요소 간의 간격 */
-  padding: 12px 24px; /* 조절 가능: 전체 패널 내부 여백 (세로, 가로) */
+  gap: 20px;
+  padding: 12px 24px;
   box-sizing: border-box;
-
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(8, 26, 60, 0.2);
-
   color: #ffffff;
-
   transform: translateX(-50%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
-/* 컨트롤러 내 버튼 그룹 (이전, 재생/일시정지, 다음 나란히 배치) */
 .brand-trust__buttons-group {
   display: flex;
   align-items: center;
-
-  gap: 16px; /* 조절 가능: 버튼과 버튼 사이 간격 */
+  gap: 16px;
 }
 
-/* 컨트롤러 내 세로 구분선 */
 .brand-trust__controls-divider {
   width: 1px;
-  height: 16px; /* 조절 가능: 구분선 높이 */
-
+  height: 16px;
   background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -1544,34 +1455,27 @@ body.door-locked {
 .brand-trust__btn--play-pause {
   display: grid;
   place-items: center;
-
   padding: 0;
-
   border: none;
   background: transparent;
-
   color: inherit;
-
   cursor: pointer;
   transition:
     transform 0.2s ease,
     opacity 0.2s ease;
 }
 
-/* 조절 가능: 이전/다음 버튼 크기 */
 .brand-trust__btn--prev svg,
 .brand-trust__btn--next svg {
-  width: 20px; /* 조절 가능: 이전/다음 화살표 너비 */
-  height: 20px; /* 조절 가능: 이전/다음 화살표 높이 */
+  width: 20px;
+  height: 20px;
 }
 
-/* 조절 가능: 재생 및 일시정지 버튼 크기 */
 .brand-trust__btn--play-pause svg {
-  width: 14px; /* 조절 가능: 재생/일시정지 아이콘 너비 */
-  height: 14px; /* 조절 가능: 재생/일시정지 아이콘 높이 */
+  width: 14px;
+  height: 14px;
 }
 
-/* 재생/일시정지 중 비활성화 상태의 아이콘 숨김 처리 */
 .brand-trust__btn--play-pause svg.hidden {
   display: none !important;
 }
@@ -1585,7 +1489,6 @@ body.door-locked {
 .brand-trust__pagination {
   display: flex;
   align-items: center;
-
   gap: 12px;
 }
 
@@ -1596,16 +1499,12 @@ body.door-locked {
   font-weight: 800;
 }
 
-/* 조절 가능: 페이지네이션 가로 게이지 바 설정 */
 .brand-trust__progress-wrap {
   position: relative;
-
   overflow: hidden;
-
-  width: 60px; /* 조절 가능: 게이지 바 가로 길이 */
-  height: 2px; /* 조절 가능: 게이지 바 두께 */
+  width: 60px;
+  height: 2px;
   border-radius: 1px;
-
   background: rgba(255, 255, 255, 0.2);
 }
 
@@ -1613,17 +1512,14 @@ body.door-locked {
   position: absolute;
   top: 0;
   left: 0;
-
   width: 33.33%;
   height: 100%;
-
   background: #fdb608;
-
   transition: width 0.3s ease;
 }
-/* 04-2. 브랜드 신뢰도 프로모션 (Brand Trust) [END] */
+/* 04-2. 브랜드 신뢰도 프로모션 [END] */
 
-/* 05. 의료진 소개 및 오늘 진료 가능 일정 (Doctors) [START] */
+/* 05. 의료진 소개 및 오늘 진료 가능 일정 [START] */
 .doctors__grid {
   display: flex;
   overflow: hidden;
@@ -1856,9 +1752,134 @@ body.door-locked {
   width: 100%;
   height: 100%;
 }
-/* 05. 의료진 소개 및 오늘 진료 가능 일정 (Doctors) [END] */
+/* 05. 의료진 소개 및 오늘 진료 가능 일정 [END] */
 
-/* 06. 자가진단 테스트 (Self Test) [START] */
+/* 06. 장소 소개 [START] */
+.location {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  background-color: #f7f9fc;
+}
+
+.location__wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.location__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.location__text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.location .section-title {
+  margin: 0 0 20px 0;
+  text-align: start;
+}
+
+.location__more-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.location__controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.location__nav-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #334155;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+.location__nav-btn:hover:not(.swiper-button-disabled) {
+  border-color: #07569c;
+  background-color: #07569c;
+  box-shadow: 0 4px 12px rgba(7, 86, 156, 0.2);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.location__nav-btn:focus-visible {
+  outline: 2px solid #07569c;
+  outline-offset: 3px;
+}
+
+.location__nav-btn.swiper-button-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.location__nav-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.location__swiper {
+  overflow: hidden;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.location__slide {
+  height: auto;
+}
+
+.location__card {
+  height: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.location__card-image-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 330px;
+  border-radius: 20px;
+}
+
+.location__card-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* 06. 장소 소개 [END] */
+
+/* 07. 자가진단 테스트 [START] */
 .self-test__wrapper {
   display: flex;
   gap: 30px;
@@ -1961,8 +1982,9 @@ body.door-locked {
   background: var(--white);
   color: var(--navy);
 }
+/* 07. 자가진단 테스트[END] */
 
-/* 07. 공지사항 및 건강 정보 (News & Health) [START] */
+/* 08. 공지사항 및 건강 정보 [START] */
 .news__tab-container {
   position: relative;
   width: 100%;
@@ -2101,22 +2123,6 @@ body.door-locked {
   transition: transform 0.4s ease;
 }
 
-.news__thumb--health-1 {
-  background: linear-gradient(135deg, #0284c7 0%, #1e3a8a 100%);
-}
-
-.news__thumb--health-2 {
-  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
-}
-
-.news__thumb--health-3 {
-  background: linear-gradient(135deg, #4338ca 0%, #312e81 100%);
-}
-
-.news__thumb--health-4 {
-  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-}
-
 .news__body {
   display: flex;
   flex-direction: column;
@@ -2149,11 +2155,10 @@ body.door-locked {
   font-weight: 600;
   color: var(--muted);
 }
-/* 07. 공지사항 및 건강 정보 (News & Health) [END] */
+/* 08. 공지사항 및 건강 정보 [END] */
 
-/* Responsive Media Queries (Responsive Styles) [START] */
+/* Responsive Media Queries [START] */
 @media (max-width: 1200px) {
-  /* 02. 3D Body Map Hero Section - UI Layer 1200px Responsive */
   .hero-3d__ui-layer {
     left: 50%;
     box-sizing: border-box;
@@ -2163,17 +2168,7 @@ body.door-locked {
   }
 
   .hero-3d__welcome {
-    top: 6%;
-    width: min(90%, 320px);
-    padding: 10px;
-  }
-
-  .hero-3d__welcome-title {
-    font-size: 16px;
-  }
-
-  .hero-3d__welcome-desc {
-    font-size: 22px;
+    display: none;
   }
 
   .hero-3d__pain-list {
@@ -2193,7 +2188,6 @@ body.door-locked {
     white-space: nowrap;
   }
 
-  /* Jaseng info_box style 슬림 조율 */
   .hero-3d__info-panel {
     width: 290px;
     padding: 22px 18px;
@@ -2233,7 +2227,6 @@ body.door-locked {
     font-size: 15px;
   }
 
-  /* 02. 3D Body Map Hero Section - 960px Responsive */
   .hero-3d__ui-layer {
     box-sizing: border-box;
     width: 100%;
@@ -2280,7 +2273,6 @@ body.door-locked {
     -webkit-backdrop-filter: blur(8px);
   }
 
-  /* 5개 li 항목 유기적 반응형 레이아웃 */
   .hero-3d__togo-item-wrap {
     flex: 1 1 calc(20% - 10px);
     min-width: 140px;
@@ -2371,7 +2363,6 @@ body.door-locked {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* 비수술 치료 3D Coverflow 슬라이더 태블릿 반응형 (960px) */
   .non-surgical__swiper-container {
     padding: 0;
   }
@@ -2530,7 +2521,6 @@ body.door-locked {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Brand Trust Responsive (Tablet) */
   .brand-trust {
     height: 100vh;
   }
@@ -2593,6 +2583,23 @@ body.door-locked {
   .brand-trust__controls {
     bottom: 30px;
   }
+
+  .location__wrapper {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .location__header {
+    width: 100%;
+  }
+
+  .location__controls {
+    margin-top: 24px;
+  }
+
+  .location__card-image-wrap {
+    height: 200px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2615,6 +2622,10 @@ body.door-locked {
     padding: 12px 28px !important;
     font-size: 15px;
   }
+
+  .hero-3d__info-panel {
+    width: 200px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -2622,7 +2633,6 @@ body.door-locked {
     font-size: 14px;
   }
 
-  /* 02. 3D Body Map Hero Section - 640px Mobile Responsive (Jaseng clinic_sect style) */
   .hero-3d {
     height: 100vh;
     min-height: 560px;
@@ -2661,7 +2671,6 @@ body.door-locked {
     padding: 0 16px;
   }
 
-  /* 6개 통증 부위 짤림 방지: 3x2 2줄 스마트 그리드 레이아웃 (스크롤 없이 6개 한눈에 노출) */
   .hero-3d__pain-list {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -2692,8 +2701,6 @@ body.door-locked {
     transform: none;
   }
 
-  /* Jaseng info_box style: 부위별 3D 홀로그램 반대편으로 플로팅되는 스마트 오버레이 패널 */
-  /* hero-3d__togo-section 하단 목록과 최소 15px 이격되는 하단 고정 오버레이 패널 */
   .hero-3d__info-panel {
     position: absolute;
     bottom: clamp(140px, 18vh, 175px);
@@ -2801,7 +2808,6 @@ body.door-locked {
     grid-template-columns: 1fr;
   }
 
-  /* 비수술 치료 3D Coverflow 슬라이더 모바일 반응형 */
   .non-surgical {
     padding: 60px 0;
   }
@@ -2834,7 +2840,6 @@ body.door-locked {
     font-size: 22px;
   }
 
-  /* Brand Trust Responsive (Mobile) */
   .brand-trust__title {
     font-size: 22px;
   }
@@ -2946,32 +2951,4 @@ body.door-locked {
   .hero-3d__tv-container {
     padding: 0 16px;
   }
-}
-
-/* 08. Additional Trust Badges & Layout Modifications [START] */
-.flex-title {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 10px;
-  border-radius: 6px;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-}
-
-.footer-notice {
-  display: block;
-  margin-top: 8px;
-  font-size: 12px;
-  color: rgba(185, 203, 224, 0.5);
-  font-weight: 500;
 }

@@ -63,7 +63,7 @@ ul.swiper-wrapper {
 .topbar {
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 9999;
   backdrop-filter: blur(18px);
 }
 
@@ -231,35 +231,12 @@ svg {
   position: relative;
   overflow: hidden;
   width: 100%;
+  display: flex;
+  justify-content: center;
   padding: 90px 0 50px;
   box-sizing: border-box;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: linear-gradient(135deg, #071527 0%, #0c203b 50%, #061120 100%);
-  font-family:
-    "Pretendard Variable",
-    "Pretendard",
-    "Outfit",
-    -apple-system,
-    sans-serif;
   color: #ffffff;
-}
-
-.footer::before {
-  position: absolute;
-  top: -12vh;
-  right: -5vw;
-  z-index: 0;
-  display: block;
-  width: min(500px, 50vw);
-  height: min(500px, 50vw);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(56, 189, 248, 0.08) 0%,
-    rgba(0, 0, 0, 0) 70%
-  );
-  pointer-events: none;
-  content: "";
 }
 
 .footer__watermark {
@@ -287,10 +264,7 @@ svg {
   display: flex;
   flex-direction: column;
   gap: 50px;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 32px;
+  width: 1200px;
   box-sizing: border-box;
 }
 
@@ -348,18 +322,9 @@ svg {
   flex-direction: column;
   padding: 28px;
   box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   background-color: rgba(15, 23, 42, 0.5);
   backdrop-filter: blur(10px);
-  transition:
-    border-color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.footer-card:hover {
-  border-color: rgba(56, 189, 248, 0.25);
-  transform: translateY(-2px);
 }
 
 .footer-card .title-box {
@@ -382,11 +347,6 @@ svg {
   font-weight: 700;
   line-height: 1.3;
   color: #ffffff;
-}
-
-/* time-area */
-.footer-top .time-area {
-  grid-column: span 1;
 }
 
 .footer-top .time-box {
@@ -460,11 +420,6 @@ svg {
   color: #94a3b8;
 }
 
-/* map-area */
-.footer-top .map-area {
-  grid-column: span 1;
-}
-
 .footer-top .map-box {
   position: relative;
   overflow: hidden;
@@ -524,11 +479,6 @@ svg {
   color: #e2e8f0;
 }
 
-/* number-area */
-.footer-top .number-area {
-  grid-column: span 1;
-}
-
 .footer-top .number-area .title-box p {
   font-family: "Outfit", sans-serif;
   font-size: 26px;
@@ -583,11 +533,6 @@ svg {
   background-color: #02b350;
   box-shadow: 0 6px 16px rgba(3, 199, 90, 0.3);
   transform: translateY(-2px);
-}
-
-/* channel-area */
-.footer-top .channel-area {
-  grid-column: span 1;
 }
 
 .footer-top .sns-box {
