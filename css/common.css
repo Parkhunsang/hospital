@@ -60,21 +60,54 @@ ul.swiper-wrapper {
   margin: 0 auto;
 }
 
+/* Header Navigation - Start */
 .topbar {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 12px;
+  left: 0;
   z-index: 9999;
-  backdrop-filter: blur(18px);
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: transparent;
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.topbar--up {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+  transition-delay: 0s;
+}
+
+.topbar--down {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-120%) !important;
+  pointer-events: none !important;
+  transition-delay: 0s, 0s, 0.3s;
 }
 
 .topbar__nav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 24px;
   width: min(1200px, calc(100% - 40px));
   height: 80px;
   margin: 0 auto;
+  background: #acbac9;
+  padding: 16px;
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .topbar__brand {
@@ -89,21 +122,122 @@ ul.swiper-wrapper {
   object-fit: cover;
 }
 
-.topbar__brand-subtext {
-  display: block;
-  margin-top: 2px;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--muted);
-}
-
 .topbar__links {
   display: flex;
   align-items: center;
-  gap: 28px;
-  font-size: 15px;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topbar__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+.topbar__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 1rem;
   font-weight: 700;
-  color: #31475e;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.topbar__link::after {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #38bdf8;
+  content: "";
+  transition: width 0.3s ease;
+}
+
+.topbar__item:hover .topbar__link,
+.topbar__item:focus-within .topbar__link {
+  color: #38bdf8;
+}
+
+.topbar__item:hover .topbar__link::after,
+.topbar__item:focus-within .topbar__link::after {
+  width: 100%;
+}
+
+.topbar__link:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 4px;
+}
+
+.topbar__sub-list {
+  position: absolute;
+  top: calc(100% - 8px);
+  left: 50%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 170px;
+  margin: 0;
+  padding: 12px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background-color: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.topbar__item:hover .topbar__sub-list,
+.topbar__item:focus-within .topbar__sub-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.topbar__sub-item {
+  width: 100%;
+}
+
+.topbar__sub-link {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.topbar__sub-link:hover,
+.topbar__sub-link:focus-visible {
+  background-color: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+.topbar__sub-link:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: -2px;
 }
 
 .topbar__actions {
@@ -111,6 +245,7 @@ ul.swiper-wrapper {
   align-items: center;
   gap: 8px;
 }
+/* Header Navigation - End */
 
 .primary-button,
 .ghost-button {
@@ -466,7 +601,7 @@ svg {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 14px;
   color: #94a3b8;
 }
 
@@ -474,9 +609,10 @@ svg {
   padding: 2px 6px;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.1);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   color: #e2e8f0;
+  white-space: nowrap;
 }
 
 .footer-top .number-area .title-box p {

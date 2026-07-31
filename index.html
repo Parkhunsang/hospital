@@ -76,19 +76,61 @@
       </div>
     </div>
 
-    <header class="topbar">
+    <header class="topbar topbar--top">
       <nav class="topbar__nav" aria-label="주요 메뉴">
         <a class="topbar__brand" href="./index.html">
           <img class="topbar__logo" src="./assets/logo.png" alt="코어업 로고" />
         </a>
         <ul class="topbar__links">
-          <li class="topbar__link"><a href="#information">병원 소개</a></li>
-          <li class="topbar__link">
-            <a href="#reservation">진료예약 및 안내</a>
+          <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
+            <a href="#information" class="topbar__link">
+              <span>병원 소개</span>
+            </a>
+            <ul class="topbar__sub-list" aria-label="병원 소개 하위 메뉴">
+              <li class="topbar__sub-item"><a href="#doctors" class="topbar__sub-link">의료진 소개</a></li>
+              <li class="topbar__sub-item"><a href="#location" class="topbar__sub-link">시설 둘러보기</a></li>
+              <li class="topbar__sub-item"><a href="#footer" class="topbar__sub-link">오시는 길</a></li>
+            </ul>
           </li>
-          <li class="topbar__link"><a href="#clinic">클리닉 소개</a></li>
-          <li class="topbar__link"><a href="#clinic">도수재활치료</a></li>
-          <li class="topbar__link"><a href="#board">커뮤니티</a></li>
+          <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
+            <a href="#reservation" class="topbar__link">
+              <span>진료안내 &amp; 예약</span>
+            </a>
+            <ul class="topbar__sub-list" aria-label="진료안내 및 예약 하위 메뉴">
+              <li class="topbar__sub-item"><a href="#footer" class="topbar__sub-link">진료시간 안내</a></li>
+              <li class="topbar__sub-item"><a href="#booking" class="topbar__sub-link">온라인 진료예약</a></li>
+              <li class="topbar__sub-item"><a href="tel:0212345678" class="topbar__sub-link">전화 상담문의</a></li>
+            </ul>
+          </li>
+          <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
+            <a href="#clinic" class="topbar__link">
+              <span>클리닉 소개</span>
+            </a>
+            <ul class="topbar__sub-list" aria-label="클리닉 소개 하위 메뉴">
+              <li class="topbar__sub-item"><a href="#non-surgical" class="topbar__sub-link">비수술 척추·관절</a></li>
+              <li class="topbar__sub-item"><a href="#clinic" class="topbar__sub-link">3D 체형분석 센터</a></li>
+              <li class="topbar__sub-item"><a href="#clinic" class="topbar__sub-link">프라이빗 수액실</a></li>
+            </ul>
+          </li>
+          <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
+            <a href="#rehab" class="topbar__link">
+              <span>도수재활치료</span>
+            </a>
+            <ul class="topbar__sub-list" aria-label="도수재활치료 하위 메뉴">
+              <li class="topbar__sub-item"><a href="#rehab" class="topbar__sub-link">1:1 맞춤 도수치료</a></li>
+              <li class="topbar__sub-item"><a href="#rehab" class="topbar__sub-link">스포츠 재활 운동</a></li>
+            </ul>
+          </li>
+          <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
+            <a href="#board" class="topbar__link">
+              <span>커뮤니티</span>
+            </a>
+            <ul class="topbar__sub-list" aria-label="커뮤니티 하위 메뉴">
+              <li class="topbar__sub-item"><a href="#news" class="topbar__sub-link">병원 소식</a></li>
+              <li class="topbar__sub-item"><a href="#news" class="topbar__sub-link">건강 정보</a></li>
+              <li class="topbar__sub-item"><a href="#self-test" class="topbar__sub-link">자가진단 테스트</a></li>
+            </ul>
+          </li>
         </ul>
         <ul class="topbar__actions">
           <li class="primary-button">

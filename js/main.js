@@ -1,13 +1,79 @@
 // 기존에 main.js 내용이 있다면 아래 코드를 파일 하단에 추가해 주세요.
 
 document.addEventListener("DOMContentLoaded", () => {
-  initIntroDoor();
-  init3DBodyMap();
-  initFastDiagnosis();
-  initNonSurgicalSlider();
-  initBrandTrustPartners();
-  initLocationSlider();
+  initHeaderNavigation();
+  if (typeof initIntroDoor === "function") initIntroDoor();
+  if (typeof init3DBodyMap === "function") init3DBodyMap();
+  if (typeof initFastDiagnosis === "function") initFastDiagnosis();
+  if (typeof initNonSurgicalSlider === "function") initNonSurgicalSlider();
+  if (typeof initBrandTrustPartners === "function") initBrandTrustPartners();
+  if (typeof initLocationSlider === "function") initLocationSlider();
 });
+
+function initHeaderNavigation() {
+  const topbar = document.querySelector(".topbar");
+  if (!topbar) return;
+
+  let lastScrollY = window.scrollY;
+
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+
+    // 최상단 근처 (10px 이하)
+    if (currentScrollY <= 10) {
+      topbar.classList.add("topbar--top");
+      topbar.classList.remove("topbar--up", "topbar--down");
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    // 마우스 호버 중이거나 키보드 포커스가 메뉴 내부에 있을 때 숨김 방지
+    if (topbar.matches(":hover") || topbar.contains(document.activeElement)) {
+      topbar.classList.add("topbar--up");
+      topbar.classList.remove("topbar--down", "topbar--top");
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    const scrollDiff = currentScrollY - lastScrollY;
+
+    if (Math.abs(scrollDiff) > 5) {
+      if (scrollDiff > 0) {
+        // 아래로 스크롤 시 -> 위로 감춤
+        topbar.classList.add("topbar--down");
+        topbar.classList.remove("topbar--up", "topbar--top");
+      } else {
+        // 위로 스크롤 시 -> 상단에 고정 팝업
+        topbar.classList.add("topbar--up");
+        topbar.classList.remove("topbar--down", "topbar--top");
+      }
+      lastScrollY = currentScrollY;
+    }
+  }
+
+  // 초기 스크롤 상태 반영
+  handleScroll();
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  // WAI-ARIA 접근성 aria-expanded 동적 처리
+  const items = topbar.querySelectorAll(".topbar__item");
+  items.forEach((item) => {
+    function setExpanded(expanded) {
+      item.setAttribute("aria-expanded", expanded ? "true" : "false");
+    }
+
+    item.addEventListener("mouseenter", () => setExpanded(true));
+    item.addEventListener("mouseleave", () => setExpanded(false));
+
+    item.addEventListener("focusin", () => setExpanded(true));
+    item.addEventListener("focusout", (e) => {
+      if (!item.contains(e.relatedTarget)) {
+        setExpanded(false);
+      }
+    });
+  });
+}
 
 function initLocationSlider() {
   const container = document.querySelector(".location__swiper");
