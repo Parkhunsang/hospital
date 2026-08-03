@@ -16,7 +16,113 @@ function initHeaderNavigation() {
 
   let lastScrollY = window.scrollY;
 
+  // 모바일 햄버거 & 드로어 요소 참조
+  const topbarNav = topbar.querySelector(".topbar__nav");
+  const hamburger = topbar.querySelector(".topbar__hamburger");
+  const drawer = document.querySelector(".topbar__drawer");
+
+  let isDrawerOpen = false;
+
+  function openDrawer() {
+    if (!drawer || !hamburger) return;
+    isDrawerOpen = true;
+    if (topbarNav) topbarNav.classList.add("topbar__nav--open");
+    hamburger.classList.add("topbar__hamburger--active");
+    hamburger.setAttribute("aria-expanded", "true");
+    hamburger.setAttribute("aria-label", "메뉴 닫기");
+    drawer.classList.add("topbar__drawer--active");
+    drawer.setAttribute("aria-hidden", "false");
+  }
+
+  function closeDrawer() {
+    if (!drawer || !hamburger) return;
+    isDrawerOpen = false;
+    if (topbarNav) topbarNav.classList.remove("topbar__nav--open");
+    hamburger.classList.remove("topbar__hamburger--active");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("aria-label", "메뉴 열기");
+    drawer.classList.remove("topbar__drawer--active");
+    drawer.setAttribute("aria-hidden", "true");
+  }
+
+  function toggleDrawer() {
+    if (isDrawerOpen) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  }
+
+  if (hamburger) {
+    hamburger.addEventListener("click", toggleDrawer);
+  }
+
+  // ESC 키로 모바일 드로어 닫기
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isDrawerOpen) {
+      closeDrawer();
+      if (hamburger) hamburger.focus();
+    }
+  });
+
+  // 모바일 아코디언 서브메뉴 토글
+  const drawerItems = document.querySelectorAll(".topbar__drawer-item");
+  drawerItems.forEach((item) => {
+    const toggleBtn = item.querySelector(".topbar__drawer-toggle");
+    const subList = item.querySelector(".topbar__drawer-sub-list");
+
+    if (!toggleBtn || !subList) return;
+
+    toggleBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
+
+      // 다른 아코디언 닫기 (Accordion Mutual Exclusion)
+      drawerItems.forEach((otherItem) => {
+        const otherToggle = otherItem.querySelector(".topbar__drawer-toggle");
+        const otherSubList = otherItem.querySelector(".topbar__drawer-sub-list");
+        if (otherToggle && otherSubList && otherItem !== item) {
+          otherItem.classList.remove("topbar__drawer-item--active");
+          otherToggle.classList.remove("topbar__drawer-toggle--active");
+          otherToggle.setAttribute("aria-expanded", "false");
+          otherSubList.classList.remove("topbar__drawer-sub-list--active");
+        }
+      });
+
+      if (isExpanded) {
+        item.classList.remove("topbar__drawer-item--active");
+        toggleBtn.classList.remove("topbar__drawer-toggle--active");
+        toggleBtn.setAttribute("aria-expanded", "false");
+        subList.classList.remove("topbar__drawer-sub-list--active");
+      } else {
+        item.classList.add("topbar__drawer-item--active");
+        toggleBtn.classList.add("topbar__drawer-toggle--active");
+        toggleBtn.setAttribute("aria-expanded", "true");
+        subList.classList.add("topbar__drawer-sub-list--active");
+      }
+    });
+  });
+
+  // 앵커 링크 클릭 시 드로어 자동 닫기
+  const drawerLinks = document.querySelectorAll(
+    ".topbar__drawer-link, .topbar__drawer-sub-link, .topbar__drawer-btn"
+  );
+  drawerLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      closeDrawer();
+    });
+  });
+
+  // 960px 초과 시 드로어 자동 닫기
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 960 && isDrawerOpen) {
+      closeDrawer();
+    }
+  });
+
   function handleScroll() {
+    if (isDrawerOpen) return;
+
     const currentScrollY = window.scrollY;
 
     // 최상단 근처 (10px 이하)

@@ -140,6 +140,132 @@
             <a href="#booking">예약하기</a>
           </li>
         </ul>
+        <button
+          type="button"
+          class="topbar__hamburger"
+          aria-label="메뉴 열기"
+          aria-expanded="false"
+          aria-controls="topbar-drawer"
+        >
+          <span class="topbar__hamburger-line"></span>
+          <span class="topbar__hamburger-line"></span>
+          <span class="topbar__hamburger-line"></span>
+        </button>
+
+        <div
+          id="topbar-drawer"
+          class="topbar__drawer"
+          aria-label="모바일 주요 메뉴"
+          aria-hidden="true"
+        >
+          <div class="topbar__drawer-body">
+            <ul class="topbar__drawer-links">
+              <li class="topbar__drawer-item">
+                <div class="topbar__drawer-accordion">
+                  <a href="#information" class="topbar__drawer-link">병원 소개</a>
+                  <button
+                    type="button"
+                    class="topbar__drawer-toggle"
+                    aria-label="병원 소개 하위 메뉴 토글"
+                    aria-expanded="false"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+                <ul class="topbar__drawer-sub-list">
+                  <li class="topbar__drawer-sub-item"><a href="#doctors" class="topbar__drawer-sub-link">의료진 소개</a></li>
+                  <li class="topbar__drawer-sub-item"><a href="#location" class="topbar__drawer-sub-link">시설 둘러보기</a></li>
+                  <li class="topbar__drawer-sub-item"><a href="#footer" class="topbar__drawer-sub-link">오시는 길</a></li>
+                </ul>
+              </li>
+              <li class="topbar__drawer-item">
+                <div class="topbar__drawer-accordion">
+                  <a href="#reservation" class="topbar__drawer-link">진료안내 &amp; 예약</a>
+                  <button
+                    type="button"
+                    class="topbar__drawer-toggle"
+                    aria-label="진료안내 및 예약 하위 메뉴 토글"
+                    aria-expanded="false"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+                <ul class="topbar__drawer-sub-list">
+                  <li class="topbar__drawer-sub-item"><a href="#footer" class="topbar__drawer-sub-link">진료시간 안내</a></li>
+                  <li class="topbar__drawer-sub-item"><a href="#booking" class="topbar__drawer-sub-link">온라인 진료예약</a></li>
+                  <li class="topbar__drawer-sub-item"><a href="tel:0212345678" class="topbar__drawer-sub-link">전화 상담문의</a></li>
+                </ul>
+              </li>
+              <li class="topbar__drawer-item">
+                <div class="topbar__drawer-accordion">
+                  <a href="#clinic" class="topbar__drawer-link">클리닉 소개</a>
+                  <button
+                    type="button"
+                    class="topbar__drawer-toggle"
+                    aria-label="클리닉 소개 하위 메뉴 토글"
+                    aria-expanded="false"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+                <ul class="topbar__drawer-sub-list">
+                  <li class="topbar__drawer-sub-item"><a href="#non-surgical" class="topbar__drawer-sub-link">비수술 척추·관절</a></li>
+                  <li class="topbar__drawer-sub-item"><a href="#clinic" class="topbar__drawer-sub-link">3D 체형분석 센터</a></li>
+                  <li class="topbar__drawer-sub-item"><a href="#clinic" class="topbar__drawer-sub-link">프라이빗 수액실</a></li>
+                </ul>
+              </li>
+              <li class="topbar__drawer-item">
+                <div class="topbar__drawer-accordion">
+                  <a href="#rehab" class="topbar__drawer-link">도수재활치료</a>
+                  <button
+                    type="button"
+                    class="topbar__drawer-toggle"
+                    aria-label="도수재활치료 하위 메뉴 토글"
+                    aria-expanded="false"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+                <ul class="topbar__drawer-sub-list">
+                  <li class="topbar__drawer-sub-item"><a href="#rehab" class="topbar__drawer-sub-link">1:1 맞춤 도수치료</a></li>
+                  <li class="topbar__drawer-sub-item"><a href="#rehab" class="topbar__drawer-sub-link">스포츠 재활 운동</a></li>
+                </ul>
+              </li>
+              <li class="topbar__drawer-item">
+                <div class="topbar__drawer-accordion">
+                  <a href="#board" class="topbar__drawer-link">커뮤니티</a>
+                  <button
+                    type="button"
+                    class="topbar__drawer-toggle"
+                    aria-label="커뮤니티 하위 메뉴 토글"
+                    aria-expanded="false"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+                <ul class="topbar__drawer-sub-list">
+                  <li class="topbar__drawer-sub-item"><a href="#news" class="topbar__drawer-sub-link">병원 소식</a></li>
+                  <li class="topbar__drawer-sub-item"><a href="#news" class="topbar__drawer-sub-link">건강 정보</a></li>
+                  <li class="topbar__drawer-sub-item"><a href="#self-test" class="topbar__drawer-sub-link">자가진단 테스트</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="topbar__drawer-footer">
+            <a class="primary-button topbar__drawer-btn" href="tel:0212345678">전화 상담</a>
+            <a class="ghost-button topbar__drawer-btn" href="#booking">예약하기</a>
+          </div>
+        </div>
       </nav>
     </header>
 
