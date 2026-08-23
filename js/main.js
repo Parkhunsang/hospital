@@ -732,7 +732,11 @@ function init3DBodyMap() {
             li.classList.add("hero-3d__disease-item");
             const a = document.createElement("a");
             a.classList.add("hero-3d__disease-link");
-            a.href = "#"; // 추후 생성될 상세 페이지 URL로 교체
+            if (disease === "목디스크" || disease === "목 디스크") {
+              a.href = "./disease/neck.html";
+            } else {
+              a.href = "#";
+            }
             a.target = "_blank"; // 새 창으로 열림
             a.textContent = disease;
             li.appendChild(a);
@@ -981,6 +985,27 @@ function initFastDiagnosis() {
   const section = document.querySelector(".fast-diagnosis");
   if (!section) return;
 
+  // 1. GSAP ScrollTrigger 핀(Pin) 고정 (데스크톱)
+  const titleEl = section.querySelector(".section-title-wrap");
+  if (titleEl && typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+
+    ScrollTrigger.matchMedia({
+      "(min-width: 1024px)": function () {
+        ScrollTrigger.create({
+          trigger: ".fast-diagnosis__conwrap",
+          start: "top 140px",
+          end: "bottom bottom",
+          pin: titleEl,
+          pinSpacing: false,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        });
+      },
+    });
+  }
+
+  // 2. 카드 등장 및 팬아웃(Fan-out) 모션
   const observer = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {
@@ -990,7 +1015,7 @@ function initFastDiagnosis() {
             ".fast-diagnosis__steps",
           );
 
-          if (typeof gsap !== "undefined" && steps.length > 0) {
+          if (typeof gsap !== "undefined" && steps.length > 0 && stepsContainer) {
             const containerWidth = stepsContainer.offsetWidth;
             const stepWidth = steps[0].offsetWidth;
             const offset = (containerWidth - stepWidth) / 2;
@@ -1036,7 +1061,7 @@ function initFastDiagnosis() {
               },
               "-=0.2",
             );
-          } else {
+          } else if (steps.length > 0) {
             // CSS 폴백 모션
             steps.forEach((step, idx) => {
               step.classList.add("is-fallback");
@@ -1448,28 +1473,4 @@ function initBrandTrustPartners() {
   }
 }
 
-function initFastDiagnosis() {
-  const section = document.querySelector(".fast-diagnosis");
-  if (!section) return;
 
-  const titleEl = section.querySelector(".fast-diagnosis__title");
-  if (!titleEl) return;
-
-  if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-
-    ScrollTrigger.matchMedia({
-      "(min-width: 1024px)": function () {
-        ScrollTrigger.create({
-          trigger: ".fast-diagnosis__conwrap",
-          start: "top 140px",
-          end: "bottom bottom",
-          pin: ".fast-diagnosis__title",
-          pinSpacing: false,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        });
-      },
-    });
-  }
-}

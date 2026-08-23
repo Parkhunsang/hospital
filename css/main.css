@@ -677,17 +677,19 @@ body.door-locked {
   align-items: flex-start;
 }
 
-.fast-diagnosis .section-title {
+.fast-diagnosis .section-title-wrap {
   position: relative;
   z-index: 10;
+
   width: 28%;
   margin-right: 0;
   margin-left: 0;
+
   text-align: left;
 }
 
 @media (min-width: 960px) {
-  .fast-diagnosis .section-title {
+  .fast-diagnosis .section-title-wrap {
     position: sticky;
     top: 140px;
   }
@@ -1730,14 +1732,7 @@ body.door-locked {
   width: 100%;
 }
 
-.location__text-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.location .section-title {
+.location__title-wrap {
   margin: 0 0 20px 0;
   text-align: start;
 }
@@ -2277,7 +2272,7 @@ body.door-locked {
     width: 100%;
   }
 
-  .fast-diagnosis .section-title {
+  .fast-diagnosis .section-title-wrap {
     width: 100%;
     margin-bottom: 50px;
   }

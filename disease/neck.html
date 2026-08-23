@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>목 디스크 | 코어업 척추통증센터</title>
+    <!-- 모듈형 CSS 구조 연결 -->
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/sub-common.css" />
+    <link rel="stylesheet" href="../css/pages/neck.css" />
+
+    <!-- JS 스크립트 연결 -->
+    <script defer src="disease_js/main.js"></script>
+  </head>
+  <body>
+    <!-- 상단 내비게이션 바 -->
+    <header class="topbar topbar--top">
+      <div class="topbar_nav_wrap">
+        <a class="topbar__brand" href="../index.html">
+          <img class="topbar__logo" src="/assets/logo.png" alt="코어업 로고" />
+        </a>
+        <nav class="topbar__nav" aria-label="주요 메뉴">
+          <ul class="topbar__links">
+            <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
+              <a href="#information" class="topbar__link">
+                <span>병원 소개</span>
+              </a>
+              <ul class="topbar__sub-list" aria-label="병원 소개 하위 메뉴">
+                <li class="topbar__sub-item">
+                  <a href="#doctors" class="topbar__sub-link">의료진 소개</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#location" class="topbar__sub-link"
+                    >입원 및 시설 안내</a
+                  >
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#footer" class="topbar__sub-link">오시는 길</a>
+                </li>
+              </ul>
+            </li>
+            <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
+              <a href="#reservation" class="topbar__link">
+                <span>진료안내 &amp; 예약</span>
+              </a>
+              <ul
+                class="topbar__sub-list"
+                aria-label="진료안내 및 예약 하위 메뉴"
+              >
+                <li class="topbar__sub-item">
+                  <a href="#footer" class="topbar__sub-link">진료시간 안내</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#booking" class="topbar__sub-link"
+                    >온라인 진료예약</a
+                  >
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="tel:0212345678" class="topbar__sub-link"
+                    >전화 상담문의</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
+              <a href="#clinic" class="topbar__link">
+                <span>부위별 진료</span>
+              </a>
+              <ul class="topbar__sub-list" aria-label="부위별 진료 하위 메뉴">
+                <li class="topbar__sub-item">
+                  <a href="#clinic" class="topbar__sub-link">목 통증</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#clinic" class="topbar__sub-link">어깨 통증</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#clinic" class="topbar__sub-link">허리 통증</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#clinic" class="topbar__sub-link">손 통증</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#clinic" class="topbar__sub-link">무릎 통증</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#clinic" class="topbar__sub-link">발 통증</a>
+                </li>
+              </ul>
+            </li>
+            <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
+              <a href="#rehab" class="topbar__link">
+                <span>비수술 치료</span>
+              </a>
+              <ul class="topbar__sub-list" aria-label="비수술 치료 하위 메뉴">
+                <li class="topbar__sub-item">
+                  <a href="#rehab" class="topbar__sub-link">도수 치료</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#rehab" class="topbar__sub-link">신경 차단술 치료</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#rehab" class="topbar__sub-link">주사 치료</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#rehab" class="topbar__sub-link">재활 치료</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#rehab" class="topbar__sub-link">체외 충격파 치료</a>
+                </li>
+              </ul>
+            </li>
+            <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
+              <a href="#board" class="topbar__link">
+                <span>커뮤니티</span>
+              </a>
+              <ul class="topbar__sub-list" aria-label="커뮤니티 하위 메뉴">
+                <li class="topbar__sub-item">
+                  <a href="#news" class="topbar__sub-link">병원 소식</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#news" class="topbar__sub-link">건강 정보</a>
+                </li>
+                <li class="topbar__sub-item">
+                  <a href="#self-test" class="topbar__sub-link"
+                    >자가진단 테스트</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <ul class="topbar__actions">
+          <li class="primary-button">
+            <a href="tel:0212345678">전화 상담</a>
+          </li>
+          <li class="ghost-button">
+            <a href="#booking">예약하기</a>
+          </li>
+        </ul>
+        <button
+          type="button"
+          class="topbar__hamburger"
+          aria-label="메뉴 열기"
+          aria-expanded="false"
+          aria-controls="topbar-drawer"
+        >
+          <span class="topbar__hamburger-line"></span>
+          <span class="topbar__hamburger-line"></span>
+          <span class="topbar__hamburger-line"></span>
+        </button>
+      </div>
+
+      <nav
+        id="topbar-drawer"
+        class="topbar__drawer"
+        aria-label="모바일 주요 메뉴"
+        aria-hidden="true"
+      >
+        <div class="topbar__drawer-body">
+          <ul class="topbar__drawer-links">
+            <li class="topbar__drawer-item">
+              <div class="topbar__drawer-accordion">
+                <a href="#information" class="topbar__drawer-link">병원 소개</a>
+                <button
+                  type="button"
+                  class="topbar__drawer-toggle"
+                  aria-label="병원 소개 하위 메뉴 토글"
+                  aria-expanded="false"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M6 9l6 6 6-6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <ul class="topbar__drawer-sub-list">
+                <li class="topbar__drawer-sub-item">
+                  <a href="#doctors" class="topbar__drawer-sub-link"
+                    >의료진 소개</a
+                  >
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#location" class="topbar__drawer-sub-link"
+                    >입원 및 시설 안내</a
+                  >
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#footer" class="topbar__drawer-sub-link"
+                    >오시는 길</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="topbar__drawer-item">
+              <div class="topbar__drawer-accordion">
+                <a href="#reservation" class="topbar__drawer-link"
+                  >진료안내 &amp; 예약</a
+                >
+                <button
+                  type="button"
+                  class="topbar__drawer-toggle"
+                  aria-label="진료안내 및 예약 하위 메뉴 토글"
+                  aria-expanded="false"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M6 9l6 6 6-6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <ul class="topbar__drawer-sub-list">
+                <li class="topbar__drawer-sub-item">
+                  <a href="#footer" class="topbar__drawer-sub-link"
+                    >진료시간 안내</a
+                  >
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#booking" class="topbar__drawer-sub-link"
+                    >온라인 진료예약</a
+                  >
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="tel:0212345678" class="topbar__drawer-sub-link"
+                    >전화 상담문의</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="topbar__drawer-item">
+              <div class="topbar__drawer-accordion">
+                <a href="#clinic" class="topbar__drawer-link">부위별 진료</a>
+                <button
+                  type="button"
+                  class="topbar__drawer-toggle"
+                  aria-label="부위별 진료 하위 메뉴 토글"
+                  aria-expanded="false"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M6 9l6 6 6-6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <ul class="topbar__drawer-sub-list">
+                <li class="topbar__drawer-sub-item">
+                  <a href="#clinic" class="topbar__drawer-sub-link">목 통증</a>
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#clinic" class="topbar__drawer-sub-link"
+                    >어깨 통증</a
+                  >
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#clinic" class="topbar__drawer-sub-link"
+                    >허리 통증</a
+                  >
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#clinic" class="topbar__drawer-sub-link">손 통증</a>
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#clinic" class="topbar__drawer-sub-link"
+                    >무릎 통증</a
+                  >
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#clinic" class="topbar__drawer-sub-link">발 통증</a>
+                </li>
+              </ul>
+            </li>
+            <li class="topbar__drawer-item">
+              <div class="topbar__drawer-accordion">
+                <a href="#rehab" class="topbar__drawer-link">비수술 치료</a>
+                <button
+                  type="button"
+                  class="topbar__drawer-toggle"
+                  aria-label="비수술 치료 하위 메뉴 토글"
+                  aria-expanded="false"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M6 9l6 6 6-6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <ul class="topbar__drawer-sub-list">
+                <li class="topbar__drawer-sub-item">
+                  <a href="#rehab" class="topbar__drawer-sub-link">도수 치료</a>
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#rehab" class="topbar__drawer-sub-link"
+                    >신경 차단술 치료</a
+                  >
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#rehab" class="topbar__drawer-sub-link">주사 치료</a>
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#rehab" class="topbar__drawer-sub-link">재활 치료</a>
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#rehab" class="topbar__drawer-sub-link"
+                    >체외 충격파 치료</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="topbar__drawer-item">
+              <div class="topbar__drawer-accordion">
+                <a href="#board" class="topbar__drawer-link">커뮤니티</a>
+                <button
+                  type="button"
+                  class="topbar__drawer-toggle"
+                  aria-label="커뮤니티 하위 메뉴 토글"
+                  aria-expanded="false"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M6 9l6 6 6-6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <ul class="topbar__drawer-sub-list">
+                <li class="topbar__drawer-sub-item">
+                  <a href="#news" class="topbar__drawer-sub-link">병원 소식</a>
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#news" class="topbar__drawer-sub-link">건강 정보</a>
+                </li>
+                <li class="topbar__drawer-sub-item">
+                  <a href="#self-test" class="topbar__drawer-sub-link"
+                    >자가진단 테스트</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="topbar__drawer-footer">
+          <a class="primary-button topbar__drawer-btn" href="tel:0212345678"
+            >전화 상담</a
+          >
+          <a class="ghost-button topbar__drawer-btn" href="#booking"
+            >예약하기</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ① Hero Section (subpage-hero 공통 컴포넌트 사용) -->
+      <section class="section subpage-hero subpage-hero--neck">
+        <div class="subpage-hero__container">
+          <h1 class="subpage-hero__title">목 부위 관련 질환</h1>
+          <ul class="disease-nav">
+            <li class="disease-nav__item disease-nav__item--active">
+              <a href="#neck-compare" class="disease-nav__link">목 디스크</a>
+            </li>
+            <li class="disease-nav__item">
+              <a href="#turtle-neck" class="disease-nav__link">거북목 증후군</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section neck-compare" id="neck-compare">
+        <div class="container">
+          <div class="section-title-wrap section-title-wrap--left">
+            <h2 class="section-title__title">
+              목 디스크
+              <span class="section-title__eng-title"
+                >(Cervical Disc Herniation)</span
+              >
+            </h2>
+            <p class="section-title__desc">
+              우리 목은 7개의 경추(목 뼈)로 이루어져 있으며, 뼈 사이에는 척추에
+              가해지는 충격을 흡수하고 부드러운 움직임을 돕는 물렁뼈가
+              존재합니다. 이를 추간판(디스크)이라고 합니다. 디스크는 내부에
+              수분이 풍부한 젤리 모양의 수핵이 있고, 이를 질기고 단단한 섬유륜이
+              겹겹이 둘러싸고 있는 구조입니다.
+            </p>
+            <p class="section-title__desc">
+              이러한 목의 구조에서 목 디스크(경추 추간판 탈출증)는 퇴행성 변화나
+              외상 등으로 인해 겉을 감싸고 있는 섬유륜이 찢어지거나 밀려나면서
+              내부의 수핵이 탈출하는 질환을 말합니다. 이렇게 돌출된 디스크
+              조직이 목 주변을 지나가는 척수 신경을 압박하면서 통증, 저림, 감각
+              저하 등의 다양한 증상을 유발하게 됩니다.
+            </p>
+          </div>
+          <div class="neck-compare__image-wrap">
+            <img
+              src="/disease/disease_assets/neck_disc_comparative_MRI.png"
+              alt="정상적인 목뼈와 목디스크(경추 추간판 탈출증) C5-6 및 C6-7 디스크 탈출 상태를 비교하는 MRI 사진"
+              class="neck-compare__image"
+            />
+          </div>
+          <div class="neck-compare__table-wrap">
+            <table class="neck-compare__table">
+              <caption class="sr-only">
+                정상 경추 구조와 목 디스크 질환 비교 명세
+              </caption>
+              <thead class="neck-compare__thead">
+                <tr class="neck-compare__row">
+                  <th scope="col" class="neck-compare__th">구분 기준</th>
+                  <th scope="col" class="neck-compare__th">
+                    정상적인 경추 디스크
+                  </th>
+                  <th scope="col" class="neck-compare__th">
+                    경추 추간판 탈출증 (목 디스크)
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="neck-compare__tbody">
+                <tr class="neck-compare__row">
+                  <td class="neck-compare__td">형태 및 배열</td>
+                  <td class="neck-compare__td">
+                    수핵이 디스크 정중앙에 위치하여 하중이 골고루 분배됨
+                  </td>
+                  <td class="neck-compare__td">
+                    수핵이 밀려 나오거나 파열되어 디스크가 균일하지 못함
+                  </td>
+                </tr>
+                <tr class="neck-compare__row">
+                  <td class="neck-compare__td">신경 압박</td>
+                  <td class="neck-compare__td">
+                    신경관 통로가 충분히 확보되어 신경 건드림 현상이 없음
+                  </td>
+                  <td class="neck-compare__td">
+                    디스크 수핵이 척수 신경근관 부위를 강하게 압박함
+                  </td>
+                </tr>
+                <tr class="neck-compare__row">
+                  <td class="neck-compare__td">주요 자각 증상</td>
+                  <td class="neck-compare__td">
+                    목 움직임이 가볍고 뻐근함이나 방사 통증이 없음
+                  </td>
+                  <td class="neck-compare__td">
+                    뒷목덜미 및 날개뼈 통증, 팔 저림, 쥐는 힘 감퇴
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ③ 주요 증상 (마이크로 인터랙션 그리드) -->
+      <section class="section neck-symptom">
+        <div class="container">
+          <div class="section-title-wrap section-title-wrap--left">
+            <h2 class="section-title__title">목 디스크 대표 원인</h2>
+          </div>
+
+          <div class="neck-symptom__group">
+            <h3 class="neck-symptom__group-title">
+              초기 단계 (디스크 미세 돌출 및 염증 자극)
+            </h3>
+            <div class="neck-symptom__grid">
+              <article class="neck-symptom__card">
+                <div class="neck-symptom__icon-wrap">
+                  <svg
+                    class="neck-symptom__icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"
+                    />
+                    <line x1="4" y1="22" x2="4" y2="15" />
+                  </svg>
+                </div>
+                <h4 class="neck-symptom__card-title">지속적인 목덜미 뻐근함</h4>
+                <p class="neck-symptom__card-desc">
+                  자고 일어나도 목과 어깨가 항상 무겁고 뒤통수 라인이 단단히
+                  굳어 피로감을 느낍니다.
+                </p>
+              </article>
+
+              <article class="neck-symptom__card">
+                <div class="neck-symptom__icon-wrap">
+                  <svg
+                    class="neck-symptom__icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                    />
+                  </svg>
+                </div>
+                <h4 class="neck-symptom__card-title">
+                  이유 없는 두통과 안구 피로
+                </h4>
+                <p class="neck-symptom__card-desc">
+                  긴장된 뒷목 근육이 후두 신경을 미세하게 압박하여 뒷머리
+                  편두통과 안구 침침함이 생깁니다.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="neck-symptom__group">
+            <h3 class="neck-symptom__group-title">
+              진행 단계 (본격적인 척수 신경근 압박)
+            </h3>
+            <div class="neck-symptom__grid">
+              <article class="neck-symptom__card">
+                <div class="neck-symptom__icon-wrap">
+                  <svg
+                    class="neck-symptom__icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                  </svg>
+                </div>
+                <h4 class="neck-symptom__card-title">
+                  어깨와 팔의 짜릿한 저림 (방사통)
+                </h4>
+                <p class="neck-symptom__card-desc">
+                  어깨 밑 날개뼈 안쪽부터 팔, 손끝까지 마치 전기가 흐르거나
+                  시리는 듯한 통증이 방사됩니다.
+                </p>
+              </article>
+
+              <article class="neck-symptom__card">
+                <div class="neck-symptom__icon-wrap">
+                  <svg
+                    class="neck-symptom__icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </div>
+                <h4 class="neck-symptom__card-title">
+                  손끝 감각 저하 (마비 증상)
+                </h4>
+                <p class="neck-symptom__card-desc">
+                  손끝 마디마디의 촉각이 둔화되어 남의 살처럼 묵먹하게 만져지고
+                  미세 자극을 잘 모릅니다.
+                </p>
+              </article>
+
+              <article class="neck-symptom__card">
+                <div class="neck-symptom__icon-wrap">
+                  <svg
+                    class="neck-symptom__icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                    />
+                  </svg>
+                </div>
+                <h4 class="neck-symptom__card-title">
+                  손 쥐는 힘 감퇴 (근력 저하)
+                </h4>
+                <p class="neck-symptom__card-desc">
+                  주먹에 쥐는 힘이 약해져 젓가락질이나 셔츠의 단추를 끼우는
+                  정교한 행동이 서툴러집니다.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ④ 발생 원인 (캐러셀 슬라이더) -->
+      <section class="section neck-causes">
+        <div class="container">
+          <div class="section-title-wrap">
+            <h2 class="section-title__title">목 디스크를 유발하는 대표 원인</h2>
+            <p>
+              습관적인 잘못된 자세와 피로의 반복 축적은 퇴행을 재촉하는 결정적
+              요인입니다.
+            </p>
+          </div>
+
+          <div class="neck-causes__carousel-wrap">
+            <button
+              type="button"
+              class="neck-causes__nav-btn"
+              data-direction="prev"
+              aria-label="이전 원인 카드 보기"
+            >
+              <svg
+                class="neck-causes__nav-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                aria-hidden="true"
+              >
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+
+            <div class="neck-causes__viewport">
+              <div class="neck-causes__track">
+                <!-- 원인 1 -->
+                <article class="neck-causes__card">
+                  <div class="neck-causes__icon-box" aria-hidden="true">⏳</div>
+                  <h3 class="neck-causes__card-title">
+                    자연적인 노화 (퇴행성 변화)
+                  </h3>
+                  <p class="neck-causes__card-desc">
+                    디스크 내 수핵의 수분과 단백질이 감소하여 탄성이 저하되는
+                    퇴행성 과정입니다. 완충력이 약해져 사소한 압력에도 섬유륜
+                    손상이 쉽게 일어납니다.
+                  </p>
+                </article>
+
+                <!-- 원인 2 -->
+                <article class="neck-causes__card">
+                  <div class="neck-causes__icon-box" aria-hidden="true">🧍</div>
+                  <h3 class="neck-causes__card-title">잘못된 평소 생활 자세</h3>
+                  <p class="neck-causes__card-desc">
+                    구부정한 자세로 경추의 정상적인 C자 곡선이 무너지며
+                    발생합니다. 특정 분절에 비대칭적 하중이 가해져 디스크 후방
+                    돌출을 촉진합니다.
+                  </p>
+                </article>
+
+                <!-- 원인 3 -->
+                <article class="neck-causes__card">
+                  <div class="neck-causes__icon-box" aria-hidden="true">💥</div>
+                  <h3 class="neck-causes__card-title">급격한 충격 및 외상</h3>
+                  <p class="neck-causes__card-desc">
+                    교통사고 시의 채찍질 손상이나 낙상 등 급격한 물리 충격이
+                    원인입니다. 순간적인 강한 힘으로 디스크 섬유륜이 파열되고
+                    수핵이 탈출합니다.
+                  </p>
+                </article>
+
+                <!-- 원인 4 -->
+                <article class="neck-causes__card">
+                  <div class="neck-causes__icon-box" aria-hidden="true">🏋️</div>
+                  <h3 class="neck-causes__card-title">반복되는 목 자극 작업</h3>
+                  <p class="neck-causes__card-desc">
+                    머리에 무거운 짐을 이거나 고개를 한곳으로 장시간 고정하는
+                    동작입니다. 미세한 비대칭 부하가 만성적으로 누적되어
+                    디스크의 손상을 유발합니다.
+                  </p>
+                </article>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="neck-causes__nav-btn"
+              data-direction="next"
+              aria-label="다음 원인 카드 보기"
+            >
+              <svg
+                class="neck-causes__nav-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                aria-hidden="true"
+              >
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+          <!-- 인디케이터 도트 -->
+          <div class="neck-causes__indicator-wrap"></div>
+        </div>
+      </section>
+
+      <!-- ⑤ 치료 방법 (인터랙티브 타임라인) -->
+      <section class="section neck-treatment">
+        <div class="container">
+          <div class="section-title-wrap">
+            <h2 class="section-title__title">단계별 목 디스크 치료 로드맵</h2>
+            <p>
+              환자의 90% 이상은 칼을 대지 않는 보존적·비수술 요법만으로도 충분히
+              치유 가능합니다. 통증 완화 상태에 맞춰 단계별로 접근합니다.
+            </p>
+          </div>
+
+          <div class="neck-timeline">
+            <!-- 타임라인 중앙 연결선 -->
+            <div class="neck-timeline__line"></div>
+
+            <!-- 1단계 -->
+            <article
+              class="neck-timeline__step"
+              data-active="true"
+              data-step="1"
+            >
+              <div class="neck-timeline__dot"></div>
+              <div class="neck-timeline__content">
+                <span class="neck-timeline__badge">1단계: 기본 보존 치료</span>
+                <h3 class="neck-timeline__title">
+                  신체 부담이 적은 보존적 케어
+                </h3>
+                <p class="neck-timeline__text">
+                  초기 염증 해소를 목표로 하며 관절과 인대의 물리적 정렬을
+                  호전시킵니다.
+                </p>
+                <ul class="neck-timeline__methods">
+                  <li>
+                    <strong>약물 처방 및 열전기 치료:</strong> 척추 주위의
+                    부기와 근육 긴장을 빠르게 완화합니다.
+                  </li>
+                  <li>
+                    <strong>숙련도 높은 도수치료:</strong> 경추 정렬 문제를
+                    손으로 자극·치료해 뼈 사이의 수직 가중을 덜어줍니다.
+                  </li>
+                  <li>
+                    <strong>맞춤식 재활 운동 치료:</strong> 목 심부 근육들을
+                    강화하여 치료 후 재발할 수 있는 확률을 억제합니다.
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- 2단계 -->
+            <article class="neck-timeline__step" data-step="2">
+              <div class="neck-timeline__dot"></div>
+              <div class="neck-timeline__content">
+                <span class="neck-timeline__badge"
+                  >2단계: 정밀 비수술 시술</span
+                >
+                <h3 class="neck-timeline__title">
+                  통증 유발 인자의 타겟 주사 및 유착 제거
+                </h3>
+                <p class="neck-timeline__text">
+                  생활 패턴 조절이나 기본적인 치료를 수주간 거쳐도 저린 증상과
+                  통증이 강한 경우 시도합니다.
+                </p>
+                <ul class="neck-timeline__methods">
+                  <li>
+                    <strong>C-arm 정밀 신경차단술:</strong> 이동식 X선 장치를
+                    보며 국소 마취 하에 원인 부위에 소염제를 정확하게
+                    투여합니다.
+                  </li>
+                  <li>
+                    <strong>경추 신경성형술:</strong> 카테터 관을 넣어 만성
+                    염증으로 유착된 신경 부위를 박리하고 세척해 줍니다.
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- 3단계 -->
+            <article class="neck-timeline__step" data-step="3">
+              <div class="neck-timeline__dot"></div>
+              <div class="neck-timeline__content">
+                <span class="neck-timeline__badge"
+                  >3단계: 정교한 수술 치료</span
+                >
+                <h3 class="neck-timeline__title">
+                  마비 및 중증 결손 해소를 위한 미세 수술
+                </h3>
+                <p class="neck-timeline__text">
+                  근력 감소, 손 마비 현상 등 장기 신경 손상 위험이 있는 극히
+                  예외적인 상황에 한해 엄격하게 적용됩니다.
+                </p>
+                <ul class="neck-timeline__methods">
+                  <li>
+                    <strong>미세현미경 디스크 조각 제거술:</strong> 극소 부위를
+                    통해 접근한 후 현미경 시야 하에서 안전하게 잔해를
+                    배출합니다.
+                  </li>
+                  <li>
+                    <strong>가동성 인공디스크 치환술:</strong> 손상 디스크를
+                    제거하고 다축 방향 구동이 가능한 대체 구조물을 넣어 자연성을
+                    지킵니다.
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="footer__watermark" aria-hidden="true">
+        COREUP SPINE & PAIN CENTER
+      </div>
+      <div class="footer-inner">
+        <div class="footer-brand-header">
+          <div class="footer-brand-header__left">
+            <img
+              class="footer-brand-header__logo"
+              src="/assets/logo.png"
+              alt="코어업 척추통증센터 로고"
+            />
+            <span class="footer-brand-header__tagline"
+              >아프지 않은 건강한 일상, 코어업이 함께합니다.</span
+            >
+          </div>
+        </div>
+
+        <ul class="footer-top">
+          <li class="footer-card">
+            <div class="title-box">
+              <h4>Clinic Hours</h4>
+              <p>진료안내</p>
+            </div>
+            <div class="time-box">
+              <div class="item">
+                <p>월 / 화 / 수 /목</p>
+                <strong>09:00 ~ 18:00</strong>
+              </div>
+              <div class="item">
+                <p>금요일<span class="circle-box">야간진료</span></p>
+                <strong>09:00 ~ 19:00</strong>
+              </div>
+              <div class="item">
+                <p>토요일</p>
+                <strong>09:00 ~ 13:00</strong>
+              </div>
+              <div class="item">
+                <p>점심시간</p>
+                <strong>12:30 ~ 14:00</strong>
+              </div>
+              <div class="item">
+                <p>일 / 공휴일</p>
+                <strong>휴진</strong>
+              </div>
+            </div>
+            <div class="addr-box">
+              <p>
+                <span
+                  >주소. 서울특별시 강남구 미래로 123, 미래타워 8층 (우)
+                  06234</span
+                >
+              </p>
+              <p>
+                <span>대표자. 박훈상</span>
+              </p>
+            </div>
+          </li>
+
+          <li class="footer-card">
+            <div class="title-box">
+              <h4>Our Location</h4>
+              <p>오시는 길</p>
+            </div>
+            <a
+              href="https://map.naver.com/"
+              target="_blank"
+              class="map-box"
+              aria-label="오시는 길 네이버 지도 보기 (새 창 열림)"
+              title="새 창 열림"
+            ></a>
+            <div class="map-info-badges">
+              <div class="map-info-item">
+                <strong>지하철</strong>
+                <span>강남역 1번 출구 도보 2분</span>
+              </div>
+              <div class="map-info-item">
+                <strong>주차</strong>
+                <span>건물 내 지하 전용 주차장 무료 이용 가능</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="footer-card">
+            <div class="title-box">
+              <h4>Call Center</h4>
+              <p>02-1234-5678</p>
+            </div>
+            <div class="link-box">
+              <a
+                href="javascript:void(0)"
+                class="online_btn kakao"
+                target="_blank"
+                title="새 창 열림"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 3C6.477 3 2 6.477 2 10.773c0 2.766 1.83 5.19 4.605 6.608l-.946 3.493a.5.5 0 0 0 .736.544l4.135-2.736c.48.055.97.085 1.47.085 5.523 0 10-3.477 10-7.773S17.523 3 12 3z"
+                  />
+                </svg>
+                카카오 1:1 채팅상담
+              </a>
+              <a
+                href="javascript:void(0)"
+                class="online_btn naver"
+                target="_blank"
+                title="새 창 열림"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16.273 12.845L7.376 0H0v24h7.726v-12.845L16.623 24H24V0h-7.727v12.845z"
+                  />
+                </svg>
+                네이버 빠른예약
+              </a>
+            </div>
+          </li>
+
+          <li class="footer-card">
+            <div class="title-box">
+              <h5>Official Channels</h5>
+              <p>코어업 채널</p>
+            </div>
+            <div class="sns-box">
+              <a
+                href="#"
+                target="_blank"
+                class="sns youtube"
+                aria-label="유튜브 채널 바로가기 (새 창 열림)"
+                title="새 창 열림"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 12.8 9"
+                  aria-hidden="true"
+                >
+                  <g id="layer_yt" data-name="유튜브">
+                    <path
+                      class="snsIco"
+                      fill="#fff"
+                      d="M12.54,1.41a10.31,10.31,0,0,1,.19,1.24,7.38,7.38,0,0,0,.07,1.29V5.09a8.23,8.23,0,0,1-.07,1.26,10.8,10.8,0,0,1-.19,1.27,1.62,1.62,0,0,1-1.15,1.12,14.3,14.3,0,0,1-1.73.19L7.48,9H5.32L3.14,8.93a14.3,14.3,0,0,1-1.73-.19A1.62,1.62,0,0,1,.26,7.62,10.8,10.8,0,0,1,.07,6.35,8.23,8.23,0,0,1,0,5.09V3.94A8.61,8.61,0,0,1,.07,2.65,10.31,10.31,0,0,1,.26,1.41,1.7,1.7,0,0,1,1.41.26,14.3,14.3,0,0,1,3.14.07L5.32,0H7.48L9.66.07a14.3,14.3,0,0,1,1.73.19A1.7,1.7,0,0,1,12.54,1.41Zm-7.45,5L8.44,4.5,5.09,2.6Z"
+                    ></path>
+                  </g>
+                </svg>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                class="sns blog"
+                aria-label="네이버 블로그 바로가기 (새 창 열림)"
+                title="새 창 열림"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 10.83 10.04"
+                  aria-hidden="true"
+                >
+                  <path
+                    class="snsIco"
+                    fill="#fff"
+                    d="M2.36,3.71A.37.37,0,0,0,2,4.08a.38.38,0,0,0,.75,0A.37.37,0,0,0,2.36,3.71Z"
+                  ></path>
+                  <path
+                    class="snsIco"
+                    fill="#fff"
+                    d="M6.05,3.67a.4.4,0,1,0,.4.4A.4.4,0,0,0,6.05,3.67Z"
+                  ></path>
+                  <path
+                    class="snsIco"
+                    fill="#fff"
+                    d="M9.38,0H1.45A1.45,1.45,0,0,0,0,1.45V6.16A1.44,1.44,0,0,0,1.45,7.6h2.8l1,2.25s.07.19.23.19h0c.16,0,.22-.19.22-.19L6.6,7.6H9.38a1.44,1.44,0,0,0,1.45-1.44V1.45A1.45,1.45,0,0,0,9.38,0Zm-6,4.16a.9.9,0,0,1-.89.89A.73.73,0,0,1,2,4.82V5H1.32V2.3h0S2,2.3,2,2.3v1c.15-.26.59-.25.59-.25A.94.94,0,0,1,3.4,4.16Zm1.14-1V5H3.91V3.17c0-.25-.31-.32-.31-.32V2.21A.87.87,0,0,1,4.54,3.15Zm1.51,1.9A1,1,0,0,1,5,4.07a1,1,0,0,1,1.07-1,1,1,0,0,1,1.06,1A1,1,0,0,1,6.05,5.05Zm3.47,0A.9.9,0,0,1,8.59,6H8.3V5.37h.17s.4,0,.39-.57c0,0-.07.25-.63.25a.84.84,0,0,1-.79-.83V3.93a.9.9,0,0,1,.88-.86.65.65,0,0,1,.56.24V3.12h.64Z"
+                  ></path>
+                  <path
+                    class="snsIco"
+                    fill="#fff"
+                    d="M8.51,3.68a.39.39,0,0,0,0,.78.39.39,0,0,0,0-.78Z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                class="sns facebook"
+                aria-label="페이스북 바로가기 (새 창 열림)"
+                title="새 창 열림"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 5.2 10.01"
+                  aria-hidden="true"
+                >
+                  <path
+                    class="snsIco"
+                    fill="#fff"
+                    d="M1.55,3.66V2.23A2.62,2.62,0,0,1,2.18.6,1.87,1.87,0,0,1,3.45,0,11.39,11.39,0,0,1,5.2.08V1.67h-1a1,1,0,0,0-.63.21.68.68,0,0,0-.15.37,1.13,1.13,0,0,0,0,.26V3.66H5.14L4.92,5.43H3.39V10H1.55V5.43H0V3.66Z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                class="sns insta"
+                aria-label="인스타그램 바로가기 (새 창 열림)"
+                title="새 창 열림"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 10.43 10.5"
+                  aria-hidden="true"
+                >
+                  <path
+                    class="snsIco"
+                    fill="#fff"
+                    d="M10.43,3.07V7.41a3.06,3.06,0,0,1-.87,2.2,3,3,0,0,1-2.18.84L6,10.5H4.36L3,10.45a3,3,0,0,1-2.2-.84A3,3,0,0,1,0,7.41v-3A10,10,0,0,1,.05,3.07,3,3,0,0,1,.84.89,3.17,3.17,0,0,1,3,0H7.38A3,3,0,0,1,9.56.89a3.06,3.06,0,0,1,.87,2.2ZM9.3,8.34a4.14,4.14,0,0,0,.19-1.26,11.85,11.85,0,0,0,0-1.46V4.88a11.85,11.85,0,0,0,0-1.46A4.14,4.14,0,0,0,9.3,2.16a1.88,1.88,0,0,0-1-1A4.52,4.52,0,0,0,7,1L5.57.94H4.83c-.49,0-1,0-1.46.06a4.53,4.53,0,0,0-1.26.19,1.88,1.88,0,0,0-1,1A4.61,4.61,0,0,0,1,3.42V7.08a4.86,4.86,0,0,0,.19,1.26,1.88,1.88,0,0,0,1,1,4.53,4.53,0,0,0,1.26.19H7.06a4.47,4.47,0,0,0,1.26-.19A1.81,1.81,0,0,0,9.3,8.34ZM5.2,2.55A2.73,2.73,0,1,1,5.24,8h0A2.74,2.74,0,0,1,2.5,5.3,2.74,2.74,0,0,1,5.2,2.6ZM5.2,7A1.78,1.78,0,1,0,4,6.49,1.78,1.78,0,0,0,5.2,7ZM8.65,2.44A.8.8,0,0,0,8.46,2,.65.65,0,0,0,8,1.84.6.6,0,0,0,7.57,2,.63.63,0,0,0,8,3.08a.64.64,0,0,0,.64-.64Z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </li>
+        </ul>
+
+        <!-- 5. footer-bottom -->
+        <div class="footer-bottom">
+          <div class="info-link-area">
+            <a href="#terms">이용약관</a>
+            <a href="#privacy" class="highlight">개인정보처리방침</a>
+            <a href="#rights">환자권리장전</a>
+            <a href="#non-covered">비급여 진료비 안내</a>
+            <a href="#ad">제휴/광고제안</a>
+          </div>
+
+          <div class="logo-bottom">
+            <img
+              class="footer__logo-img"
+              src="/assets/logo.png"
+              alt="코어업 척추통증센터 로고"
+            />
+            <span class="footer-bottom__copy"
+              >© 2026 COREUP Spine & Pain Center. All rights reserved.</span
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+/* ==========================================
+   Sub-Common CSS (모든 서브페이지 공통 비주얼 & 레이아웃)
+   ========================================== */
+
+.subpage-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 600px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.subpage-hero__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 80px;
+}
+
+.subpage-hero__subtitle {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--color-secondary);
+  font-size: var(--font-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.subpage-hero__title {
+  color: #ffffff;
+  font-size: var(--font-5xl);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.subpage-hero__title--english {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-2xl);
+  font-weight: 400;
+}
+
+.subpage-hero__desc {
+  max-width: 600px;
+  margin-bottom: 40px;
+  color: #cbd5e1;
+  font-size: var(--font-lg);
+  line-height: 1.6;
+}
+
+.subpage-hero__button {
+  display: inline-block;
+  padding: 16px 32px;
+  box-sizing: border-box;
+  border-radius: 30px;
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  font-size: var(--font-base);
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  transition:
+    background-color 0.25s ease,
+    transform 0.2s ease;
+  cursor: pointer;
+}
+
+.subpage-hero__button:hover {
+  background-color: #008f79;
+  transform: translateY(-2px);
+}
+
+.section-title__title::before {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  z-index: 2;
+  width: 50px;
+  height: 4px;
+  background-color: var(--color-tertiary);
+  content: "";
+}

@@ -1,0 +1,433 @@
+/* ==========================================
+   Neck Page CSS (목 디스크 전용 개별 피처 스타일)
+   ========================================== */
+.subpage-hero--neck {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(15, 26, 60, 0.85) 0%,
+      rgba(10, 19, 41, 0.9) 100%
+    ),
+    url("/disease/disease_assets/background_neck.png") no-repeat center / cover;
+}
+/* 1. 정상 VS 목 디스크 비교 */
+.neck-compare {
+  background-color: #ffffff;
+}
+
+.neck-compare__image-wrap {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto 80px;
+}
+
+.neck-compare__image {
+  width: 100%;
+  height: auto;
+}
+
+.neck-compare__table-wrap {
+  overflow-x: auto;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.neck-compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.neck-compare__th {
+  padding: 18px 24px;
+  box-sizing: border-box;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: var(--font-base);
+  font-weight: 700;
+}
+
+.neck-compare__td {
+  padding: 18px 24px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-dark);
+  font-size: var(--font-md);
+  line-height: 1.5;
+}
+
+.neck-compare__row:last-child .neck-compare__td {
+  border-bottom: none;
+}
+
+.neck-compare__table td:first-child {
+  background-color: var(--color-bg-light);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* 2. 주요 증상 */
+.neck-symptom {
+  background-color: var(--color-bg-light);
+}
+
+.neck-symptom__group {
+  margin-bottom: 50px;
+}
+
+.neck-symptom__group:last-child {
+  margin-bottom: 0;
+}
+
+.neck-symptom__group-title {
+  margin-bottom: 24px;
+  color: var(--color-secondary);
+  font-size: var(--font-xl);
+  font-weight: 700;
+}
+
+.neck-symptom__group:nth-child(2) .neck-symptom__group-title {
+  color: var(--color-alert);
+}
+
+.neck-symptom__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.neck-symptom__card {
+  position: relative;
+  padding: 30px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: #ffffff;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.neck-symptom__card:hover {
+  border-color: var(--color-secondary);
+  box-shadow: 0 10px 25px rgba(0, 168, 143, 0.1);
+  transform: translateY(-8px);
+}
+
+.neck-symptom__group:nth-child(2) .neck-symptom__card:hover {
+  border-color: var(--color-alert);
+  box-shadow: 0 10px 25px rgba(231, 74, 59, 0.1);
+}
+
+.neck-symptom__icon-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background-color: var(--color-secondary-light);
+  color: var(--color-secondary);
+}
+
+.neck-symptom__group:nth-child(2) .neck-symptom__icon-wrap {
+  background-color: var(--color-alert-light);
+  color: var(--color-alert);
+}
+
+.neck-symptom__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.neck-symptom__card-title {
+  margin-bottom: 12px;
+  color: var(--color-primary);
+  font-size: var(--font-lg);
+  font-weight: 700;
+}
+
+.neck-symptom__card-desc {
+  color: var(--color-text-light);
+  font-size: var(--font-md);
+  line-height: 1.5;
+}
+
+/* 3. 발생 원인 */
+.neck-causes {
+  background-color: #ffffff;
+}
+
+.neck-causes__carousel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.neck-causes__viewport {
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.neck-causes__track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.neck-causes__card {
+  display: flex;
+  flex: 0 0 calc(33.333% - 14px);
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.neck-causes__icon-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: var(--color-bg-light);
+  font-size: 2rem;
+}
+
+.neck-causes__card-title {
+  margin-bottom: 12px;
+  color: var(--color-primary);
+  font-size: var(--font-xl);
+  font-weight: 700;
+}
+
+.neck-causes__card-desc {
+  color: var(--color-text-light);
+  font-size: var(--font-md);
+  line-height: 1.6;
+}
+
+.neck-causes__nav-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: var(--color-primary);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+  cursor: pointer;
+}
+
+.neck-causes__nav-btn:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.neck-causes__nav-btn[data-direction="prev"] {
+  margin-right: 15px;
+}
+
+.neck-causes__nav-btn[data-direction="next"] {
+  margin-left: 15px;
+}
+
+.neck-causes__nav-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.neck-causes__indicator-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.neck-causes__dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #cbd5e1;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.neck-causes__dot--active,
+.neck-causes__dot[data-active="true"] {
+  background-color: var(--color-secondary);
+}
+
+/* 4. 단계별 치료 방법 */
+.neck-treatment {
+  background-color: var(--color-bg-light);
+}
+
+.neck-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.neck-timeline__line {
+  position: absolute;
+  top: 0;
+  left: 31px;
+  bottom: 0;
+  width: 3px;
+  background-color: #cbd5e1;
+}
+
+.neck-timeline__step {
+  position: relative;
+  margin-bottom: 50px;
+  padding-left: 70px;
+}
+
+.neck-timeline__step:last-child {
+  margin-bottom: 0;
+}
+
+.neck-timeline__dot {
+  position: absolute;
+  top: 6px;
+  left: 20px;
+  width: 25px;
+  height: 25px;
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  background-color: #cbd5e1;
+  box-shadow: 0 0 0 3px rgba(203, 213, 225, 0.5);
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.neck-timeline__content {
+  padding: 30px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.neck-timeline__step[data-active="true"] .neck-timeline__dot,
+.neck-timeline__step--active .neck-timeline__dot {
+  background-color: var(--color-secondary);
+  box-shadow: 0 0 0 5px rgba(0, 168, 143, 0.25);
+}
+
+.neck-timeline__step[data-active="true"] .neck-timeline__content,
+.neck-timeline__step--active .neck-timeline__content {
+  border-color: var(--color-secondary);
+  box-shadow: 0 8px 25px rgba(0, 168, 143, 0.08);
+}
+
+.neck-timeline__step:hover .neck-timeline__content {
+  border-color: var(--color-primary);
+}
+
+.neck-timeline__badge {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 12px;
+  border-radius: 20px;
+  background-color: var(--color-secondary-light);
+  color: var(--color-secondary);
+  font-size: var(--font-sm);
+  font-weight: 700;
+}
+
+.neck-timeline__step:nth-child(3) .neck-timeline__badge {
+  background-color: var(--color-alert-light);
+  color: var(--color-alert);
+}
+
+.neck-timeline__title {
+  margin-bottom: 12px;
+  color: var(--color-primary);
+  font-size: var(--font-2xl);
+  font-weight: 700;
+}
+
+.neck-timeline__text {
+  margin-bottom: 20px;
+  color: var(--color-text-light);
+  font-size: var(--font-md);
+  line-height: 1.5;
+}
+
+.neck-timeline__methods {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.neck-timeline__methods li {
+  position: relative;
+  padding-left: 15px;
+  margin-bottom: 8px;
+  color: var(--color-text-dark);
+  font-size: var(--font-md);
+}
+
+.neck-timeline__methods li::before {
+  content: "-";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1024px) {
+  .neck-causes__card {
+    flex: 0 0 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .neck-causes__card {
+    flex: 0 0 100%;
+  }
+
+  .neck-timeline__line {
+    left: 21px;
+  }
+
+  .neck-timeline__dot {
+    left: 10px;
+  }
+
+  .neck-timeline__step {
+    padding-left: 50px;
+  }
+
+  .neck-timeline__content {
+    padding: 20px;
+  }
+}

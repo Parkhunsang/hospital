@@ -6,6 +6,8 @@
     <title>코어업 척추통증센터 | 병원 제작 사이트</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
@@ -38,7 +40,7 @@
         <div class="intro-door__logo-wrap">
           <img
             class="intro-door__logo-img"
-            src="./assets/logo.png"
+            src="/assets/logo.png"
             alt="코어업 로고"
           />
         </div>
@@ -80,7 +82,7 @@
     <header class="topbar topbar--top">
       <div class="topbar_nav_wrap">
         <a class="topbar__brand" href="./index.html">
-          <img class="topbar__logo" src="./assets/logo.png" alt="코어업 로고" />
+          <img class="topbar__logo" src="/assets/logo.png" alt="코어업 로고" />
         </a>
         <nav class="topbar__nav" aria-label="주요 메뉴">
           <ul class="topbar__links">
@@ -127,26 +129,28 @@
             </li>
             <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
               <a href="#clinic" class="topbar__link">
-                <span>질환별 진료</span>
+                <span>부위별 진료</span>
               </a>
-              <ul class="topbar__sub-list" aria-label="질환별 진료 하위 메뉴">
+              <ul class="topbar__sub-list" aria-label="부위별 진료 하위 메뉴">
                 <li class="topbar__sub-item">
-                  <a href="#clinic" class="topbar__sub-link">목</a>
+                  <a href="./disease/neck.html" class="topbar__sub-link"
+                    >목 통증</a
+                  >
                 </li>
                 <li class="topbar__sub-item">
-                  <a href="#clinic" class="topbar__sub-link">어깨</a>
+                  <a href="#clinic" class="topbar__sub-link">어깨 통증</a>
                 </li>
                 <li class="topbar__sub-item">
-                  <a href="#clinic" class="topbar__sub-link">허리</a>
+                  <a href="#clinic" class="topbar__sub-link">허리 통증</a>
                 </li>
                 <li class="topbar__sub-item">
-                  <a href="#clinic" class="topbar__sub-link">손</a>
+                  <a href="#clinic" class="topbar__sub-link">손 통증</a>
                 </li>
                 <li class="topbar__sub-item">
-                  <a href="#clinic" class="topbar__sub-link">무릎</a>
+                  <a href="#clinic" class="topbar__sub-link">무릎 통증</a>
                 </li>
                 <li class="topbar__sub-item">
-                  <a href="#clinic" class="topbar__sub-link">발</a>
+                  <a href="#clinic" class="topbar__sub-link">발 통증</a>
                 </li>
               </ul>
             </li>
@@ -301,11 +305,11 @@
             </li>
             <li class="topbar__drawer-item">
               <div class="topbar__drawer-accordion">
-                <a href="#clinic" class="topbar__drawer-link">질환별 진료</a>
+                <a href="#clinic" class="topbar__drawer-link">부위별 진료</a>
                 <button
                   type="button"
                   class="topbar__drawer-toggle"
-                  aria-label="질환별 진료 하위 메뉴 토글"
+                  aria-label="부위별 진료 하위 메뉴 토글"
                   aria-expanded="false"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -321,22 +325,30 @@
               </div>
               <ul class="topbar__drawer-sub-list">
                 <li class="topbar__drawer-sub-item">
-                  <a href="#clinic" class="topbar__drawer-sub-link">목</a>
+                  <a href="./disease/neck.html" class="topbar__drawer-sub-link"
+                    >목 통증</a
+                  >
                 </li>
                 <li class="topbar__drawer-sub-item">
-                  <a href="#clinic" class="topbar__drawer-sub-link">어깨</a>
+                  <a href="#clinic" class="topbar__drawer-sub-link"
+                    >어깨 통증</a
+                  >
                 </li>
                 <li class="topbar__drawer-sub-item">
-                  <a href="#clinic" class="topbar__drawer-sub-link">허리</a>
+                  <a href="#clinic" class="topbar__drawer-sub-link"
+                    >허리 통증</a
+                  >
                 </li>
                 <li class="topbar__drawer-sub-item">
-                  <a href="#clinic" class="topbar__drawer-sub-link">손</a>
+                  <a href="#clinic" class="topbar__drawer-sub-link">손 통증</a>
                 </li>
                 <li class="topbar__drawer-sub-item">
-                  <a href="#clinic" class="topbar__drawer-sub-link">무릎</a>
+                  <a href="#clinic" class="topbar__drawer-sub-link"
+                    >무릎 통증</a
+                  >
                 </li>
                 <li class="topbar__drawer-sub-item">
-                  <a href="#clinic" class="topbar__drawer-sub-link">발</a>
+                  <a href="#clinic" class="topbar__drawer-sub-link">발 통증</a>
                 </li>
               </ul>
             </li>
@@ -610,7 +622,7 @@
 
       <section class="section fast-diagnosis">
         <div class="container fast-diagnosis__conwrap">
-          <div class="section-title">
+          <div class="section-title-wrap">
             <span class="eyebrow">ONE-STOP DIAGNOSIS SYSTEM</span>
             <span class="sub-eyebrow">신속하고 정확한 원스톱 진단 시스템</span>
             <h2 class="section-title__title">
@@ -709,7 +721,7 @@
       <section class="section non-surgical">
         <div class="container">
           <div class="section-head">
-            <div class="section-title">
+            <div class="section-title-wrap">
               <span class="eyebrow">NON-SURGICAL CLINIC</span>
               <span class="sub-eyebrow">척추·관절 통증 극복의 올바른 시작</span>
               <h2 class="section-title__title">
@@ -1326,7 +1338,7 @@
       <section class="section self-test">
         <div class="container">
           <div class="section-head">
-            <div class="section-title">
+            <div class="section-title-wrap">
               <h2 class="section-title__title">내 증상 체크하기</h2>
             </div>
           </div>
@@ -1393,7 +1405,7 @@
       <section class="section doctors">
         <div class="container">
           <div class="section-head">
-            <div class="section-title">
+            <div class="section-title-wrap">
               <span class="eyebrow">Medical Team</span>
               <span class="sub-eyebrow">건강한 회복을 위한 동행</span>
               <h2 class="section-title__title">
@@ -1660,15 +1672,14 @@
         <div class="container">
           <div class="location__wrapper">
             <div class="location__header">
-              <div class="location__text-container">
-                <div class="section-title">
-                  <span class="eyebrow">HOSPITAL LOCATION & FACILITIES</span>
-                  <h2 class="section-title__title">회복이 시작되는 공간</h2>
-                </div>
+              <div class="section-title-wrap location__title-wrap">
+                <span class="eyebrow">HOSPITAL LOCATION & FACILITIES</span>
                 <span class="sub-eyebrow">
-                  최신 의료시설과 편안한 환경으로 건강한 일상을 함께합니다.
+                  편안한 환경으로 건강한 일상을 함께
                 </span>
+                <h2 class="section-title__title">회복이 시작되는 공간</h2>
               </div>
+
               <div class="location__controls">
                 <button
                   type="button"
@@ -1769,7 +1780,7 @@
       <section class="section news">
         <div class="container">
           <div class="section-head">
-            <div class="section-title">
+            <div class="section-title-wrap">
               <span class="eyebrow">CHAM'S NEWS & HEALTH</span>
               <h2 class="section-title__title">
                 소통과 나눔으로 전하는 병원 소식
@@ -2021,7 +2032,7 @@
           <div class="footer-brand-header__left">
             <img
               class="footer-brand-header__logo"
-              src="./assets/logo.png"
+              src="/assets/logo.png"
               alt="코어업 척추통증센터 로고"
             />
             <span class="footer-brand-header__tagline"
@@ -2260,7 +2271,7 @@
           <div class="logo-bottom">
             <img
               class="footer__logo-img"
-              src="./assets/logo.png"
+              src="/assets/logo.png"
               alt="코어업 척추통증센터 로고"
             />
             <span class="footer-bottom__copy"
