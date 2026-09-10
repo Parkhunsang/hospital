@@ -17,8 +17,8 @@ function initLocationSlider() {
     grabCursor: true,
     speed: 400,
     navigation: {
-      nextEl: ".location__nav-btn--next",
-      prevEl: ".location__nav-btn--prev",
+      nextEl: ".location__controls .slider-nav__btn--next",
+      prevEl: ".location__controls .slider-nav__btn--prev",
     },
     breakpoints: {
       640: {
@@ -1108,8 +1108,8 @@ function initNonSurgicalSlider() {
       clickable: true,
     },
     navigation: {
-      nextEl: ".non-surgical__swiper-btn--next",
-      prevEl: ".non-surgical__swiper-btn--prev",
+      nextEl: ".slider-nav__btn--next",
+      prevEl: ".slider-nav__btn--prev",
     },
     keyboard: {
       enabled: true,

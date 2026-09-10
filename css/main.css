@@ -1,6 +1,6 @@
 /* 인트로 도어(병원 입장 효과) */
 body.door-locked {
-  overflow: hidden !important;
+  overflow: hidden;
   height: 100vh;
 }
 
@@ -29,18 +29,15 @@ body.door-locked {
   background-repeat: no-repeat;
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .intro-door__panel--left {
   left: 0;
   background-position: left center;
   box-shadow: 10px 0 30px rgba(0, 0, 0, 0.4);
 }
-
 .intro-door__panel--right {
   right: 0;
   background-position: right center;
 }
-
 .intro-door__inner {
   position: relative;
   display: flex;
@@ -97,20 +94,11 @@ body.door-locked {
   object-fit: contain;
 }
 
-.intro-door__eyebrow {
-  display: block;
-  margin-bottom: 14px;
-  font-size: 13px;
-  font-weight: 800;
-  color: #2f5fa7;
-  letter-spacing: 0.18em;
-}
-
 .intro-door__desc {
   margin: 0;
-  font-size: 20px;
+  font-size: var(--font-xl);
   font-weight: 400;
-  color: rgba(255, 255, 255, 1);
+  color: var(--color-white);
   line-height: 1.6;
   letter-spacing: -0.02em;
   margin-bottom: 32px;
@@ -126,21 +114,21 @@ body.door-locked {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 16px 36px !important;
+  padding: 16px 36px;
   border: none;
-  border-radius: 30px !important;
-  background: #ffffff !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
+  border-radius: 30px;
+  background: var(--color-white);
+  box-shadow: var(--shadow-lg);
   font-size: 16px;
   font-weight: 800;
-  color: #1b2d5a !important;
+  color: var(--color-primary);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .intro-door__enter-btn:hover {
-  background: #eaf2ff !important;
-  box-shadow: 0 15px 30px rgba(234, 242, 255, 0.3) !important;
+  background: var(--color-border);
+  box-shadow: 0 15px 30px rgba(234, 242, 255, 0.3);
   transform: translateY(-3px);
 }
 
@@ -177,7 +165,7 @@ body.door-locked {
   left: 50%;
   width: 4px;
   height: 6px;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   border-radius: 2px;
   transform: translateX(-50%);
   animation: scrollWheel 1.6s infinite ease-in-out;
@@ -190,8 +178,8 @@ body.door-locked {
   overflow: hidden;
   width: 100%;
   height: 100vh;
-  --bg-start: #f8fafd;
-  --bg-end: #eaf2ff;
+  --bg-start: var(--color-bg-light);
+  --bg-end: var(--color-border);
   background: radial-gradient(
     circle at 50% 50%,
     var(--bg-start) 0%,
@@ -273,7 +261,7 @@ body.door-locked {
 .hero-3d__welcome-title {
   font-size: var(--font-lg);
   font-weight: 600;
-  color: #6b7c96;
+  color: var(--color-text-light);
   letter-spacing: -0.01em;
 }
 
@@ -282,7 +270,7 @@ body.door-locked {
   font-size: var(--font-3xl);
   font-weight: 800;
   line-height: 1.2;
-  color: #1b2d5a;
+  color: var(--color-primary);
   letter-spacing: -0.03em;
 }
 
@@ -312,14 +300,14 @@ body.door-locked {
 }
 
 .info-badge-wrap svg {
-  color: #2f5fa7;
+  color: var(--color-secondary);
 }
 
 .info-badge__desc {
   font-size: var(--font-md);
   font-weight: 700;
   font-family: "Pretendard", sans-serif;
-  color: #2f5fa7;
+  color: var(--color-secondary);
   letter-spacing: -0.02em;
 }
 
@@ -343,12 +331,12 @@ body.door-locked {
   overflow: hidden;
   padding: 16px 36px;
   border-radius: 30px;
-  border: 1px solid #eaf2ff;
-  background: #ffffff;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
   box-shadow: 0 8px 24px rgba(27, 45, 90, 0.04);
   font-size: var(--font-base);
   font-weight: 700;
-  color: #243041;
+  color: var(--color-primary);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -369,33 +357,34 @@ body.door-locked {
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  background: var(--item-theme, #1b2d5a);
+  background: var(--color-primary);
   content: "";
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .hero-3d__pain-item:hover {
-  border-color: var(--item-theme, #2f5fa7);
-  color: var(--item-theme, #2f5fa7);
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  background-color: var(--color-border);
   transform: translateX(6px);
-  box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
+  box-shadow: var(--shadow-lg);
 }
 
 .hero-3d__pain-item:hover::before {
-  background: var(--item-theme, #2f5fa7);
+  background: var(--color-secondary);
   height: 50%;
 }
 
 .hero-3d__pain-item.active {
-  border-color: var(--item-theme, #1b2d5a);
-  box-shadow: 0 12px 30px rgba(27, 45, 90, 0.15);
-  color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-xl);
+  color: var(--color-white);
   transform: translateX(10px);
 }
 
 .hero-3d__pain-item.active::before {
-  background: #ffffff;
+  background: var(--color-white);
   height: 60%;
 }
 
@@ -406,7 +395,6 @@ body.door-locked {
 .hero-3d__info-panel {
   position: relative;
   overflow: hidden;
-
   display: block;
   transition:
     opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
@@ -414,17 +402,13 @@ body.door-locked {
   width: 340px;
   padding: 36px 30px;
   border-radius: 24px;
-  --panel-bg: rgba(248, 250, 253, 0.25);
-  --panel-border: rgba(234, 242, 255, 0.4);
-  border: 1px solid var(--panel-border);
-  background: var(--panel-bg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-light);
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
     inset 0 -1px 0 0 rgba(255, 255, 255, 0.1),
     0 12px 32px 0 rgba(27, 45, 90, 0.1);
-
-  --panel-text: #1b2d5a;
-  color: var(--panel-text);
+  color: var(--color-primary);
   pointer-events: auto;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -512,11 +496,11 @@ body.door-locked {
   padding: 16px 20px;
   border-radius: 12px;
   border: 1px solid var(--panel-border);
-  background-color: #ffffff;
+  background-color: var(--color-white);
   box-shadow: 0 2px 8px rgba(27, 45, 90, 0.02);
   font-size: var(--font-md);
   font-weight: 600;
-  color: #243041;
+  color: var(--color-primary);
   text-decoration: none;
   transition: all 0.25s ease-in-out;
 }
@@ -531,14 +515,14 @@ body.door-locked {
 }
 
 .hero-3d__disease-link:hover {
-  border-color: #2f5fa7;
-  background-color: #eaf2ff;
-  box-shadow: 0 6px 16px rgba(47, 95, 167, 0.12);
-  color: #1b2d5a;
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  background-color: var(--color-border);
+  box-shadow: var(--shadow-lg);
 }
 
 .hero-3d__disease-link:hover::after {
-  color: #1b2d5a;
+  color: var(--color-primary);
   transform: translateX(4px);
 }
 /* 02. 3D Body Map Hero Section [END] */
@@ -583,7 +567,7 @@ body.door-locked {
   padding: 0;
   margin: 0;
   border-radius: 20px;
-  background: #fafafc;
+  background: var(--color-white);
   list-style: none;
 }
 
@@ -605,11 +589,11 @@ body.door-locked {
 }
 
 .hero-3d__togo-item-wrap:hover {
-  background: #1b2d5a;
+  background: var(--color-primary);
 }
 
 .hero-3d__togo-item-wrap:hover .hero-3d__togo-name {
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .hero-3d__togo-item-wrap:hover .hero-3d__togo-icon img {
@@ -635,7 +619,7 @@ body.door-locked {
 .hero-3d__togo-name {
   font-size: var(--font-base);
   font-weight: 700;
-  color: #1a2b3c;
+  color: var(--color-primary);
   transition: all 0.3s ease;
 }
 .hero-3d__togo-item {
@@ -645,7 +629,7 @@ body.door-locked {
   gap: 15px;
   width: 100%;
   height: 100%;
-  color: var(--ink);
+  color: var(--color-primary);
   text-decoration: none;
 }
 
@@ -661,12 +645,14 @@ body.door-locked {
 /* 03. Fast Diagnosis - Start */
 .fast-diagnosis {
   position: relative;
-
   box-sizing: border-box;
   width: 100%;
   padding: 240px 0 calc(20vh + 240px);
-
-  background: radial-gradient(circle at top, #f6f9fc 0%, #ffffff 100%);
+  background: radial-gradient(
+    circle at top,
+    var(--color-bg-light) 0%,
+    var(--color-white) 100%
+  );
 }
 
 .fast-diagnosis__conwrap {
@@ -700,21 +686,20 @@ body.door-locked {
 }
 
 .fast-diagnosis__btn-more {
-  display: inline-flex;
-  align-items: center;
+  display: block;
+  text-align: left;
   font-size: 0.9375rem;
   font-weight: 700;
-  color: #1b2d5a;
-  text-decoration: none;
+  color: var(--color-primary);
   transition: color 0.3s ease;
 }
 
 .fast-diagnosis__btn-more:hover {
-  color: #2f5fa7;
+  color: var(--color-secondary);
 }
 
 .fast-diagnosis__btn-more:focus-visible {
-  outline: 2px solid #2f5fa7;
+  outline: 2px solid var(--color-secondary);
   outline-offset: 4px;
 }
 
@@ -801,7 +786,7 @@ body.door-locked {
     to bottom,
     rgba(27, 45, 90, 0) 25%,
     rgba(27, 45, 90, 0.65) 70%,
-    #556895 100%
+    var(--color-primary) 100%
   );
 }
 
@@ -823,7 +808,7 @@ body.door-locked {
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 1.35;
-  color: #ffffff;
+  color: var(--color-white);
   letter-spacing: -0.02em;
 }
 
@@ -831,14 +816,14 @@ body.door-locked {
   margin: 0;
   font-size: 1rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--color-text-white-subtle);
   word-break: keep-all;
 }
 
 /* 03. Fast Diagnosis [END] */
 .non-surgical {
   position: relative;
-  background-color: #f8fafd;
+  background-color: var(--color-bg-light);
   overflow: hidden;
 }
 
@@ -850,7 +835,7 @@ body.door-locked {
   width: 50%;
   height: 400px;
   border-radius: 466px 0 0 466px;
-  background-color: #2f5fa7;
+  background-color: var(--color-secondary);
   content: "";
   opacity: 0.08;
 }
@@ -874,60 +859,6 @@ body.door-locked {
   margin-bottom: 30px;
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(47, 95, 167, 0.08);
-}
-
-.non-surgical__slider-hint {
-  font-size: 14px;
-  font-weight: 600;
-  color: #6b7c96;
-  letter-spacing: -0.01em;
-}
-
-.non-surgical__swiper-nav {
-  display: flex;
-  gap: 12px;
-}
-
-.non-surgical__swiper-btn--prev,
-.non-surgical__swiper-btn--next {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(47, 95, 167, 0.15);
-  border-radius: 50%;
-  background-color: #ffffff;
-  color: #1b2d5a;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  user-select: none;
-}
-
-.non-surgical__swiper-btn--prev:hover,
-.non-surgical__swiper-btn--next:hover {
-  border-color: #2f5fa7;
-  background-color: #2f5fa7;
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(47, 95, 167, 0.2);
-}
-
-.non-surgical__swiper-btn--prev:focus-visible,
-.non-surgical__swiper-btn--next:focus-visible {
-  outline: 2px solid #2f5fa7;
-  outline-offset: 3px;
-}
-
-.non-surgical__swiper-btn--prev.swiper-button-disabled,
-.non-surgical__swiper-btn--next.swiper-button-disabled {
-  border-color: rgba(47, 95, 167, 0.1);
-  background-color: #f5f7fa;
-  color: #a0aec0;
-  cursor: not-allowed;
-  opacity: 0.6;
-  box-shadow: none;
-  pointer-events: none;
 }
 
 .non-surgical__swiper {
@@ -956,7 +887,7 @@ body.door-locked {
   height: 480px;
   border: 1px solid rgba(47, 95, 167, 0.08);
   border-radius: 24px;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   box-shadow: 0 10px 40px rgba(27, 45, 90, 0.04);
   transition: box-shadow 0.5s ease;
 }
@@ -972,36 +903,10 @@ body.door-locked {
   padding: 44px 40px;
 }
 
-.non-surgical__card-category {
-  align-self: flex-start;
-  padding: 6px 14px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  background-color: rgba(234, 242, 255, 0.8);
-  font-size: var(--font-xs);
-  font-weight: 700;
-  color: #2f5fa7;
-  letter-spacing: -0.01em;
-}
-
-.non-surgical__card-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-bottom: 32px;
-}
-.non-surgical__card-title {
-  margin: 0;
-  font-size: var(--font-3xl);
-  font-weight: 800;
-  color: #1b2d5a;
-  letter-spacing: -0.02em;
-}
-
 .non-surgical__card-summary {
   margin: 0 0 24px 0;
   font-size: var(--font-base);
-  color: #5a6e85;
+  color: var(--color-text-light);
   line-height: 1.6;
   word-break: keep-all;
 }
@@ -1009,7 +914,6 @@ body.door-locked {
 .non-surgical__card-features {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -1026,18 +930,10 @@ body.door-locked {
   top: 0.125em;
   left: 0;
   content: "•";
-  color: #2f5fa7;
+  color: var(--color-secondary);
   font-weight: 800;
   font-size: var(--font-lg);
   line-height: 1;
-}
-
-.non-surgical__card-feature-text {
-  margin: 0;
-  font-size: var(--font-md);
-  font-weight: 600;
-  color: #1b2d5a;
-  line-height: 1.5;
 }
 
 .non-surgical__card-visual {
@@ -1090,25 +986,25 @@ body.door-locked {
   padding: 12px 24px;
   border: 1px solid rgba(47, 95, 167, 0.2);
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   box-shadow: 0 4px 12px rgba(27, 45, 90, 0.03);
   font-size: var(--font-md);
   font-weight: 700;
-  color: #2f5fa7;
+  color: var(--color-secondary);
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .non-surgical__card-btn:hover {
-  border-color: #2f5fa7;
-  background-color: #2f5fa7;
-  box-shadow: 0 8px 20px rgba(47, 95, 167, 0.15);
-  color: #ffffff;
+  border-color: var(--color-secondary);
+  background-color: var(--color-secondary);
+  box-shadow: var(--shadow-primary);
+  color: var(--color-white);
   transform: translateY(-2px);
 }
 
 .non-surgical__card-btn:focus-visible {
-  outline: 2px solid #2f5fa7;
+  outline: 2px solid var(--color-secondary);
   outline-offset: 2px;
 }
 
@@ -1147,11 +1043,11 @@ body.door-locked {
 .non-surgical__pagination .swiper-pagination-bullet-active {
   width: 28px;
   border-radius: 5px;
-  background-color: #2f5fa7;
+  background-color: var(--color-secondary);
 }
 
 .non-surgical__pagination .swiper-pagination-bullet:focus-visible {
-  outline: 2px solid #2f5fa7;
+  outline: 2px solid var(--color-secondary);
   outline-offset: 3px;
 }
 /* 04. 비수술 치료 솔루션 [END] */
@@ -1161,7 +1057,7 @@ body.door-locked {
   position: relative;
   width: 100%;
   height: calc(210vh + 80px);
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
 .brand-trust__sticky-wrap {
@@ -1179,7 +1075,7 @@ body.door-locked {
   z-index: 50;
   width: calc(50% + 4px);
   height: calc(100% + 4px);
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
 .brand-trust__left-cover {
@@ -1268,7 +1164,7 @@ body.door-locked {
   background: rgba(255, 255, 255, 0.1);
   font-size: 13px;
   font-weight: 800;
-  color: #fdb608;
+  color: var(--color-accent);
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
@@ -1277,30 +1173,30 @@ body.door-locked {
   margin: 0 0 28px 0;
   font-size: 40px;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--color-white);
   line-height: 1.4;
   letter-spacing: -0.02em;
   word-break: keep-all;
 }
 
 .brand-trust__highlight {
-  color: #fdb608;
+  color: var(--color-accent);
 }
 
 .brand-trust__highlight-yellow {
-  color: #ffe066;
+  color: var(--color-accent);
 }
 
 .brand-trust__desc {
   margin: 0;
   font-size: 18px;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-text-white-subtle);
   word-break: keep-all;
 }
 
 .brand-trust__desc--white {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-text-white-subtle);
 }
 
 .brand-trust__slide--stats .brand-trust__content {
@@ -1337,7 +1233,6 @@ body.door-locked {
 .brand-trust__stat-card:hover {
   border-color: rgba(255, 255, 255, 0.3);
   background-color: rgba(255, 255, 255, 0.15);
-
   transform: translateY(-5px);
 }
 
@@ -1345,15 +1240,15 @@ body.door-locked {
   margin-bottom: 12px;
   font-size: 14px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-text-white-subtle);
   letter-spacing: -0.01em;
 }
 
 .brand-trust__stat-val {
-  font-family: "Outfit", "Inter", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 36px;
   font-weight: 900;
-  color: #ffffff;
+  color: var(--color-white);
   line-height: 1;
 }
 
@@ -1361,7 +1256,7 @@ body.door-locked {
   margin-left: 2px;
   font-size: 16px;
   font-weight: 700;
-  color: #fdb608;
+  color: var(--color-accent);
 }
 
 .brand-trust__feature-tag {
@@ -1370,7 +1265,7 @@ body.door-locked {
   font-family: "Outfit", sans-serif;
   font-size: 14px;
   font-weight: 800;
-  color: #fdb608;
+  color: var(--color-accent);
 }
 
 .brand-trust__controls {
@@ -1387,7 +1282,7 @@ body.door-locked {
   border-radius: 30px;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(8, 26, 60, 0.2);
-  color: #ffffff;
+  color: var(--color-white);
   transform: translateX(-50%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -1432,7 +1327,7 @@ body.door-locked {
 }
 
 .brand-trust__btn--play-pause svg.hidden {
-  display: none !important;
+  display: none;
 }
 
 .brand-trust__btn--prev:hover,
@@ -1469,7 +1364,7 @@ body.door-locked {
   left: 0;
   width: 33.33%;
   height: 100%;
-  background: #fdb608;
+  background: var(--color-accent);
   transition: width 0.3s ease;
 }
 /* 04-2. 브랜드 신뢰도 프로모션 [END] */
@@ -1480,8 +1375,8 @@ body.door-locked {
   overflow: hidden;
   width: 100%;
   height: 600px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .doctors__card {
@@ -1504,14 +1399,14 @@ body.door-locked {
 }
 
 .doctors__card + .doctors__card {
-  border-left: 1px solid var(--line);
+  border-left: 1px solid var(--color-border);
 }
 
 .doctors__card:hover,
 .doctors__card:focus-within {
   flex: 2.2;
   padding: 36px 28px;
-  background-color: var(--navy);
+  background-color: var(--color-primary);
   box-shadow: var(--shadow);
   justify-content: space-evenly;
 }
@@ -1523,7 +1418,7 @@ body.door-locked {
   font-family: "Outfit", sans-serif;
   font-size: 2.25rem;
   font-weight: 800;
-  color: var(--blue);
+  color: var(--color-secondary);
   opacity: 0.35;
   transition:
     opacity 0.4s ease,
@@ -1563,19 +1458,19 @@ body.door-locked {
   margin: 0;
   font-size: 1.75rem;
   font-weight: 800;
-  color: var(--ink);
+  color: var(--color-primary);
   transition: color 0.5s ease;
 }
 
 .doctors__card:hover .doctors__name,
 .doctors__card:focus-within .doctors__name {
-  color: var(--white);
+  color: var(--color-white);
 }
 
 .doctors__role {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--color-text-light);
   transition: color 0.5s ease;
 }
 
@@ -1619,13 +1514,13 @@ body.door-locked {
   margin-bottom: 8px;
   font-size: 0.9375rem;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-text-white-subtle);
   word-break: keep-all;
 }
 
 .doctors__spec-label {
   margin-right: 6px;
-  color: var(--white);
+  color: var(--color-white);
   font-weight: 700;
 }
 
@@ -1659,7 +1554,7 @@ body.door-locked {
 .doctors__schedule-time {
   font-size: 0.9375rem;
   font-weight: 800;
-  color: #ffe066;
+  color: var(--color-accent);
 }
 
 .doctors__actions {
@@ -1673,14 +1568,14 @@ body.door-locked {
 
 .doctors__card:hover .primary-button,
 .doctors__card:focus-within .primary-button {
-  background: var(--white) !important;
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15) !important;
-  color: var(--navy) !important;
+  background: var(--color-white);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+  color: var(--color-primary);
 }
 
 .doctors__card:hover .primary-button:hover,
 .doctors__card:focus-within .primary-button:hover {
-  background: #f0f4f8 !important;
+  background: var(--color-border);
 }
 
 .doctors__image-container {
@@ -1690,9 +1585,9 @@ body.door-locked {
   width: 180px;
   height: 180px;
   margin-top: auto;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 50%;
-  background-color: var(--soft);
+  background-color: var(--color-bg-light);
   transition: border-color 0.4s ease;
 }
 
@@ -1714,7 +1609,7 @@ body.door-locked {
   position: relative;
   overflow: hidden;
   padding: 100px 0;
-  background-color: #f7f9fc;
+  background-color: var(--color-bg-light);
 }
 
 .location__wrapper {
@@ -1744,53 +1639,7 @@ body.door-locked {
 }
 
 .location__controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   margin-top: 40px;
-}
-
-.location__nav-btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  border: 1px solid #cbd5e1;
-  border-radius: 50%;
-  background-color: #ffffff;
-  color: #334155;
-  cursor: pointer;
-  transition:
-    border-color 0.3s ease,
-    background-color 0.3s ease,
-    color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.2s ease;
-}
-
-.location__nav-btn:hover:not(.swiper-button-disabled) {
-  border-color: #07569c;
-  background-color: #07569c;
-  box-shadow: 0 4px 12px rgba(7, 86, 156, 0.2);
-  color: #ffffff;
-  transform: scale(1.05);
-}
-
-.location__nav-btn:focus-visible {
-  outline: 2px solid #07569c;
-  outline-offset: 3px;
-}
-
-.location__nav-btn.swiper-button-disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.location__nav-btn svg {
-  width: 20px;
-  height: 20px;
 }
 
 .location__swiper {
@@ -1806,9 +1655,9 @@ body.door-locked {
 
 .location__card {
   height: 100%;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow);
 }
 
 .location__card-image-wrap {
@@ -1846,15 +1695,15 @@ body.door-locked {
   gap: 14px;
   padding: 20px 24px;
   border-radius: 16px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   background: var(--white);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .self-test__checkbox:hover {
-  border-color: var(--blue);
-  box-shadow: 0 4px 12px rgba(7, 86, 156, 0.08);
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow);
 }
 
 .self-test__checkbox input {
@@ -1872,8 +1721,8 @@ body.door-locked {
 }
 
 .self-test__checkbox input:checked + .self-test__checkbox-box {
-  border-color: var(--blue);
-  background: var(--blue);
+  border-color: var(--color-secondary);
+  background: var(--color-secondary);
 }
 
 .self-test__checkbox input:checked + .self-test__checkbox-box::after {
@@ -1889,14 +1738,14 @@ body.door-locked {
 }
 
 .self-test__checkbox input:checked ~ .self-test__checkbox-text {
-  color: var(--blue);
+  color: var(--color-secondary);
   font-weight: 800;
 }
 
 .self-test__checkbox-text {
   font-size: 16px;
   font-weight: 600;
-  color: var(--ink);
+  color: var(--color-primary);
   user-select: none;
 }
 
@@ -1907,20 +1756,21 @@ body.door-locked {
   width: 340px;
   padding: 36px 30px;
   border-radius: 20px;
-  background: var(--navy);
-  color: var(--white);
+  background: var(--color-primary);
+  color: var(--color-white);
 }
 
 .self-test__result-box h3 {
   margin: 0 0 16px;
   font-size: 20px;
+  color: var(--color-white);
   font-weight: 800;
   line-height: 1.4;
 }
 
 .self-test__result-box p {
   margin: 0 0 30px;
-  color: #c7dff5;
+  color: var(--color-text-white-subtle);
   font-size: 15px;
   line-height: 1.6;
   word-break: keep-all;
@@ -1928,7 +1778,7 @@ body.door-locked {
 
 .self-test__result-box .primary-button {
   background: var(--white);
-  color: var(--navy);
+  color: var(--color-primary);
 }
 /* 07. 자가진단 테스트[END] */
 
@@ -1955,12 +1805,12 @@ body.door-locked {
   align-items: center;
   gap: 8px;
   padding: 12px 28px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 30px;
   background: var(--white);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--color-primary);
   cursor: pointer;
   transition:
     border-color 0.3s ease,
@@ -1969,34 +1819,16 @@ body.door-locked {
     box-shadow 0.3s ease;
 }
 
-.news__tab-count {
-  padding: 2px 8px;
-  border-radius: 12px;
-  background: var(--soft);
-  font-size: 0.8125rem;
-  font-weight: 800;
-  color: var(--muted);
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+#news-tab-notice:checked ~ .news__tab-bar .news__tab-button--notice,
+#news-tab-health:checked ~ .news__tab-bar .news__tab-button--health {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: var(--shadow);
 }
 
 #news-tab-notice:checked ~ .news__tab-bar .news__tab-button--notice,
 #news-tab-health:checked ~ .news__tab-bar .news__tab-button--health {
-  border-color: var(--navy);
-  background: var(--navy);
-  color: var(--white);
-  box-shadow: 0 8px 20px rgba(6, 54, 107, 0.2);
-}
-
-#news-tab-notice:checked
-  ~ .news__tab-bar
-  .news__tab-button--notice
-  .news__tab-count,
-#news-tab-health:checked
-  ~ .news__tab-bar
-  .news__tab-button--health
-  .news__tab-count {
   background: rgba(255, 255, 255, 0.2);
   color: var(--white);
 }
@@ -2034,7 +1866,7 @@ body.door-locked {
   flex-direction: column;
   overflow: hidden;
   width: 100%;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   background: var(--white);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
@@ -2060,7 +1892,6 @@ body.door-locked {
   position: relative;
   overflow: hidden;
   height: 280px;
-  background: linear-gradient(135deg, #0b498f 0%, #1b2d5a 100%);
 }
 
 .news__img {
@@ -2083,7 +1914,7 @@ body.door-locked {
   font-size: 1.0625rem;
   font-weight: 800;
   line-height: 1.45;
-  color: var(--ink);
+  color: var(--color-primary);
   word-break: keep-all;
 }
 
@@ -2091,7 +1922,7 @@ body.door-locked {
   margin: 0 0 10px;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: var(--muted);
+  color: var(--color-text-light);
   word-break: keep-all;
 }
 
@@ -2101,7 +1932,7 @@ body.door-locked {
   font-family: "Outfit", sans-serif;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--color-text-light);
 }
 /* 08. 공지사항 및 건강 정보 [END] */
 
@@ -2161,7 +1992,7 @@ body.door-locked {
   .hero-3d__pain-item:focus-visible,
   .hero-3d__disease-link:focus-visible,
   .hero-3d__close-btn:focus-visible {
-    outline: 2px solid #2f5fa7;
+    outline: 2px solid var(--color-secondary);
     outline-offset: 3px;
   }
 
@@ -2174,38 +2005,31 @@ body.door-locked {
   html {
     font-size: 15px;
   }
-
   .hero-3d__ui-layer {
     box-sizing: border-box;
     width: 100%;
     padding: 0 24px;
   }
-
   .hero-3d__welcome {
     top: 5%;
     width: min(90%, 300px);
   }
-
   .hero-3d__welcome-title {
     font-size: 15px;
   }
-
   .hero-3d__welcome-desc {
     font-size: 20px;
   }
-
   .hero-3d__tv-container {
     box-sizing: border-box;
     width: 100%;
     padding: 0 24px;
   }
-
   .hero-3d__togo-section {
     width: 100%;
     height: auto;
     margin-bottom: 20px;
   }
-
   .hero-3d__togo-list {
     display: flex;
     flex-wrap: wrap;
@@ -2220,46 +2044,38 @@ body.door-locked {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
-
   .hero-3d__togo-item-wrap {
     flex: 1 1 calc(20% - 10px);
     min-width: 140px;
     min-height: 48px;
     border: 1px solid rgba(27, 45, 90, 0.08);
     border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 0 4px 12px rgba(27, 45, 90, 0.04);
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
     transition: all 0.25s ease;
   }
-
   .hero-3d__togo-item-wrap:nth-child(1),
   .hero-3d__togo-item-wrap:nth-child(5) {
     border-radius: 12px;
   }
-
   .hero-3d__togo-item-wrap::after {
     display: none;
   }
-
   .hero-3d__togo-item {
     min-height: 44px;
     padding: 8px 12px;
     gap: 8px;
   }
-
   .hero-3d__togo-name {
     font-size: 14px;
     white-space: nowrap;
   }
-
   .hero-3d__togo-icon img {
     width: 20px;
     height: 20px;
   }
-
-  /* 웹 접근성 포커스 스타일링 */
   .hero-3d__togo-item:focus-visible {
-    outline: 2px solid #2f5fa7;
+    outline: 2px solid var(--color-secondary);
     outline-offset: 2px;
   }
 
@@ -2360,26 +2176,26 @@ body.door-locked {
     height: auto;
     padding: 30px 20px;
     border-radius: 24px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--color-border);
   }
 
   .doctors__card + .doctors__card {
-    border-left: 1px solid var(--line);
+    border-left: 1px solid var(--color-border);
   }
 
   .doctors__number {
     order: 1;
     margin: 0 20px 0 10px;
-    opacity: 0.3 !important;
-    transform: none !important;
-    height: auto !important;
+    opacity: 0.3;
+    transform: none;
+    height: auto;
   }
 
   .doctors__card:hover .doctors__number,
   .doctors__card:focus-within .doctors__number {
-    opacity: 0.3 !important;
-    transform: none !important;
-    height: auto !important;
+    opacity: 0.3;
+    transform: none;
+    height: auto;
     margin-bottom: 0;
   }
 
@@ -2394,28 +2210,21 @@ body.door-locked {
   .doctors__header {
     margin-bottom: 12px;
   }
-
   .doctors__name {
     justify-content: flex-start;
-    color: var(--ink) !important;
   }
-
-  .doctors__role {
-    color: var(--muted) !important;
-  }
-
   .doctors__info {
-    height: auto !important;
+    height: auto;
     overflow: visible;
-    opacity: 1 !important;
+    opacity: 1;
     text-align: left;
   }
 
   .doctors__card:hover .doctors__info,
   .doctors__card:focus-within .doctors__info {
-    height: auto !important;
+    height: auto;
     margin-top: 10px;
-    opacity: 1 !important;
+    opacity: 1;
   }
 
   .doctors__image-container {
@@ -2423,37 +2232,29 @@ body.door-locked {
     width: 140px;
     height: 140px;
     margin: 0 10px 0 20px;
-    opacity: 1 !important;
-    transform: none !important;
+    opacity: 1;
+    transform: none;
   }
 
   .doctors__card:hover .doctors__image-container,
   .doctors__card:focus-within .doctors__image-container {
-    opacity: 1 !important;
-    transform: none !important;
-    height: 140px !important;
+    opacity: 1;
+    transform: none;
+    height: 140px;
     margin-top: 0;
-  }
-
-  .doctors__spec-item {
-    color: var(--muted);
-  }
-
-  .doctors__spec-label {
-    color: var(--ink);
   }
 
   .doctors__schedule {
     border: none;
-    background: var(--soft);
+    background: var(--color-bg-light);
   }
 
   .doctors__schedule-head {
-    color: var(--navy);
+    color: var(--color-primary);
   }
 
   .doctors__schedule-time {
-    color: var(--blue);
+    color: var(--color-secondary);
   }
 
   .self-test__wrapper {
@@ -2479,15 +2280,15 @@ body.door-locked {
   }
 
   .brand-trust__cover {
-    display: none !important;
+    display: none;
   }
 
   .brand-trust__slide--stats .brand-trust__bg-img {
-    transform: scale(1) !important;
+    transform: scale(1);
   }
 
   .brand-trust__slide--stats .brand-trust__content {
-    opacity: 1 !important;
+    opacity: 1;
   }
 
   .brand-trust__title {
@@ -2557,7 +2358,7 @@ body.door-locked {
   }
 
   .intro-door__enter-btn {
-    padding: 12px 28px !important;
+    padding: 12px 28px;
     font-size: 15px;
   }
 
@@ -2701,7 +2502,7 @@ body.door-locked {
 
   .doctors__number {
     order: 1;
-    margin: 0 0 10px 0 !important;
+    margin: 0 0 10px 0;
   }
 
   .doctors__content {
@@ -2719,16 +2520,16 @@ body.door-locked {
     order: 3;
     width: 140px;
     height: 140px;
-    margin: 20px auto 0 auto !important;
-    opacity: 1 !important;
-    transform: none !important;
+    margin: 20px auto 0 auto;
+    opacity: 1;
+    transform: none;
   }
 
   .doctors__card:hover .doctors__image-container,
   .doctors__card:focus-within .doctors__image-container {
-    opacity: 1 !important;
-    transform: none !important;
-    height: 140px !important;
+    opacity: 1;
+    transform: none;
+    height: 140px;
     margin-top: 20px;
   }
 
@@ -2820,13 +2621,11 @@ body.door-locked {
     justify-content: space-between;
     margin-bottom: 4px;
   }
-
   .hero-3d__info-title {
     margin-bottom: 0;
     font-size: 15px;
     font-weight: 800;
   }
-
   .hero-3d__disease-list {
     display: flex;
     flex-direction: row;
@@ -2843,17 +2642,14 @@ body.door-locked {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
-
   .hero-3d__disease-list::-webkit-scrollbar {
     display: none;
   }
-
   .hero-3d__disease-item {
     flex: 0 0 20%;
     scroll-snap-align: start;
     width: auto;
   }
-
   .hero-3d__disease-link {
     min-height: 44px;
     padding: 10px 14px;
@@ -2861,23 +2657,26 @@ body.door-locked {
     font-size: 13px;
     font-weight: 600;
   }
-
   .hero-3d__disease-link::after {
     font-size: 14px;
   }
-
   .hero-3d__panel-actions {
     display: flex;
     justify-content: flex-end;
     margin-top: 2px;
   }
-
+  .hero-3d__pain-list {
+    container-type: inline-size;
+  }
+  .hero-3d__pain-item span {
+    font-size: clamp(11px, 3.5cqw, 14px);
+    padding: 6px 8px;
+  }
   .hero-3d__panel-actions .ghost-button {
     min-height: 44px;
     padding: 6px 16px;
     font-size: 12px;
   }
-
   .hero-3d__tv-container {
     padding: 0 16px;
   }

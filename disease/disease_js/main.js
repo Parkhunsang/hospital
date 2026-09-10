@@ -6,7 +6,30 @@
 document.addEventListener("DOMContentLoaded", () => {
   initCausesCarousel();
   initTreatmentTimeline();
+  initTreatmentSlider();
 });
+
+/**
+ * 관련 시술 Swiper 슬라이더 로직
+ */
+function initTreatmentSlider() {
+  const container = document.querySelector(".treatment__swiper");
+  if (!container || typeof Swiper === "undefined") return;
+
+  new Swiper(".treatment__swiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    speed: 500,
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true,
+    },
+    navigation: {
+      nextEl: ".treatment__swiper .slider-nav__btn--next",
+      prevEl: ".treatment__swiper .slider-nav__btn--prev",
+    },
+  });
+}
 
 /**
  * 1. 발생 원인 캐러셀 슬라이더 로직

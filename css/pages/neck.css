@@ -1,6 +1,3 @@
-/* ==========================================
-   Neck Page CSS (목 디스크 전용 개별 피처 스타일)
-   ========================================== */
 .subpage-hero--neck {
   background:
     linear-gradient(
@@ -10,20 +7,20 @@
     ),
     url("/disease/disease_assets/background_neck.png") no-repeat center / cover;
 }
-/* 1. 정상 VS 목 디스크 비교 */
 .neck-compare {
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
 .neck-compare__image-wrap {
   width: 100%;
-  max-width: 960px;
+  max-width: 762px;
   margin: 0 auto 80px;
 }
 
 .neck-compare__image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 
 .neck-compare__table-wrap {
@@ -41,16 +38,14 @@
 
 .neck-compare__th {
   padding: 18px 24px;
-  box-sizing: border-box;
   background-color: var(--color-primary);
-  color: #ffffff;
+  color: var(--color-white);
   font-size: var(--font-base);
   font-weight: 700;
 }
 
 .neck-compare__td {
   padding: 18px 24px;
-  box-sizing: border-box;
   border-bottom: 1px solid var(--color-border);
   color: var(--color-text-dark);
   font-size: var(--font-md);
@@ -67,367 +62,233 @@
   font-weight: 700;
 }
 
-/* 2. 주요 증상 */
-.neck-symptom {
+/* 대표 원인 */
+.neck-causes {
   background-color: var(--color-bg-light);
 }
 
-.neck-symptom__group {
-  margin-bottom: 50px;
-}
-
-.neck-symptom__group:last-child {
-  margin-bottom: 0;
-}
-
-.neck-symptom__group-title {
-  margin-bottom: 24px;
-  color: var(--color-secondary);
-  font-size: var(--font-xl);
-  font-weight: 700;
-}
-
-.neck-symptom__group:nth-child(2) .neck-symptom__group-title {
-  color: var(--color-alert);
-}
-
-.neck-symptom__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.neck-symptom__card {
-  position: relative;
-  padding: 30px;
-  box-sizing: border-box;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  background-color: #ffffff;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.neck-symptom__card:hover {
-  border-color: var(--color-secondary);
-  box-shadow: 0 10px 25px rgba(0, 168, 143, 0.1);
-  transform: translateY(-8px);
-}
-
-.neck-symptom__group:nth-child(2) .neck-symptom__card:hover {
-  border-color: var(--color-alert);
-  box-shadow: 0 10px 25px rgba(231, 74, 59, 0.1);
-}
-
-.neck-symptom__icon-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  margin-bottom: 20px;
-  border-radius: 50%;
-  background-color: var(--color-secondary-light);
-  color: var(--color-secondary);
-}
-
-.neck-symptom__group:nth-child(2) .neck-symptom__icon-wrap {
-  background-color: var(--color-alert-light);
-  color: var(--color-alert);
-}
-
-.neck-symptom__icon {
-  width: 24px;
-  height: 24px;
-}
-
-.neck-symptom__card-title {
-  margin-bottom: 12px;
-  color: var(--color-primary);
-  font-size: var(--font-lg);
-  font-weight: 700;
-}
-
-.neck-symptom__card-desc {
+.neck-symptom__desc {
+  font-weight: 500;
+  font-size: var(--font-base);
   color: var(--color-text-light);
-  font-size: var(--font-md);
   line-height: 1.5;
-}
-
-/* 3. 발생 원인 */
-.neck-causes {
-  background-color: #ffffff;
-}
-
-.neck-causes__carousel-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.neck-causes__viewport {
-  overflow: hidden;
-  width: 100%;
-  padding: 10px 0;
-}
-
-.neck-causes__track {
-  display: flex;
-  gap: 20px;
-  transition: transform 0.5s ease-in-out;
-}
-
-.neck-causes__card {
-  display: flex;
-  flex: 0 0 calc(33.333% - 14px);
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  box-sizing: border-box;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  background-color: #ffffff;
   text-align: center;
 }
 
-.neck-causes__icon-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  background-color: var(--color-bg-light);
-  font-size: 2rem;
-}
-
-.neck-causes__card-title {
-  margin-bottom: 12px;
-  color: var(--color-primary);
-  font-size: var(--font-xl);
-  font-weight: 700;
-}
-
-.neck-causes__card-desc {
-  color: var(--color-text-light);
-  font-size: var(--font-md);
-  line-height: 1.6;
-}
-
-.neck-causes__nav-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 48px;
-  height: 48px;
-  border: 1px solid var(--color-border);
-  border-radius: 50%;
-  background-color: #ffffff;
-  color: var(--color-primary);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  transition:
-    background-color 0.2s,
-    color 0.2s;
-  cursor: pointer;
-}
-
-.neck-causes__nav-btn:hover {
-  background-color: var(--color-primary);
-  color: #ffffff;
-}
-
-.neck-causes__nav-btn[data-direction="prev"] {
-  margin-right: 15px;
-}
-
-.neck-causes__nav-btn[data-direction="next"] {
-  margin-left: 15px;
-}
-
-.neck-causes__nav-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.neck-causes__indicator-wrap {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 30px;
-}
-
-.neck-causes__dot {
-  width: 10px;
-  height: 10px;
-  padding: 0;
-  border: none;
-  border-radius: 50%;
-  background-color: #cbd5e1;
-  transition: background-color 0.3s;
-  cursor: pointer;
-}
-
-.neck-causes__dot--active,
-.neck-causes__dot[data-active="true"] {
-  background-color: var(--color-secondary);
-}
-
-/* 4. 단계별 치료 방법 */
-.neck-treatment {
+.causes {
   background-color: var(--color-bg-light);
 }
 
-.neck-timeline {
-  position: relative;
-  max-width: 800px;
+.causes__wrapper {
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 20px 0;
+  display: flex;
+  background-color: var(--color-white);
+  flex-direction: row;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
-.neck-timeline__line {
-  position: absolute;
-  top: 0;
-  left: 31px;
-  bottom: 0;
-  width: 3px;
-  background-color: #cbd5e1;
+.causes-text__wrapper {
+  font-size: 1rem;
+  padding: 2.625em 3.25em 0;
 }
 
-.neck-timeline__step {
+.cuases-text__list li {
   position: relative;
-  margin-bottom: 50px;
-  padding-left: 70px;
-}
-
-.neck-timeline__step:last-child {
-  margin-bottom: 0;
-}
-
-.neck-timeline__dot {
-  position: absolute;
-  top: 6px;
-  left: 20px;
-  width: 25px;
-  height: 25px;
-  border: 4px solid #ffffff;
-  border-radius: 50%;
-  background-color: #cbd5e1;
-  box-shadow: 0 0 0 3px rgba(203, 213, 225, 0.5);
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s;
-}
-
-.neck-timeline__content {
-  padding: 30px;
-  box-sizing: border-box;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-  transition:
-    border-color 0.3s,
-    box-shadow 0.3s;
-}
-
-.neck-timeline__step[data-active="true"] .neck-timeline__dot,
-.neck-timeline__step--active .neck-timeline__dot {
-  background-color: var(--color-secondary);
-  box-shadow: 0 0 0 5px rgba(0, 168, 143, 0.25);
-}
-
-.neck-timeline__step[data-active="true"] .neck-timeline__content,
-.neck-timeline__step--active .neck-timeline__content {
-  border-color: var(--color-secondary);
-  box-shadow: 0 8px 25px rgba(0, 168, 143, 0.08);
-}
-
-.neck-timeline__step:hover .neck-timeline__content {
-  border-color: var(--color-primary);
-}
-
-.neck-timeline__badge {
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 12px;
-  border-radius: 20px;
-  background-color: var(--color-secondary-light);
-  color: var(--color-secondary);
-  font-size: var(--font-sm);
-  font-weight: 700;
-}
-
-.neck-timeline__step:nth-child(3) .neck-timeline__badge {
-  background-color: var(--color-alert-light);
-  color: var(--color-alert);
-}
-
-.neck-timeline__title {
-  margin-bottom: 12px;
-  color: var(--color-primary);
-  font-size: var(--font-2xl);
-  font-weight: 700;
-}
-
-.neck-timeline__text {
-  margin-bottom: 20px;
-  color: var(--color-text-light);
-  font-size: var(--font-md);
+  padding: 1em 0 1em 2.75em;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-base);
+  font-weight: 500;
+  color: var(--color-text-dark);
   line-height: 1.5;
 }
 
-.neck-timeline__methods {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.cuases-text__list li::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: url(/disease/disease_assets/check.svg) no-repeat center center
+    var(--color-primary);
 }
 
-.neck-timeline__methods li {
-  position: relative;
-  padding-left: 15px;
-  margin-bottom: 8px;
+.causes-image__wrap {
+  width: 100%;
+  max-width: 520px;
+}
+
+.causes__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 대표 증상 */
+.symptoms {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.symptoms__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  column-gap: 24px;
+  row-gap: 72px;
+}
+
+.symptoms__list li {
+  background-color: var(--color-white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
+}
+
+.symptoms__img-wrapper {
+  width: 100%;
+  height: 240px;
+}
+
+.symptoms__img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.symptoms__text {
   color: var(--color-text-dark);
   font-size: var(--font-md);
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 20px 20px 24px;
 }
 
-.neck-timeline__methods li::before {
-  content: "-";
-  position: absolute;
-  top: 0;
-  left: 0;
+/* 관련 시술 */
+.treatment {
+  background-color: #f9fbfd;
 }
+
+.treatment__swiper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 48px auto 0;
+  overflow: hidden;
+}
+
+.treatment__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.treatment__card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  min-height: 480px;
+  padding: 48px 56px;
+  border-radius: 20px;
+  background-color: var(--color-white);
+  box-shadow: 2px 2px 28px rgba(0, 0, 0, 0.08);
+}
+
+.treatment__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  height: 328px;
+}
+
+.treatment__image-wrapper {
+  width: 522px;
+  height: 328px;
+  border-radius: 28px;
+  background-color: #f1f5f9;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.treatment__image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 관련 시술 끝 */
 
 /* 미디어 쿼리 */
-@media (max-width: 1024px) {
-  .neck-causes__card {
-    flex: 0 0 calc(50% - 10px);
+@media (max-width: 1200px) {
+  html {
+    font-size: var(--font-sm);
+  }
+  .symptoms {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .symptoms__list {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 36px;
+  }
+  .symptoms__img-wrapper {
+    height: 200px;
+  }
+  .treatment__card {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    min-height: auto;
+    padding: 36px 28px;
+  }
+  .treatment__image-wrapper {
+    width: 100%;
+    height: 260px;
   }
 }
-
+@media (max-width: 960px) {
+  .causes-text__wrapper {
+    font-size: 0.875rem;
+  }
+}
 @media (max-width: 768px) {
-  .neck-causes__card {
-    flex: 0 0 100%;
+  .symptoms {
+    gap: 24px;
+  }
+  .causes__wrapper {
+    flex-direction: column;
+  }
+  .causes-image__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 24px 20px 0; /* 위/양옆 여백 조절 */
+  }
+  .causes__img {
+    width: min(100%, 320px); /* 이미지 최대 폭을 320px로 아담하게 제한 */
+    height: auto;
+    border-radius: 12px; /* 모바일 썸네일 느낌 연출 */
+  }
+  .symptoms__list {
+    row-gap: 20px;
   }
 
-  .neck-timeline__line {
-    left: 21px;
+  .symptoms__img-wrapper {
+    height: 180px;
   }
 
-  .neck-timeline__dot {
-    left: 10px;
-  }
-
-  .neck-timeline__step {
-    padding-left: 50px;
-  }
-
-  .neck-timeline__content {
-    padding: 20px;
+  .symptoms__text {
+    padding: 16px;
+    font-size: var(--font-base);
   }
 }

@@ -11,8 +11,16 @@
     <link rel="stylesheet" href="../css/components.css" />
     <link rel="stylesheet" href="../css/sub-common.css" />
     <link rel="stylesheet" href="../css/pages/neck.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
 
     <!-- JS 스크립트 연결 -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"
+    ></script>
     <script defer src="disease_js/main.js"></script>
   </head>
   <body>
@@ -472,357 +480,233 @@
         </div>
       </section>
 
-      <!-- ③ 주요 증상 (마이크로 인터랙션 그리드) -->
-      <section class="section neck-symptom">
+      <!-- 목 디스크 대표 원인 -->
+      <section class="section causes">
         <div class="container">
+          <div class="section-title-wrap">
+            <h2 class="section-title__title">대표 원인</h2>
+          </div>
+          <div class="causes__wrapper">
+            <div class="causes-image__wrap">
+              <img
+                src="/disease/disease_assets/neck_disk__cuase.png"
+                alt="목 디스크 원인"
+                class="causes__img"
+              />
+            </div>
+            <div class="causes-text__wrapper">
+              <ul class="cuases-text__list">
+                <li>노화에 따른 목 디스크와 관절의 퇴행</li>
+                <li>잘못된 자세로 인한 목의 지속적인 부담</li>
+                <li>교통사고나 낙상 등 갑작스러운 충격으로 목 디스크가 손상</li>
+                <li>
+                  장시간 컴퓨터·스마트폰 사용 등으로 목에 지속적인 피로와<br />자극이
+                  누적
+                </li>
+                <li>
+                  가족력이나 개인의 체질적 요인에 따라 디스크의 퇴행이<br />빠르게
+                  진행
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 목 디스크 주요 증상 -->
+      <section class="section">
+        <div class="container symptoms">
           <div class="section-title-wrap section-title-wrap--left">
-            <h2 class="section-title__title">목 디스크 대표 원인</h2>
-          </div>
-
-          <div class="neck-symptom__group">
-            <h3 class="neck-symptom__group-title">
-              초기 단계 (디스크 미세 돌출 및 염증 자극)
-            </h3>
-            <div class="neck-symptom__grid">
-              <article class="neck-symptom__card">
-                <div class="neck-symptom__icon-wrap">
-                  <svg
-                    class="neck-symptom__icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"
-                    />
-                    <line x1="4" y1="22" x2="4" y2="15" />
-                  </svg>
-                </div>
-                <h4 class="neck-symptom__card-title">지속적인 목덜미 뻐근함</h4>
-                <p class="neck-symptom__card-desc">
-                  자고 일어나도 목과 어깨가 항상 무겁고 뒤통수 라인이 단단히
-                  굳어 피로감을 느낍니다.
-                </p>
-              </article>
-
-              <article class="neck-symptom__card">
-                <div class="neck-symptom__icon-wrap">
-                  <svg
-                    class="neck-symptom__icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path
-                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-                    />
-                  </svg>
-                </div>
-                <h4 class="neck-symptom__card-title">
-                  이유 없는 두통과 안구 피로
-                </h4>
-                <p class="neck-symptom__card-desc">
-                  긴장된 뒷목 근육이 후두 신경을 미세하게 압박하여 뒷머리
-                  편두통과 안구 침침함이 생깁니다.
-                </p>
-              </article>
-            </div>
-          </div>
-
-          <div class="neck-symptom__group">
-            <h3 class="neck-symptom__group-title">
-              진행 단계 (본격적인 척수 신경근 압박)
-            </h3>
-            <div class="neck-symptom__grid">
-              <article class="neck-symptom__card">
-                <div class="neck-symptom__icon-wrap">
-                  <svg
-                    class="neck-symptom__icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                  </svg>
-                </div>
-                <h4 class="neck-symptom__card-title">
-                  어깨와 팔의 짜릿한 저림 (방사통)
-                </h4>
-                <p class="neck-symptom__card-desc">
-                  어깨 밑 날개뼈 안쪽부터 팔, 손끝까지 마치 전기가 흐르거나
-                  시리는 듯한 통증이 방사됩니다.
-                </p>
-              </article>
-
-              <article class="neck-symptom__card">
-                <div class="neck-symptom__icon-wrap">
-                  <svg
-                    class="neck-symptom__icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                </div>
-                <h4 class="neck-symptom__card-title">
-                  손끝 감각 저하 (마비 증상)
-                </h4>
-                <p class="neck-symptom__card-desc">
-                  손끝 마디마디의 촉각이 둔화되어 남의 살처럼 묵먹하게 만져지고
-                  미세 자극을 잘 모릅니다.
-                </p>
-              </article>
-
-              <article class="neck-symptom__card">
-                <div class="neck-symptom__icon-wrap">
-                  <svg
-                    class="neck-symptom__icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                    />
-                  </svg>
-                </div>
-                <h4 class="neck-symptom__card-title">
-                  손 쥐는 힘 감퇴 (근력 저하)
-                </h4>
-                <p class="neck-symptom__card-desc">
-                  주먹에 쥐는 힘이 약해져 젓가락질이나 셔츠의 단추를 끼우는
-                  정교한 행동이 서툴러집니다.
-                </p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ④ 발생 원인 (캐러셀 슬라이더) -->
-      <section class="section neck-causes">
-        <div class="container">
-          <div class="section-title-wrap">
-            <h2 class="section-title__title">목 디스크를 유발하는 대표 원인</h2>
-            <p>
-              습관적인 잘못된 자세와 피로의 반복 축적은 퇴행을 재촉하는 결정적
-              요인입니다.
+            <h2 class="section-title__title">주요 증상</h2>
+            <p class="section-title__desc">
+              목과 어깨의 통증부터 팔 저림과 두통까지, 목 디스크 질환 진행 시
+              나타나는 주요 자각 증상입니다.
             </p>
           </div>
-
-          <div class="neck-causes__carousel-wrap">
-            <button
-              type="button"
-              class="neck-causes__nav-btn"
-              data-direction="prev"
-              aria-label="이전 원인 카드 보기"
-            >
-              <svg
-                class="neck-causes__nav-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                aria-hidden="true"
-              >
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-
-            <div class="neck-causes__viewport">
-              <div class="neck-causes__track">
-                <!-- 원인 1 -->
-                <article class="neck-causes__card">
-                  <div class="neck-causes__icon-box" aria-hidden="true">⏳</div>
-                  <h3 class="neck-causes__card-title">
-                    자연적인 노화 (퇴행성 변화)
-                  </h3>
-                  <p class="neck-causes__card-desc">
-                    디스크 내 수핵의 수분과 단백질이 감소하여 탄성이 저하되는
-                    퇴행성 과정입니다. 완충력이 약해져 사소한 압력에도 섬유륜
-                    손상이 쉽게 일어납니다.
-                  </p>
-                </article>
-
-                <!-- 원인 2 -->
-                <article class="neck-causes__card">
-                  <div class="neck-causes__icon-box" aria-hidden="true">🧍</div>
-                  <h3 class="neck-causes__card-title">잘못된 평소 생활 자세</h3>
-                  <p class="neck-causes__card-desc">
-                    구부정한 자세로 경추의 정상적인 C자 곡선이 무너지며
-                    발생합니다. 특정 분절에 비대칭적 하중이 가해져 디스크 후방
-                    돌출을 촉진합니다.
-                  </p>
-                </article>
-
-                <!-- 원인 3 -->
-                <article class="neck-causes__card">
-                  <div class="neck-causes__icon-box" aria-hidden="true">💥</div>
-                  <h3 class="neck-causes__card-title">급격한 충격 및 외상</h3>
-                  <p class="neck-causes__card-desc">
-                    교통사고 시의 채찍질 손상이나 낙상 등 급격한 물리 충격이
-                    원인입니다. 순간적인 강한 힘으로 디스크 섬유륜이 파열되고
-                    수핵이 탈출합니다.
-                  </p>
-                </article>
-
-                <!-- 원인 4 -->
-                <article class="neck-causes__card">
-                  <div class="neck-causes__icon-box" aria-hidden="true">🏋️</div>
-                  <h3 class="neck-causes__card-title">반복되는 목 자극 작업</h3>
-                  <p class="neck-causes__card-desc">
-                    머리에 무거운 짐을 이거나 고개를 한곳으로 장시간 고정하는
-                    동작입니다. 미세한 비대칭 부하가 만성적으로 누적되어
-                    디스크의 손상을 유발합니다.
-                  </p>
-                </article>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              class="neck-causes__nav-btn"
-              data-direction="next"
-              aria-label="다음 원인 카드 보기"
-            >
-              <svg
-                class="neck-causes__nav-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                aria-hidden="true"
-              >
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
+          <div class="symptoms__wrapper">
+            <ul class="symptoms__list">
+              <li>
+                <div class="symptoms__img-wrapper">
+                  <img
+                    src="/disease/disease_assets/neck_symptoms__list-item_01.png"
+                    alt="목과 어깨의 뻐근함"
+                  />
+                </div>
+                <p class="symptoms__text">목과 어깨의 뻐근함</p>
+              </li>
+              <li>
+                <div class="symptoms__img-wrapper">
+                  <img
+                    src="/disease/disease_assets/neck_symptoms__list-item_02.png"
+                    alt="손가락 감각의 무뎌짐"
+                  />
+                </div>
+                <p class="symptoms__text">손가락 감각의 무뎌짐</p>
+              </li>
+              <li>
+                <div class="symptoms__img-wrapper">
+                  <img
+                    src="/disease/disease_assets/neck_symptoms__list-item_03.png"
+                    alt="어깨, 팔, 손끝으로 뻗치는 저림과 통증 (방사통)"
+                  />
+                </div>
+                <p class="symptoms__text">
+                  어깨, 팔, 손끝으로 뻗치는 저림과 통증 (방사통)
+                </p>
+              </li>
+              <li>
+                <div class="symptoms__img-wrapper">
+                  <img
+                    src="/disease/disease_assets/neck_symptoms__list-item_04.png"
+                    alt="원인 모를 두통과 안구 피로"
+                  />
+                </div>
+                <p class="symptoms__text">원인 모를 두통과 안구 피로</p>
+              </li>
+              <li>
+                <div class="symptoms__img-wrapper">
+                  <img
+                    src="/disease/disease_assets/neck_symptoms__list-item_05.png"
+                    alt="쥐는 힘과 팔 근력 약화"
+                  />
+                </div>
+                <p class="symptoms__text">쥐는 힘과 팔 근력 약화</p>
+              </li>
+              <li>
+                <div class="symptoms__img-wrapper">
+                  <img
+                    src="/disease/disease_assets/neck_symptoms__list-item_06.png"
+                    alt="특정 자세에서의 통증 유발"
+                  />
+                </div>
+                <p class="symptoms__text">특정 자세에서의 통증 유발</p>
+              </li>
+            </ul>
           </div>
-          <!-- 인디케이터 도트 -->
-          <div class="neck-causes__indicator-wrap"></div>
         </div>
       </section>
 
-      <!-- ⑤ 치료 방법 (인터랙티브 타임라인) -->
-      <section class="section neck-treatment">
+      <!-- 관련 시술 -->
+      <section class="section treatment">
         <div class="container">
           <div class="section-title-wrap">
-            <h2 class="section-title__title">단계별 목 디스크 치료 로드맵</h2>
-            <p>
-              환자의 90% 이상은 칼을 대지 않는 보존적·비수술 요법만으로도 충분히
-              치유 가능합니다. 통증 완화 상태에 맞춰 단계별로 접근합니다.
-            </p>
+            <h2 class="section-title__title">목디스크와 관련된 시술</h2>
           </div>
+          <div class="swiper treatment__swiper">
+            <ul class="swiper-wrapper treatment__list">
+              <li class="swiper-slide">
+                <div class="treatment__card">
+                  <div class="treatment__content">
+                    <span class="slide__card-badge">보존적 치료의 기본</span>
+                    <h3 class="slide__card-title">미세현미경 수술</h3>
+                    <p class="slide__card-text">
+                      수술 현미경을 이용해 신경을 확대하여 확인하면서 신경을
+                      압박하는 디스크나 뼈 등의 병변을 제거하여 신경의 압박을
+                      직접 해소하는 수술적 치료입니다.
+                    </p>
+                  </div>
 
-          <div class="neck-timeline">
-            <!-- 타임라인 중앙 연결선 -->
-            <div class="neck-timeline__line"></div>
+                  <div class="treatment__image-wrapper">
+                    <img
+                      src="/disease/disease_assets/neck_disk__cuase.png"
+                      alt="미세현미경 수술 과정 안내 이미지"
+                    />
+                  </div>
+                </div>
+              </li>
 
-            <!-- 1단계 -->
-            <article
-              class="neck-timeline__step"
-              data-active="true"
-              data-step="1"
-            >
-              <div class="neck-timeline__dot"></div>
-              <div class="neck-timeline__content">
-                <span class="neck-timeline__badge">1단계: 기본 보존 치료</span>
-                <h3 class="neck-timeline__title">
-                  신체 부담이 적은 보존적 케어
-                </h3>
-                <p class="neck-timeline__text">
-                  초기 염증 해소를 목표로 하며 관절과 인대의 물리적 정렬을
-                  호전시킵니다.
-                </p>
-                <ul class="neck-timeline__methods">
-                  <li>
-                    <strong>약물 처방 및 열전기 치료:</strong> 척추 주위의
-                    부기와 근육 긴장을 빠르게 완화합니다.
-                  </li>
-                  <li>
-                    <strong>숙련도 높은 도수치료:</strong> 경추 정렬 문제를
-                    손으로 자극·치료해 뼈 사이의 수직 가중을 덜어줍니다.
-                  </li>
-                  <li>
-                    <strong>맞춤식 재활 운동 치료:</strong> 목 심부 근육들을
-                    강화하여 치료 후 재발할 수 있는 확률을 억제합니다.
-                  </li>
-                </ul>
-              </div>
-            </article>
+              <!-- Slide 2 (더미 데이터) -->
+              <li class="swiper-slide">
+                <div class="treatment__card">
+                  <div class="treatment__content">
+                    <span class="slide__card-badge"
+                      >신경 주변의 염증과 유착을 완화</span
+                    >
+                    <h3 class="slide__card-title">고주파 수핵 성형술</h3>
+                    <p class="slide__card-text">
+                      특수 기구를 디스크 내부에 삽입하고 고주파 에너지를 이용해
+                      수핵 조직을 부분적으로 제거·수축시켜 디스크 내부의 압력을
+                      감소시키는 방식입니다.
+                    </p>
+                  </div>
 
-            <!-- 2단계 -->
-            <article class="neck-timeline__step" data-step="2">
-              <div class="neck-timeline__dot"></div>
-              <div class="neck-timeline__content">
-                <span class="neck-timeline__badge"
-                  >2단계: 정밀 비수술 시술</span
-                >
-                <h3 class="neck-timeline__title">
-                  통증 유발 인자의 타겟 주사 및 유착 제거
-                </h3>
-                <p class="neck-timeline__text">
-                  생활 패턴 조절이나 기본적인 치료를 수주간 거쳐도 저린 증상과
-                  통증이 강한 경우 시도합니다.
-                </p>
-                <ul class="neck-timeline__methods">
-                  <li>
-                    <strong>C-arm 정밀 신경차단술:</strong> 이동식 X선 장치를
-                    보며 국소 마취 하에 원인 부위에 소염제를 정확하게
-                    투여합니다.
-                  </li>
-                  <li>
-                    <strong>경추 신경성형술:</strong> 카테터 관을 넣어 만성
-                    염증으로 유착된 신경 부위를 박리하고 세척해 줍니다.
-                  </li>
-                </ul>
-              </div>
-            </article>
+                  <div class="treatment__image-wrapper">
+                    <img
+                      src="/disease/disease_assets/neck_disc_comparative_MRI.png"
+                      alt="경추 신경성형술 안내 이미지"
+                    />
+                  </div>
+                </div>
+              </li>
 
-            <!-- 3단계 -->
-            <article class="neck-timeline__step" data-step="3">
-              <div class="neck-timeline__dot"></div>
-              <div class="neck-timeline__content">
-                <span class="neck-timeline__badge"
-                  >3단계: 정교한 수술 치료</span
-                >
-                <h3 class="neck-timeline__title">
-                  마비 및 중증 결손 해소를 위한 미세 수술
-                </h3>
-                <p class="neck-timeline__text">
-                  근력 감소, 손 마비 현상 등 장기 신경 손상 위험이 있는 극히
-                  예외적인 상황에 한해 엄격하게 적용됩니다.
-                </p>
-                <ul class="neck-timeline__methods">
-                  <li>
-                    <strong>미세현미경 디스크 조각 제거술:</strong> 극소 부위를
-                    통해 접근한 후 현미경 시야 하에서 안전하게 잔해를
-                    배출합니다.
-                  </li>
-                  <li>
-                    <strong>가동성 인공디스크 치환술:</strong> 손상 디스크를
-                    제거하고 다축 방향 구동이 가능한 대체 구조물을 넣어 자연성을
-                    지킵니다.
-                  </li>
-                </ul>
-              </div>
-            </article>
+              <!-- Slide 3 (더미 데이터) -->
+              <li class="swiper-slide">
+                <div class="treatment__card">
+                  <div class="treatment__content">
+                    <span class="slide__card-badge"
+                      >최소침습적 디스크 치료</span
+                    >
+                    <h3 class="slide__card-title">신경 성형술</h3>
+                    <p class="slide__card-text">
+                      특수 카테터를 신경 주변의 경막외 공간으로 접근시켜 약물을
+                      전달하고, 필요한 경우 유착된 부위를 치료하여 신경 주변의
+                      염증과 통증을 완화하는 치료입니다.
+                    </p>
+                  </div>
+
+                  <div class="treatment__image-wrapper">
+                    <img
+                      src="/disease/disease_assets/background_neck.png"
+                      alt="C-arm 정밀 신경차단술 안내 이미지"
+                    />
+                  </div>
+                </div>
+              </li>
+
+              <!-- Slide 4 (더미 데이터) -->
+              <li class="swiper-slide">
+                <div class="treatment__card">
+                  <div class="treatment__content">
+                    <span class="slide__card-badge"
+                      >신경 압박 병변을 직접 제거</span
+                    >
+                    <h3 class="slide__card-title">물리 치료</h3>
+                    <p class="slide__card-text">
+                      목 주변의 통증과 근육 긴장을 완화하고, 목의 움직임과
+                      기능을 회복하기 위한 치료입니다. 증상과 상태에 따라
+                      운동치료, 견인치료 등의 방법을 적용할 수 있습니다.
+                    </p>
+                  </div>
+
+                  <div class="treatment__image-wrapper">
+                    <img
+                      src="/disease/disease_assets/neck_disk__cuase.png"
+                      alt="경추 도수재활 안내 이미지"
+                    />
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="slider-nav treatment__slider-nav">
+              <button
+                type="button"
+                class="slider-nav__btn slider-nav__btn--prev"
+                aria-label="이전 시술 보기"
+              >
+                &lt;
+              </button>
+              <button
+                type="button"
+                class="slider-nav__btn slider-nav__btn--next"
+                aria-label="다음 시술 보기"
+              >
+                &gt;
+              </button>
+            </div>
           </div>
         </div>
       </section>
+      <!-- 관련 시술 끝 -->
     </main>
 
     <!-- 푸터 -->
