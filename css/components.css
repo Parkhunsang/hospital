@@ -8,7 +8,7 @@
   max-width: 620px;
   margin-right: auto;
   margin-left: auto;
-  margin-bottom: 120px;
+  margin-bottom: clamp(40px, 6vw, 120px);
   text-align: center;
 }
 
@@ -108,7 +108,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 24px;
+  padding: 8px 16px;
   box-sizing: border-box;
   border-radius: 32px;
   background-color: transparent;
@@ -120,7 +120,7 @@
     system-ui,
     Roboto,
     sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   color: #475569;
   text-decoration: none;
@@ -199,11 +199,7 @@
 }
 
 .slide__card-title {
-  margin-bottom: 32px;
-  font-size: var(--font-3xl);
-  font-weight: 800;
-  color: var(--color-primary);
-  letter-spacing: -0.02em;
+  margin-bottom: 1.333em;
 }
 
 .slide__card-badge {
@@ -224,4 +220,31 @@
   font-weight: 600;
   color: var(--color-primary);
   line-height: 1.5;
+}
+.card-title {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+@media (max-width: 1024px) {
+  .section-title__title {
+    font-size: 28px;
+  }
+}
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  .section-title__title {
+    font-size: 26px;
+  }
+  .card-title {
+    font-size: 20px;
+  }
+}
+@media (max-width: 640px) {
+  .section-title__title {
+    font-size: 24px;
+  }
 }

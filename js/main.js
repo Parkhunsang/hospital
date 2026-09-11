@@ -987,7 +987,11 @@ function initFastDiagnosis() {
 
   // 1. GSAP ScrollTrigger 핀(Pin) 고정 (데스크톱)
   const titleEl = section.querySelector(".section-title-wrap");
-  if (titleEl && typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+  if (
+    titleEl &&
+    typeof gsap !== "undefined" &&
+    typeof ScrollTrigger !== "undefined"
+  ) {
     gsap.registerPlugin(ScrollTrigger);
 
     ScrollTrigger.matchMedia({
@@ -1015,7 +1019,12 @@ function initFastDiagnosis() {
             ".fast-diagnosis__steps",
           );
 
-          if (typeof gsap !== "undefined" && steps.length > 0 && stepsContainer) {
+          if (
+            typeof gsap !== "undefined" &&
+            steps.length > 0 &&
+            stepsContainer &&
+            window.innerWidth > 960
+          ) {
             const containerWidth = stepsContainer.offsetWidth;
             const stepWidth = steps[0].offsetWidth;
             const offset = (containerWidth - stepWidth) / 2;
@@ -1070,6 +1079,9 @@ function initFastDiagnosis() {
                 step.classList.add("is-animated");
               }, idx * 250);
             });
+            if (typeof gsap !== "undefined") {
+              gsap.set(steps, { clearProps: "all" });
+            }
           }
           obs.unobserve(entry.target);
         }
@@ -1472,5 +1484,3 @@ function initBrandTrustPartners() {
     runStatsAnimation();
   }
 }
-
-

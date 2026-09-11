@@ -804,12 +804,9 @@ body.door-locked {
 }
 
 .fast-diagnosis__step-title {
-  margin: 0 0 10px 0;
-  font-size: 1.75rem;
-  font-weight: 700;
-  line-height: 1.35;
   color: var(--color-white);
-  letter-spacing: -0.02em;
+  line-height: 1.35;
+  margin: 0 0 10px 0;
 }
 
 .fast-diagnosis__step-desc {
@@ -863,7 +860,7 @@ body.door-locked {
 
 .non-surgical__swiper {
   width: 100%;
-  padding: 20px 0 60px 0;
+  padding-bottom: 60px;
   overflow: visible;
 }
 
@@ -900,7 +897,7 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   flex: 1.2;
-  padding: 44px 40px;
+  padding: 2.75rem 2.5rem;
 }
 
 .non-surgical__card-summary {
@@ -1456,9 +1453,6 @@ body.door-locked {
   justify-content: center;
   gap: 8px;
   margin: 0;
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--color-primary);
   transition: color 0.5s ease;
 }
 
@@ -2095,24 +2089,10 @@ body.door-locked {
 
   .fast-diagnosis .section-title__title {
     margin: 16px 0;
-    font-size: 2.125rem;
   }
 
   .fast-diagnosis__con {
     width: 100%;
-  }
-
-  .fast-diagnosis__steps {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-  }
-
-  .fast-diagnosis__step {
-    width: 100%;
-    height: 380px;
-    min-height: auto;
-    margin-bottom: 30px;
   }
 
   .fast-diagnosis__step:nth-child(even) {
@@ -2126,7 +2106,9 @@ body.door-locked {
   .equip-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
+  .non-surgical__swiper {
+    padding-bottom: clamp(24px, 6vw, 60px);
+  }
   .non-surgical__swiper-container {
     padding: 0;
   }
@@ -2144,12 +2126,11 @@ body.door-locked {
   .non-surgical__card-visual {
     flex: none;
     width: 100%;
-    height: 350px;
+    height: clamp(200px, 28vw, 280px);
   }
 
   .non-surgical__card-content {
-    padding: 32px 30px;
-    gap: 12px;
+    padding: 1.5rem 1.25rem;
   }
 
   .non-surgical__card-title {
@@ -2365,6 +2346,17 @@ body.door-locked {
   .hero-3d__info-panel {
     width: 200px;
   }
+
+  .fast-diagnosis__step {
+    width: 48%;
+    height: auto;
+    aspect-ratio: 1 / 1.15;
+    min-height: auto;
+    margin-bottom: 24px;
+  }
+  .fast-diagnosis__content {
+    padding: 20px 16px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -2571,10 +2563,6 @@ body.door-locked {
     font-size: 160px;
   }
 
-  .non-surgical__card-content {
-    padding: 24px 20px;
-  }
-
   .non-surgical__card-title {
     font-size: 22px;
   }
@@ -2679,5 +2667,14 @@ body.door-locked {
   }
   .hero-3d__tv-container {
     padding: 0 16px;
+  }
+}
+@media (max-width: 480px) {
+  .fast-diagnosis__steps {
+    flex-direction: column;
+  }
+  .fast-diagnosis__step {
+    width: 100%;
+    aspect-ratio: 1 / 1;
   }
 }
