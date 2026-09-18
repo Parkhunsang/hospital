@@ -95,7 +95,6 @@ body.door-locked {
 }
 
 .intro-door__desc {
-  margin: 0;
   font-size: var(--font-xl);
   font-weight: 400;
   color: var(--color-white);
@@ -266,7 +265,6 @@ body.door-locked {
 }
 
 .hero-3d__welcome-desc {
-  margin: 0;
   font-size: var(--font-3xl);
   font-weight: 800;
   line-height: 1.2;
@@ -291,32 +289,11 @@ body.door-locked {
   /* UI 요소들은 클릭 가능하도록 설정 */
 }
 
-.info-badge-wrap {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  padding-left: 10px;
-}
-
-.info-badge-wrap svg {
-  color: var(--color-secondary);
-}
-
-.info-badge__desc {
-  font-size: var(--font-md);
-  font-weight: 700;
-  font-family: "Pretendard", sans-serif;
-  color: var(--color-secondary);
-  letter-spacing: -0.02em;
-}
-
 .hero-3d__pain-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
   padding: 12px 0px 0px 0px;
-  margin: 0;
   list-style: none;
   border-top: 1px solid rgba(47, 95, 167, 0.08);
   margin-top: 12px;
@@ -565,7 +542,6 @@ body.door-locked {
   width: 100%;
   height: 100%;
   padding: 0;
-  margin: 0;
   border-radius: 20px;
   background: var(--color-white);
   list-style: none;
@@ -663,30 +639,28 @@ body.door-locked {
   align-items: flex-start;
 }
 
-.fast-diagnosis .section-title-wrap {
+.fast-diagnosis .section-head {
   position: relative;
   z-index: 10;
-
   width: 28%;
   margin-right: 0;
   margin-left: 0;
-
   text-align: left;
 }
 
 @media (min-width: 960px) {
-  .fast-diagnosis .section-title-wrap {
+  .fast-diagnosis .section-head {
     position: sticky;
     top: 140px;
   }
 }
 
-.fast-diagnosis .section-title__title {
+.fast-diagnosis .section-title {
   margin: 20px 0 24px 0;
 }
 
 .fast-diagnosis__btn-more {
-  display: block;
+  display: inline-block;
   text-align: left;
   font-size: 0.9375rem;
   font-weight: 700;
@@ -721,7 +695,6 @@ body.door-locked {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -805,16 +778,11 @@ body.door-locked {
 
 .fast-diagnosis__step-title {
   color: var(--color-white);
-  line-height: 1.35;
-  margin: 0 0 10px 0;
+  margin-bottom: 10px;
 }
 
 .fast-diagnosis__step-desc {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.6;
   color: var(--color-text-white-subtle);
-  word-break: keep-all;
 }
 
 /* 03. Fast Diagnosis [END] */
@@ -900,19 +868,14 @@ body.door-locked {
   padding: 2.75rem 2.5rem;
 }
 
-.non-surgical__card-summary {
+.non-surgical__card-desc {
   margin: 0 0 24px 0;
-  font-size: var(--font-base);
-  color: var(--color-text-light);
-  line-height: 1.6;
-  word-break: keep-all;
 }
 
 .non-surgical__card-features {
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin: 0;
   list-style: none;
 }
 
@@ -1185,14 +1148,7 @@ body.door-locked {
 }
 
 .brand-trust__desc {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.75;
-  color: var(--color-text-white-subtle);
-  word-break: keep-all;
-}
-
-.brand-trust__desc--white {
+  font-size: var(--font-lg);
   color: var(--color-text-white-subtle);
 }
 
@@ -1443,21 +1399,15 @@ body.door-locked {
 }
 
 .doctors__header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   margin-bottom: 24px;
   text-align: center;
 }
 
-.doctors__name {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 8px;
-  margin: 0;
-  transition: color 0.5s ease;
-}
-
-.doctors__card:hover .doctors__name,
-.doctors__card:focus-within .doctors__name {
+.doctors__card:hover .doctors__header .card-title,
+.doctors__card:focus-within .doctors__header .card-title {
   color: var(--color-white);
 }
 
@@ -1499,23 +1449,18 @@ body.door-locked {
 }
 
 .doctors__specs {
-  margin: 0 0 20px 0;
+  margin-bottom: 20px;
   padding: 0;
-  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.doctors__spec-item {
-  margin-bottom: 8px;
+.doctors__spec-text {
   font-size: 0.9375rem;
   line-height: 1.55;
   color: var(--color-text-white-subtle);
   word-break: keep-all;
-}
-
-.doctors__spec-label {
-  margin-right: 6px;
-  color: var(--color-white);
-  font-weight: 700;
 }
 
 .doctors__schedule {
@@ -1535,9 +1480,13 @@ body.door-locked {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.875rem;
+  color: var(--color-white);
+}
+
+.doctors__schedule-label {
+  font-size: var(--font-sm);
   font-weight: 700;
+  color: #ffffffe6;
 }
 
 .doctors__schedule-icon {
@@ -1762,12 +1711,9 @@ body.door-locked {
   line-height: 1.4;
 }
 
-.self-test__result-box p {
+.self-test__desc {
   margin: 0 0 30px;
   color: var(--color-text-white-subtle);
-  font-size: 15px;
-  line-height: 1.6;
-  word-break: keep-all;
 }
 
 .self-test__result-box .primary-button {
@@ -1843,7 +1789,6 @@ body.door-locked {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -2082,12 +2027,12 @@ body.door-locked {
     width: 100%;
   }
 
-  .fast-diagnosis .section-title-wrap {
+  .fast-diagnosis .section-head {
     width: 100%;
     margin-bottom: 50px;
   }
 
-  .fast-diagnosis .section-title__title {
+  .fast-diagnosis .section-title {
     margin: 16px 0;
   }
 
@@ -2191,7 +2136,7 @@ body.door-locked {
   .doctors__header {
     margin-bottom: 12px;
   }
-  .doctors__name {
+  .doctors__header .card-title {
     justify-content: flex-start;
   }
   .doctors__info {
@@ -2504,7 +2449,7 @@ body.door-locked {
     padding: 0;
   }
 
-  .doctors__name {
+  .doctors__header .card-title {
     justify-content: center;
   }
 

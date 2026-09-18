@@ -1,9 +1,32 @@
 /* ==========================================
    Components CSS (공통 UI 컴포넌트: 타이틀, 버튼, 카드 등)
    ========================================== */
+/* 버튼 */
+.primary-button,
+.ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.primary-button {
+  border: 0;
+  cursor: pointer;
+  box-shadow: var(--shadow-primary);
+}
+
+.ghost-button {
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.9);
+}
 
 /* 타이틀 그룹 감싸는 래퍼 (Title Section Wrapper) */
-.section-title-wrap,
 .section-head {
   max-width: 620px;
   margin-right: auto;
@@ -13,7 +36,7 @@
 }
 
 /* 메인 및 사이트 전역 공통 H2 타이틀 글자 */
-.section-title__title {
+.section-title {
   margin: 0;
   position: relative;
   color: var(--color-primary);
@@ -35,25 +58,27 @@
   word-break: keep-all;
 }
 
-.section-title-wrap--left {
+.section-head--left {
   text-align: left;
   max-width: 100%;
   margin-left: 0;
   margin-right: 0;
 }
 
-.section-title__desc {
-  margin-top: 32px;
+.section-desc {
   color: var(--color-text-light);
   font-size: var(--font-base);
   font-weight: 500;
   line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
-.section-title__desc + .section-title__desc {
-  margin-top: 16px;
+.info-label {
+  margin-right: 6px;
+  color: var(--color-white);
+  font-weight: 700;
 }
-
 /* Eyebrow Component (공통 소타이틀/뱃지 UI) */
 .eyebrow {
   display: block;
@@ -86,7 +111,25 @@
   font-weight: 500;
   letter-spacing: -0.01em;
 }
+/* Info Badge Component (공통 안내 뱃지 UI) */
+.info-badge-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-left: 10px;
+}
 
+.info-badge-wrap svg {
+  color: var(--color-secondary);
+}
+
+.info-badge__desc {
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--color-secondary);
+  letter-spacing: -0.02em;
+}
 /* Disease Navigation Component (질환 페이지 공통 탭 네비게이션) */
 .disease-nav {
   position: relative;
@@ -113,13 +156,6 @@
   border-radius: 32px;
   background-color: transparent;
   font-size: 1rem;
-  font-family:
-    "Pretendard",
-    -apple-system,
-    BlinkMacSystemFont,
-    system-ui,
-    Roboto,
-    sans-serif;
   font-weight: 600;
   line-height: 1;
   color: #475569;
@@ -198,10 +234,6 @@
   height: 18px;
 }
 
-.slide__card-title {
-  margin-bottom: 1.333em;
-}
-
 .slide__card-badge {
   align-self: flex-start;
   padding: 6px 14px;
@@ -226,9 +258,11 @@
   font-weight: 800;
   color: var(--color-primary);
   letter-spacing: -0.02em;
+  margin-bottom: 1.333em;
 }
+
 @media (max-width: 1024px) {
-  .section-title__title {
+  .section-title {
     font-size: 28px;
   }
 }
@@ -236,7 +270,7 @@
   html {
     font-size: 14px;
   }
-  .section-title__title {
+  .section-title {
     font-size: 26px;
   }
   .card-title {
@@ -244,7 +278,7 @@
   }
 }
 @media (max-width: 640px) {
-  .section-title__title {
+  .section-title {
     font-size: 24px;
   }
 }

@@ -76,8 +76,13 @@
   background-color: var(--color-tertiary);
   transform: translateY(-2px);
 }
-
-.section-title__title::before {
+.disease-text-wrap {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.section-title::before {
   position: absolute;
   top: -12px;
   left: 0;

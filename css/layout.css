@@ -2,12 +2,14 @@
    Layout CSS (헤더, 푸터, 전역 레이아웃 컨테이너)
    ========================================== */
 
-/* 전역 레이아웃 컨테이너 */
+/* 전역 레이아웃 컨테이너 및 섹션 */
 .container {
   width: min(1200px, calc(100% - 48px));
   margin: 0 auto;
 }
-
+.section {
+  padding: 86px 0;
+}
 /* ==========================================
    Header Navigation Layout (헤더 상단바 레이아웃)
    ========================================== */
@@ -510,11 +512,11 @@
   backdrop-filter: blur(10px);
 }
 
-.footer-card .title-box {
+.footer-card__head {
   margin-bottom: 20px;
 }
 
-.footer-card .title-box h4 {
+.footer-card__eng-title {
   margin-bottom: 4px;
   font-size: 13px;
   font-weight: 600;
@@ -524,7 +526,7 @@
   text-transform: uppercase;
 }
 
-.footer-card .title-box p {
+.footer-card__title {
   font-family: "Outfit", "Pretendard", sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -552,15 +554,14 @@
   border-bottom: none;
 }
 
-.footer-top .time-box .item p {
-  display: flex;
-  align-items: center;
+.footer-card__text {
   font-size: 14px;
   font-weight: 500;
   color: var(--color-text-white-subtle);
+  line-height: 1.5;
 }
 
-.footer-top .time-box .item strong {
+.footer-card__text--strong {
   font-family: "Outfit", "Pretendard", sans-serif;
   font-size: 15px;
   font-weight: 600;
@@ -571,6 +572,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  vertical-align: middle;
   margin-left: 6px;
   padding: 2px 8px;
   border-radius: 9999px;
@@ -587,20 +589,6 @@
   margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.footer-top .addr-box p {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--color-text-white-subtle);
-}
-
-.footer-top .addr-box p span {
-  font-size: inherit;
-  color: var(--color-text-white-subtle);
 }
 
 .footer-top .map-box {
@@ -647,10 +635,8 @@
 
 .footer-top .map-info-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
-  font-size: 14px;
-  color: #94a3b8;
 }
 
 .footer-top .map-info-item strong {
