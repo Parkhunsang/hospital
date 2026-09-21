@@ -35,7 +35,13 @@
 
   <body>
     <!-- 인트로 도어 (병원 입장 효과) -->
-    <div class="intro-door" id="intro-door">
+    <div
+      class="intro-door"
+      id="intro-door"
+      role="dialog"
+      aria-modal="true"
+      aria-label="병원 입장 안내"
+    >
       <div class="intro-door__panel intro-door__panel--left">
         <div class="intro-door__inner"></div>
       </div>
@@ -55,6 +61,7 @@
         </p>
         <div class="intro-door__btn-wrap">
           <button
+            type="button"
             class="primary-button intro-door__enter-btn"
             id="enter-clinic-btn"
           >
@@ -85,15 +92,23 @@
       </div>
     </div>
 
-    <header class="topbar topbar--top">
+    <header class="topbar topbar--top" inert>
       <div class="topbar_nav_wrap">
-        <a class="topbar__brand" href="./index.html">
-          <img class="topbar__logo" src="assets/logo.png" alt="코어업 로고" />
-        </a>
+        <h1 class="topbar__logo">
+          <a class="topbar__brand" href="./index.html">
+            <img
+              class="topbar__logo-img"
+              src="assets/logo.png"
+              alt="코어업 정형외과"
+            />
+          </a>
+        </h1>
         <nav class="topbar__nav" aria-label="주요 메뉴">
           <ul class="topbar__links">
-            <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
-              <a href="#information" class="topbar__link"> 병원 소개 </a>
+            <li class="topbar__item">
+              <a href="#information" class="topbar__link" aria-expanded="false">
+                병원 소개
+              </a>
               <ul class="topbar__sub-list" aria-label="병원 소개 하위 메뉴">
                 <li class="topbar__sub-item">
                   <a href="#doctors" class="topbar__sub-link">의료진 소개</a>
@@ -108,8 +123,8 @@
                 </li>
               </ul>
             </li>
-            <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
-              <a href="#reservation" class="topbar__link">
+            <li class="topbar__item">
+              <a href="#reservation" class="topbar__link" aria-expanded="false">
                 진료안내 &amp; 예약
               </a>
               <ul
@@ -131,8 +146,10 @@
                 </li>
               </ul>
             </li>
-            <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
-              <a href="#clinic" class="topbar__link"> 부위별 진료 </a>
+            <li class="topbar__item">
+              <a href="#clinic" class="topbar__link" aria-expanded="false">
+                부위별 진료
+              </a>
               <ul class="topbar__sub-list" aria-label="부위별 진료 하위 메뉴">
                 <li class="topbar__sub-item">
                   <a href="./disease/neck.html" class="topbar__sub-link"
@@ -156,8 +173,10 @@
                 </li>
               </ul>
             </li>
-            <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
-              <a href="#rehab" class="topbar__link"> 비수술 치료 </a>
+            <li class="topbar__item">
+              <a href="#rehab" class="topbar__link" aria-expanded="false">
+                비수술 치료
+              </a>
               <ul class="topbar__sub-list" aria-label="비수술 치료 하위 메뉴">
                 <li class="topbar__sub-item">
                   <a href="#rehab" class="topbar__sub-link">도수 치료</a>
@@ -176,8 +195,10 @@
                 </li>
               </ul>
             </li>
-            <li class="topbar__item" aria-haspopup="true" aria-expanded="false">
-              <a href="#board" class="topbar__link"> 커뮤니티 </a>
+            <li class="topbar__item">
+              <a href="#board" class="topbar__link" aria-expanded="false">
+                커뮤니티
+              </a>
               <ul class="topbar__sub-list" aria-label="커뮤니티 하위 메뉴">
                 <li class="topbar__sub-item">
                   <a href="#news" class="topbar__sub-link">병원 소식</a>
@@ -231,6 +252,7 @@
                   class="topbar__drawer-toggle"
                   aria-label="병원 소개 하위 메뉴 토글"
                   aria-expanded="false"
+                  aria-controls="drawer-sub-info"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -243,7 +265,7 @@
                   </svg>
                 </button>
               </div>
-              <ul class="topbar__drawer-sub-list">
+              <ul class="topbar__drawer-sub-list" id="drawer-sub-info">
                 <li class="topbar__drawer-sub-item">
                   <a href="#doctors" class="topbar__drawer-sub-link"
                     >의료진 소개</a
@@ -271,6 +293,7 @@
                   class="topbar__drawer-toggle"
                   aria-label="진료안내 및 예약 하위 메뉴 토글"
                   aria-expanded="false"
+                  aria-controls="drawer-sub-reservation"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -283,7 +306,7 @@
                   </svg>
                 </button>
               </div>
-              <ul class="topbar__drawer-sub-list">
+              <ul class="topbar__drawer-sub-list" id="drawer-sub-reservation">
                 <li class="topbar__drawer-sub-item">
                   <a href="#footer" class="topbar__drawer-sub-link"
                     >진료시간 안내</a
@@ -309,6 +332,7 @@
                   class="topbar__drawer-toggle"
                   aria-label="부위별 진료 하위 메뉴 토글"
                   aria-expanded="false"
+                  aria-controls="drawer-sub-clinic"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -321,7 +345,7 @@
                   </svg>
                 </button>
               </div>
-              <ul class="topbar__drawer-sub-list">
+              <ul class="topbar__drawer-sub-list" id="drawer-sub-clinic">
                 <li class="topbar__drawer-sub-item">
                   <a href="./disease/neck.html" class="topbar__drawer-sub-link"
                     >목 통증</a
@@ -358,6 +382,7 @@
                   class="topbar__drawer-toggle"
                   aria-label="비수술 치료 하위 메뉴 토글"
                   aria-expanded="false"
+                  aria-controls="drawer-sub-rehab"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -370,7 +395,7 @@
                   </svg>
                 </button>
               </div>
-              <ul class="topbar__drawer-sub-list">
+              <ul class="topbar__drawer-sub-list" id="drawer-sub-rehab">
                 <li class="topbar__drawer-sub-item">
                   <a href="#rehab" class="topbar__drawer-sub-link">도수 치료</a>
                 </li>
@@ -400,6 +425,7 @@
                   class="topbar__drawer-toggle"
                   aria-label="커뮤니티 하위 메뉴 토글"
                   aria-expanded="false"
+                  aria-controls="drawer-sub-board"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -412,7 +438,7 @@
                   </svg>
                 </button>
               </div>
-              <ul class="topbar__drawer-sub-list">
+              <ul class="topbar__drawer-sub-list" id="drawer-sub-board">
                 <li class="topbar__drawer-sub-item">
                   <a href="#news" class="topbar__drawer-sub-link">병원 소식</a>
                 </li>
@@ -439,7 +465,7 @@
       </nav>
     </header>
 
-    <main>
+    <main inert>
       <!-- 3D Body Map Hero 섹션 -->
       <section class="hero-3d" id="hero-3d">
         <div class="hero-3d__canvas-container" id="canvas-container"></div>
@@ -449,7 +475,9 @@
             <h2 class="hero-3d__welcome-title">
               어서오세요 코어업 정형외과 입니다.
             </h2>
-            <p class="hero-3d__welcome-desc">어디가 아프신가요?</p>
+            <p class="section-title hero-3d__welcome-desc">
+              어디가 아프신가요?
+            </p>
           </div>
 
           <div class="hero-3d__menu">
@@ -551,7 +579,7 @@
         <div class="hero-3d__tv-wrap">
           <div class="hero-3d__tv-container">
             <div class="hero-3d__togo-section">
-              <ul class="hero-3d__togo-list" role="list">
+              <ul class="hero-3d__togo-list">
                 <li class="hero-3d__togo-item-wrap">
                   <a href="#booking" class="hero-3d__togo-item">
                     <div class="hero-3d__togo-icon">
@@ -721,18 +749,16 @@
       <section class="section non-surgical">
         <div class="container">
           <div class="section-head">
-            <div class="section-head">
-              <span class="eyebrow">NON-SURGICAL CLINIC</span>
-              <span class="sub-eyebrow">척추·관절 통증 극복의 올바른 시작</span>
-              <h2 class="section-title">
-                수술보다 먼저, 안전한 비수술 치료를 고민합니다
-              </h2>
-            </div>
+            <span class="eyebrow">NON-SURGICAL CLINIC</span>
+            <span class="sub-eyebrow">척추·관절 통증 극복의 올바른 시작</span>
+            <h2 class="section-title">
+              수술보다 먼저, 안전한 비수술 치료를 고민합니다
+            </h2>
           </div>
 
-          <div class="non-surgical__swiper-container">
+          <div class="showcase-slider">
             <!-- Swiper 조절 상단 바 -->
-            <div class="non-surgical__slider-controls">
+            <div class="showcase-slider__controls">
               <div class="info-badge-wrap">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -768,39 +794,39 @@
             </div>
 
             <!-- 메인 Swiper 슬라이더 -->
-            <div class="swiper non-surgical__swiper">
+            <div class="swiper showcase-slider__swiper">
               <ul class="swiper-wrapper">
                 <!-- Slide 1: 도수치료 -->
                 <li
-                  class="swiper-slide non-surgical__slide"
+                  class="swiper-slide showcase-slider__slide"
                   data-slide-index="0"
                 >
-                  <div class="non-surgical__card">
-                    <div class="non-surgical__card-content">
+                  <div class="showcase-slider__card">
+                    <div class="showcase-slider__content">
                       <span class="slide__card-badge">도수재활치료</span>
-                      <h3 class="card-title slide__card-title">도수치료</h3>
-                      <p class="section-desc non-surgical__card-desc">
+                      <h3 class="card-title">도수치료</h3>
+                      <p class="section-desc showcase-slider__card-desc">
                         숙련된 치료사가 손을 이용해 틀어진 관절과 척추 정렬을
                         바로잡고 신체 밸런스를 복원하는 전문 치료입니다.
                       </p>
-                      <ul class="non-surgical__card-features">
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                      <ul class="showcase-slider__features">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             관절 가동 범위를 점진적으로 증가시켜 움직임 회복
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             긴장된 근막과 굳어있는 인대를 이완해 만성 통증 완화
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             림프 및 혈액 순환을 활성화하여 부종과 염증 감소
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             불균형한 체형을 올바르게 교정하여 원인 치료 제공
                           </p>
                         </li>
@@ -816,54 +842,51 @@
                         </svg>
                       </button>
                     </div>
-                    <div class="non-surgical__card-visual" aria-hidden="true">
-                      <div class="non-surgical__card-illustration">
-                        <img
-                          class="non-surgical__card-img"
-                          src="./assets/non_surgical_1.png"
-                          alt="도수치료 실제 치료 사진"
-                        />
-                      </div>
+                    <div class="showcase-slider__image-wrapper">
+                      <img
+                        src="./assets/non_surgical_1.png"
+                        alt="도수치료 실제 치료 사진"
+                      />
                     </div>
                   </div>
                 </li>
 
                 <!-- Slide 2: 신경차단술 -->
                 <li
-                  class="swiper-slide non-surgical__slide"
+                  class="swiper-slide showcase-slider__slide"
                   data-slide-index="1"
                 >
-                  <div class="non-surgical__card">
-                    <div class="non-surgical__card-content">
+                  <div class="showcase-slider__card">
+                    <div class="showcase-slider__content">
                       <span class="slide__card-badge">비수술 주사요법</span>
 
-                      <h3 class="card-title slide__card-title">신경차단술</h3>
+                      <h3 class="card-title">신경차단술</h3>
 
-                      <p class="section-desc non-surgical__card-desc">
+                      <p class="section-desc showcase-slider__card-desc">
                         C-arm(미세 컴퓨터 방사선 장비)을 사용하여 실시간으로
                         통증의 원인이 되는 신경 부위를 정밀하게 조준해 약물을
                         주입하는 치료입니다.
                       </p>
-                      <ul class="non-surgical__card-features">
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                      <ul class="showcase-slider__features">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             신경 주위의 염증과 부종을 빠르게 가라앉혀 즉각적
                             진통 효과
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             목·허리 디스크, 협착증으로 인한 극심한 저림과 방사통
                             완화
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             과민해진 신경절을 안정시키고 신경 정상화 도모
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             시술 시간이 10분 내외로 짧아 고령 및 만성질환자도
                             시술 가능
                           </p>
@@ -880,55 +903,49 @@
                         </svg>
                       </button>
                     </div>
-                    <div
-                      class="non-surgical__card-visual bg-pink"
-                      aria-hidden="true"
-                    >
-                      <div class="non-surgical__card-illustration">
-                        <img
-                          class="non-surgical__card-img"
-                          src="./assets/non_surgical_2.png"
-                          alt="신경차단술 실제 C-arm 수술실 사진"
-                        />
-                      </div>
+                    <div class="showcase-slider__image-wrapper">
+                      <img
+                        src="./assets/non_surgical_2.png"
+                        alt="신경차단술 실제 C-arm 수술실 사진"
+                      />
                     </div>
                   </div>
                 </li>
 
                 <!-- Slide 3: 주사치료 -->
                 <li
-                  class="swiper-slide non-surgical__slide"
+                  class="swiper-slide showcase-slider__slide"
                   data-slide-index="2"
                 >
-                  <div class="non-surgical__card">
-                    <div class="non-surgical__card-content">
+                  <div class="showcase-slider__card">
+                    <div class="showcase-slider__content">
                       <span class="slide__card-badge">통증 주사요법</span>
-                      <h3 class="card-title slide__card-title">주사치료</h3>
-                      <p class="section-desc non-surgical__card-desc">
+                      <h3 class="card-title">주사치료</h3>
+                      <p class="section-desc showcase-slider__card-desc">
                         관절과 척추 주변 힘줄, 인대 등 손상된 연부조직에 약물을
                         투입해 재생을 유도하고 근본적인 조직 강화를 돕는 주사
                         요법입니다.
                       </p>
-                      <ul class="non-surgical__card-features">
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                      <ul class="showcase-slider__features">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             인대 증식 치료(프롤로테라피)를 통해 느슨해진 인대를
                             튼튼하게 자극
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             관절 윤활막을 강화하여 뼈와 연골 간의 충격을 차단
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             만성 염증으로 악화된 근골격계 손상 부위 자가 치유
                             촉진
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             절개 없는 주사식 처방으로 시술 후 부작용 우려 최소화
                           </p>
                         </li>
@@ -944,56 +961,50 @@
                         </svg>
                       </button>
                     </div>
-                    <div
-                      class="non-surgical__card-visual bg-purple"
-                      aria-hidden="true"
-                    >
-                      <div class="non-surgical__card-illustration">
-                        <img
-                          class="non-surgical__card-img"
-                          src="./assets/non_surgical_3.png"
-                          alt="주사치료 실제 진료 및 설명 사진"
-                        />
-                      </div>
+                    <div class="showcase-slider__image-wrapper">
+                      <img
+                        src="./assets/non_surgical_3.png"
+                        alt="주사치료 실제 진료 및 설명 사진"
+                      />
                     </div>
                   </div>
                 </li>
 
                 <!-- Slide 4: 재활치료 -->
                 <li
-                  class="swiper-slide non-surgical__slide"
+                  class="swiper-slide showcase-slider__slide"
                   data-slide-index="3"
                 >
-                  <div class="non-surgical__card">
-                    <div class="non-surgical__card-content">
+                  <div class="showcase-slider__card">
+                    <div class="showcase-slider__content">
                       <span class="slide__card-badge">맞춤 물리치료</span>
-                      <h3 class="card-title slide__card-title">재활치료</h3>
-                      <p class="section-desc non-surgical__card-desc">
+                      <h3 class="card-title">재활치료</h3>
+                      <p class="section-desc showcase-slider__card-desc">
                         비수술 치료 후 혹은 수술 후 약화된 근육을 재교육하고
                         척추 관절 기능을 회복시켜 정상적인 일상으로 안전하게
                         복귀시키는 통합 재활 프로그램입니다.
                       </p>
-                      <ul class="non-surgical__card-features">
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                      <ul class="showcase-slider__features">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             환자별 손상 상태와 유연성에 맞춘 단계적 근력 강화
                             설계
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             단순 통증 차단을 넘어 자세 교정과 코어 근력 자극
                             제공
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             치료 후 발생할 수 있는 2차 손상 및 재발 위험의
                             근본적 예방
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             전문 치료사의 정밀 피드백을 통해 올바른 운동 습관
                             유도
                           </p>
@@ -1010,56 +1021,50 @@
                         </svg>
                       </button>
                     </div>
-                    <div
-                      class="non-surgical__card-visual bg-teal"
-                      aria-hidden="true"
-                    >
-                      <div class="non-surgical__card-illustration">
-                        <img
-                          class="non-surgical__card-img"
-                          src="./assets/non_surgical_4.png"
-                          alt="재활치료 실제 물리치료실 사진"
-                        />
-                      </div>
+                    <div class="showcase-slider__image-wrapper">
+                      <img
+                        src="./assets/non_surgical_4.png"
+                        alt="재활치료 실제 물리치료실 사진"
+                      />
                     </div>
                   </div>
                 </li>
 
                 <!-- Slide 5: 체외충격파 -->
                 <li
-                  class="swiper-slide non-surgical__slide"
+                  class="swiper-slide showcase-slider__slide"
                   data-slide-index="4"
                 >
-                  <div class="non-surgical__card">
-                    <div class="non-surgical__card-content">
+                  <div class="showcase-slider__card">
+                    <div class="showcase-slider__content">
                       <span class="slide__card-badge">체외 에너지 치료</span>
-                      <h3 class="card-title slide__card-title">체외충격파</h3>
-                      <p class="section-desc non-surgical__card-desc">
+                      <h3 class="card-title">체외충격파</h3>
+                      <p class="section-desc showcase-slider__card-desc">
                         신체 외부에서 고에너지 충격파를 통증 부위에 집중시켜
                         미세 혈관 형성을 자극하고 힘줄과 주변 조직의 세포 재생을
                         촉진하는 첨단 물리 치료입니다.
                       </p>
-                      <ul class="non-surgical__card-features">
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                      <ul class="showcase-slider__features">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             약물이나 시술 없이 순수 외부 충격 에너지로 석회성
                             건염 및 염증 해결
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             세포 대사를 활성화하여 만성적 통증 물질의 신속한
                             분해
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             어깨(오십견), 발꿈치(족저근막염), 팔꿈치(엘보우)
                             질환에 매우 효과적
                           </p>
                         </li>
-                        <li class="non-surgical__card-feature-item">
-                          <p class="slide__card-text">
+                        <li class="showcase-slider__features-item">
+                          <p class="showcase-slider__feature-text">
                             치료 강도와 부위의 세밀한 맞춤 조절로 부작용 없는
                             조직 회복 유도
                           </p>
@@ -1076,17 +1081,11 @@
                         </svg>
                       </button>
                     </div>
-                    <div
-                      class="non-surgical__card-visual bg-orange"
-                      aria-hidden="true"
-                    >
-                      <div class="non-surgical__card-illustration">
-                        <img
-                          class="non-surgical__card-img"
-                          src="./assets/non_surgical_5.png"
-                          alt="체외충격파 실제 임상 치료 사진"
-                        />
-                      </div>
+                    <div class="showcase-slider__image-wrapper">
+                      <img
+                        src="./assets/non_surgical_5.png"
+                        alt="체외충격파 실제 임상 치료 사진"
+                      />
                     </div>
                   </div>
                 </li>
@@ -1094,7 +1093,7 @@
             </div>
 
             <!-- 인디케이터 도트 페이지네이션 -->
-            <div class="non-surgical__pagination"></div>
+            <div class="showcase-slider__pagination"></div>
           </div>
         </div>
       </section>
@@ -1762,13 +1761,11 @@
         </div>
       </section>
 
-      <section class="section news">
+      <section class="section news" id="news">
         <div class="container">
           <div class="section-head">
-            <div class="section-head">
-              <span class="eyebrow">CHAM'S NEWS & HEALTH</span>
-              <h2 class="section-title">소통과 나눔으로 전하는 병원 소식</h2>
-            </div>
+            <span class="eyebrow">CHAM'S NEWS & HEALTH</span>
+            <h2 class="section-title">소통과 나눔으로 전하는 병원 소식</h2>
           </div>
 
           <div class="news__tab-container">
@@ -1778,15 +1775,21 @@
               name="news-tab"
               class="news__tab-input"
               checked
+              aria-label="공지사항"
             />
             <input
               type="radio"
               id="news-tab-health"
               name="news-tab"
               class="news__tab-input"
+              aria-label="건강 정보"
             />
 
-            <div class="news__tab-bar notranslate">
+            <div
+              class="news__tab-bar notranslate"
+              role="region"
+              aria-label="소식 탭 메뉴"
+            >
               <label
                 for="news-tab-notice"
                 class="news__tab-button news__tab-button--notice"
@@ -2006,7 +2009,7 @@
       </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" inert>
       <div class="footer__watermark" aria-hidden="true">
         COREUP SPINE & PAIN CENTER
       </div>
@@ -2091,12 +2094,14 @@
           <li class="footer-card">
             <div class="footer-card__head">
               <h4 class="footer-card__eng-title">Call Center</h4>
-              <p class="footer-card__title">02-1234-5678</p>
+              <p class="footer-card__title footer-card__title--phone">
+                02-1234-5678
+              </p>
             </div>
             <div class="link-box">
               <a
                 href="javascript:void(0)"
-                class="online_btn kakao"
+                class="kakao"
                 target="_blank"
                 title="새 창 열림"
               >
@@ -2116,7 +2121,7 @@
               </a>
               <a
                 href="javascript:void(0)"
-                class="online_btn naver"
+                class="naver"
                 target="_blank"
                 title="새 창 열림"
               >

@@ -186,8 +186,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // WAI-ARIA 접근성 aria-expanded 동적 처리
   const items = topbar.querySelectorAll(".topbar__item");
   items.forEach((item) => {
+    const link = item.querySelector(".topbar__link");
     function setExpanded(expanded) {
-      item.setAttribute("aria-expanded", expanded ? "true" : "false");
+      const state = expanded ? "true" : "false";
+      if (link) {
+        link.setAttribute("aria-expanded", state);
+      }
+      item.setAttribute("aria-expanded", state);
     }
 
     item.addEventListener("mouseenter", () => setExpanded(true));

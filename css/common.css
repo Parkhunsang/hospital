@@ -12,6 +12,7 @@
   --shadow: var(--shadow-md); /* 기존 변수 호환성 유지 */
 
   --font-xs: 0.75rem; /* 12px - 캡션, 뱃지, 미세 부가정보 */
+  --font-xss: 0.8125rem; /* 13px - 캡션, 뱃지, 미세 부가정보 */
   --font-sm: 0.875rem; /* 14px - 서브 텍스트, 카테고리 태그 */
   --font-md: 0.9375rem; /* 15px - 카드 본문, 메뉴 텍스트 */
   --font-base: 1rem; /* 16px - 기본 본문 (Body default) */
@@ -46,7 +47,7 @@ html {
 body {
   color: var(--color-primary);
   font-family: "Pretendard Variable", "Pretendard", sans-serif;
-  background: var(--white);
+  background: var(--color-white);
   letter-spacing: -0.02em;
 }
 a {
@@ -79,14 +80,8 @@ svg {
   white-space: nowrap;
 }
 
-ul.swiper-wrapper {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.self-test,
-.doctors,
-.news {
-  background: var(--color-bg-light);
+/* 기본 전역 포커스 링 폴백 */
+:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
 }

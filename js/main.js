@@ -1099,11 +1099,11 @@ function initFastDiagnosis() {
    03. 비수술 치료 솔루션 (Non-Surgical Treatments) Slider Logic
    ========================================================================== */
 function initNonSurgicalSlider() {
-  const swiperContainer = document.querySelector(".non-surgical__swiper");
+  const swiperContainer = document.querySelector(".showcase-slider__swiper");
   if (!swiperContainer) return;
 
   // Swiper 초기화 (3D Coverflow Effect 적용 및 접근성 강화)
-  const treatSwiper = new Swiper(".non-surgical__swiper", {
+  const treatSwiper = new Swiper(".showcase-slider__swiper", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
@@ -1116,12 +1116,12 @@ function initNonSurgicalSlider() {
       slideShadows: false,
     },
     pagination: {
-      el: ".non-surgical__pagination",
+      el: ".showcase-slider__pagination",
       clickable: true,
     },
     navigation: {
-      nextEl: ".slider-nav__btn--next",
-      prevEl: ".slider-nav__btn--prev",
+      nextEl: ".showcase-slider .slider-nav__btn--next",
+      prevEl: ".showcase-slider .slider-nav__btn--prev",
     },
     keyboard: {
       enabled: true,
@@ -1171,14 +1171,27 @@ function initIntroDoor() {
     window.removeEventListener("touchmove", handleTouchTrigger);
     window.removeEventListener("keydown", handleKeydownTrigger);
 
+    function unlockContent() {
+      document.querySelectorAll("header, main, footer").forEach((el) => {
+        el.removeAttribute("inert");
+      });
+    }
+
     if (typeof gsap !== "undefined") {
       const tl = gsap.timeline({
         onComplete: () => {
           introDoor.style.display = "none";
           document.body.classList.remove("door-locked");
+          unlockContent();
 
           // Three.js 캔버스 렌더링 영역 강제 리사이즈로 화면 맞춤
           window.dispatchEvent(new Event("resize"));
+
+          // 본문 첫 번째 초점 가능 요소(상단 로고)로 포커스 안전하게 이동
+          const brandLink = document.querySelector(".topbar__brand");
+          if (brandLink) {
+            brandLink.focus();
+          }
         },
       });
 
@@ -1244,6 +1257,7 @@ function initIntroDoor() {
       setTimeout(() => {
         introDoor.style.display = "none";
         document.body.classList.remove("door-locked");
+        unlockContent();
 
         const topbar = document.querySelector(".topbar");
         if (topbar) {
@@ -1255,6 +1269,11 @@ function initIntroDoor() {
         if (welcome) {
           welcome.style.opacity = "1";
           welcome.style.transform = "none";
+        }
+
+        const brandLink = document.querySelector(".topbar__brand");
+        if (brandLink) {
+          brandLink.focus();
         }
       }, 1500);
     }
@@ -1292,6 +1311,10 @@ function initIntroDoor() {
   // 이벤트 핸들러 바인딩
   if (enterBtn) {
     enterBtn.addEventListener("click", openDoors);
+    // 페이지 진입 시 입장 버튼에 즉시 포커스 (스크린 리더 음성 낭독 및 키보드 즉시 조작 지원)
+    requestAnimationFrame(() => {
+      enterBtn.focus();
+    });
   }
 
   window.addEventListener("wheel", handleScrollTrigger, { passive: true });

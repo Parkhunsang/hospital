@@ -52,8 +52,15 @@
   border-bottom: none;
 }
 
-.neck-compare__table td:first-child {
+.neck-compare__th--row {
+  border-bottom: 1px solid var(--color-border);
   background-color: var(--color-bg-light);
-  color: var(--color-primary);
+  font-size: var(--font-md);
   font-weight: 700;
+  color: var(--color-primary);
+  text-align: left;
+}
+
+.neck-compare__row:last-child .neck-compare__th--row {
+  border-bottom: none;
 }

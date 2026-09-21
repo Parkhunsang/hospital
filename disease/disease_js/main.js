@@ -10,23 +10,41 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
- * 관련 시술 Swiper 슬라이더 로직
+ * 관련 시술 Swiper 슬라이더 로직 (공통 3D Coverflow 쇼케이스 슬라이더)
  */
 function initTreatmentSlider() {
-  const container = document.querySelector(".treatment__swiper");
-  if (!container || typeof Swiper === "undefined") return;
+  const swiperContainer = document.querySelector(".showcase-slider__swiper");
+  if (!swiperContainer || typeof Swiper === "undefined") return;
 
-  new Swiper(".treatment__swiper", {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    speed: 500,
-    effect: "fade",
-    fadeEffect: {
-      crossFade: true,
+  new Swiper(".showcase-slider__swiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    coverflowEffect: {
+      rotate: 5,
+      stretch: 30,
+      depth: 100,
+      modifier: 1.8,
+      slideShadows: false,
+    },
+    pagination: {
+      el: ".showcase-slider__pagination",
+      clickable: true,
     },
     navigation: {
-      nextEl: ".treatment__swiper .slider-nav__btn--next",
-      prevEl: ".treatment__swiper .slider-nav__btn--prev",
+      nextEl: ".showcase-slider .slider-nav__btn--next",
+      prevEl: ".showcase-slider .slider-nav__btn--prev",
+    },
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
+    a11y: {
+      prevSlideMessage: "이전 관련 시술",
+      nextSlideMessage: "다음 관련 시술",
+      firstSlideMessage: "첫 번째 관련 시술입니다",
+      lastSlideMessage: "마지막 관련 시술입니다",
     },
   });
 }
