@@ -1,15 +1,17 @@
+@charset "UTF-8";
 /* ==========================================
    Layout CSS (헤더, 푸터, 전역 레이아웃 컨테이너)
    ========================================== */
-
 /* 전역 레이아웃 컨테이너 및 섹션 */
 .container {
-  width: min(1200px, calc(100% - 48px));
+  width: min(1200px, 100% - 48px);
   margin: 0 auto;
 }
+
 .section {
   padding: 86px 0;
 }
+
 /* ==========================================
    Header Navigation Layout (헤더 상단바 레이아웃)
    ========================================== */
@@ -23,13 +25,7 @@
   z-index: 9999;
   width: 100%;
   background-color: transparent;
-  transition:
-    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .topbar.topbar--up {
@@ -53,7 +49,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  width: min(1200px, calc(100% - 40px));
+  width: min(1200px, 100% - 40px);
   height: 80px;
   background: #acbac9;
   backdrop-filter: blur(8px);
@@ -77,13 +73,15 @@
   display: flex;
   align-items: center;
   height: 100%;
+  min-width: -moz-max-content;
   min-width: max-content;
 }
 
 .topbar__logo-img {
   width: auto;
   height: 52px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .topbar__nav {
@@ -149,7 +147,6 @@
     padding: 0 20px;
   }
 }
-
 .topbar__item:hover .topbar__link::after,
 .topbar__item:focus-within .topbar__link::after {
   transform: scaleX(1);
@@ -196,7 +193,7 @@
 .topbar__sub-link:hover,
 .topbar__sub-link:focus-visible {
   background-color: rgba(255, 255, 255, 0.8);
-  color: rgba(47, 95, 167, 1);
+  color: rgb(47, 95, 167);
   font-weight: 700;
 }
 
@@ -218,9 +215,7 @@
   border-radius: 10px;
   background-color: transparent;
   cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .topbar__hamburger:hover,
@@ -239,10 +234,7 @@
   height: 2px;
   border-radius: 2px;
   background-color: var(--color-white);
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease,
-    background-color 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 
 .topbar__hamburger--active .topbar__hamburger-line:nth-child(1) {
@@ -268,7 +260,7 @@
   overflow-y: auto;
   flex-direction: column;
   justify-content: space-between;
-  width: min(1200px, calc(100% - 40px));
+  width: min(1200px, 100% - 40px);
   max-height: calc(100vh - 110px);
   max-height: calc(100dvh - 110px);
   padding: 20px;
@@ -278,10 +270,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   opacity: 0;
-  transition:
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .topbar__drawer--active {
@@ -306,9 +295,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 12px;
-  transition:
-    background-color 0.25s ease,
-    border-color 0.25s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .topbar__drawer-accordion {
@@ -339,9 +326,7 @@
   background-color: transparent;
   color: var(--color-white);
   cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .topbar__drawer-toggle:focus-visible {
@@ -367,10 +352,7 @@
   max-height: 0;
   padding: 0 14px;
   opacity: 0;
-  transition:
-    max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.3s ease,
-    padding 0.3s ease;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, padding 0.3s ease;
 }
 
 .topbar__drawer-sub-list--active {
@@ -409,17 +391,6 @@
   text-align: center;
 }
 
-@media (max-width: 960px) {
-  .topbar__nav,
-  .topbar__actions {
-    display: none;
-  }
-
-  .topbar__hamburger {
-    display: flex;
-  }
-}
-
 /* ==========================================
    Footer Layout (푸터 레이아웃 전체 스타일)
    ========================================== */
@@ -450,7 +421,9 @@
   text-align: center;
   white-space: nowrap;
   transform: translateX(-50%);
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   pointer-events: none;
 }
 
@@ -460,7 +433,7 @@
   display: flex;
   flex-direction: column;
   gap: 50px;
-  width: min(1200px, calc(100% - 48px));
+  width: min(1200px, 100% - 48px);
   box-sizing: border-box;
 }
 
@@ -597,10 +570,8 @@
   height: 140px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px;
-  background: url("../assets/img-map.webp") no-repeat center center / cover;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
+  background: url("../assets/img-map.webp") no-repeat center center/cover;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .footer-top .map-box::after {
@@ -675,10 +646,7 @@
   font-weight: 600;
   letter-spacing: -0.3px;
   text-decoration: none;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .footer-top .link-box .kakao {
@@ -762,9 +730,7 @@
   font-weight: 400;
   color: var(--color-text-white-subtle);
   text-decoration: none;
-  transition:
-    color 0.2s ease,
-    background-color 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .footer-bottom .info-link-area a:hover {
@@ -810,29 +776,33 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
+@media (max-width: 960px) {
+  .topbar__nav,
+  .topbar__actions {
+    display: none;
+  }
+  .topbar__hamburger {
+    display: flex;
+  }
+}
 @media (max-width: 768px) {
   .footer {
     padding: 60px 0 40px;
   }
-
   .footer-top {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-
   .footer-brand-header {
     flex-direction: column;
     align-items: flex-start;
   }
-
   .footer-bottom {
     flex-direction: column-reverse;
     align-items: flex-start;
     gap: 16px;
   }
 }
-
 @media (max-width: 640px) {
   .footer-inner {
     display: flex;

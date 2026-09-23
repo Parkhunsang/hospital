@@ -3,7 +3,6 @@
    Components CSS (공통 UI 컴포넌트: 타이틀, 버튼, 카드 등)
    ========================================== */
 /* 버튼 */
-/* 안녕 */
 .primary-button,
 .ghost-button {
   display: inline-flex;
@@ -428,7 +427,7 @@
   line-height: 1.5;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .section-title {
     font-size: 28px;
   }
@@ -469,16 +468,5 @@
 @media (max-width: 640px) {
   .section-title {
     font-size: 24px;
-  }
-}
-@media (max-width: 560px) {
-  .showcase-slider__controls {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .showcase-slider__slide {
-    width: 100%;
-    max-width: 440px;
   }
 }

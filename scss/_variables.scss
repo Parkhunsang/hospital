@@ -1,0 +1,39 @@
+$color-primary: #1b2d5a;
+$color-secondary: #2f5fa7;
+$color-secondary-light: #e0f6f3;
+$color-accent: #fdb608;
+$color-tertiary: #00a88f;
+$color-bg-light: #f9fbfd;
+$color-border: #eef2f6;
+$color-text-dark: #222;
+$color-text-light: #666;
+$color-white: #fff;
+$color-text-white-subtle: rgba(255, 255, 255, 0.85);
+$color-alert-light: #fff0f0;
+
+$shadow-sm: 0 4px 12px rgba(27, 45, 90, 0.04);
+$shadow-md:
+  0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 12px 30px rgba(27, 45, 90, 0.08);
+$shadow-xl: 0 20px 40px rgba(27, 45, 90, 0.15);
+$shadow-primary: 0 8px 20px rgba(47, 95, 167, 0.15);
+
+$font-xs: 0.75rem;
+$font-xss: 0.8125rem;
+$font-sm: 0.875rem;
+$font-md: 0.9375rem;
+$font-base: 1rem;
+$font-lg: 1.125rem;
+$font-xl: 1.25rem;
+$font-2xl: 1.5rem;
+$font-3xl: 1.875rem;
+$font-4xl: 2.25rem;
+$font-5xl: 3.125rem;
+
+$breakpoint-mobile: 480px;
+$breakpoint-hero-panel: 507px;
+$breakpoint-small: 640px;
+$breakpoint-tablet: 768px;
+$breakpoint-large-tablet: 960px;
+$breakpoint-desktop: 1200px;

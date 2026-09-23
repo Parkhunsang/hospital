@@ -1,5 +1,5 @@
+@charset "UTF-8";
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
-
 :root {
   /* 그림자(Box-Shadow) 디자인 시스템 토큰 */
   --shadow-sm: 0 4px 12px rgba(27, 45, 90, 0.04);
@@ -8,9 +8,7 @@
   --shadow-lg: 0 12px 30px rgba(27, 45, 90, 0.08);
   --shadow-xl: 0 20px 40px rgba(27, 45, 90, 0.15);
   --shadow-primary: 0 8px 20px rgba(47, 95, 167, 0.15);
-
   --shadow: var(--shadow-md); /* 기존 변수 호환성 유지 */
-
   --font-xs: 0.75rem; /* 12px - 캡션, 뱃지, 미세 부가정보 */
   --font-xss: 0.8125rem; /* 13px - 캡션, 뱃지, 미세 부가정보 */
   --font-sm: 0.875rem; /* 14px - 서브 텍스트, 카테고리 태그 */
@@ -22,7 +20,6 @@
   --font-3xl: 1.875rem; /* 30px - 섹션 메인 타이틀 */
   --font-4xl: 2.25rem; /* 36px - 메인 히어로 대형 헤딩 */
   --font-5xl: 3.125rem; /* 50px - 서브페이지 히어로 대형 헤딩 */
-
   /* 브랜드 및 전역 텍스트/디자인 시스템 변수 토큰 */
   --color-primary: #1b2d5a;
   --color-secondary: #2f5fa7;
@@ -37,28 +34,34 @@
   --color-text-white-subtle: rgba(255, 255, 255, 0.85); /* #ffffffd9 */
   --color-alert-light: #fff0f0;
 }
+
 * {
   box-sizing: border-box;
 }
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
 }
+
 body {
   color: var(--color-primary);
   font-family: "Pretendard Variable", "Pretendard", sans-serif;
   background: var(--color-white);
   letter-spacing: -0.02em;
 }
+
 a {
   color: inherit;
   text-decoration: none;
 }
+
 button,
 input,
 select {
   font: inherit;
 }
+
 svg {
   width: 22px;
   height: 22px;
@@ -68,6 +71,7 @@ svg {
   stroke-linejoin: round;
   stroke-width: 2;
 }
+
 .sr-only {
   position: absolute;
   clip: rect(0, 0, 0, 0);
