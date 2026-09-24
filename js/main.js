@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof initIntroDoor === "function") initIntroDoor();
   if (typeof init3DBodyMap === "function") init3DBodyMap();
   if (typeof initFastDiagnosis === "function") initFastDiagnosis();
-  if (typeof initNonSurgicalSlider === "function") initNonSurgicalSlider();
   if (typeof initBrandTrustPartners === "function") initBrandTrustPartners();
   if (typeof initLocationSlider === "function") initLocationSlider();
 });
@@ -1093,47 +1092,6 @@ function initFastDiagnosis() {
   );
 
   observer.observe(section);
-}
-
-/* ==========================================================================
-   03. 비수술 치료 솔루션 (Non-Surgical Treatments) Slider Logic
-   ========================================================================== */
-function initNonSurgicalSlider() {
-  const swiperContainer = document.querySelector(".showcase-slider__swiper");
-  if (!swiperContainer) return;
-
-  // Swiper 초기화 (3D Coverflow Effect 적용 및 접근성 강화)
-  const treatSwiper = new Swiper(".showcase-slider__swiper", {
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto",
-    coverflowEffect: {
-      rotate: 5,
-      stretch: 30,
-      depth: 100,
-      modifier: 1.8,
-      slideShadows: false,
-    },
-    pagination: {
-      el: ".showcase-slider__pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".showcase-slider .slider-nav__btn--next",
-      prevEl: ".showcase-slider .slider-nav__btn--prev",
-    },
-    keyboard: {
-      enabled: true,
-      onlyInViewport: true,
-    },
-    a11y: {
-      prevSlideMessage: "이전 비수술 치료법",
-      nextSlideMessage: "다음 비수술 치료법",
-      firstSlideMessage: "첫 번째 비수술 치료법입니다",
-      lastSlideMessage: "마지막 비수술 치료법입니다",
-    },
-  });
 }
 
 /* ==========================================================================
