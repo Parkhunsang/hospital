@@ -5,11 +5,14 @@ $color-accent: #fdb608;
 $color-tertiary: #00a88f;
 $color-bg-light: #f9fbfd;
 $color-border: #eef2f6;
+$color-border-default: rgba($color-secondary, 0.15);
+$color-border-disabled: rgba($color-secondary, 0.1);
+$color-white: #fff;
 $color-text-dark: #222;
 $color-text-light: #666;
-$color-white: #fff;
 $color-text-white-subtle: rgba(255, 255, 255, 0.85);
 $color-alert-light: #fff0f0;
+$color-disabled: #a0aec0;
 
 $shadow-sm: 0 4px 12px rgba(27, 45, 90, 0.04);
 $shadow-md:

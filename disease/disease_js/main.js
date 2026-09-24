@@ -7,7 +7,21 @@ document.addEventListener("DOMContentLoaded", () => {
   initCausesCarousel();
   initTreatmentTimeline();
   initTreatmentSlider();
+  initDiseaseNav();
 });
+
+function initDiseaseNav() {
+  const nav = document.querySelector(".disease-nav");
+  if (!nav) return;
+  nav.addEventListener("click", (e) => {
+    const item = e.target.closest(".disease-nav__item");
+    if (!item) return;
+    nav
+      .querySelector(".disease-nav__item--active")
+      ?.classList.remove("disease-nav__item--active");
+    item.classList.add("disease-nav__item--active");
+  });
+}
 
 /**
  * 관련 시술 Swiper 슬라이더 로직 (공통 3D Coverflow 쇼케이스 슬라이더)
@@ -56,8 +70,12 @@ function initCausesCarousel() {
   const track = document.querySelector(".neck-causes__track");
   const viewport = document.querySelector(".neck-causes__viewport");
   const cards = Array.from(document.querySelectorAll(".neck-causes__card"));
-  const prevBtn = document.querySelector(".neck-causes__nav-btn[data-direction='prev']") || document.querySelector(".neck-causes__nav-btn--prev");
-  const nextBtn = document.querySelector(".neck-causes__nav-btn[data-direction='next']") || document.querySelector(".neck-causes__nav-btn--next");
+  const prevBtn =
+    document.querySelector(".neck-causes__nav-btn[data-direction='prev']") ||
+    document.querySelector(".neck-causes__nav-btn--prev");
+  const nextBtn =
+    document.querySelector(".neck-causes__nav-btn[data-direction='next']") ||
+    document.querySelector(".neck-causes__nav-btn--next");
   const indicatorWrap = document.querySelector(".neck-causes__indicator-wrap");
 
   if (!track || !viewport || cards.length === 0) return;
@@ -143,7 +161,7 @@ function initCausesCarousel() {
   }
 
   // 도트 클릭 이동
-  dots.forEach(dot => {
+  dots.forEach((dot) => {
     dot.addEventListener("click", (e) => {
       const targetIndex = parseInt(e.target.dataset.index, 10);
       moveSlider(targetIndex);
@@ -176,10 +194,10 @@ function initTreatmentTimeline() {
   window.addEventListener("scroll", () => {
     const triggerHeight = window.innerHeight * 0.6; // 화면 60% 높이선 기준
 
-    steps.forEach(step => {
+    steps.forEach((step) => {
       const rect = step.getBoundingClientRect();
       if (rect.top < triggerHeight && rect.bottom > 200) {
-        steps.forEach(s => {
+        steps.forEach((s) => {
           s.classList.remove("neck-timeline__step--active");
           s.removeAttribute("data-active");
         });
@@ -190,9 +208,9 @@ function initTreatmentTimeline() {
   });
 
   // 클릭하여 강제 활성화도 가능하도록 함
-  steps.forEach(step => {
+  steps.forEach((step) => {
     step.addEventListener("click", () => {
-      steps.forEach(s => {
+      steps.forEach((s) => {
         s.classList.remove("neck-timeline__step--active");
         s.removeAttribute("data-active");
       });

@@ -85,3 +85,9 @@ svg {
   outline: 2px solid var(--color-secondary);
   outline-offset: 2px;
 }
+
+@media (max-width: $breakpoint-tablet) {
+  html {
+    font-size: 14px;
+  }
+}
