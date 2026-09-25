@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!topbar) return;
 
   const headerWrap = topbar.querySelector(".topbar_nav_wrap");
-  const mainMenu = topbar.querySelectorAll(".topbar__links > li > a");
-  const topbarNav = topbar.querySelector(".topbar__nav");
+  const mainMenu = topbar.querySelectorAll(".gnb__item > .gnb__link");
+  const gnb = topbar.querySelector(".gnb");
   const hamburger = topbar.querySelector(".topbar__hamburger");
-  const drawer = document.querySelector(".topbar__drawer");
+  const drawer = document.querySelector(".drawer");
 
   let isDrawerOpen = false;
   let lastScrollY = window.scrollY;
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // 마우스 드롭다운 메뉴가 열려있거나 포커스가 내부에 있을 때 숨김 방지
-    if ((headerWrap && headerWrap.classList.contains("is-open")) || topbar.contains(document.activeElement)) {
+    // 마우스 드롭다운 메뉴가 열려있을 때 숨김 방지
+    if (headerWrap && headerWrap.classList.contains("is-open")) {
       topbar.classList.add("topbar--up");
       topbar.classList.remove("topbar--down", "topbar--top");
       lastScrollY = currentScrollY;
@@ -88,22 +88,22 @@ document.addEventListener("DOMContentLoaded", () => {
   function openDrawer() {
     if (!drawer || !hamburger) return;
     isDrawerOpen = true;
-    if (topbarNav) topbarNav.classList.add("topbar__nav--open");
+    if (gnb) gnb.classList.add("gnb--open");
     hamburger.classList.add("topbar__hamburger--active");
     hamburger.setAttribute("aria-expanded", "true");
     hamburger.setAttribute("aria-label", "메뉴 닫기");
-    drawer.classList.add("topbar__drawer--active");
+    drawer.classList.add("drawer--active");
     drawer.setAttribute("aria-hidden", "false");
   }
 
   function closeDrawer() {
     if (!drawer || !hamburger) return;
     isDrawerOpen = false;
-    if (topbarNav) topbarNav.classList.remove("topbar__nav--open");
+    if (gnb) gnb.classList.remove("gnb--open");
     hamburger.classList.remove("topbar__hamburger--active");
     hamburger.setAttribute("aria-expanded", "false");
     hamburger.setAttribute("aria-label", "메뉴 열기");
-    drawer.classList.remove("topbar__drawer--active");
+    drawer.classList.remove("drawer--active");
     drawer.setAttribute("aria-hidden", "true");
   }
 
@@ -128,10 +128,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 모바일 아코디언 서브메뉴 토글
-  const drawerItems = document.querySelectorAll(".topbar__drawer-item");
+  const drawerItems = document.querySelectorAll(".drawer__item");
   drawerItems.forEach((item) => {
-    const toggleBtn = item.querySelector(".topbar__drawer-toggle");
-    const subList = item.querySelector(".topbar__drawer-sub-list");
+    const toggleBtn = item.querySelector(".drawer__toggle");
+    const subList = item.querySelector(".drawer__sub-list");
 
     if (!toggleBtn || !subList) return;
 
@@ -140,35 +140,35 @@ document.addEventListener("DOMContentLoaded", () => {
       const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
 
       drawerItems.forEach((otherItem) => {
-        const otherToggle = otherItem.querySelector(".topbar__drawer-toggle");
+        const otherToggle = otherItem.querySelector(".drawer__toggle");
         const otherSubList = otherItem.querySelector(
-          ".topbar__drawer-sub-list",
+          ".drawer__sub-list",
         );
         if (otherToggle && otherSubList && otherItem !== item) {
-          otherItem.classList.remove("topbar__drawer-item--active");
-          otherToggle.classList.remove("topbar__drawer-toggle--active");
+          otherItem.classList.remove("drawer__item--active");
+          otherToggle.classList.remove("drawer__toggle--active");
           otherToggle.setAttribute("aria-expanded", "false");
-          otherSubList.classList.remove("topbar__drawer-sub-list--active");
+          otherSubList.classList.remove("drawer__sub-list--active");
         }
       });
 
       if (isExpanded) {
-        item.classList.remove("topbar__drawer-item--active");
-        toggleBtn.classList.remove("topbar__drawer-toggle--active");
+        item.classList.remove("drawer__item--active");
+        toggleBtn.classList.remove("drawer__toggle--active");
         toggleBtn.setAttribute("aria-expanded", "false");
-        subList.classList.remove("topbar__drawer-sub-list--active");
+        subList.classList.remove("drawer__sub-list--active");
       } else {
-        item.classList.add("topbar__drawer-item--active");
-        toggleBtn.classList.add("topbar__drawer-toggle--active");
+        item.classList.add("drawer__item--active");
+        toggleBtn.classList.add("drawer__toggle--active");
         toggleBtn.setAttribute("aria-expanded", "true");
-        subList.classList.add("topbar__drawer-sub-list--active");
+        subList.classList.add("drawer__sub-list--active");
       }
     });
   });
 
   // 앵커 링크 클릭 시 드로어 자동 닫기
   const drawerLinks = document.querySelectorAll(
-    ".topbar__drawer-link, .topbar__drawer-sub-link, .topbar__drawer-btn",
+    ".drawer__link, .drawer__sub-link, .drawer__btn",
   );
   drawerLinks.forEach((link) => {
     link.addEventListener("click", () => {
@@ -184,9 +184,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // WAI-ARIA 접근성 aria-expanded 동적 처리
-  const items = topbar.querySelectorAll(".topbar__item");
+  const items = topbar.querySelectorAll(".gnb__item");
   items.forEach((item) => {
-    const link = item.querySelector(".topbar__link");
+    const link = item.querySelector(".gnb__link");
     function setExpanded(expanded) {
       const state = expanded ? "true" : "false";
       if (link) {

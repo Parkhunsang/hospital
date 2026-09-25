@@ -1145,6 +1145,11 @@ function initIntroDoor() {
           // Three.js 캔버스 렌더링 영역 강제 리사이즈로 화면 맞춤
           window.dispatchEvent(new Event("resize"));
 
+          // GSAP 인라인 스타일 초기화 (헤더 스크롤 CSS 클래스 제어가 가능하도록 복원)
+          if (typeof gsap !== "undefined") {
+            gsap.set(".topbar", { clearProps: "all" });
+          }
+
           // 본문 첫 번째 초점 가능 요소(상단 로고)로 포커스 안전하게 이동
           const brandLink = document.querySelector(".topbar__brand");
           if (brandLink) {
@@ -1219,8 +1224,8 @@ function initIntroDoor() {
 
         const topbar = document.querySelector(".topbar");
         if (topbar) {
-          topbar.style.opacity = "1";
-          topbar.style.transform = "none";
+          topbar.style.opacity = "";
+          topbar.style.transform = "";
         }
 
         const welcome = document.querySelector(".hero-3d__welcome");
