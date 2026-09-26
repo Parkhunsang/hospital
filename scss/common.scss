@@ -11,6 +11,9 @@
 
   --shadow: var(--shadow-md); /* 기존 변수 호환성 유지 */
 
+  --font-family-base: "Pretendard Variable", "Pretendard", sans-serif;
+  --font-family-en: "Outfit", sans-serif;
+
   --font-xs: 0.75rem; /* 12px - 캡션, 뱃지, 미세 부가정보 */
   --font-xss: 0.8125rem; /* 13px - 캡션, 뱃지, 미세 부가정보 */
   --font-sm: 0.875rem; /* 14px - 서브 텍스트, 카테고리 태그 */

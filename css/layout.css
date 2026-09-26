@@ -6,12 +6,10 @@
   display: flex;
   height: 52px;
 }
-
 .gnb__list {
   display: flex;
   gap: 20px;
 }
-
 .gnb__item {
   position: relative;
   display: flex;
@@ -19,7 +17,6 @@
   padding: 0 10px;
   transition: padding 0.3s ease;
 }
-
 @media (min-width: 1200px) {
   .topbar_nav_wrap.is-open .gnb__item {
     padding: 0 20px;
@@ -48,15 +45,17 @@
   transform-origin: center;
   transition: transform 0.3s ease;
 }
-
-.gnb__item:hover .gnb__link::after,
-.gnb__item:focus-within .gnb__link::after {
+.gnb__item:is(:hover, :focus-within) .gnb__link::after {
   transform: scaleX(1);
 }
-
 .gnb__link:focus-visible {
   outline: 2px solid #38bdf8;
   outline-offset: 4px;
+}
+@media (max-width: 960px) {
+  .gnb {
+    display: none;
+  }
 }
 
 .gnb__sub-list {
@@ -70,7 +69,6 @@
   min-width: 150px;
   padding: 12px 8px;
 }
-
 .topbar_nav_wrap.is-open .gnb__sub-list {
   display: flex;
 }
@@ -90,7 +88,7 @@
   text-align: center;
   transition: all 0.2s ease;
 }
-.gnb__sub-link:hover, .gnb__sub-link:focus-visible {
+.gnb__sub-link:is(:hover, :focus-visible) {
   background-color: rgba(255, 255, 255, 0.8);
   color: rgb(47, 95, 167);
   font-weight: 700;
@@ -100,11 +98,6 @@
   outline-offset: -2px;
 }
 
-@media (max-width: 960px) {
-  .gnb {
-    display: none;
-  }
-}
 /* ==========================================
    Mobile Drawer (모바일 서랍형 네비게이션)
    ========================================== */
@@ -341,13 +334,10 @@
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
-
-.topbar__hamburger:hover,
-.topbar__hamburger:focus-visible {
+.topbar__hamburger:is(:hover, :focus-visible) {
   border-color: rgba(56, 189, 248, 0.6);
   background-color: rgba(56, 189, 248, 0.15);
 }
-
 .topbar__hamburger:focus-visible {
   outline: 2px solid #38bdf8;
   outline-offset: 2px;
@@ -360,15 +350,12 @@
   background-color: var(--color-white);
   transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
-
 .topbar__hamburger--active .topbar__hamburger-line:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
-
 .topbar__hamburger--active .topbar__hamburger-line:nth-child(2) {
   opacity: 0;
 }
-
 .topbar__hamburger--active .topbar__hamburger-line:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
@@ -383,7 +370,6 @@
   display: flex;
   justify-content: center;
   padding: 90px 0 50px;
-  box-sizing: border-box;
   background: linear-gradient(135deg, #071527 0%, #0c203b 50%, #061120 100%);
   color: var(--color-white);
 }
@@ -407,19 +393,17 @@
   pointer-events: none;
 }
 
-.footer-inner {
+.footer__inner {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 50px;
   width: min(1200px, 100% - 48px);
-  box-sizing: border-box;
 }
 
-.footer-brand-header {
+.footer__brand {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
@@ -427,19 +411,19 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-brand-header__left {
+.footer__brand-left {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.footer-brand-header__logo {
+.footer__brand-logo {
   width: auto;
   height: 40px;
   filter: brightness(0) invert(1);
 }
 
-.footer-brand-header__tagline {
+.footer__brand-tagline {
   padding-left: 16px;
   border-left: 1px solid rgba(255, 255, 255, 0.15);
   font-size: var(--font-md);
@@ -447,28 +431,28 @@
   color: var(--color-text-white-subtle);
 }
 
-.footer-top {
+.footer__info {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
 }
 
-.footer-card {
+.footer__card {
   display: flex;
   flex-direction: column;
   padding: 28px;
-  box-sizing: border-box;
   border-radius: 16px;
   background-color: rgba(15, 23, 42, 0.5);
   backdrop-filter: blur(10px);
 }
 
-.footer-card__head {
+.footer__card-head {
   margin-bottom: 20px;
 }
 
-.footer-card__eng-title {
+.footer__card-eng-title {
   margin-bottom: 4px;
+  font-family: "Outfit", sans-serif;
   font-size: var(--font-xss);
   font-weight: 600;
   line-height: 1.4;
@@ -477,49 +461,58 @@
   text-transform: uppercase;
 }
 
-.footer-card__title {
-  font-family: "Outfit", "Pretendard", sans-serif;
+.footer__card-title {
+  font-family: "Outfit", sans-serif;
   font-size: var(--font-xl);
   font-weight: 700;
   line-height: 1.3;
   color: var(--color-white);
 }
+.footer__card-title--phone {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #38bdf8;
+}
 
-.footer-top .time-box {
+/* 1. 진료안내 카드 상세 */
+.footer__card-schedule {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-.footer-top .time-box .item {
+.footer__card-schedule-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 8px;
   border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
 }
-
-.footer-top .time-box .item:last-child {
+.footer__card-schedule-item:last-child {
   padding-bottom: 0;
   border-bottom: none;
 }
 
-.footer-card__text {
+.footer__card-text {
   font-size: var(--font-sm);
   font-weight: 500;
-  color: var(--color-text-white-subtle);
   line-height: 1.5;
+  color: var(--color-text-white-subtle);
 }
 
-.footer-card__text--strong {
-  font-family: "Outfit", "Pretendard", sans-serif;
+.footer__card-time {
+  font-family: "Outfit", sans-serif;
   font-size: var(--font-md);
   font-weight: 600;
   color: var(--color-white);
 }
+.footer__card-time--off {
+  color: #f87171;
+}
 
-.footer-top .time-box .item .circle-box {
+.footer__card-badge {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -533,7 +526,7 @@
   color: #f87171;
 }
 
-.footer-top .addr-box {
+.footer__card-address {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -542,7 +535,8 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-top .map-box {
+/* 2. 오시는 길 카드 상세 */
+.footer__card-map {
   position: relative;
   overflow: hidden;
   display: block;
@@ -553,8 +547,7 @@
   background: url("../assets/img-map.webp") no-repeat center center/cover;
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
-
-.footer-top .map-box::after {
+.footer__card-map::after {
   position: absolute;
   top: 0;
   right: 0;
@@ -570,25 +563,23 @@
   transition: background-color 0.3s ease;
   content: "지도 바로가기 ↗";
 }
-
-.footer-top .map-box:hover::after {
+.footer__card-map:hover::after {
   background-color: rgba(15, 23, 42, 0.1);
 }
 
-.footer-top .map-info-badges {
+.footer__card-traffic {
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin-top: 14px;
 }
 
-.footer-top .map-info-item {
+.footer__card-traffic-item {
   display: flex;
   align-items: flex-start;
   gap: 8px;
 }
-
-.footer-top .map-info-item strong {
+.footer__card-traffic-item strong {
   padding: 2px 6px;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -598,22 +589,15 @@
   white-space: nowrap;
 }
 
-.footer-card__title--phone {
-  font-family: "Outfit", sans-serif;
-  font-size: var(--font-2xl);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #38bdf8;
-}
-
-.footer-top .link-box {
+/* 3. 빠른 예약 카드 버튼 */
+.footer__card-actions {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-top: auto;
 }
 
-.footer-top .link-box a {
+.footer__card-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -627,30 +611,27 @@
   letter-spacing: -0.3px;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
-
-.footer-top .link-box .kakao {
+.footer__card-btn--kakao {
   background-color: #fee500;
   color: #191919;
 }
-
-.footer-top .link-box .kakao:hover {
+.footer__card-btn--kakao:hover {
   background-color: #fada00;
   box-shadow: 0 6px 16px rgba(254, 229, 0, 0.25);
   transform: translateY(-2px);
 }
-
-.footer-top .link-box .naver {
+.footer__card-btn--naver {
   background-color: #03c75a;
   color: var(--color-white);
 }
-
-.footer-top .link-box .naver:hover {
+.footer__card-btn--naver:hover {
   background-color: #02b350;
   box-shadow: 0 6px 16px rgba(3, 199, 90, 0.3);
   transform: translateY(-2px);
 }
 
-.footer-top .sns-box {
+/* 4. 채널 카드 SNS */
+.footer__card-sns {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -658,7 +639,7 @@
   margin-bottom: 20px;
 }
 
-.footer-top .sns-box .sns {
+.footer__card-sns-link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -669,20 +650,19 @@
   background-color: rgba(255, 255, 255, 0.05);
   transition: all 0.2s ease;
 }
-
-.footer-top .sns-box .sns:hover {
+.footer__card-sns-link:hover {
   border-color: rgba(56, 189, 248, 0.5);
   background-color: rgba(56, 189, 248, 0.2);
   box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
   transform: translateY(-2px);
 }
-
-.footer-top .sns-box .sns svg {
+.footer__card-sns-link svg {
   width: 18px;
   height: 18px;
 }
 
-.footer-bottom {
+/* --- Footer Legal & Copyright (약관, 카피라이트) --- */
+.footer__legal {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -692,14 +672,17 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-bottom .info-link-area {
+.footer__legal-links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
 }
 
-.footer-bottom .info-link-area a {
+.footer__legal-item {
+  display: inline-flex;
+}
+.footer__legal-item a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -710,47 +693,49 @@
   color: var(--color-text-white-subtle);
   transition: color 0.2s ease, background-color 0.2s ease;
 }
-
-.footer-bottom .info-link-area a:hover {
+.footer__legal-item a:hover {
   color: var(--color-white);
 }
-
-.footer-bottom .info-link-area a.highlight {
+.footer__legal-item a.highlight {
   font-weight: 600;
   color: #38bdf8;
 }
 
+.footer__legal-copy {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer__legal-logo {
+  width: auto;
+  height: 32px;
+  opacity: 0.6;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s ease;
+}
+.footer__legal-logo:hover {
+  opacity: 1;
+}
+
+.footer__legal-text {
+  font-family: "Outfit", sans-serif;
+  font-size: var(--font-xss);
+  color: #64748b;
+}
+
+/* 접근성 초점 공통 */
 .footer a:focus-visible,
 .footer button:focus-visible {
   outline: 2px solid #38bdf8;
   outline-offset: 3px;
 }
 
-.footer-bottom .logo-bottom {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.footer-bottom .logo-bottom .footer__logo-img {
-  width: auto;
-  height: 32px;
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
-  filter: brightness(0) invert(1);
-}
-
-.footer-bottom .logo-bottom .footer__logo-img:hover {
-  opacity: 1;
-}
-
-.footer-bottom__copy {
-  font-size: var(--font-xss);
-  color: #64748b;
-}
-
+/* ==========================================
+   Footer Responsive (푸터 반응형)
+   ========================================== */
 @media (max-width: 1200px) {
-  .footer-top {
+  .footer__info {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -766,23 +751,25 @@
   .footer {
     padding: 60px 0 40px;
   }
-  .footer-top {
+  .footer__info {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  .footer-brand-header {
+  .footer__brand {
     flex-direction: column;
     align-items: flex-start;
   }
-  .footer-bottom {
+  .footer__legal {
     flex-direction: column-reverse;
     align-items: flex-start;
     gap: 16px;
   }
 }
 @media (max-width: 640px) {
-  .footer-inner {
+  .footer__inner {
     display: flex;
     flex-direction: column;
   }
 }
+
+/*# sourceMappingURL=layout.css.map */

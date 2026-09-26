@@ -1,66 +1,72 @@
+@use "variables" as *;
+
 /* ==========================================
    GNB (Global Navigation Bar - 데스크톱 메뉴)
    ========================================== */
-
+//메인 메뉴
 .gnb {
   display: flex;
   height: 52px;
-}
+  //ul태그
+  &__list {
+    display: flex;
+    gap: 20px;
+  }
 
-.gnb__list {
-  display: flex;
-  gap: 20px;
-}
+  //li태그
+  &__item {
+    position: relative;
+    display: flex;
+    height: 100%;
+    padding: 0 10px;
+    transition: padding 0.3s ease;
+    @media (min-width: $breakpoint-desktop) {
+      .topbar_nav_wrap.is-open & {
+        padding: 0 20px;
+      }
+    }
+  }
 
-.gnb__item {
-  position: relative;
-  display: flex;
-  height: 100%;
-  padding: 0 10px;
-  transition: padding 0.3s ease;
-}
+  //a태그
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 0;
+    font-size: var(--font-base);
+    font-weight: 500;
+    color: var(--color-white);
+    transition: color 0.2s ease;
 
-@media (min-width: 1200px) {
-  .topbar_nav_wrap.is-open .gnb__item {
-    padding: 0 20px;
+    &::after {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      border-radius: 2px;
+      background-color: var(--color-white);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.3s ease;
+
+      .gnb__item:is(:hover, :focus-within) & {
+        transform: scaleX(1);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid #38bdf8;
+      outline-offset: 4px;
+    }
+  }
+  @media (max-width: $breakpoint-large-tablet) {
+    display: none;
   }
 }
 
-.gnb__link {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 0;
-  font-size: var(--font-base);
-  font-weight: 500;
-  color: var(--color-white);
-  transition: color 0.2s ease;
-
-  &::after {
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    border-radius: 2px;
-    background-color: var(--color-white);
-    content: "";
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.3s ease;
-  }
-}
-
-.gnb__item:hover .gnb__link::after,
-.gnb__item:focus-within .gnb__link::after {
-  transform: scaleX(1);
-}
-
-.gnb__link:focus-visible {
-  outline: 2px solid #38bdf8;
-  outline-offset: 4px;
-}
-
+//서브메뉴(ul태그)
 .gnb__sub-list {
   position: absolute;
   top: 60px;
@@ -71,16 +77,18 @@
   gap: 6px;
   min-width: 150px;
   padding: 12px 8px;
+
+  .topbar_nav_wrap.is-open & {
+    display: flex;
+  }
 }
 
-.topbar_nav_wrap.is-open .gnb__sub-list {
-  display: flex;
-}
-
+//li태그
 .gnb__sub-item {
   width: 100%;
 }
 
+//a태그
 .gnb__sub-link {
   display: block;
   padding: 8px 12px;
@@ -92,8 +100,7 @@
   text-align: center;
   transition: all 0.2s ease;
 
-  &:hover,
-  &:focus-visible {
+  &:is(:hover, :focus-visible) {
     background-color: rgba(255, 255, 255, 0.8);
     color: rgba(47, 95, 167, 1);
     font-weight: 700;
@@ -102,11 +109,5 @@
   &:focus-visible {
     outline: 2px solid #38bdf8;
     outline-offset: -2px;
-  }
-}
-
-@media (max-width: 960px) {
-  .gnb {
-    display: none;
   }
 }

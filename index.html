@@ -1991,95 +1991,98 @@
       <div class="footer__watermark" aria-hidden="true">
         COREUP SPINE & PAIN CENTER
       </div>
-      <div class="footer-inner">
-        <div class="footer-brand-header">
-          <div class="footer-brand-header__left">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__brand-left">
             <img
-              class="footer-brand-header__logo"
+              class="footer__brand-logo"
               src="assets/logo.png"
               alt="코어업 척추통증센터 로고"
             />
-            <span class="footer-brand-header__tagline"
+            <span class="footer__brand-tagline"
               >아프지 않은 건강한 일상, 코어업이 함께합니다.</span
             >
           </div>
         </div>
 
-        <ul class="footer-top">
-          <li class="footer-card">
-            <div class="footer-card__head">
-              <h4 class="footer-card__eng-title">Clinic Hours</h4>
-              <p class="footer-card__title">진료안내</p>
+        <ul class="footer__info">
+          <!-- 1. 진료안내 카드 -->
+          <li class="footer__card">
+            <div class="footer__card-head">
+              <h4 class="footer__card-eng-title">Clinic Hours</h4>
+              <p class="footer__card-title">진료안내</p>
             </div>
-            <div class="time-box">
-              <div class="item">
-                <p class="footer-card__text">월 / 화 / 수 /목</p>
-                <strong class="footer-card__text--strong">09:00 ~ 18:00</strong>
+            <div class="footer__card-schedule">
+              <div class="footer__card-schedule-item">
+                <p class="footer__card-text">월 / 화 / 수 /목</p>
+                <strong class="footer__card-time">09:00 ~ 18:00</strong>
               </div>
-              <div class="item">
-                <p class="footer-card__text">
-                  금요일<span class="circle-box">야간진료</span>
+              <div class="footer__card-schedule-item">
+                <p class="footer__card-text">
+                  금요일<span class="footer__card-badge">야간진료</span>
                 </p>
-                <strong class="footer-card__text--strong">09:00 ~ 19:00</strong>
+                <strong class="footer__card-time">09:00 ~ 19:00</strong>
               </div>
-              <div class="item">
-                <p class="footer-card__text">토요일</p>
-                <strong class="footer-card__text--strong">09:00 ~ 13:00</strong>
+              <div class="footer__card-schedule-item">
+                <p class="footer__card-text">토요일</p>
+                <strong class="footer__card-time">09:00 ~ 13:00</strong>
               </div>
-              <div class="item">
-                <p class="footer-card__text">점심시간</p>
-                <strong class="footer-card__text--strong">12:30 ~ 14:00</strong>
+              <div class="footer__card-schedule-item">
+                <p class="footer__card-text">점심시간</p>
+                <strong class="footer__card-time">12:30 ~ 14:00</strong>
               </div>
-              <div class="item">
-                <p class="footer-card__text">일 / 공휴일</p>
-                <strong class="footer-card__text--strong">휴진</strong>
+              <div class="footer__card-schedule-item">
+                <p class="footer__card-text">일 / 공휴일</p>
+                <strong class="footer__card-time footer__card-time--off">휴진</strong>
               </div>
             </div>
-            <div class="addr-box">
-              <p class="footer-card__text">
+            <div class="footer__card-address">
+              <p class="footer__card-text">
                 주소. 서울특별시 강남구 미래로 123, 미래타워 8층 (우) 06234
               </p>
-              <p class="footer-card__text">대표자. 박훈상</p>
+              <p class="footer__card-text">대표자. 박훈상</p>
             </div>
           </li>
 
-          <li class="footer-card">
-            <div class="footer-card__head">
-              <h4 class="footer-card__eng-title">Our Location</h4>
-              <p class="footer-card__title">오시는 길</p>
+          <!-- 2. 오시는 길 카드 -->
+          <li class="footer__card">
+            <div class="footer__card-head">
+              <h4 class="footer__card-eng-title">Our Location</h4>
+              <p class="footer__card-title">오시는 길</p>
             </div>
             <a
               href="https://map.naver.com/"
               target="_blank"
-              class="map-box"
+              class="footer__card-map"
               aria-label="오시는 길 네이버 지도 보기 (새 창 열림)"
               title="새 창 열림"
             ></a>
-            <div class="map-info-badges">
-              <div class="map-info-item">
+            <div class="footer__card-traffic">
+              <div class="footer__card-traffic-item">
                 <strong>지하철</strong>
-                <span class="footer-card__text">강남역 1번 출구 도보 2분</span>
+                <span class="footer__card-text">강남역 1번 출구 도보 2분</span>
               </div>
-              <div class="map-info-item">
+              <div class="footer__card-traffic-item">
                 <strong>주차</strong>
-                <span class="footer-card__text"
+                <span class="footer__card-text"
                   >건물 내 지하 전용 주차장 무료 이용 가능</span
                 >
               </div>
             </div>
           </li>
 
-          <li class="footer-card">
-            <div class="footer-card__head">
-              <h4 class="footer-card__eng-title">Call Center</h4>
-              <p class="footer-card__title footer-card__title--phone">
+          <!-- 3. 콜센터 / 빠른 예약 카드 -->
+          <li class="footer__card">
+            <div class="footer__card-head">
+              <h4 class="footer__card-eng-title">Call Center</h4>
+              <p class="footer__card-title footer__card-title--phone">
                 02-1234-5678
               </p>
             </div>
-            <div class="link-box">
+            <div class="footer__card-actions">
               <a
                 href="javascript:void(0)"
-                class="kakao"
+                class="footer__card-btn footer__card-btn--kakao"
                 target="_blank"
                 title="새 창 열림"
               >
@@ -2099,7 +2102,7 @@
               </a>
               <a
                 href="javascript:void(0)"
-                class="naver"
+                class="footer__card-btn footer__card-btn--naver"
                 target="_blank"
                 title="새 창 열림"
               >
@@ -2120,16 +2123,17 @@
             </div>
           </li>
 
-          <li class="footer-card">
-            <div class="footer-card__head">
-              <h4 class="footer-card__eng-title">Official Channels</h4>
-              <p class="footer-card__title">코어업 채널</p>
+          <!-- 4. 공식 채널 카드 -->
+          <li class="footer__card">
+            <div class="footer__card-head">
+              <h4 class="footer__card-eng-title">Official Channels</h4>
+              <p class="footer__card-title">코어업 채널</p>
             </div>
-            <div class="sns-box">
+            <div class="footer__card-sns">
               <a
                 href="#"
                 target="_blank"
-                class="sns youtube"
+                class="footer__card-sns-link footer__card-sns-link--youtube"
                 aria-label="유튜브 채널 바로가기 (새 창 열림)"
                 title="새 창 열림"
               >
@@ -2150,7 +2154,7 @@
               <a
                 href="#"
                 target="_blank"
-                class="sns blog"
+                class="footer__card-sns-link footer__card-sns-link--blog"
                 aria-label="네이버 블로그 바로가기 (새 창 열림)"
                 title="새 창 열림"
               >
@@ -2184,7 +2188,7 @@
               <a
                 href="#"
                 target="_blank"
-                class="sns facebook"
+                class="footer__card-sns-link footer__card-sns-link--facebook"
                 aria-label="페이스북 바로가기 (새 창 열림)"
                 title="새 창 열림"
               >
@@ -2203,7 +2207,7 @@
               <a
                 href="#"
                 target="_blank"
-                class="sns insta"
+                class="footer__card-sns-link footer__card-sns-link--insta"
                 aria-label="인스타그램 바로가기 (새 창 열림)"
                 title="새 창 열림"
               >
@@ -2223,23 +2227,27 @@
           </li>
         </ul>
 
-        <!-- 5. footer-bottom -->
-        <div class="footer-bottom">
-          <div class="info-link-area">
-            <a href="#terms">이용약관</a>
-            <a href="#privacy" class="highlight">개인정보처리방침</a>
-            <a href="#rights">환자권리장전</a>
-            <a href="#non-covered">비급여 진료비 안내</a>
-            <a href="#ad">제휴/광고제안</a>
-          </div>
+        <!-- 3. 법적 필수 고지 및 카피라이트 -->
+        <div class="footer__legal">
+          <ul class="footer__legal-links">
+            <li class="footer__legal-item"><a href="#terms">이용약관</a></li>
+            <li class="footer__legal-item">
+              <a href="#privacy" class="highlight">개인정보처리방침</a>
+            </li>
+            <li class="footer__legal-item"><a href="#rights">환자권리장전</a></li>
+            <li class="footer__legal-item">
+              <a href="#non-covered">비급여 진료비 안내</a>
+            </li>
+            <li class="footer__legal-item"><a href="#ad">제휴/광고제안</a></li>
+          </ul>
 
-          <div class="logo-bottom">
+          <div class="footer__legal-copy">
             <img
-              class="footer__logo-img"
+              class="footer__legal-logo"
               src="assets/logo.png"
               alt="코어업 척추통증센터 로고"
             />
-            <span class="footer-bottom__copy"
+            <span class="footer__legal-text"
               >© 2026 COREUP Spine & Pain Center. All rights reserved.</span
             >
           </div>

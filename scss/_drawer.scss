@@ -40,12 +40,14 @@
   padding: 4px 0;
 }
 
+//메인메뉴 (ul태그)
 .drawer__list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+//li태그
 .drawer__item {
   display: flex;
   flex-direction: column;
@@ -55,6 +57,7 @@
     border-color 0.25s ease;
 }
 
+//a 태그 컨테이너 ("x"포함)
 .drawer__accordion {
   display: flex;
   justify-content: space-between;
@@ -63,6 +66,7 @@
   padding: 12px 14px;
 }
 
+//a태그
 .drawer__link {
   font-size: var(--font-base);
   font-weight: 500;
@@ -102,6 +106,7 @@
   }
 }
 
+//서브메뉴(ul태그)
 .drawer__sub-list {
   display: flex;
   overflow: hidden;
@@ -122,10 +127,12 @@
   }
 }
 
+//li태그
 .drawer__sub-item {
   width: 100%;
 }
 
+//a태그
 .drawer__sub-link {
   display: flex;
   align-items: center;
@@ -137,6 +144,7 @@
   color: var(--color-white);
 }
 
+//서브 메뉴 내 하단 영역(footer)
 .drawer__footer {
   display: flex;
   flex-direction: column;
