@@ -50,11 +50,6 @@ function init3DBodyMap() {
   const container = document.getElementById("canvas-container");
   if (!container) return;
 
-  // 0. 메뉴 리스트 텍스트를 span으로 감싸기 (배경 확장 애니메이션을 위해 글자 레이어 분리)
-  document.querySelectorAll(".hero-3d__pain-item").forEach((li) => {
-    const text = li.textContent;
-    li.innerHTML = `<span>${text}</span>`;
-  });
 
   // 1. 신체 부위별 데이터 (타겟(LookAt) 위치, 카메라(Zoom-in) 위치 설정, 및 일러스트 연동)
   const bodyData = {

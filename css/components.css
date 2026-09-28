@@ -140,6 +140,11 @@
 .info-badge-wrap svg {
   color: #2f5fa7;
 }
+@media (max-width: 640px) {
+  .info-badge-wrap {
+    display: none;
+  }
+}
 
 .info-badge__desc {
   font-size: 0.9375rem;

@@ -13,32 +13,32 @@ $color-text-light: #666;
 $color-text-white-subtle: rgba(255, 255, 255, 0.85);
 $color-alert-light: #fff0f0;
 $color-disabled: #a0aec0;
+// 다크 배경/헤더용 포커스 링 색상
+$color-focus-dark: #38bdf8;
+$color-nav-bg: #acbac9;
 
-$shadow-sm: 0 4px 12px rgba(27, 45, 90, 0.04);
-$shadow-md:
-  0 4px 6px -1px rgba(0, 0, 0, 0.1),
-  0 2px 4px -1px rgba(0, 0, 0, 0.06);
-$shadow-lg: 0 12px 30px rgba(27, 45, 90, 0.08);
-$shadow-xl: 0 20px 40px rgba(27, 45, 90, 0.15);
-$shadow-primary: 0 8px 20px rgba(47, 95, 167, 0.15);
+$shadow-sm: 0 4px 12px rgba($color-primary, 0.04);
+$shadow-md: 0 8px 24px rgba($color-primary, 0.05);
+$shadow-lg: 0 12px 30px rgba($color-primary, 0.08);
+$shadow-xl: 0 20px 40px rgba($color-primary, 0.15);
+$shadow-primary: 0 8px 20px rgba($color-secondary, 0.15);
 
 $font-family-base: "Pretendard Variable", "Pretendard", sans-serif;
 $font-family-en: "Outfit", sans-serif;
 
-$font-xs: 0.75rem;
-$font-xss: 0.8125rem;
-$font-sm: 0.875rem;
-$font-md: 0.9375rem;
-$font-base: 1rem;
-$font-lg: 1.125rem;
-$font-xl: 1.25rem;
-$font-2xl: 1.5rem;
-$font-3xl: 1.875rem;
-$font-4xl: 2.25rem;
-$font-5xl: 3.125rem;
+$font-xs: 0.75rem; // 12px
+$font-xss: 0.8125rem; // 13px
+$font-sm: 0.875rem; // 14px
+$font-md: 0.9375rem; // 15px
+$font-base: 1rem; // 16px
+$font-lg: 1.125rem; // 18px
+$font-xl: 1.25rem; // 20px
+$font-2xl: 1.5rem; // 24px
+$font-3xl: 1.875rem; // 30px
+$font-4xl: 2.25rem; // 36px
+$font-5xl: 3.125rem; // 50px
 
 $breakpoint-mobile: 480px;
-$breakpoint-hero-panel: 507px;
 $breakpoint-small: 640px;
 $breakpoint-tablet: 768px;
 $breakpoint-large-tablet: 960px;

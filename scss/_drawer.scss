@@ -1,3 +1,4 @@
+@use "variables" as *;
 /* ==========================================
    Mobile Drawer (모바일 서랍형 네비게이션)
    ========================================== */
@@ -18,7 +19,7 @@
   padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 24px;
-  background-color: #acbac9;
+  background-color: $color-nav-bg;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   opacity: 0;
@@ -68,9 +69,9 @@
 
 //a태그
 .drawer__link {
-  font-size: var(--font-base);
+  font-size: $font-base;
   font-weight: 500;
-  color: var(--color-white);
+  color: $color-white;
   transition: color 0.2s ease;
 }
 
@@ -84,14 +85,14 @@
   border: none;
   border-radius: 8px;
   background-color: transparent;
-  color: var(--color-white);
+  color: $color-white;
   cursor: pointer;
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
 
   &:focus-visible {
-    outline: 2px solid #38bdf8;
+    outline: 2px solid $color-focus-dark;
     outline-offset: 2px;
   }
 
@@ -139,9 +140,9 @@
   gap: 10px;
   padding: 8px 12px;
   border-radius: 8px;
-  font-size: var(--font-md);
+  font-size: $font-md;
   font-weight: 400;
-  color: var(--color-white);
+  color: $color-white;
 }
 
 //서브 메뉴 내 하단 영역(footer)

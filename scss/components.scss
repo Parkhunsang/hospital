@@ -136,6 +136,9 @@
   svg {
     color: $color-secondary;
   }
+  @media (max-width: $breakpoint-small) {
+    display: none;
+  }
 }
 
 .info-badge__desc {

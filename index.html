@@ -44,12 +44,8 @@
       aria-modal="true"
       aria-label="병원 입장 안내"
     >
-      <div class="intro-door__panel intro-door__panel--left">
-        <div class="intro-door__inner"></div>
-      </div>
-      <div class="intro-door__panel intro-door__panel--right">
-        <div class="intro-door__inner"></div>
-      </div>
+      <div class="intro-door__panel intro-door__panel--left"></div>
+      <div class="intro-door__panel intro-door__panel--right"></div>
       <div class="intro-door__content">
         <div class="intro-door__logo-wrap">
           <img
@@ -483,7 +479,7 @@
                 tabindex="0"
                 aria-label="목 통증 정보 보기"
               >
-                목 통증
+                <span class="hero-3d__menu-text">목 통증</span>
               </div>
               <div
                 class="hero-3d__pain-item"
@@ -492,7 +488,7 @@
                 tabindex="0"
                 aria-label="어깨 통증 정보 보기"
               >
-                어깨 통증
+                <span class="hero-3d__menu-text">어깨 통증</span>
               </div>
               <div
                 class="hero-3d__pain-item"
@@ -501,7 +497,7 @@
                 tabindex="0"
                 aria-label="허리 통증 정보 보기"
               >
-                허리 통증
+                <span class="hero-3d__menu-text">허리 통증</span>
               </div>
               <div
                 class="hero-3d__pain-item"
@@ -510,7 +506,7 @@
                 tabindex="0"
                 aria-label="손 및 손목 통증 정보 보기"
               >
-                손 통증
+                <span class="hero-3d__menu-text">손 통증</span>
               </div>
               <div
                 class="hero-3d__pain-item"
@@ -519,7 +515,7 @@
                 tabindex="0"
                 aria-label="무릎 통증 정보 보기"
               >
-                무릎 통증
+                <span class="hero-3d__menu-text">무릎 통증</span>
               </div>
               <div
                 class="hero-3d__pain-item"
@@ -528,7 +524,7 @@
                 tabindex="0"
                 aria-label="발 및 발목 통증 정보 보기"
               >
-                발 통증
+                <span class="hero-3d__menu-text">발 통증</span>
               </div>
             </div>
           </div>
@@ -558,8 +554,8 @@
           <div class="hero-3d__tv-container">
             <div class="hero-3d__togo-section">
               <ul class="hero-3d__togo-list">
-                <li class="hero-3d__togo-item-wrap">
-                  <a href="#booking" class="hero-3d__togo-item">
+                <li class="hero-3d__togo-item">
+                  <a href="#booking" class="hero-3d__togo-link">
                     <div class="hero-3d__togo-icon">
                       <img
                         src="./assets/reservition.svg"
@@ -567,11 +563,11 @@
                         aria-hidden="true"
                       />
                     </div>
-                    <span class="hero-3d__togo-name">진료시간 예약</span>
+                    <span class="hero-3d__menu-text">진료시간 예약</span>
                   </a>
                 </li>
-                <li class="hero-3d__togo-item-wrap">
-                  <a href="#certificate" class="hero-3d__togo-item">
+                <li class="hero-3d__togo-item">
+                  <a href="#certificate" class="hero-3d__togo-link">
                     <div class="hero-3d__togo-icon">
                       <img
                         src="./assets/certificate.svg"
@@ -579,11 +575,11 @@
                         aria-hidden="true"
                       />
                     </div>
-                    <span class="hero-3d__togo-name">제증명 발급</span>
+                    <span class="hero-3d__menu-text">제증명 발급</span>
                   </a>
                 </li>
-                <li class="hero-3d__togo-item-wrap">
-                  <a href="#non-surgical" class="hero-3d__togo-item">
+                <li class="hero-3d__togo-item">
+                  <a href="#non-surgical" class="hero-3d__togo-link">
                     <div class="hero-3d__togo-icon">
                       <img
                         src="./assets/non-surgical.svg"
@@ -591,11 +587,11 @@
                         aria-hidden="true"
                       />
                     </div>
-                    <span class="hero-3d__togo-name">비수술 클리닉</span>
+                    <span class="hero-3d__menu-text">비수술 클리닉</span>
                   </a>
                 </li>
-                <li class="hero-3d__togo-item-wrap">
-                  <a href="#reviews" class="hero-3d__togo-item">
+                <li class="hero-3d__togo-item">
+                  <a href="#reviews" class="hero-3d__togo-link">
                     <div class="hero-3d__togo-icon">
                       <img
                         src="./assets/coment.svg"
@@ -603,11 +599,11 @@
                         aria-hidden="true"
                       />
                     </div>
-                    <span class="hero-3d__togo-name">고객 후기</span>
+                    <span class="hero-3d__menu-text">고객 후기</span>
                   </a>
                 </li>
-                <li class="hero-3d__togo-item-wrap">
-                  <a href="#location" class="hero-3d__togo-item">
+                <li class="hero-3d__togo-item">
+                  <a href="#location" class="hero-3d__togo-link">
                     <div class="hero-3d__togo-icon">
                       <img
                         src="./assets/location.svg"
@@ -615,7 +611,7 @@
                         aria-hidden="true"
                       />
                     </div>
-                    <span class="hero-3d__togo-name">오시는 길</span>
+                    <span class="hero-3d__menu-text">오시는 길</span>
                   </a>
                 </li>
               </ul>
@@ -2033,7 +2029,9 @@
               </div>
               <div class="footer__card-schedule-item">
                 <p class="footer__card-text">일 / 공휴일</p>
-                <strong class="footer__card-time footer__card-time--off">휴진</strong>
+                <strong class="footer__card-time footer__card-time--off"
+                  >휴진</strong
+                >
               </div>
             </div>
             <div class="footer__card-address">
@@ -2234,7 +2232,9 @@
             <li class="footer__legal-item">
               <a href="#privacy" class="highlight">개인정보처리방침</a>
             </li>
-            <li class="footer__legal-item"><a href="#rights">환자권리장전</a></li>
+            <li class="footer__legal-item">
+              <a href="#rights">환자권리장전</a>
+            </li>
             <li class="footer__legal-item">
               <a href="#non-covered">비급여 진료비 안내</a>
             </li>
