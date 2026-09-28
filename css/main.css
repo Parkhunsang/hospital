@@ -84,8 +84,7 @@ body.door-locked {
 .intro-door__logo-img {
   width: 100%;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .intro-door__desc {
@@ -230,6 +229,16 @@ body.door-locked {
     padding: 0 24px;
   }
 }
+@media (max-width: 640px) {
+  .hero-3d__ui-layer {
+    flex-direction: column;
+    justify-content: space-between;
+    left: 0;
+    transform: none;
+    width: 100%;
+    padding: 80px 16px 20px;
+  }
+}
 
 .hero-3d__welcome {
   position: absolute;
@@ -296,12 +305,9 @@ body.door-locked {
 }
 @media (max-width: 640px) {
   .hero-3d__menu {
-    position: absolute;
-    top: 110px;
-    left: 0;
-    z-index: 20;
+    position: static;
     width: 100%;
-    padding: 0 16px;
+    padding: 0;
   }
 }
 
@@ -330,7 +336,7 @@ body.door-locked {
     width: 100%;
     max-width: 100%;
     padding: 8px;
-    margin-top: 0;
+    margin-top: 12px;
     border-top: none;
     container-type: inline-size;
   }
@@ -391,7 +397,10 @@ body.door-locked {
 }
 
 .hero-3d__info-panel {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   overflow: hidden;
   transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 340px;
@@ -410,7 +419,7 @@ body.door-locked {
 }
 .hero-3d__info-panel--hidden {
   opacity: 0;
-  transform: translateX(40px);
+  transform: translate(40px, -50%);
   pointer-events: none;
 }
 @media (max-width: 1200px) {
@@ -427,21 +436,22 @@ body.door-locked {
 @media (max-width: 640px) {
   .hero-3d__info-panel {
     position: absolute;
-    bottom: clamp(216px, 18vh, 175px);
-    left: 50%;
-    z-index: 25;
-    width: calc(100% - 32px);
+    top: auto;
+    bottom: calc(100% + 12px);
+    left: 0;
+    right: auto;
+    width: 100%;
     padding: 12px 14px 10px;
     border-radius: 16px;
     background: #fff;
-    transform: translateX(-50%);
+    transform: none;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: opacity 0.3s ease, transform 0.3s ease;
   }
   .hero-3d__info-panel--hidden {
     opacity: 0;
-    transform: translate(-50%, 30px);
+    transform: translateY(20px);
     pointer-events: none;
   }
 }
@@ -590,40 +600,24 @@ body.door-locked {
 }
 
 /* 02. 3D Body Map Hero Section [END] */
-.hero-3d__tv-wrap {
+.hero-3d__bottom-bar {
   position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-}
-
-.hero-3d__tv-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 30px;
-  width: 1200px;
-  height: 100%;
-}
-@media (max-width: 1200px) {
-  .hero-3d__tv-container {
-    padding: 0 24px;
-  }
-}
-@media (max-width: 960px) {
-  .hero-3d__tv-container {
-    width: 100%;
-    padding: 0 24px;
-  }
 }
 @media (max-width: 640px) {
-  .hero-3d__tv-container {
-    padding: 0 16px;
+  .hero-3d__bottom-bar {
+    position: relative;
+    top: auto;
+    left: auto;
+    height: auto;
+    display: block;
   }
 }
 
@@ -639,6 +633,11 @@ body.door-locked {
   .hero-3d__togo-section {
     height: auto;
     margin-bottom: 20px;
+  }
+}
+@media (max-width: 640px) {
+  .hero-3d__togo-section {
+    margin-bottom: 0;
   }
 }
 
@@ -856,8 +855,7 @@ body.door-locked {
 }
 
 .fast-diagnosis__bg-image {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1036,10 +1034,8 @@ body.door-locked {
 .brand-trust__bg-img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .brand-trust__slide--stats .brand-trust__bg-img {
@@ -1469,10 +1465,8 @@ body.door-locked {
 }
 
 .doctors__bg-image {
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top center;
-     object-position: top center;
+  object-fit: cover;
+  object-position: top center;
   width: 100%;
   height: 100%;
 }
@@ -1543,8 +1537,7 @@ body.door-locked {
 }
 
 .location__card-image {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -1620,9 +1613,7 @@ body.door-locked {
   font-size: 16px;
   font-weight: 600;
   color: #1b2d5a;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .self-test__result-box {
@@ -1777,8 +1768,7 @@ body.door-locked {
   display: block;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transition: transform 0.4s ease;
 }
 
@@ -2102,3 +2092,5 @@ body.door-locked {
     aspect-ratio: 1/1;
   }
 }
+
+/*# sourceMappingURL=main.css.map */

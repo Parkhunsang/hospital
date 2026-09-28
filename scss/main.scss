@@ -228,6 +228,14 @@ body.door-locked {
     max-width: 100%;
     padding: 0 24px;
   }
+  @media (max-width: $breakpoint-small) {
+    flex-direction: column;
+    justify-content: space-between;
+    left: 0;
+    transform: none;
+    width: 100%;
+    padding: 80px 16px 20px;
+  }
 }
 
 .hero-3d__welcome {
@@ -283,12 +291,9 @@ body.door-locked {
 .hero-3d__menu {
   pointer-events: auto;
   @media (max-width: $breakpoint-small) {
-    position: absolute;
-    top: 110px;
-    left: 0;
-    z-index: 20;
+    position: static;
     width: 100%;
-    padding: 0 16px;
+    padding: 0;
   }
 }
 
@@ -315,7 +320,7 @@ body.door-locked {
     width: 100%;
     max-width: 100%;
     padding: 8px;
-    margin-top: 0;
+    margin-top: 12px;
     border-top: none;
     container-type: inline-size;
   }
@@ -375,7 +380,10 @@ body.door-locked {
 }
 
 .hero-3d__info-panel {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   overflow: hidden;
   transition:
     opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
@@ -396,7 +404,7 @@ body.door-locked {
 
   &--hidden {
     opacity: 0;
-    transform: translateX(40px);
+    transform: translate(40px, -50%);
     pointer-events: none;
   }
 
@@ -411,14 +419,15 @@ body.door-locked {
 
   @media (max-width: $breakpoint-small) {
     position: absolute;
-    bottom: clamp(216px, 18vh, 175px);
-    left: 50%;
-    z-index: 25;
-    width: calc(100% - 32px);
+    top: auto;
+    bottom: calc(100% + 12px);
+    left: 0;
+    right: auto;
+    width: 100%;
     padding: 12px 14px 10px;
     border-radius: 16px;
     background: $color-white;
-    transform: translateX(-50%);
+    transform: none;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition:
@@ -428,7 +437,7 @@ body.door-locked {
     // 모바일 숨김 상태
     &--hidden {
       opacity: 0;
-      transform: translate(-50%, 30px);
+      transform: translateY(20px);
       pointer-events: none;
     }
   }
@@ -573,34 +582,23 @@ body.door-locked {
 }
 /* 02. 3D Body Map Hero Section [END] */
 
-.hero-3d__tv-wrap {
+.hero-3d__bottom-bar {
   position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-}
-
-.hero-3d__tv-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 30px;
-  width: 1200px;
-  height: 100%;
-  @media (max-width: $breakpoint-desktop) {
-    padding: 0 24px;
-  }
-  @media (max-width: $breakpoint-large-tablet) {
-    width: 100%;
-    padding: 0 24px;
-  }
+
   @media (max-width: $breakpoint-small) {
-    padding: 0 16px;
+    position: relative;
+    top: auto;
+    left: auto;
+    height: auto;
+    display: block;
   }
 }
 
@@ -611,9 +609,14 @@ body.door-locked {
   height: 80px;
   margin-bottom: 30px;
   pointer-events: auto;
+
   @media (max-width: $breakpoint-large-tablet) {
     height: auto;
     margin-bottom: 20px;
+  }
+
+  @media (max-width: $breakpoint-small) {
+    margin-bottom: 0;
   }
 }
 
