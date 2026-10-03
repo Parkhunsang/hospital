@@ -1057,10 +1057,6 @@ function initFastDiagnosis() {
                 duration: 1.0,
                 stagger: 0.1,
                 ease: "back.out(1.2)",
-                onComplete: () => {
-                  // 모션 완료 후 CSS 호버 트랜지션 활성화
-                  steps.forEach((step) => step.classList.add("is-animated"));
-                },
               },
               "-=0.2",
             );
@@ -1070,7 +1066,6 @@ function initFastDiagnosis() {
               step.classList.add("is-fallback");
               setTimeout(() => {
                 step.classList.add("is-visible");
-                step.classList.add("is-animated");
               }, idx * 250);
             });
             if (typeof gsap !== "undefined") {
@@ -1087,6 +1082,16 @@ function initFastDiagnosis() {
   );
 
   observer.observe(section);
+
+  // 3. 화면 리사이즈(F12 디바이스 모드 등) 시 모바일 진입 시 인라인 스타일 초기화
+  window.addEventListener("resize", () => {
+    if (window.innerWidth <= 960) {
+      const steps = section.querySelectorAll(".fast-diagnosis__step");
+      steps.forEach((card) => {
+        card.removeAttribute("style");
+      });
+    }
+  });
 }
 
 /* ==========================================================================

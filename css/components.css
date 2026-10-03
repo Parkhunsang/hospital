@@ -84,12 +84,12 @@
 }
 
 .section-desc {
-  color: #666;
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.75;
   word-break: keep-all;
   overflow-wrap: break-word;
+  color: #666;
 }
 
 .info-label {
@@ -355,6 +355,12 @@
   }
 }
 .showcase-slider__card-desc {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  color: #666;
   margin-bottom: 24px;
 }
 .showcase-slider__features {

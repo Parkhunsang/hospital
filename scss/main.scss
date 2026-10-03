@@ -94,6 +94,9 @@ body.door-locked {
   line-height: 1.6;
   letter-spacing: -0.02em;
   margin-bottom: 32px;
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 15px;
+  }
 }
 
 .intro-door__btn-wrap {
@@ -724,14 +727,46 @@ body.door-locked {
 /* 03. Fast Diagnosis - Start */
 .fast-diagnosis {
   position: relative;
-
   width: 100%;
-  padding: 240px 0 calc(20vh + 240px);
-  background: radial-gradient(
-    circle at top,
-    $color-bg-light 0%,
-    $color-white 100%
-  );
+  padding: 240px 0 calc(28vh + 120px);
+  background-color: $color-bg-light;
+
+  @media (max-width: $breakpoint-large-tablet) {
+    padding: 100px 24px;
+  }
+
+  .section-head {
+    position: relative;
+    z-index: 10;
+    width: 28%;
+    margin-right: 0;
+    margin-left: 0;
+    text-align: left;
+    //테블릿 이상 bp, 핀 헤더 고정
+    @media (min-width: $breakpoint-large-tablet) {
+      position: sticky;
+      top: 140px;
+    }
+
+    @media (max-width: $breakpoint-large-tablet) {
+      width: 100%;
+      margin-bottom: 50px;
+    }
+  }
+
+  .section-title {
+    display: block;
+    margin: 20px 0 24px 0;
+
+    @media (max-width: $breakpoint-large-tablet) {
+      margin: 16px 0;
+    }
+  }
+
+  .card-title {
+    color: $color-white;
+    margin-bottom: 10px;
+  }
 }
 
 .fast-diagnosis__conwrap {
@@ -740,26 +775,11 @@ body.door-locked {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-}
 
-.fast-diagnosis .section-head {
-  position: relative;
-  z-index: 10;
-  width: 28%;
-  margin-right: 0;
-  margin-left: 0;
-  text-align: left;
-}
-
-@media (min-width: 960px) {
-  .fast-diagnosis .section-head {
-    position: sticky;
-    top: 140px;
+  @media (max-width: $breakpoint-large-tablet) {
+    flex-direction: column;
+    width: 100%;
   }
-}
-
-.fast-diagnosis .section-title {
-  margin: 20px 0 24px 0;
 }
 
 .fast-diagnosis__btn-more {
@@ -769,15 +789,13 @@ body.door-locked {
   font-weight: 700;
   color: $color-primary;
   transition: color 0.3s ease;
-}
-
-.fast-diagnosis__btn-more:hover {
-  color: $color-secondary;
-}
-
-.fast-diagnosis__btn-more:focus-visible {
-  outline: 2px solid $color-secondary;
-  outline-offset: 4px;
+  &:hover {
+    color: $color-secondary;
+  }
+  &:focus-visible {
+    outline: 2px solid $color-secondary;
+    outline-offset: 4px;
+  }
 }
 
 .fast-diagnosis__btn-more i {
@@ -792,6 +810,10 @@ body.door-locked {
 
 .fast-diagnosis__con {
   width: 68%;
+
+  @media (max-width: $breakpoint-large-tablet) {
+    width: 100%;
+  }
 }
 
 .fast-diagnosis__steps {
@@ -799,33 +821,59 @@ body.door-locked {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+  }
 }
 
 .fast-diagnosis__step {
   position: relative;
   overflow: hidden;
   width: 45.25%;
-  height: 430px;
-  min-height: 380px;
+  min-height: 430px;
   margin-bottom: 120px;
   border-radius: 30px;
-  box-shadow: 0 10px 30px rgba(27, 45, 90, 0.08);
+  box-shadow: $shadow-md;
   transition:
-    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
+    transform 0.4s $ease-out-expo,
+    box-shadow 0.4s $ease-out-expo;
 
-.fast-diagnosis__step:nth-child(even) {
-  transform: translateY(28vh);
-}
+  &:nth-child(even) {
+    transform: translateY(28vh);
+  }
 
-.fast-diagnosis__step:hover {
-  box-shadow: 0 20px 40px rgba(27, 45, 90, 0.16);
-  transform: translateY(-8px);
-}
+  &:hover {
+    box-shadow: $shadow-xl;
+    transform: translateY(-8px);
+  }
 
-.fast-diagnosis__step:nth-child(even):hover {
-  transform: translateY(calc(28vh - 8px));
+  &:nth-child(even):hover {
+    transform: translateY(calc(28vh - 8px));
+  }
+
+  @media (max-width: $breakpoint-large-tablet) {
+    &:nth-child(even) {
+      transform: translateY(0);
+    }
+
+    &:nth-child(even):hover {
+      transform: translateY(-8px);
+    }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    width: 48%;
+    height: auto;
+    aspect-ratio: 1 / 1.15;
+    min-height: auto;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
 }
 
 .fast-diagnosis__image-container {
@@ -837,32 +885,34 @@ body.door-locked {
   width: 100%;
   height: 100%;
   border-radius: 30px;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba($color-primary, 0) 25%,
+      rgba($color-primary, 0.65) 70%,
+      $color-primary 100%
+    );
+    pointer-events: none;
+    content: "";
+  }
 }
 
 .fast-diagnosis__bg-image {
   object-fit: cover;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s $ease-out-expo;
 }
 
 .fast-diagnosis__step:hover .fast-diagnosis__bg-image {
   transform: scale(1.08);
-}
-
-.fast-diagnosis__gradient-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(27, 45, 90, 0) 25%,
-    rgba(27, 45, 90, 0.65) 70%,
-    $color-primary 100%
-  );
 }
 
 .fast-diagnosis__content {
@@ -871,23 +921,23 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
   width: 100%;
   height: 100%;
   padding: 40px 32px;
   text-align: left;
-}
 
-.fast-diagnosis__step-title {
-  color: $color-white;
-  margin-bottom: 10px;
+  @media (max-width: $breakpoint-tablet) {
+    padding: 20px 16px;
+  }
 }
 
 .fast-diagnosis__step-desc {
+  @include text-desc;
   color: $color-text-white-subtle;
 }
-
 /* 03. Fast Diagnosis [END] */
+
+/* 04. Non-Surgical [start]*/
 .non-surgical {
   position: relative;
   background-color: $color-bg-light;
@@ -1091,6 +1141,7 @@ body.door-locked {
 }
 
 .brand-trust__desc {
+  @include text-desc;
   font-size: $font-lg;
   color: $color-text-white-subtle;
 }
@@ -1837,40 +1888,6 @@ body.door-locked {
     font-size: 15px;
   }
 
-  .fast-diagnosis {
-    padding: 100px 24px;
-  }
-
-  .fast-diagnosis__conwrap {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .fast-diagnosis .section-head {
-    width: 100%;
-    margin-bottom: 50px;
-  }
-
-  .fast-diagnosis .section-title {
-    margin: 16px 0;
-  }
-
-  .fast-diagnosis__con {
-    width: 100%;
-  }
-
-  .fast-diagnosis__step:nth-child(even) {
-    transform: translateY(0);
-  }
-
-  .fast-diagnosis__step:nth-child(even):hover {
-    transform: translateY(-6px);
-  }
-
-  .equip-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .non-surgical__card-title {
     font-size: 26px;
   }
@@ -2060,19 +2077,6 @@ body.door-locked {
   }
 }
 
-@media (max-width: 768px) {
-  .fast-diagnosis__step {
-    width: 48%;
-    height: auto;
-    aspect-ratio: 1 / 1.15;
-    min-height: auto;
-    margin-bottom: 24px;
-  }
-  .fast-diagnosis__content {
-    padding: 20px 16px;
-  }
-}
-
 @media (max-width: 640px) {
   html {
     font-size: 14px;
@@ -2080,10 +2084,6 @@ body.door-locked {
 
   .toGo-list li {
     flex: 1 1 calc(50% - 10px);
-  }
-
-  .equip-grid {
-    grid-template-columns: 1fr;
   }
 
   .doctors__card {
@@ -2165,17 +2165,5 @@ body.door-locked {
 
   .brand-trust__stat-val {
     font-size: 20px;
-  }
-}
-@media (max-width: 480px) {
-  .fast-diagnosis__steps {
-    flex-direction: column;
-  }
-  .intro-door__desc {
-    font-size: 15px;
-  }
-  .fast-diagnosis__step {
-    width: 100%;
-    aspect-ratio: 1 / 1;
   }
 }

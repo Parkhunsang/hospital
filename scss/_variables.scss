@@ -1,3 +1,6 @@
+$font-family-base: "Pretendard Variable", "Pretendard", sans-serif;
+$font-family-en: "Outfit", sans-serif;
+
 $color-primary: #1b2d5a;
 $color-secondary: #2f5fa7;
 $color-secondary-light: #e0f6f3;
@@ -23,8 +26,8 @@ $shadow-lg: 0 12px 30px rgba($color-primary, 0.08);
 $shadow-xl: 0 20px 40px rgba($color-primary, 0.15);
 $shadow-primary: 0 8px 20px rgba($color-secondary, 0.15);
 
-$font-family-base: "Pretendard Variable", "Pretendard", sans-serif;
-$font-family-en: "Outfit", sans-serif;
+//감속 애니메이션효과
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
 $font-xs: 0.75rem; // 12px
 $font-xss: 0.8125rem; // 13px
@@ -43,3 +46,11 @@ $breakpoint-small: 640px;
 $breakpoint-tablet: 768px;
 $breakpoint-large-tablet: 960px;
 $breakpoint-desktop: 1200px;
+
+@mixin text-desc {
+  font-size: $font-base;
+  font-weight: 500;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}

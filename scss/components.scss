@@ -81,12 +81,8 @@
 }
 
 .section-desc {
+  @include text-desc;
   color: $color-text-light;
-  font-size: $font-base;
-  font-weight: 500;
-  line-height: 1.75;
-  word-break: keep-all;
-  overflow-wrap: break-word;
 }
 
 .info-label {
@@ -354,6 +350,8 @@
   }
 
   &__card-desc {
+    @include text-desc;
+    color: $color-text-light;
     margin-bottom: 24px;
   }
 
