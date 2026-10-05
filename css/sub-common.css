@@ -93,6 +93,51 @@
   content: "";
 }
 
+/* Disease Navigation Component (질환 페이지 공통 탭 네비게이션) */
+.disease-nav {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  background-color: #f9fbfd;
+}
+.disease-nav__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  border-radius: 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #475569;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+.disease-nav__link:hover {
+  color: #1b2d5a;
+}
+.disease-nav__link:focus-visible {
+  outline: 2px solid #2f5fa7;
+  outline-offset: 2px;
+}
+
+.disease-nav__item--active .disease-nav__link,
+.disease-nav__link--active {
+  background-color: #00a88f;
+  color: #fff;
+}
+
+.disease-nav__item--active .disease-nav__link:hover,
+.disease-nav__link--active:hover {
+  color: #fff;
+}
+
 .causes {
   background-color: var(--color-bg-light);
 }
@@ -153,8 +198,7 @@
 .causes__img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 /* 대표 증상 */
@@ -169,8 +213,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: start;
-  -moz-column-gap: 24px;
-       column-gap: 24px;
+  column-gap: 24px;
   row-gap: 72px;
 }
 
@@ -189,8 +232,7 @@
 .symptoms__img-wrapper img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .symptoms__text {
@@ -230,8 +272,7 @@
   }
   .symptoms__list {
     grid-template-columns: repeat(2, 1fr);
-    -moz-column-gap: 20px;
-         column-gap: 20px;
+    column-gap: 20px;
     row-gap: 36px;
   }
   .symptoms__img-wrapper {

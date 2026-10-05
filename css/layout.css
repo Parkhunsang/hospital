@@ -284,8 +284,7 @@
 .topbar__logo-img {
   width: auto;
   height: 52px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .topbar__brand {
   display: flex;
@@ -405,9 +404,7 @@
   text-align: center;
   white-space: nowrap;
   transform: translateX(-50%);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   pointer-events: none;
 }
 
@@ -479,6 +476,7 @@
   border-radius: 16px;
   background-color: rgba(27, 45, 90, 0.2);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .footer__card-head {

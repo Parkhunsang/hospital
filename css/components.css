@@ -92,13 +92,30 @@
   color: #666;
 }
 
-.info-label {
-  margin-right: 6px;
-  color: #fff;
+/* Badge Component (공통 알약/캡슐 뱃지 UI) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.badge--glass-gold {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fdb608;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.badge--soft-blue {
+  background-color: rgba(234, 242, 255, 0.8);
+  color: #2f5fa7;
 }
 
-/* Eyebrow Component (공통 소타이틀/뱃지 UI) */
+/* Eyebrow (공통 소타이틀/뱃지 UI) */
 .eyebrow {
   display: block;
   margin-bottom: 12px;
@@ -107,17 +124,6 @@
   font-weight: 800;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-}
-.eyebrow--badge {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fdb608;
-}
-.eyebrow--white {
-  color: #fff;
 }
 
 .sub-eyebrow {
@@ -129,7 +135,7 @@
   letter-spacing: -0.01em;
 }
 
-/* Info Badge Component (공통 안내 뱃지 UI) */
+/* Info Badge (공통 안내 뱃지 UI) */
 .info-badge-wrap {
   display: flex;
   flex-direction: row;
@@ -153,52 +159,7 @@
   letter-spacing: -0.02em;
 }
 
-/* Disease Navigation Component (질환 페이지 공통 탭 네비게이션) */
-.disease-nav {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  padding: 8px;
-  gap: 8px;
-  box-sizing: border-box;
-  border-radius: 50px;
-  background-color: #f9fbfd;
-}
-.disease-nav__link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 16px;
-  box-sizing: border-box;
-  border-radius: 32px;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1;
-  color: #475569;
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  cursor: pointer;
-}
-.disease-nav__link:hover {
-  color: #1b2d5a;
-}
-.disease-nav__link:focus-visible {
-  outline: 2px solid #2f5fa7;
-  outline-offset: 2px;
-}
-
-.disease-nav__item--active .disease-nav__link,
-.disease-nav__link--active {
-  background-color: #00a88f;
-  color: #fff;
-}
-
-.disease-nav__item--active .disease-nav__link:hover,
-.disease-nav__link--active:hover {
-  color: #fff;
-}
-
-/* Slider Navigation Component (공통 슬라이더 내비게이션 컴포넌트) */
+/* 슬라이더의 좌/우 버튼 속성 */
 .slider-nav {
   display: flex;
   align-items: center;
@@ -219,9 +180,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .slider-nav__btn svg {
   width: 18px;
@@ -247,24 +206,11 @@
   box-shadow: none;
 }
 
-.slide__card-badge {
-  align-self: flex-start;
-  padding: 6px 14px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  background-color: rgba(234, 242, 255, 0.8);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #2f5fa7;
-  letter-spacing: -0.01em;
-}
-
 .card-title {
   font-size: 1.5rem;
   font-weight: 800;
   color: #1b2d5a;
   letter-spacing: -0.02em;
-  margin-bottom: 1.333em;
 }
 @media (max-width: 768px) {
   .card-title {
@@ -272,13 +218,25 @@
   }
 }
 
-/* 쇼케이스 슬라이더 프레임 컴포넌트 (Showcase Slider Component) */
+.showcase-slider__card-desc {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  color: #666;
+}
+
 .showcase-slider {
   position: relative;
   width: 100%;
-  /* 1. 상단 컨트롤러 (안내 뱃지 + 화살표) */
+}
+.showcase-slider .badge {
+  margin-bottom: -10px;
+  margin-left: -6px;
 }
 .showcase-slider__controls {
+  /* 1. 상단 컨트롤러 (안내 뱃지 + 화살표) */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -287,10 +245,8 @@
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(47, 95, 167, 0.08);
 }
-.showcase-slider {
-  /* 2. Swiper 메인 컨테이너 */
-}
 .showcase-slider__swiper {
+  /* 2. Swiper 메인 컨테이너 */
   overflow: visible;
   width: 100%;
   margin-bottom: 60px;
@@ -300,10 +256,8 @@
     margin-bottom: clamp(24px, 6vw, 60px);
   }
 }
-.showcase-slider {
-  /* 3. 개별 슬라이드 (li) */
-}
 .showcase-slider__slide {
+  /* 3. 개별 슬라이드 (li) */
   width: 100%;
   opacity: 0.4;
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -312,7 +266,7 @@
   opacity: 1;
 }
 .showcase-slider__slide.swiper-slide-active .showcase-slider__card {
-  box-shadow: 0 20px 50px rgba(27, 45, 90, 0.1);
+  box-shadow: 0 20px 40px rgba(27, 45, 90, 0.15);
 }
 @media (max-width: 960px) {
   .showcase-slider__slide {
@@ -320,10 +274,8 @@
     max-width: 520px;
   }
 }
-.showcase-slider {
-  /* 4. 슬라이드 카드 본체 */
-}
 .showcase-slider__card {
+  /* 4. 슬라이드 카드 본체 */
   display: flex;
   overflow: hidden;
   width: 100%;
@@ -340,80 +292,56 @@
     height: auto;
   }
 }
-.showcase-slider {
-  /* 5. 카드 내부 왼쪽 콘텐츠 */
-}
 .showcase-slider__content {
+  /* 5. 카드 내부 왼쪽 콘텐츠 */
   display: flex;
   flex-direction: column;
   flex: 1.2;
   padding: 2.75rem 2.5rem;
+  gap: 30px;
 }
 @media (max-width: 960px) {
   .showcase-slider__content {
     padding: 1.5rem 1.25rem;
   }
 }
-.showcase-slider__card-desc {
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.75;
-  word-break: keep-all;
-  overflow-wrap: break-word;
-  color: #666;
-  margin-bottom: 24px;
-}
 .showcase-slider__features {
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 .showcase-slider__features-item {
-  position: relative;
-  padding-left: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   word-break: keep-all;
-}
-.showcase-slider__features-item::before {
-  position: absolute;
-  top: 0.125em;
-  left: 0;
-  content: "•";
-  color: #2f5fa7;
-  font-weight: 800;
-  font-size: 1.125rem;
-  line-height: 1;
-}
-.showcase-slider__feature-text {
-  margin-bottom: 12px;
   font-size: 0.9375rem;
-  font-weight: 600;
-  color: #1b2d5a;
   line-height: 1.5;
 }
-.showcase-slider {
-  /* 6. 카드 내부 오른쪽 이미지 영역 */
+.showcase-slider__features-item::before {
+  content: "";
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #2f5fa7;
+  margin-top: calc((1.5em - 6px) / 2);
+}
+.showcase-slider__feature-text {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: 600;
+  color: #1b2d5a;
 }
 .showcase-slider__image-wrapper {
-  position: relative;
+  /* 6. 카드 내부 오른쪽 이미지 영역 */
   overflow: hidden;
   flex: 1;
-}
-.showcase-slider__image-wrapper::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(182, 186, 195, 0.35));
-  mix-blend-mode: multiply;
-  pointer-events: none;
 }
 .showcase-slider__image-wrapper img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 @media (max-width: 960px) {
   .showcase-slider__image-wrapper {
@@ -422,10 +350,8 @@
     height: clamp(200px, 28vw, 280px);
   }
 }
-.showcase-slider {
-  /* 7. 슬라이더 맨 하단 도트 페이지네이션 (맨 끝으로 이동!) */
-}
 .showcase-slider__pagination {
+  /* 7. 슬라이더 맨 하단 도트 페이지네이션 (맨 끝으로 이동!) */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -451,4 +377,10 @@
 .showcase-slider__pagination .swiper-pagination-bullet:focus-visible {
   outline: 2px solid #2f5fa7;
   outline-offset: 3px;
+}
+
+.info-label {
+  margin-right: 6px;
+  color: #fff;
+  font-weight: 700;
 }

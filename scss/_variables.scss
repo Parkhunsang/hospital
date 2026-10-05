@@ -54,3 +54,10 @@ $breakpoint-desktop: 1200px;
   word-break: keep-all;
   overflow-wrap: break-word;
 }
+
+@mixin glass($blur: 12px, $bg-opacity: 0.12, $border-opacity: 0.25) {
+  border: 1px solid rgba($color-white, $border-opacity);
+  background: rgba($color-white, $bg-opacity);
+  -webkit-backdrop-filter: blur($blur);
+  backdrop-filter: blur($blur);
+}

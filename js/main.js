@@ -773,17 +773,10 @@ function init3DBodyMap() {
           1.5, // 부드러운 전환을 위해 1.5초 설정
         );
 
-        // 테마 색상 애니메이션 적용 (배경 그라데이션 및 정보 패널 색상 동시 전환)
+        // 테마 색상 애니메이션 적용 (배경 그라데이션 전환)
         gsap.to(".hero-3d", {
           "--bg-start": theme.bgStart,
           "--bg-end": theme.bgEnd,
-          duration: 1.2,
-          ease: "power3.inOut",
-        });
-        gsap.to(infoPanel, {
-          "--panel-bg": theme.panelBg,
-          "--panel-border": theme.panelBorder,
-          "--panel-text": theme.panelText,
           duration: 1.2,
           ease: "power3.inOut",
         });
@@ -925,13 +918,6 @@ function init3DBodyMap() {
       gsap.to(".hero-3d", {
         "--bg-start": themeData.default.bgStart,
         "--bg-end": themeData.default.bgEnd,
-        duration: 1.2,
-        ease: "power3.inOut",
-      });
-      gsap.to(infoPanel, {
-        "--panel-bg": themeData.default.panelBg,
-        "--panel-border": themeData.default.panelBorder,
-        "--panel-text": themeData.default.panelText,
         duration: 1.2,
         ease: "power3.inOut",
       });
@@ -1419,20 +1405,7 @@ function initBrandTrustPartners() {
             currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
         }
 
-        // 2) Ensure background images remain 100% full screen (scale 1.0)
-        const bgImages = section.querySelectorAll(".brand-trust__bg-img");
-        bgImages.forEach((img) => {
-          img.style.transform = "scale(1)";
-        });
-
-        // 3) Ensure content remains fully visible
-        const contents = section.querySelectorAll(".brand-trust__content");
-        contents.forEach((content) => {
-          content.style.opacity = "1";
-          content.style.transform = "none";
-        });
-
-        // 4) Trigger stats counter count-up when curtain is fully open (>0.5)
+        // 2) Trigger stats counter count-up when curtain is fully open (>0.5)
         if (progress > 0.5) {
           if (!counterTriggered) {
             counterTriggered = true;
@@ -1444,27 +1417,12 @@ function initBrandTrustPartners() {
       },
     });
   } else {
-    // Mobile/Tablet Fallback: Fully open curtains & scale bg to 1
+    // Mobile/Tablet Fallback: Fully open curtains
     const leftCover = section.querySelector(".brand-trust__left-cover");
     const rightCover = section.querySelector(".brand-trust__right-cover");
-    const bgImages = section.querySelectorAll(
-      ".brand-trust__slide--stats .brand-trust__bg-img",
-    );
-    const contents = section.querySelectorAll(
-      ".brand-trust__slide--stats .brand-trust__content",
-    );
 
     if (leftCover) leftCover.style.width = "0";
     if (rightCover) rightCover.style.width = "0";
-
-    bgImages.forEach((img) => {
-      img.style.transform = "scale(1)";
-    });
-
-    contents.forEach((content) => {
-      content.style.opacity = "1";
-      content.style.transform = "none";
-    });
 
     // Trigger stats counter immediately on mobile fallback
     runStatsAnimation();

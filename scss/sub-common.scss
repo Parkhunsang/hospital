@@ -1,7 +1,7 @@
 /* ==========================================
    Sub-Common CSS (모든 서브페이지 공통 비주얼 & 레이아웃)
    ========================================== */
-
+@use "variables" as *;
 .subpage-hero {
   position: relative;
   display: flex;
@@ -91,6 +91,56 @@
   height: 4px;
   background-color: var(--color-tertiary);
   content: "";
+}
+
+/* Disease Navigation Component (질환 페이지 공통 탭 네비게이션) */
+.disease-nav {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  background-color: $color-bg-light;
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    border-radius: 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #475569;
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-secondary;
+      outline-offset: 2px;
+    }
+  }
+}
+
+.disease-nav__item--active .disease-nav__link,
+.disease-nav__link--active {
+  background-color: $color-tertiary;
+  color: $color-white;
+}
+
+.disease-nav__item--active .disease-nav__link:hover,
+.disease-nav__link--active:hover {
+  color: $color-white;
 }
 
 .causes {

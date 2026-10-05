@@ -259,6 +259,7 @@
   border-radius: 16px;
   background-color: rgba($color-primary, 0.2);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .footer__card-head {

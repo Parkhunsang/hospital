@@ -95,13 +95,13 @@
   border-radius: 8px;
   font-size: $font-base;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba($color-white, 0.5);
   white-space: nowrap;
   text-align: center;
   transition: all 0.2s ease;
 
   &:is(:hover, :focus-visible) {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba($color-white, 0.8);
     color: $color-secondary;
     font-weight: 700;
   }
