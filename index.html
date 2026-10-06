@@ -1263,9 +1263,7 @@
                   class="sr-only"
                 />
                 <span class="self-test__box"></span>
-                <span class="self-test__text"
-                  >다리가 저리거나 당긴다</span
-                >
+                <span class="self-test__text">다리가 저리거나 당긴다</span>
               </label>
               <label class="self-test__checkbox">
                 <input
@@ -1275,9 +1273,7 @@
                   class="sr-only"
                 />
                 <span class="self-test__box"></span>
-                <span class="self-test__text"
-                  >오래 앉아있기 힘들다</span
-                >
+                <span class="self-test__text">오래 앉아있기 힘들다</span>
               </label>
               <label class="self-test__checkbox">
                 <input
@@ -1287,9 +1283,7 @@
                   class="sr-only"
                 />
                 <span class="self-test__box"></span>
-                <span class="self-test__text"
-                  >목과 어깨가 자주 뻐근하다</span
-                >
+                <span class="self-test__text">목과 어깨가 자주 뻐근하다</span>
               </label>
               <label class="self-test__checkbox">
                 <input
@@ -1299,9 +1293,7 @@
                   class="sr-only"
                 />
                 <span class="self-test__box"></span>
-                <span class="self-test__text"
-                  >팔이나 손이 저릴 때가 있다</span
-                >
+                <span class="self-test__text">팔이나 손이 저릴 때가 있다</span>
               </label>
               <label class="self-test__checkbox">
                 <input
@@ -1345,8 +1337,8 @@
             </div>
           </div>
 
-          <div class="doctors__grid">
-            <article class="doctors__card" tabindex="0">
+          <ul class="doctors__list">
+            <li class="doctors__card">
               <span class="doctors__number">01</span>
               <div class="doctors__content">
                 <div class="doctors__header">
@@ -1383,7 +1375,7 @@
                         >오늘 진료 가능 시간</span
                       >
                     </div>
-                    <div class="doctors__schedule-time">09:00 ~ 18:00</div>
+                    <p class="doctors__schedule-time">09:00 ~ 18:00</p>
                   </div>
                   <div class="doctors__actions">
                     <a href="#booking" class="primary-button full-width"
@@ -1399,9 +1391,9 @@
                   alt="강현우 대표원장 프로필 사진"
                 />
               </div>
-            </article>
+            </li>
 
-            <article class="doctors__card" tabindex="0">
+            <li class="doctors__card">
               <span class="doctors__number">02</span>
               <div class="doctors__content">
                 <div class="doctors__header">
@@ -1438,7 +1430,7 @@
                         >오늘 진료 가능 시간</span
                       >
                     </div>
-                    <div class="doctors__schedule-time">09:30 ~ 17:30</div>
+                    <p class="doctors__schedule-time">09:30 ~ 17:30</p>
                   </div>
                   <div class="doctors__actions">
                     <a href="#booking" class="primary-button full-width"
@@ -1454,9 +1446,9 @@
                   alt="이종혜 원장 프로필 사진"
                 />
               </div>
-            </article>
+            </li>
 
-            <article class="doctors__card" tabindex="0">
+            <li class="doctors__card">
               <span class="doctors__number">03</span>
               <div class="doctors__content">
                 <div class="doctors__header">
@@ -1493,7 +1485,7 @@
                         >오늘 진료 가능 시간</span
                       >
                     </div>
-                    <div class="doctors__schedule-time">10:00 ~ 19:00</div>
+                    <p class="doctors__schedule-time">10:00 ~ 19:00</p>
                   </div>
                   <div class="doctors__actions">
                     <a href="#booking" class="primary-button full-width"
@@ -1509,9 +1501,9 @@
                   alt="김준우 원장 프로필 사진"
                 />
               </div>
-            </article>
+            </li>
 
-            <article class="doctors__card" tabindex="0">
+            <li class="doctors__card">
               <span class="doctors__number">04</span>
               <div class="doctors__content">
                 <div class="doctors__header">
@@ -1548,7 +1540,7 @@
                         >오늘 진료 가능 시간</span
                       >
                     </div>
-                    <div class="doctors__schedule-time">09:00 ~ 17:00</div>
+                    <p class="doctors__schedule-time">09:00 ~ 17:00</p>
                   </div>
                   <div class="doctors__actions">
                     <a href="#booking" class="primary-button full-width"
@@ -1564,9 +1556,9 @@
                   alt="김서연 부원장 프로필 사진"
                 />
               </div>
-            </article>
+            </li>
 
-            <article class="doctors__card" tabindex="0">
+            <li class="doctors__card">
               <span class="doctors__number">05</span>
               <div class="doctors__content">
                 <div class="doctors__header">
@@ -1603,7 +1595,7 @@
                         >오늘 진료 가능 시간</span
                       >
                     </div>
-                    <div class="doctors__schedule-time">09:00 ~ 18:00</div>
+                    <p class="doctors__schedule-time">09:00 ~ 18:00</p>
                   </div>
                   <div class="doctors__actions">
                     <a href="#booking" class="primary-button full-width"
@@ -1619,8 +1611,8 @@
                   alt="이충혁 과장 프로필 사진"
                 />
               </div>
-            </article>
-          </div>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -1628,7 +1620,7 @@
         <div class="container">
           <div class="location__wrapper">
             <div class="location__header">
-              <div class="section-head location__title-wrap">
+              <div class="section-head--left">
                 <span class="eyebrow">HOSPITAL LOCATION & FACILITIES</span>
                 <span class="sub-eyebrow">
                   편안한 환경으로 건강한 일상을 함께
@@ -1658,57 +1650,47 @@
               <ul class="swiper-wrapper">
                 <li class="swiper-slide location__slide">
                   <div class="location__card">
-                    <div class="location__card-image-wrap">
-                      <img
-                        src="./assets/intro_door.png"
-                        alt="코어업정형외과 외래 센터 입구 및 안내 데스크 전경"
-                        class="location__card-image"
-                      />
-                    </div>
+                    <img
+                      src="./assets/intro_door.png"
+                      alt="코어업정형외과 외래 센터 입구 및 안내 데스크 전경"
+                      class="location__card-image"
+                    />
                   </div>
                 </li>
                 <li class="swiper-slide location__slide">
                   <div class="location__card">
-                    <div class="location__card-image-wrap">
-                      <img
-                        src="./assets/location_02.png"
-                        alt="도수 및 재활 운동치료실 내부 모습"
-                        class="location__card-image"
-                      />
-                    </div>
+                    <img
+                      src="./assets/location_02.png"
+                      alt="도수 및 재활 운동치료실 내부 모습"
+                      class="location__card-image"
+                    />
                   </div>
                 </li>
                 <li class="swiper-slide location__slide">
                   <div class="location__card">
-                    <div class="location__card-image-wrap">
-                      <img
-                        src="./assets/location_03.png"
-                        alt="비수술 척추 관절 치료실 전경"
-                        class="location__card-image"
-                      />
-                    </div>
+                    <img
+                      src="./assets/location_03.png"
+                      alt="비수술 척추 관절 치료실 전경"
+                      class="location__card-image"
+                    />
                   </div>
                 </li>
                 <li class="swiper-slide location__slide">
                   <div class="location__card">
-                    <div class="location__card-image-wrap">
-                      <img
-                        src="./assets/location_04.png"
-                        alt="독립형 수액치료실 및 온열 물리치료 공간"
-                        class="location__card-image"
-                      />
-                    </div>
+                    <img
+                      src="./assets/location_04.png"
+                      alt="독립형 수액치료실 및 온열 물리치료 공간"
+                      class="location__card-image"
+                    />
                   </div>
                 </li>
                 <li class="swiper-slide location__slide">
                   <div class="location__card">
-                    <div class="location__card-image-wrap">
-                      <img
-                        src="./assets/location_05.png"
-                        alt="체형 분석 및 정밀 엑스레이 검사실"
-                        class="location__card-image"
-                      />
-                    </div>
+                    <img
+                      src="./assets/location_05.png"
+                      alt="체형 분석 및 정밀 엑스레이 검사실"
+                      class="location__card-image"
+                    />
                   </div>
                 </li>
               </ul>
@@ -1729,7 +1711,7 @@
               type="radio"
               id="news-tab-notice"
               name="news-tab"
-              class="news__tab-input"
+              class="sr-only"
               checked
               aria-label="공지사항"
             />
@@ -1737,7 +1719,7 @@
               type="radio"
               id="news-tab-health"
               name="news-tab"
-              class="news__tab-input"
+              class="sr-only"
               aria-label="건강 정보"
             />
 

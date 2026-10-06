@@ -198,7 +198,8 @@
 .causes__img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /* 대표 증상 */
@@ -213,7 +214,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: start;
-  column-gap: 24px;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
   row-gap: 72px;
 }
 
@@ -232,7 +234,8 @@
 .symptoms__img-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .symptoms__text {
@@ -272,7 +275,8 @@
   }
   .symptoms__list {
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
+    -moz-column-gap: 20px;
+         column-gap: 20px;
     row-gap: 36px;
   }
   .symptoms__img-wrapper {

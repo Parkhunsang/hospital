@@ -43,6 +43,7 @@
     max-width: 100%;
     margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
   }
 }
 
@@ -75,9 +76,6 @@
     letter-spacing: -0.03em;
     word-break: keep-all;
   }
-}
-.section-head--left .section-title {
-  margin-bottom: 20px;
 }
 
 .section-desc {
@@ -211,7 +209,6 @@
   font-size: $font-2xl;
   font-weight: 800;
   color: $color-primary;
-  letter-spacing: -0.02em;
 
   @media (max-width: $breakpoint-tablet) {
     font-size: 20px;

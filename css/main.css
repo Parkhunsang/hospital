@@ -1139,6 +1139,11 @@ body.door-locked {
     font-size: 28px;
   }
 }
+@media (max-width: 640px) {
+  .brand-trust__title {
+    font-size: 22px;
+  }
+}
 
 .brand-trust__highlight {
   color: #fdb608;
@@ -1156,6 +1161,11 @@ body.door-locked {
 @media (max-width: 960px) {
   .brand-trust__desc {
     font-size: 15px;
+  }
+}
+@media (max-width: 640px) {
+  .brand-trust__desc {
+    font-size: 14px;
   }
 }
 
@@ -1210,6 +1220,11 @@ body.door-locked {
     margin-bottom: 0;
   }
 }
+@media (max-width: 640px) {
+  .brand-trust__stat-label {
+    font-size: 12px;
+  }
+}
 
 .brand-trust__stat-val {
   font-size: 2.25rem;
@@ -1225,6 +1240,11 @@ body.door-locked {
 @media (max-width: 960px) {
   .brand-trust__stat-val {
     font-size: 24px;
+  }
+}
+@media (max-width: 640px) {
+  .brand-trust__stat-val {
+    font-size: 20px;
   }
 }
 
@@ -1317,13 +1337,21 @@ body.door-locked {
 
 /* 05. brand [END] */
 /* 06. doctors [START] */
-.doctors__grid {
+.doctors__list {
   display: flex;
   overflow: hidden;
   width: 100%;
-  height: 600px;
+  height: 620px;
   border-top: 1px solid #eef2f6;
   border-bottom: 1px solid #eef2f6;
+}
+@media (max-width: 960px) {
+  .doctors__list {
+    flex-direction: column;
+    gap: 30px;
+    height: auto;
+    border: none;
+  }
 }
 
 .doctors__card {
@@ -1331,7 +1359,6 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   overflow: hidden;
   flex: 1;
   height: 100%;
@@ -1340,38 +1367,44 @@ body.door-locked {
   transition: flex 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.5s ease, box-shadow 0.5s ease;
   cursor: pointer;
 }
-
-.doctors__card + .doctors__card {
-  border-left: 1px solid #eef2f6;
+@media (max-width: 960px) {
+  .doctors__card {
+    flex-direction: row;
+    align-items: center;
+    flex: none;
+    height: auto;
+    padding: 30px 20px;
+    border: 1px solid #eef2f6;
+    border-radius: 24px;
+    cursor: default;
+  }
 }
-
-.doctors__card:hover,
-.doctors__card:focus-within {
-  flex: 2.2;
-  padding: 36px 28px;
-  background-color: #1b2d5a;
-  box-shadow: 0 4px 12px rgba(27, 45, 90, 0.04);
-  justify-content: space-evenly;
+@media (max-width: 640px) {
+  .doctors__card {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+  }
 }
 
 .doctors__number {
   display: block;
-  order: 1;
   margin-bottom: 20px;
-  font-family: "Outfit", sans-serif;
   font-size: 2.25rem;
   font-weight: 800;
   color: #2f5fa7;
   opacity: 0.35;
   transition: opacity 0.4s ease, transform 0.4s ease, height 0.4s ease, margin-bottom 0.4s ease;
 }
-
-.doctors__card:hover .doctors__number,
-.doctors__card:focus-within .doctors__number {
-  margin-bottom: 0;
-  opacity: 0;
-  transform: translateY(-20px);
-  height: 0;
+@media (max-width: 960px) {
+  .doctors__number {
+    margin: 0 20px 0 10px;
+  }
+}
+@media (max-width: 640px) {
+  .doctors__number {
+    margin: 0 0 12px 0;
+  }
 }
 
 .doctors__content {
@@ -1379,22 +1412,31 @@ body.door-locked {
   z-index: 3;
   display: flex;
   flex-direction: column;
+  gap: 24px;
   align-items: center;
-  order: 2;
   width: 100%;
+}
+@media (max-width: 960px) {
+  .doctors__content {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+    width: auto;
+  }
+}
+@media (max-width: 640px) {
+  .doctors__content {
+    align-items: center;
+    width: 100%;
+  }
 }
 
 .doctors__header {
   display: flex;
   align-items: baseline;
   gap: 8px;
-  margin-bottom: 24px;
   text-align: center;
-}
-
-.doctors__card:hover .doctors__header .card-title,
-.doctors__card:focus-within .doctors__header .card-title {
-  color: #fff;
 }
 
 .doctors__role {
@@ -1404,12 +1446,10 @@ body.door-locked {
   transition: color 0.5s ease;
 }
 
-.doctors__card:hover .doctors__role,
-.doctors__card:focus-within .doctors__role {
-  color: rgba(255, 255, 255, 0.7);
-}
-
 .doctors__info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   overflow: hidden;
   width: 100%;
   max-width: 100%;
@@ -1419,21 +1459,24 @@ body.door-locked {
   opacity: 0;
   transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.4s ease, opacity 0.15s ease;
 }
-
-.doctors__card:hover .doctors__info,
-.doctors__card:focus-within .doctors__info {
-  height: auto;
-  margin-top: 10px;
-  opacity: 1;
-  transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.45s ease, opacity 0.3s ease 0.15s;
+@media (max-width: 960px) {
+  .doctors__info {
+    overflow: visible;
+    height: auto;
+    opacity: 1;
+  }
 }
 
 .doctors__specs {
-  margin-bottom: 20px;
-  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding: 0;
+}
+@media (max-width: 960px) {
+  .doctors__specs .info-label {
+    color: #2f5fa7;
+  }
 }
 
 .doctors__spec-text {
@@ -1442,18 +1485,28 @@ body.door-locked {
   color: rgba(255, 255, 255, 0.85);
   word-break: keep-all;
 }
+@media (max-width: 960px) {
+  .doctors__spec-text {
+    font-weight: 500;
+    color: #666;
+  }
+}
 
 .doctors__schedule {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
   padding: 12px 18px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.08);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+}
+@media (max-width: 960px) {
+  .doctors__schedule {
+    background: #f9fbfd;
+  }
 }
 
 .doctors__schedule-head {
@@ -1462,11 +1515,21 @@ body.door-locked {
   gap: 8px;
   color: #fff;
 }
+@media (max-width: 960px) {
+  .doctors__schedule-head {
+    color: #1b2d5a;
+  }
+}
 
 .doctors__schedule-label {
   font-size: 0.875rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9019607843);
+  color: #fff;
+}
+@media (max-width: 960px) {
+  .doctors__schedule-label {
+    color: #1b2d5a;
+  }
 }
 
 .doctors__schedule-icon {
@@ -1479,6 +1542,11 @@ body.door-locked {
   font-weight: 800;
   color: #fdb608;
 }
+@media (max-width: 960px) {
+  .doctors__schedule-time {
+    color: #2f5fa7;
+  }
+}
 
 .doctors__actions {
   display: flex;
@@ -1489,34 +1557,29 @@ body.door-locked {
   width: 100%;
 }
 
-.doctors__card:hover .primary-button,
-.doctors__card:focus-within .primary-button {
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
-  color: #1b2d5a;
-}
-
-.doctors__card:hover .primary-button:hover,
-.doctors__card:focus-within .primary-button:hover {
-  background: #eef2f6;
-}
-
 .doctors__image-container {
   display: block;
   overflow: hidden;
-  order: 3;
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   margin-top: auto;
   border: 1px solid #eef2f6;
   border-radius: 50%;
   background-color: #f9fbfd;
-  transition: border-color 0.4s ease;
+  transform-origin: center center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
 }
-
-.doctors__card:hover .doctors__image-container,
-.doctors__card:focus-within .doctors__image-container {
-  border-color: rgba(255, 255, 255, 0.2);
+@media (max-width: 960px) {
+  .doctors__image-container {
+    width: 140px;
+    height: 140px;
+    margin: 0 10px;
+  }
+}
+@media (max-width: 640px) {
+  .doctors__image-container {
+    display: none;
+  }
 }
 
 .doctors__bg-image {
@@ -1526,6 +1589,49 @@ body.door-locked {
   height: 100%;
 }
 
+@media (min-width: 961px) {
+  .doctors__card:hover,
+  .doctors__card:focus-within {
+    flex: 2;
+    background-color: #1b2d5a;
+    box-shadow: 0 4px 12px rgba(27, 45, 90, 0.04);
+  }
+  .doctors__card:hover .doctors__number,
+  .doctors__card:focus-within .doctors__number {
+    height: 0;
+    margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  .doctors__card:hover .doctors__header .card-title,
+  .doctors__card:focus-within .doctors__header .card-title {
+    color: #fff;
+  }
+  .doctors__card:hover .doctors__role,
+  .doctors__card:focus-within .doctors__role {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .doctors__card:hover .doctors__info,
+  .doctors__card:focus-within .doctors__info {
+    height: auto;
+    opacity: 1;
+    transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease 0.15s;
+  }
+  .doctors__card:hover .doctors__image-container,
+  .doctors__card:focus-within .doctors__image-container {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: scale(0.8);
+  }
+  .doctors__card:hover .primary-button,
+  .doctors__card:focus-within .primary-button {
+    background: #fff;
+    color: #1b2d5a;
+  }
+  .doctors__card:hover .primary-button:hover,
+  .doctors__card:focus-within .primary-button:hover {
+    background: #eef2f6;
+  }
+}
 /* 05. 의료진 소개 및 오늘 진료 가능 일정 [END] */
 /* 06. 자가진단 테스트 [START] */
 .self-test__wrapper {
@@ -1653,7 +1759,6 @@ body.door-locked {
 
 .location__wrapper {
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
   gap: 40px;
 }
@@ -1662,12 +1767,11 @@ body.door-locked {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex-shrink: 0;
-  width: 100%;
+  align-items: flex-end;
 }
 
 .location__title-wrap {
-  margin: 0 0 20px 0;
+  margin: 0;
   text-align: start;
 }
 
@@ -1677,15 +1781,9 @@ body.door-locked {
   transition: transform 0.3s ease;
 }
 
-.location__controls {
-  margin-top: 40px;
-}
-
 .location__swiper {
   overflow: hidden;
-  min-width: 0;
   width: 100%;
-  max-width: 100%;
 }
 
 .location__slide {
@@ -1693,18 +1791,11 @@ body.door-locked {
 }
 
 .location__card {
-  height: 100%;
+  height: 330px;
   border: 1px solid #eef2f6;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
-}
-
-.location__card-image-wrap {
-  position: relative;
   overflow: hidden;
-  width: 100%;
-  height: 330px;
-  border-radius: 20px;
 }
 
 .location__card-image {
@@ -1716,20 +1807,10 @@ body.door-locked {
 /* 07. 장소 소개 [END] */
 /* 08. 공지사항 및 건강 정보 [START] */
 .news__tab-container {
-  position: relative;
   width: 100%;
-}
-
-.news__tab-input {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .news__tab-bar {
@@ -1737,7 +1818,6 @@ body.door-locked {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  margin-bottom: 40px;
 }
 
 .news__tab-button {
@@ -1786,6 +1866,16 @@ body.door-locked {
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   padding: 0;
+}
+@media (max-width: 960px) {
+  .news__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .news__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .news__item {
@@ -1879,162 +1969,9 @@ body.door-locked {
   html {
     font-size: 15px;
   }
-  .doctors__grid {
-    flex-direction: column;
-    gap: 30px;
-    height: auto;
-    border: none;
-    border-radius: 0;
-  }
-  .doctors__card {
-    flex-direction: row;
-    align-items: center;
-    flex: none;
-    width: 100%;
-    height: auto;
-    padding: 30px 20px;
-    border-radius: 24px;
-    border: 1px solid #eef2f6;
-  }
-  .doctors__card + .doctors__card {
-    border-left: 1px solid #eef2f6;
-  }
-  .doctors__number {
-    order: 1;
-    margin: 0 20px 0 10px;
-    opacity: 0.3;
-    transform: none;
-    height: auto;
-  }
-  .doctors__card:hover .doctors__number,
-  .doctors__card:focus-within .doctors__number {
-    opacity: 0.3;
-    transform: none;
-    height: auto;
-    margin-bottom: 0;
-  }
-  .doctors__content {
-    order: 2;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: auto;
-    flex: 1;
-  }
-  .doctors__header {
-    margin-bottom: 12px;
-  }
-  .doctors__header .card-title {
-    justify-content: flex-start;
-  }
-  .doctors__info {
-    height: auto;
-    overflow: visible;
-    opacity: 1;
-    text-align: left;
-  }
-  .doctors__card:hover .doctors__info,
-  .doctors__card:focus-within .doctors__info {
-    height: auto;
-    margin-top: 10px;
-    opacity: 1;
-  }
-  .doctors__image-container {
-    order: 3;
-    width: 140px;
-    height: 140px;
-    margin: 0 10px 0 20px;
-    opacity: 1;
-    transform: none;
-  }
-  .doctors__card:hover .doctors__image-container,
-  .doctors__card:focus-within .doctors__image-container {
-    opacity: 1;
-    transform: none;
-    height: 140px;
-    margin-top: 0;
-  }
-  .doctors__schedule {
-    border: none;
-    background: #f9fbfd;
-  }
-  .doctors__schedule-head {
-    color: #1b2d5a;
-  }
-  .doctors__schedule-time {
-    color: #2f5fa7;
-  }
-  .news__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .location__wrapper {
-    flex-direction: column;
-    gap: 32px;
-  }
-  .location__header {
-    width: 100%;
-  }
-  .location__controls {
-    margin-top: 24px;
-  }
-  .location__card-image-wrap {
-    height: 200px;
-  }
 }
 @media (max-width: 640px) {
   html {
     font-size: 14px;
-  }
-  .doctors__card {
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 20px;
-  }
-  .doctors__number {
-    order: 1;
-    margin: 0 0 10px 0;
-  }
-  .doctors__content {
-    order: 2;
-    align-items: center;
-    width: 100%;
-    padding: 0;
-  }
-  .doctors__header .card-title {
-    justify-content: center;
-  }
-  .doctors__image-container {
-    order: 3;
-    width: 140px;
-    height: 140px;
-    margin: 20px auto 0 auto;
-    opacity: 1;
-    transform: none;
-  }
-  .doctors__card:hover .doctors__image-container,
-  .doctors__card:focus-within .doctors__image-container {
-    opacity: 1;
-    transform: none;
-    height: 140px;
-    margin-top: 20px;
-  }
-  .doctors__schedule {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .news__grid {
-    grid-template-columns: 1fr;
-  }
-  .brand-trust__title {
-    font-size: 22px;
-  }
-  .brand-trust__desc {
-    font-size: 14px;
-  }
-  .brand-trust__stat-label {
-    font-size: 12px;
-  }
-  .brand-trust__stat-val {
-    font-size: 20px;
   }
 }
