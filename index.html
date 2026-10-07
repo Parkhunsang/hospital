@@ -471,8 +471,8 @@
               <p class="info-badge__desc">통증 부위를 선택해주세요</p>
             </div>
 
-            <div class="hero-3d__pain-list">
-              <div
+            <ul class="hero-3d__pain-list">
+              <li
                 class="hero-3d__pain-item"
                 data-target="neck"
                 role="button"
@@ -480,8 +480,8 @@
                 aria-label="목 통증 정보 보기"
               >
                 <span class="hero-3d__menu-text">목 통증</span>
-              </div>
-              <div
+              </li>
+              <li
                 class="hero-3d__pain-item"
                 data-target="shoulder"
                 role="button"
@@ -489,8 +489,8 @@
                 aria-label="어깨 통증 정보 보기"
               >
                 <span class="hero-3d__menu-text">어깨 통증</span>
-              </div>
-              <div
+              </li>
+              <li
                 class="hero-3d__pain-item"
                 data-target="waist"
                 role="button"
@@ -498,8 +498,8 @@
                 aria-label="허리 통증 정보 보기"
               >
                 <span class="hero-3d__menu-text">허리 통증</span>
-              </div>
-              <div
+              </li>
+              <li
                 class="hero-3d__pain-item"
                 data-target="wrist"
                 role="button"
@@ -507,8 +507,8 @@
                 aria-label="손 및 손목 통증 정보 보기"
               >
                 <span class="hero-3d__menu-text">손 통증</span>
-              </div>
-              <div
+              </li>
+              <li
                 class="hero-3d__pain-item"
                 data-target="knee"
                 role="button"
@@ -516,8 +516,8 @@
                 aria-label="무릎 통증 정보 보기"
               >
                 <span class="hero-3d__menu-text">무릎 통증</span>
-              </div>
-              <div
+              </li>
+              <li
                 class="hero-3d__pain-item"
                 data-target="foot"
                 role="button"
@@ -525,8 +525,8 @@
                 aria-label="발 및 발목 통증 정보 보기"
               >
                 <span class="hero-3d__menu-text">발 통증</span>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
           <div class="hero-3d__bottom-bar">
             <div
@@ -620,7 +620,7 @@
 
       <section class="section fast-diagnosis">
         <div class="container fast-diagnosis__conwrap">
-          <div class="section-head">
+          <div class="section-head--left">
             <span class="eyebrow">ONE-STOP DIAGNOSIS SYSTEM</span>
             <span class="sub-eyebrow">신속하고 정확한 원스톱 진단 시스템</span>
             <h2 class="section-title">
@@ -1707,238 +1707,224 @@
           </div>
 
           <div class="news__tab-container">
-            <input
-              type="radio"
-              id="news-tab-notice"
-              name="news-tab"
-              class="sr-only"
-              checked
-              aria-label="공지사항"
-            />
-            <input
-              type="radio"
-              id="news-tab-health"
-              name="news-tab"
-              class="sr-only"
-              aria-label="건강 정보"
-            />
-
-            <div
-              class="news__tab-bar notranslate"
-              role="region"
-              aria-label="소식 탭 메뉴"
-            >
-              <label
-                for="news-tab-notice"
-                class="news__tab-button news__tab-button--notice"
+            <div class="news__tab-bar" role="tablist" aria-label="소식 탭 목록">
+              <button
+                type="button"
+                role="tab"
+                id="news-tab-notice"
+                class="news__tab-button"
+                aria-selected="true"
+                aria-controls="news-panel-notice"
+                tabindex="0"
               >
-                <span>공지사항</span>
-              </label>
-              <label
-                for="news-tab-health"
-                class="news__tab-button news__tab-button--health"
+                공지사항
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="news-tab-health"
+                class="news__tab-button"
+                aria-selected="false"
+                aria-controls="news-panel-health"
+                tabindex="-1"
               >
-                <span>건강 정보</span>
-              </label>
+                건강 정보
+              </button>
             </div>
 
-            <div class="news__content news__content--notice">
+            <div
+              id="news-panel-notice"
+              class="news__content news__content--notice is-active"
+              role="tabpanel"
+              aria-labelledby="news-tab-notice"
+              tabindex="0"
+            >
               <ul class="news__grid">
                 <li class="news__item">
-                  <article class="news__card">
-                    <a href="#notice-1" class="news__link">
-                      <div class="news__thumb news__thumb--notice-1">
-                        <img
-                          src="./assets/news_notice_1.png"
-                          alt="2026년 8월 15일 광복절 및 17일 대체공휴일 진료 시간 안내 썸네일"
-                          class="news__img"
-                        />
-                      </div>
-                      <div class="news__body">
-                        <h3 class="news__title">
-                          2026년 8월 15일 광복절 및 17일 대체공휴일 진료 시간
-                          안내
-                        </h3>
-                        <p class="news__desc">
-                          코어업정형외과의 광복절 및 대체공휴일의 외래 진료
-                          일정을 안내해 드립니다.
-                        </p>
-                        <span class="news__date">2026.07.20</span>
-                      </div>
-                    </a>
-                  </article>
+                  <a href="#notice-1" class="news__link">
+                    <div class="news__thumb news__thumb--notice-1">
+                      <img
+                        src="./assets/news_notice_1.png"
+                        alt="2026년 8월 15일 광복절 및 17일 대체공휴일 진료 시간 안내 썸네일"
+                        class="news__img"
+                      />
+                    </div>
+                    <div class="news__body">
+                      <h3 class="news__title">
+                        2026년 8월 15일 광복절 및 17일 대체공휴일 진료 시간 안내
+                      </h3>
+                      <p class="news__desc">
+                        코어업정형외과의 광복절 및 대체공휴일의 외래 진료 일정을
+                        안내해 드립니다.
+                      </p>
+                      <span class="news__date">2026.07.20</span>
+                    </div>
+                  </a>
                 </li>
 
                 <li class="news__item">
-                  <article class="news__card">
-                    <a href="#notice-2" class="news__link">
-                      <div class="news__thumb news__thumb--notice-2">
-                        <img
-                          src="./assets/news_notice_2.png"
-                          alt="SwiftMR AI 정밀 진단 시스템 도입 썸네일"
-                          class="news__img"
-                        />
-                      </div>
-                      <div class="news__body">
-                        <h3 class="news__title">
-                          스위프트 엠알(SwiftMR®) AI 정밀 진단 시스템 도입
-                        </h3>
-                        <p class="news__desc">
-                          검사 시간은 획기적으로 단축하고 화질은 한층 높인 AI
-                          기반 MRI 해상도 선명화 기술을 도입하였습니다.
-                        </p>
-                        <span class="news__date">2026.07.15</span>
-                      </div>
-                    </a>
-                  </article>
+                  <a href="#notice-2" class="news__link">
+                    <div class="news__thumb news__thumb--notice-2">
+                      <img
+                        src="./assets/news_notice_2.png"
+                        alt="SwiftMR AI 정밀 진단 시스템 도입 썸네일"
+                        class="news__img"
+                      />
+                    </div>
+                    <div class="news__body">
+                      <h3 class="news__title">
+                        스위프트 엠알(SwiftMR®) AI 정밀 진단 시스템 도입
+                      </h3>
+                      <p class="news__desc">
+                        검사 시간은 획기적으로 단축하고 화질은 한층 높인 AI 기반
+                        MRI 해상도 선명화 기술을 도입하였습니다.
+                      </p>
+                      <span class="news__date">2026.07.15</span>
+                    </div>
+                  </a>
                 </li>
 
                 <li class="news__item">
-                  <article class="news__card">
-                    <a href="#notice-3" class="news__link">
-                      <div class="news__thumb news__thumb--notice-3">
-                        <img
-                          src="./assets/news_notice_3.png"
-                          alt="지역사회 통합 의료돌봄 협약 체결 썸네일"
-                          class="news__img"
-                        />
-                      </div>
-                      <div class="news__body">
-                        <h3 class="news__title">
-                          강남구청과 함께하는 지역사회 통합 의료돌봄 협약 체결
-                        </h3>
-                        <p class="news__desc">
-                          지역 주민의 주거지 중심 맞춤형 의료·돌봄 강화를 위해
-                          지자체와 연계한 전문 의료 체계를 구축합니다.
-                        </p>
-                        <span class="news__date">2026.07.05</span>
-                      </div>
-                    </a>
-                  </article>
+                  <a href="#notice-3" class="news__link">
+                    <div class="news__thumb news__thumb--notice-3">
+                      <img
+                        src="./assets/news_notice_3.png"
+                        alt="지역사회 통합 의료돌봄 협약 체결 썸네일"
+                        class="news__img"
+                      />
+                    </div>
+                    <div class="news__body">
+                      <h3 class="news__title">
+                        강남구청과 함께하는 지역사회 통합 의료돌봄 협약 체결
+                      </h3>
+                      <p class="news__desc">
+                        지역 주민의 주거지 중심 맞춤형 의료·돌봄 강화를 위해
+                        지자체와 연계한 전문 의료 체계를 구축합니다.
+                      </p>
+                      <span class="news__date">2026.07.05</span>
+                    </div>
+                  </a>
                 </li>
 
                 <li class="news__item">
-                  <article class="news__card">
-                    <a href="#notice-4" class="news__link">
-                      <div class="news__thumb news__thumb--notice-4">
-                        <img
-                          src="./assets/news_notice_4.png"
-                          alt="도수재활 치료센터 야간 연장 운용 썸네일"
-                          class="news__img"
-                        />
-                      </div>
-                      <div class="news__body">
-                        <h3 class="news__title">
-                          비수술 척추·관절 도수재활 치료센터 야간 연장 운용
-                        </h3>
-                        <p class="news__desc">
-                          직장인 및 학업으로 낮 시간 방문이 어려운 환자분들을
-                          위해 도수 및 스포츠 재활 센터를 20시까지 운영합니다.
-                        </p>
-                        <span class="news__date">2026.06.28</span>
-                      </div>
-                    </a>
-                  </article>
+                  <a href="#notice-4" class="news__link">
+                    <div class="news__thumb news__thumb--notice-4">
+                      <img
+                        src="./assets/news_notice_4.png"
+                        alt="도수재활 치료센터 야간 연장 운용 썸네일"
+                        class="news__img"
+                      />
+                    </div>
+                    <div class="news__body">
+                      <h3 class="news__title">
+                        비수술 척추·관절 도수재활 치료센터 야간 연장 운용
+                      </h3>
+                      <p class="news__desc">
+                        직장인 및 학업으로 낮 시간 방문이 어려운 환자분들을 위해
+                        도수 및 스포츠 재활 센터를 20시까지 운영합니다.
+                      </p>
+                      <span class="news__date">2026.06.28</span>
+                    </div>
+                  </a>
                 </li>
               </ul>
             </div>
 
-            <div class="news__content news__content--health">
+            <div
+              id="news-panel-health"
+              class="news__content news__content--health"
+              role="tabpanel"
+              aria-labelledby="news-tab-health"
+              tabindex="0"
+              hidden
+            >
               <ul class="news__grid">
                 <li class="news__item">
-                  <article class="news__card">
-                    <a href="#health-1" class="news__link">
-                      <div class="news__thumb news__thumb--health-1">
-                        <img
-                          src="./assets/news_health_1.png"
-                          alt="허리디스크 자가 진단 구분법 썸네일"
-                          class="news__img"
-                        />
-                      </div>
-                      <div class="news__body">
-                        <h3 class="news__title">
-                          허리디스크와 단순 근육통, 자가 진단으로 구분하는 법
-                        </h3>
-                        <p class="news__desc">
-                          허리가 쑤시고 뻐근할 때 단순 피로 근육통인지 신경 압박
-                          디스크인지 꼭 확인해야 할 주요 차이점.
-                        </p>
-                        <span class="news__date">2026.07.22</span>
-                      </div>
-                    </a>
-                  </article>
+                  <a href="#health-1" class="news__link">
+                    <div class="news__thumb news__thumb--health-1">
+                      <img
+                        src="./assets/news_health_1.png"
+                        alt="허리디스크 자가 진단 구분법 썸네일"
+                        class="news__img"
+                      />
+                    </div>
+                    <div class="news__body">
+                      <h3 class="news__title">
+                        허리디스크와 단순 근육통, 자가 진단으로 구분하는 법
+                      </h3>
+                      <p class="news__desc">
+                        허리가 쑤시고 뻐근할 때 단순 피로 근육통인지 신경 압박
+                        디스크인지 꼭 확인해야 할 주요 차이점.
+                      </p>
+                      <span class="news__date">2026.07.22</span>
+                    </div>
+                  </a>
                 </li>
 
                 <li class="news__item">
-                  <article class="news__card">
-                    <a href="#health-2" class="news__link">
-                      <div class="news__thumb news__thumb--health-2">
-                        <img
-                          src="./assets/news_health_2.png"
-                          alt="목디스크 의심 신호 썸네일"
-                          class="news__img"
-                        />
-                      </div>
-                      <div class="news__body">
-                        <h3 class="news__title">
-                          팔이 저리고 손끝이 찌릿하다면? 목디스크 의심 신호
-                        </h3>
-                        <p class="news__desc">
-                          목 통증보다 팔 저림과 손가락 감각 이상이 먼저 발생하는
-                          목디스크의 메커니즘과 비수술 치료법.
-                        </p>
-                        <span class="news__date">2026.07.18</span>
-                      </div>
-                    </a>
-                  </article>
+                  <a href="#health-2" class="news__link">
+                    <div class="news__thumb news__thumb--health-2">
+                      <img
+                        src="./assets/news_health_2.png"
+                        alt="목디스크 의심 신호 썸네일"
+                        class="news__img"
+                      />
+                    </div>
+                    <div class="news__body">
+                      <h3 class="news__title">
+                        팔이 저리고 손끝이 찌릿하다면? 목디스크 의심 신호
+                      </h3>
+                      <p class="news__desc">
+                        목 통증보다 팔 저림과 손가락 감각 이상이 먼저 발생하는
+                        목디스크의 메커니즘과 비수술 치료법.
+                      </p>
+                      <span class="news__date">2026.07.18</span>
+                    </div>
+                  </a>
                 </li>
 
                 <li class="news__item">
-                  <article class="news__card">
-                    <a href="#health-3" class="news__link">
-                      <div class="news__thumb news__thumb--health-3">
-                        <img
-                          src="./assets/news_health_3.png"
-                          alt="무릎 관절염 단계별 맞춤 케어 썸네일"
-                          class="news__img"
-                        />
-                      </div>
-                      <div class="news__body">
-                        <h3 class="news__title">
-                          내 무릎 관절염은 몇 기일까? 단계별 맞춤 관절 케어
-                        </h3>
-                        <p class="news__desc">
-                          계단을 내려갈 때 시큰거리는 연골 손상 초기부터
-                          인공관절 전 단계까지 관절염 보존 치료 가이드라인.
-                        </p>
-                        <span class="news__date">2026.07.10</span>
-                      </div>
-                    </a>
-                  </article>
+                  <a href="#health-3" class="news__link">
+                    <div class="news__thumb news__thumb--health-3">
+                      <img
+                        src="./assets/news_health_3.png"
+                        alt="무릎 관절염 단계별 맞춤 케어 썸네일"
+                        class="news__img"
+                      />
+                    </div>
+                    <div class="news__body">
+                      <h3 class="news__title">
+                        내 무릎 관절염은 몇 기일까? 단계별 맞춤 관절 케어
+                      </h3>
+                      <p class="news__desc">
+                        계단을 내려갈 때 시큰거리는 연골 손상 초기부터 인공관절
+                        전 단계까지 관절염 보존 치료 가이드라인.
+                      </p>
+                      <span class="news__date">2026.07.10</span>
+                    </div>
+                  </a>
                 </li>
 
                 <li class="news__item">
-                  <article class="news__card">
-                    <a href="#health-4" class="news__link">
-                      <div class="news__thumb news__thumb--health-4">
-                        <img
-                          src="./assets/news_health_4.png"
-                          alt="만성 두통과 어지럼증 검사법 썸네일"
-                          class="news__img"
-                        />
-                      </div>
-                      <div class="news__body">
-                        <h3 class="news__title">
-                          이유 없이 반복되는 만성 두통과 어지럼증 검사법
-                        </h3>
-                        <p class="news__desc">
-                          뇌혈류 정밀 검사 및 AI 인공지능 뇌 검진을 통해
-                          뇌동맥류 위험도를 사전에 예방하고 케어하는 방법.
-                        </p>
-                        <span class="news__date">2026.06.30</span>
-                      </div>
-                    </a>
-                  </article>
+                  <a href="#health-4" class="news__link">
+                    <div class="news__thumb news__thumb--health-4">
+                      <img
+                        src="./assets/news_health_4.png"
+                        alt="만성 두통과 어지럼증 검사법 썸네일"
+                        class="news__img"
+                      />
+                    </div>
+                    <div class="news__body">
+                      <h3 class="news__title">
+                        이유 없이 반복되는 만성 두통과 어지럼증 검사법
+                      </h3>
+                      <p class="news__desc">
+                        뇌혈류 정밀 검사 및 AI 인공지능 뇌 검진을 통해 뇌동맥류
+                        위험도를 사전에 예방하고 케어하는 방법.
+                      </p>
+                      <span class="news__date">2026.06.30</span>
+                    </div>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -1953,7 +1939,7 @@
       </div>
       <div class="footer__inner">
         <div class="footer__brand">
-          <div class="footer__brand-left">
+          <div class="footer__brand-wrap">
             <img
               class="footer__brand-logo"
               src="assets/logo.png"

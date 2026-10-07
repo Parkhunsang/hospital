@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof initFastDiagnosis === "function") initFastDiagnosis();
   if (typeof initBrandTrustPartners === "function") initBrandTrustPartners();
   if (typeof initLocationSlider === "function") initLocationSlider();
+  if (typeof initNewsTabs === "function") initNewsTabs();
 });
 
 function initLocationSlider() {
@@ -1428,3 +1429,59 @@ function initBrandTrustPartners() {
     runStatsAnimation();
   }
 }
+
+/**
+ * 소식 & 건강정보 탭 (WAI-ARIA Tabs 키보드 및 접근성 표준 준수)
+ */
+function initNewsTabs() {
+  const tabList = document.querySelector('.news__tab-bar[role="tablist"]');
+  if (!tabList) return;
+
+  const tabs = Array.from(tabList.querySelectorAll('.news__tab-button[role="tab"]'));
+  const panels = Array.from(document.querySelectorAll('.news__content[role="tabpanel"]'));
+
+  function activateTab(targetTab) {
+    tabs.forEach((tab) => {
+      const isSelected = tab === targetTab;
+      tab.setAttribute("aria-selected", isSelected ? "true" : "false");
+      tab.setAttribute("tabindex", isSelected ? "0" : "-1");
+    });
+
+    const targetPanelId = targetTab.getAttribute("aria-controls");
+    panels.forEach((panel) => {
+      const isActive = panel.id === targetPanelId;
+      panel.classList.toggle("is-active", isActive);
+      if (isActive) {
+        panel.removeAttribute("hidden");
+      } else {
+        panel.setAttribute("hidden", "");
+      }
+    });
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => activateTab(tab));
+
+    // WAI-ARIA 키보드 내비게이션 (좌/우 방향키 및 Home/End)
+    tab.addEventListener("keydown", (e) => {
+      let targetIndex = index;
+
+      if (e.key === "ArrowRight") {
+        targetIndex = (index + 1) % tabs.length;
+      } else if (e.key === "ArrowLeft") {
+        targetIndex = (index - 1 + tabs.length) % tabs.length;
+      } else if (e.key === "Home") {
+        targetIndex = 0;
+      } else if (e.key === "End") {
+        targetIndex = tabs.length - 1;
+      } else {
+        return;
+      }
+
+      e.preventDefault();
+      tabs[targetIndex].focus();
+      activateTab(tabs[targetIndex]);
+    });
+  });
+}
+

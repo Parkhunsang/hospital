@@ -10,7 +10,8 @@
   min-height: 44px;
   padding: 0 18px;
   border-radius: 8px;
-  font-weight: 800;
+  font-size: 1rem;
+  font-weight: 700;
   color: #1b2d5a;
 }
 .primary-button:focus-visible,
@@ -42,33 +43,17 @@
   max-width: 100%;
   margin-left: 0;
   margin-right: 0;
-  margin-left: 0;
 }
 
 .section-title {
   position: relative;
   color: #1b2d5a;
-  font-size: 2.25rem;
+  font-size: clamp(24px, 2vw + 12px, 36px);
   font-weight: 800;
   line-height: 1.3;
   letter-spacing: -0.03em;
   word-break: keep-all;
   display: inline-block;
-}
-@media (max-width: 1200px) {
-  .section-title {
-    font-size: 28px;
-  }
-}
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 26px;
-  }
-}
-@media (max-width: 640px) {
-  .section-title {
-    font-size: 24px;
-  }
 }
 .section-title__eng-title {
   margin-left: 8px;
