@@ -53,3 +53,13 @@ svg {
   outline: 2px solid $color-secondary;
   outline-offset: 2px;
 }
+
+/* 바탕색 반전 포커스링 */
+.topbar,
+.drawer,
+.footer {
+  :focus-visible {
+    outline: 2px solid $color-focus-dark;
+    outline-offset: 2px;
+  }
+}

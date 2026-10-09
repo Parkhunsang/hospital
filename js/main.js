@@ -742,6 +742,12 @@ function init3DBodyMap() {
         infoPanel.setAttribute("data-part", targetId);
         infoPanel.classList.remove("hero-3d__info-panel--hidden");
 
+        // 질환 패널이 열리면 키보드 탐색(A11y)을 위해 첫 번째 질환 링크로 포커스 자동 이동
+        const firstDiseaseLink = infoDiseaseList.querySelector(".hero-3d__disease-link");
+        if (firstDiseaseLink) {
+          firstDiseaseLink.focus();
+        }
+
         // 통증 부위 선택 시 마우스 드래그/회전 조작으로 카메라 시점이 틀어지지 않도록 고정(잠금)
         controls.enabled = false;
 
@@ -885,6 +891,13 @@ function init3DBodyMap() {
   // 닫기/뒤로가기 버튼 클릭 시 전체 화면으로 복귀
   closeBtn.addEventListener("click", () => {
     infoPanel.classList.add("hero-3d__info-panel--hidden");
+
+    // 접근성(A11y): 패널이 닫히면 원래 열었던 통증 부위 메뉴 아이템으로 초점 복귀
+    const activeTrigger = document.querySelector(".hero-3d__pain-item--active");
+    if (activeTrigger) {
+      activeTrigger.focus();
+    }
+
     menuItems.forEach((li) =>
       li.classList.remove("hero-3d__pain-item--active"),
     );

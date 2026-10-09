@@ -12,7 +12,7 @@
   margin: 0 auto;
 }
 .section {
-  padding: 86px 0;
+  padding: clamp(50px, calc(15vw - 94px), 86px) 0;
 }
 /* ==========================================
    Header Navigation Layout (헤더 상단바 레이아웃)
@@ -118,14 +118,9 @@
     background-color 0.2s ease,
     border-color 0.2s ease;
 
-  &:is(:hover, :focus-visible) {
+  &:hover {
     border-color: rgba($color-focus-dark, 0.6);
     background-color: rgba($color-focus-dark, 0.15);
-  }
-
-  &:focus-visible {
-    outline: 2px solid $color-focus-dark;
-    outline-offset: 2px;
   }
 
   @media (max-width: $breakpoint-large-tablet) {
@@ -553,10 +548,4 @@
 .footer__legal-text {
   font-size: $font-xss;
   color: $color-text-light;
-}
-
-.footer a:focus-visible,
-.footer button:focus-visible {
-  outline: 2px solid $color-focus-dark;
-  outline-offset: 3px;
 }

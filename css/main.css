@@ -65,16 +65,10 @@ body.door-locked {
   border-radius: 32px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.03);
-  -webkit-backdrop-filter: blur(25px);
   backdrop-filter: blur(25px);
   box-shadow: 0 20px 40px rgba(27, 45, 90, 0.15);
   pointer-events: auto;
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-@media (max-width: 768px) {
-  .intro-door__content {
-    padding: 36px 20px;
-  }
 }
 
 .intro-door__logo-wrap {
@@ -84,7 +78,8 @@ body.door-locked {
 .intro-door__logo-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .intro-door__desc {
@@ -104,35 +99,6 @@ body.door-locked {
   display: flex;
   justify-content: center;
   width: 100%;
-}
-
-.intro-door__enter-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 16px 36px;
-  border: none;
-  border-radius: 30px;
-  background: #fff;
-  box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
-  font-size: 1rem;
-  font-weight: 800;
-  color: #1b2d5a;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.intro-door__enter-btn:hover {
-  transform: translateY(-3px);
-}
-.intro-door__enter-btn:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(47, 95, 167, 0.3);
-}
-@media (max-width: 768px) {
-  .intro-door__enter-btn {
-    padding: 12px 28px;
-    font-size: 15px;
-  }
 }
 
 .intro-door__arrow-icon {
@@ -222,16 +188,11 @@ body.door-locked {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
   height: 100%;
   pointer-events: none;
-}
-@media (max-width: 1200px) {
-  .hero-3d__ui-layer {
-    width: 100%;
-    max-width: 100%;
-    padding: 0 24px;
-  }
 }
 @media (max-width: 640px) {
   .hero-3d__ui-layer {
@@ -261,7 +222,6 @@ body.door-locked {
   box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.45);
   background: rgba(255, 255, 255, 0.15);
-  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-radius: 20px;
   text-align: center;
@@ -358,7 +318,7 @@ body.door-locked {
 }
 @media (max-width: 640px) {
   .hero-3d__pain-item {
-    border-radius: 12px;
+    border-radius: 16px;
     text-align: center;
   }
   .hero-3d__pain-item:hover {
@@ -391,7 +351,6 @@ body.door-locked {
   padding: 36px 30px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.25);
-  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-radius: 24px;
   box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
@@ -497,7 +456,6 @@ body.door-locked {
     gap: 8px;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     width: 100%;
     margin: 6px 0 8px 0;
@@ -516,7 +474,6 @@ body.door-locked {
 @media (max-width: 640px) {
   .hero-3d__disease-item {
     flex: 0 0 auto;
-    scroll-snap-align: start;
     width: auto;
   }
 }
@@ -574,8 +531,9 @@ body.door-locked {
 .hero-3d__bottom-bar {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 24px;
+  right: 24px;
+  width: auto;
   height: 100%;
   pointer-events: none;
   display: flex;
@@ -587,6 +545,8 @@ body.door-locked {
     position: relative;
     top: auto;
     left: auto;
+    right: auto;
+    width: 100%;
     height: auto;
     display: block;
   }
@@ -618,7 +578,6 @@ body.door-locked {
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 0;
   border-radius: 20px;
   background: #fff;
 }
@@ -698,7 +657,6 @@ body.door-locked {
 }
 @media (max-width: 960px) {
   .hero-3d__togo-link {
-    min-height: 44px;
     padding: 8px 12px;
     gap: 8px;
   }
@@ -719,12 +677,11 @@ body.door-locked {
 .fast-diagnosis {
   position: relative;
   width: 100%;
-  padding: 240px 0 calc(28vh + 120px);
   background-color: #f9fbfd;
 }
-@media (max-width: 960px) {
+@media (min-width: 960px) {
   .fast-diagnosis {
-    padding: 100px 24px;
+    padding: 240px 0 calc(28vh + 120px);
   }
 }
 .fast-diagnosis .section-head--left {
@@ -755,7 +712,6 @@ body.door-locked {
 }
 .fast-diagnosis .card-title {
   color: #fff;
-  margin-bottom: 10px;
 }
 
 .fast-diagnosis__conwrap {
@@ -768,7 +724,6 @@ body.door-locked {
 @media (max-width: 960px) {
   .fast-diagnosis__conwrap {
     flex-direction: column;
-    width: 100%;
   }
 }
 
@@ -782,10 +737,6 @@ body.door-locked {
 }
 .fast-diagnosis__btn-more:hover {
   color: #2f5fa7;
-}
-.fast-diagnosis__btn-more:focus-visible {
-  outline: 2px solid #2f5fa7;
-  outline-offset: 4px;
 }
 
 .fast-diagnosis__btn-more i {
@@ -808,25 +759,27 @@ body.door-locked {
 }
 
 .fast-diagnosis__steps {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 120px 42px;
+}
+@media (max-width: 960px) {
+  .fast-diagnosis__steps {
+    gap: 40px;
+  }
 }
 @media (max-width: 480px) {
   .fast-diagnosis__steps {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 }
 
 .fast-diagnosis__step {
   position: relative;
   overflow: hidden;
-  width: 45.25%;
-  min-height: 430px;
-  margin-bottom: 120px;
   border-radius: 30px;
   box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
+  aspect-ratio: 1/1;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .fast-diagnosis__step:nth-child(even) {
@@ -845,21 +798,6 @@ body.door-locked {
   }
   .fast-diagnosis__step:nth-child(even):hover {
     transform: translateY(-8px);
-  }
-}
-@media (max-width: 768px) {
-  .fast-diagnosis__step {
-    width: 48%;
-    height: auto;
-    aspect-ratio: 1/1.15;
-    min-height: auto;
-    margin-bottom: 24px;
-  }
-}
-@media (max-width: 480px) {
-  .fast-diagnosis__step {
-    width: 100%;
-    aspect-ratio: 1/1;
   }
 }
 
@@ -886,7 +824,8 @@ body.door-locked {
 }
 
 .fast-diagnosis__bg-image {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100%;
   height: 100%;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -902,15 +841,11 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  gap: 12px;
   width: 100%;
   height: 100%;
-  padding: 40px 32px;
+  padding: clamp(20px, 4.6vw - 15px, 40px) clamp(16px, 3.7vw - 12px, 32px);
   text-align: left;
-}
-@media (max-width: 768px) {
-  .fast-diagnosis__content {
-    padding: 20px 16px;
-  }
 }
 
 .fast-diagnosis__step-desc {
@@ -941,11 +876,6 @@ body.door-locked {
   content: "";
   opacity: 0.08;
 }
-@media (max-width: 640px) {
-  .non-surgical {
-    padding: 60px 0;
-  }
-}
 
 .non-surgical__card-btn {
   display: inline-flex;
@@ -971,10 +901,6 @@ body.door-locked {
   box-shadow: 0 8px 20px rgba(47, 95, 167, 0.15);
   color: #fff;
   transform: translateY(-2px);
-}
-.non-surgical__card-btn:focus-visible {
-  outline: 2px solid #2f5fa7;
-  outline-offset: 2px;
 }
 
 .non-surgical__card-btn-icon {
@@ -1158,7 +1084,6 @@ body.door-locked {
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.08);
-  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   box-shadow: 0 15px 35px rgba(8, 26, 60, 0.25);
   transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
@@ -1227,7 +1152,6 @@ body.door-locked {
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   box-shadow: 0 20px 40px rgba(27, 45, 90, 0.15);
   color: #fff;
@@ -1466,7 +1390,6 @@ body.door-locked {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.08);
-  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
 @media (max-width: 960px) {
@@ -1549,8 +1472,10 @@ body.door-locked {
 }
 
 .doctors__bg-image {
-  object-fit: cover;
-  object-position: top center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top center;
+     object-position: top center;
   width: 100%;
   height: 100%;
 }
@@ -1637,6 +1562,10 @@ body.door-locked {
   border-color: #2f5fa7;
   box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
 }
+.self-test__checkbox:has(input:focus-visible) {
+  outline: 2px solid #2f5fa7;
+  outline-offset: 2px;
+}
 
 .self-test__box {
   position: relative;
@@ -1673,7 +1602,9 @@ body.door-locked {
   font-size: 1rem;
   font-weight: 600;
   color: #1b2d5a;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .self-test__result-box {
@@ -1719,7 +1650,6 @@ body.door-locked {
 .location {
   position: relative;
   overflow: hidden;
-  padding: 100px 0;
   background-color: #f9fbfd;
 }
 
@@ -1765,7 +1695,8 @@ body.door-locked {
 }
 
 .location__card-image {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -1798,10 +1729,6 @@ body.door-locked {
   color: #1b2d5a;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-.news__tab-button:focus-visible {
-  outline: 2px solid #2f5fa7;
-  outline-offset: 3px;
 }
 .news__tab-button[aria-selected=true] {
   border-color: #1b2d5a;
@@ -1853,11 +1780,6 @@ body.door-locked {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.news__link:focus-visible {
-  outline: 2px solid #2f5fa7;
-  outline-offset: 4px;
-}
-
 .news__link:hover,
 .news__link:focus-within {
   box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
@@ -1873,7 +1795,8 @@ body.door-locked {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .news__body {

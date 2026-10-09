@@ -14,11 +14,6 @@
   font-size: $font-base;
   font-weight: 700;
   color: $color-primary;
-
-  &:focus-visible {
-    outline: 2px solid $color-secondary;
-    outline-offset: 2px;
-  }
 }
 
 .primary-button {
@@ -29,7 +24,7 @@
 
 .ghost-button {
   border: 1px solid $color-border;
-  background: rgba(255, 255, 255, 0.9);
+  background: $color-text-white-subtle;
 }
 
 .section-head {
@@ -177,11 +172,6 @@
     background-color: $color-secondary;
     color: $color-white;
     box-shadow: 0 4px 12px rgba($color-secondary, 0.2);
-  }
-
-  &:focus-visible {
-    outline: 2px solid $color-secondary;
-    outline-offset: 2px;
   }
 
   &:disabled {
@@ -369,11 +359,6 @@
 
       &:hover {
         background-color: rgba($color-secondary, 0.4);
-      }
-
-      &:focus-visible {
-        outline: 2px solid $color-secondary;
-        outline-offset: 3px;
       }
     }
   }

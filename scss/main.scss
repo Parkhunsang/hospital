@@ -68,10 +68,6 @@ body.door-locked {
   transition:
     opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-
-  @media (max-width: $breakpoint-tablet) {
-    padding: 36px 20px;
-  }
 }
 
 .intro-door__logo-wrap {
@@ -99,33 +95,6 @@ body.door-locked {
   display: flex;
   justify-content: center;
   width: 100%;
-}
-
-.intro-door__enter-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 16px 36px;
-  border: none;
-  border-radius: 30px;
-  background: $color-white;
-  box-shadow: $shadow-lg;
-  font-size: $font-base;
-  font-weight: 800;
-  color: $color-primary;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  &:hover {
-    transform: translateY(-3px);
-  }
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba($color-secondary, 0.3);
-  }
-  @media (max-width: $breakpoint-tablet) {
-    padding: 12px 28px;
-    font-size: 15px;
-  }
 }
 
 .intro-door__arrow-icon {
@@ -219,14 +188,12 @@ body.door-locked {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
   height: 100%;
   pointer-events: none;
-  @media (max-width: $breakpoint-desktop) {
-    width: 100%;
-    max-width: 100%;
-    padding: 0 24px;
-  }
+
   @media (max-width: $breakpoint-small) {
     flex-direction: column;
     justify-content: space-between;
@@ -335,7 +302,7 @@ body.door-locked {
   }
 
   @media (max-width: $breakpoint-small) {
-    border-radius: 12px;
+    border-radius: 16px;
     text-align: center;
 
     &:hover {
@@ -468,7 +435,6 @@ body.door-locked {
     gap: 8px;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     width: 100%;
     margin: 6px 0 8px 0;
@@ -486,7 +452,6 @@ body.door-locked {
 
   @media (max-width: $breakpoint-small) {
     flex: 0 0 auto;
-    scroll-snap-align: start;
     width: auto;
   }
 }
@@ -543,12 +508,12 @@ body.door-locked {
   }
 }
 /* 02. 3D Body Map Hero Section [END] */
-
 .hero-3d__bottom-bar {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 24px;
+  right: 24px;
+  width: auto;
   height: 100%;
   pointer-events: none;
   display: flex;
@@ -559,6 +524,8 @@ body.door-locked {
     position: relative;
     top: auto;
     left: auto;
+    right: auto;
+    width: 100%;
     height: auto;
     display: block;
   }
@@ -588,7 +555,6 @@ body.door-locked {
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 0;
   border-radius: 20px;
   background: $color-white;
   @media (max-width: $breakpoint-large-tablet) {
@@ -665,7 +631,6 @@ body.door-locked {
   width: 100%;
   height: 100%;
   @media (max-width: $breakpoint-large-tablet) {
-    min-height: 44px;
     padding: 8px 12px;
     gap: 8px;
   }
@@ -687,11 +652,10 @@ body.door-locked {
 .fast-diagnosis {
   position: relative;
   width: 100%;
-  padding: 240px 0 calc(28vh + 120px);
   background-color: $color-bg-light;
 
-  @media (max-width: $breakpoint-large-tablet) {
-    padding: 100px 24px;
+  @media (min-width: $breakpoint-large-tablet) {
+    padding: 240px 0 calc(28vh + 120px);
   }
 
   .section-head--left {
@@ -721,7 +685,6 @@ body.door-locked {
 
   .card-title {
     color: $color-white;
-    margin-bottom: 10px;
   }
 }
 
@@ -734,7 +697,6 @@ body.door-locked {
 
   @media (max-width: $breakpoint-large-tablet) {
     flex-direction: column;
-    width: 100%;
   }
 }
 
@@ -747,10 +709,6 @@ body.door-locked {
   transition: color 0.3s ease;
   &:hover {
     color: $color-secondary;
-  }
-  &:focus-visible {
-    outline: 2px solid $color-secondary;
-    outline-offset: 4px;
   }
 }
 
@@ -773,24 +731,24 @@ body.door-locked {
 }
 
 .fast-diagnosis__steps {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 120px 42px;
 
+  @media (max-width: $breakpoint-large-tablet) {
+    gap: 40px;
+  }
   @media (max-width: $breakpoint-mobile) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 }
 
 .fast-diagnosis__step {
   position: relative;
   overflow: hidden;
-  width: 45.25%;
-  min-height: 430px;
-  margin-bottom: 120px;
   border-radius: 30px;
   box-shadow: $shadow-md;
+  aspect-ratio: 1 / 1;
   transition:
     transform 0.4s $ease-out-expo,
     box-shadow 0.4s $ease-out-expo;
@@ -816,19 +774,6 @@ body.door-locked {
     &:nth-child(even):hover {
       transform: translateY(-8px);
     }
-  }
-
-  @media (max-width: $breakpoint-tablet) {
-    width: 48%;
-    height: auto;
-    aspect-ratio: 1 / 1.15;
-    min-height: auto;
-    margin-bottom: 24px;
-  }
-
-  @media (max-width: $breakpoint-mobile) {
-    width: 100%;
-    aspect-ratio: 1 / 1;
   }
 }
 
@@ -877,14 +822,12 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  gap: 12px;
   width: 100%;
   height: 100%;
-  padding: 40px 32px;
+  padding: clamp(20px, calc(4.6vw - 15px), 40px)
+    clamp(16px, calc(3.7vw - 12px), 32px);
   text-align: left;
-
-  @media (max-width: $breakpoint-tablet) {
-    padding: 20px 16px;
-  }
 }
 
 .fast-diagnosis__step-desc {
@@ -909,10 +852,6 @@ body.door-locked {
     background-color: $color-secondary;
     content: "";
     opacity: 0.08;
-  }
-
-  @media (max-width: $breakpoint-small) {
-    padding: 60px 0;
   }
 }
 
@@ -939,11 +878,6 @@ body.door-locked {
     box-shadow: $shadow-primary;
     color: $color-white;
     transform: translateY(-2px);
-  }
-
-  &:focus-visible {
-    outline: 2px solid $color-secondary;
-    outline-offset: 2px;
   }
 }
 
@@ -1597,6 +1531,11 @@ body.door-locked {
     border-color: $color-secondary;
     box-shadow: $shadow-md;
   }
+
+  &:has(input:focus-visible) {
+    outline: 2px solid $color-secondary;
+    outline-offset: 2px;
+  }
 }
 
 .self-test__box {
@@ -1679,7 +1618,6 @@ body.door-locked {
 .location {
   position: relative;
   overflow: hidden;
-  padding: 100px 0;
   background-color: $color-bg-light;
 }
 
@@ -1762,11 +1700,6 @@ body.door-locked {
     background-color 0.3s ease,
     color 0.3s ease;
 
-  &:focus-visible {
-    outline: 2px solid $color-secondary;
-    outline-offset: 3px;
-  }
-
   &[aria-selected="true"] {
     border-color: $color-primary;
     background: $color-primary;
@@ -1817,11 +1750,6 @@ body.door-locked {
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-}
-
-.news__link:focus-visible {
-  outline: 2px solid $color-secondary;
-  outline-offset: 4px;
 }
 
 .news__link:hover,
