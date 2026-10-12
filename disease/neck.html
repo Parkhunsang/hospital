@@ -25,211 +25,160 @@
   <body>
     <header class="topbar topbar--top">
       <div class="topbar_nav_wrap">
-        <h1 class="topbar__logo">
-          <a class="topbar__brand" href="../index.html">
-            <img
-              class="topbar__logo-img"
-              src="../assets/logo.png"
-              alt="코어업 정형외과"
-            />
-          </a>
-        </h1>
-        <nav class="topbar__nav" aria-label="주요 메뉴">
-          <ul class="topbar__links">
-            <li class="topbar__item">
-              <a
-                href="../index.html#information"
-                class="topbar__link"
-                aria-expanded="false"
-              >
-                병원 소개
-              </a>
-              <ul class="topbar__sub-list" aria-label="병원 소개 하위 메뉴">
-                <li class="topbar__sub-item">
-                  <a href="../index.html#doctors" class="topbar__sub-link"
-                    >의료진 소개</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#location" class="topbar__sub-link"
-                    >입원 및 시설 안내</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="#footer" class="topbar__sub-link">오시는 길</a>
-                </li>
-              </ul>
+        <div class="topbar__head">
+          <h1 class="topbar__logo">
+            <a class="topbar__brand" href="../index.html">
+              <img
+                class="topbar__logo-img"
+                src="../assets/logo.png"
+                alt="코어업 정형외과"
+              />
+            </a>
+          </h1>
+          <nav class="gnb" aria-label="주요 메뉴">
+            <ul class="gnb__list">
+              <li class="gnb__item">
+                <a href="#information" class="gnb__link" aria-expanded="false">
+                  병원 소개
+                </a>
+                <ul class="gnb__sub-list" aria-label="병원 소개 하위 메뉴">
+                  <li class="gnb__sub-item">
+                    <a href="#doctors" class="gnb__sub-link">의료진 소개</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#location" class="gnb__sub-link"
+                      >입원 및 시설 안내</a
+                    >
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#footer" class="gnb__sub-link">오시는 길</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="gnb__item">
+                <a href="#reservation" class="gnb__link" aria-expanded="false">
+                  진료안내 &amp; 예약
+                </a>
+                <ul class="gnb__sub-list" aria-label="진료안내 및 예약 하위 메뉴">
+                  <li class="gnb__sub-item">
+                    <a href="#footer" class="gnb__sub-link">진료시간 안내</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#booking" class="gnb__sub-link">온라인 진료예약</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="tel:0212345678" class="gnb__sub-link"
+                      >전화 상담문의</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="gnb__item">
+                <a href="#clinic" class="gnb__link" aria-expanded="false">
+                  부위별 진료
+                </a>
+                <ul class="gnb__sub-list" aria-label="부위별 진료 하위 메뉴">
+                  <li class="gnb__sub-item">
+                    <a href="./disease/neck.html" class="gnb__sub-link"
+                      >목 통증</a
+                    >
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#clinic" class="gnb__sub-link">어깨 통증</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#clinic" class="gnb__sub-link">허리 통증</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#clinic" class="gnb__sub-link">손 통증</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#clinic" class="gnb__sub-link">무릎 통증</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#clinic" class="gnb__sub-link">발 통증</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="gnb__item">
+                <a href="#rehab" class="gnb__link" aria-expanded="false">
+                  비수술 치료
+                </a>
+                <ul class="gnb__sub-list" aria-label="비수술 치료 하위 메뉴">
+                  <li class="gnb__sub-item">
+                    <a href="#rehab" class="gnb__sub-link">도수 치료</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#rehab" class="gnb__sub-link">신경 차단술 치료</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#rehab" class="gnb__sub-link">주사 치료</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#rehab" class="gnb__sub-link">재활 치료</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#rehab" class="gnb__sub-link">체외 충격파 치료</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="gnb__item">
+                <a href="#board" class="gnb__link" aria-expanded="false">
+                  커뮤니티
+                </a>
+                <ul class="gnb__sub-list" aria-label="커뮤니티 하위 메뉴">
+                  <li class="gnb__sub-item">
+                    <a href="#news" class="gnb__sub-link">병원 소식</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#news" class="gnb__sub-link">건강 정보</a>
+                  </li>
+                  <li class="gnb__sub-item">
+                    <a href="#self-test" class="gnb__sub-link">자가진단 테스트</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <ul class="topbar__actions">
+            <li class="primary-button">
+              <a href="tel:0212345678">전화 상담</a>
             </li>
-            <li class="topbar__item">
-              <a
-                href="../index.html#reservation"
-                class="topbar__link"
-                aria-expanded="false"
-              >
-                진료안내 &amp; 예약
-              </a>
-              <ul
-                class="topbar__sub-list"
-                aria-label="진료안내 및 예약 하위 메뉴"
-              >
-                <li class="topbar__sub-item">
-                  <a href="#footer" class="topbar__sub-link">진료시간 안내</a>
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#booking" class="topbar__sub-link"
-                    >온라인 진료예약</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="tel:0212345678" class="topbar__sub-link"
-                    >전화 상담문의</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="topbar__item">
-              <a
-                href="../index.html#clinic"
-                class="topbar__link"
-                aria-expanded="false"
-              >
-                부위별 진료
-              </a>
-              <ul class="topbar__sub-list" aria-label="부위별 진료 하위 메뉴">
-                <li class="topbar__sub-item">
-                  <a href="./neck.html" class="topbar__sub-link">목 통증</a>
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#clinic" class="topbar__sub-link"
-                    >어깨 통증</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#clinic" class="topbar__sub-link"
-                    >허리 통증</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#clinic" class="topbar__sub-link"
-                    >손 통증</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#clinic" class="topbar__sub-link"
-                    >무릎 통증</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#clinic" class="topbar__sub-link"
-                    >발 통증</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="topbar__item">
-              <a
-                href="../index.html#rehab"
-                class="topbar__link"
-                aria-expanded="false"
-              >
-                비수술 치료
-              </a>
-              <ul class="topbar__sub-list" aria-label="비수술 치료 하위 메뉴">
-                <li class="topbar__sub-item">
-                  <a href="../index.html#rehab" class="topbar__sub-link"
-                    >도수 치료</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#rehab" class="topbar__sub-link"
-                    >신경 차단술 치료</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#rehab" class="topbar__sub-link"
-                    >주사 치료</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#rehab" class="topbar__sub-link"
-                    >재활 치료</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#rehab" class="topbar__sub-link"
-                    >체외 충격파 치료</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="topbar__item">
-              <a
-                href="../index.html#board"
-                class="topbar__link"
-                aria-expanded="false"
-              >
-                커뮤니티
-              </a>
-              <ul class="topbar__sub-list" aria-label="커뮤니티 하위 메뉴">
-                <li class="topbar__sub-item">
-                  <a href="../index.html#news" class="topbar__sub-link"
-                    >병원 소식</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#news" class="topbar__sub-link"
-                    >건강 정보</a
-                  >
-                </li>
-                <li class="topbar__sub-item">
-                  <a href="../index.html#self-test" class="topbar__sub-link"
-                    >자가진단 테스트</a
-                  >
-                </li>
-              </ul>
+            <li class="ghost-button">
+              <a href="#booking">예약하기</a>
             </li>
           </ul>
-        </nav>
-        <ul class="topbar__actions">
-          <li class="primary-button">
-            <a href="tel:0212345678">전화 상담</a>
-          </li>
-          <li class="ghost-button">
-            <a href="../index.html#booking">예약하기</a>
-          </li>
-        </ul>
-        <button
-          type="button"
-          class="topbar__hamburger"
-          aria-label="메뉴 열기"
-          aria-expanded="false"
-          aria-controls="topbar-drawer"
-        >
-          <span class="topbar__hamburger-line"></span>
-          <span class="topbar__hamburger-line"></span>
-          <span class="topbar__hamburger-line"></span>
-        </button>
+          <button
+            type="button"
+            class="topbar__hamburger"
+            aria-label="메뉴 열기"
+            aria-expanded="false"
+            aria-controls="mobile-drawer"
+          >
+            <span class="topbar__hamburger-line"></span>
+            <span class="topbar__hamburger-line"></span>
+            <span class="topbar__hamburger-line"></span>
+          </button>
+        </div>
       </div>
 
       <nav
-        id="topbar-drawer"
-        class="topbar__drawer"
+        id="mobile-drawer"
+        class="drawer"
         aria-label="모바일 주요 메뉴"
         aria-hidden="true"
       >
-        <div class="topbar__drawer-body">
-          <ul class="topbar__drawer-links">
-            <li class="topbar__drawer-item">
-              <div class="topbar__drawer-accordion">
-                <a href="../index.html#information" class="topbar__drawer-link"
-                  >병원 소개</a
-                >
+        <div class="drawer__body">
+          <ul class="drawer__list">
+            <li class="drawer__item">
+              <div class="drawer__accordion">
+                <a href="#information" class="drawer__link">병원 소개</a>
                 <button
                   type="button"
-                  class="topbar__drawer-toggle"
+                  class="drawer__toggle"
                   aria-label="병원 소개 하위 메뉴 토글"
                   aria-expanded="false"
-                  aria-controls="drawer-sub-info"
+                  aria-controls="drawer__sub-info"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -242,39 +191,31 @@
                   </svg>
                 </button>
               </div>
-              <ul class="topbar__drawer-sub-list" id="drawer-sub-info">
-                <li class="topbar__drawer-sub-item">
-                  <a
-                    href="../index.html#doctors"
-                    class="topbar__drawer-sub-link"
-                    >의료진 소개</a
-                  >
+              <ul class="drawer__sub-list" id="drawer__sub-info">
+                <li class="drawer__sub-item">
+                  <a href="#doctors" class="drawer__sub-link">의료진 소개</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a
-                    href="../index.html#location"
-                    class="topbar__drawer-sub-link"
+                <li class="drawer__sub-item">
+                  <a href="#location" class="drawer__sub-link"
                     >입원 및 시설 안내</a
                   >
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="#footer" class="topbar__drawer-sub-link"
-                    >오시는 길</a
-                  >
+                <li class="drawer__sub-item">
+                  <a href="#footer" class="drawer__sub-link">오시는 길</a>
                 </li>
               </ul>
             </li>
-            <li class="topbar__drawer-item">
-              <div class="topbar__drawer-accordion">
-                <a href="../index.html#reservation" class="topbar__drawer-link"
+            <li class="drawer__item">
+              <div class="drawer__accordion">
+                <a href="#reservation" class="drawer__link"
                   >진료안내 &amp; 예약</a
                 >
                 <button
                   type="button"
-                  class="topbar__drawer-toggle"
+                  class="drawer__toggle"
                   aria-label="진료안내 및 예약 하위 메뉴 토글"
                   aria-expanded="false"
-                  aria-controls="drawer-sub-reservation"
+                  aria-controls="drawer__sub-reservation"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -287,37 +228,31 @@
                   </svg>
                 </button>
               </div>
-              <ul class="topbar__drawer-sub-list" id="drawer-sub-reservation">
-                <li class="topbar__drawer-sub-item">
-                  <a href="#footer" class="topbar__drawer-sub-link"
-                    >진료시간 안내</a
-                  >
+              <ul class="drawer__sub-list" id="drawer__sub-reservation">
+                <li class="drawer__sub-item">
+                  <a href="#footer" class="drawer__sub-link">진료시간 안내</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a
-                    href="../index.html#booking"
-                    class="topbar__drawer-sub-link"
+                <li class="drawer__sub-item">
+                  <a href="#booking" class="drawer__sub-link"
                     >온라인 진료예약</a
                   >
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="tel:0212345678" class="topbar__drawer-sub-link"
+                <li class="drawer__sub-item">
+                  <a href="tel:0212345678" class="drawer__sub-link"
                     >전화 상담문의</a
                   >
                 </li>
               </ul>
             </li>
-            <li class="topbar__drawer-item">
-              <div class="topbar__drawer-accordion">
-                <a href="../index.html#clinic" class="topbar__drawer-link"
-                  >부위별 진료</a
-                >
+            <li class="drawer__item">
+              <div class="drawer__accordion">
+                <a href="#clinic" class="drawer__link">부위별 진료</a>
                 <button
                   type="button"
-                  class="topbar__drawer-toggle"
+                  class="drawer__toggle"
                   aria-label="부위별 진료 하위 메뉴 토글"
                   aria-expanded="false"
-                  aria-controls="drawer-sub-clinic"
+                  aria-controls="drawer__sub-clinic"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -330,50 +265,38 @@
                   </svg>
                 </button>
               </div>
-              <ul class="topbar__drawer-sub-list" id="drawer-sub-clinic">
-                <li class="topbar__drawer-sub-item">
-                  <a href="./neck.html" class="topbar__drawer-sub-link"
+              <ul class="drawer__sub-list" id="drawer__sub-clinic">
+                <li class="drawer__sub-item">
+                  <a href="./disease/neck.html" class="drawer__sub-link"
                     >목 통증</a
                   >
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#clinic" class="topbar__drawer-sub-link"
-                    >어깨 통증</a
-                  >
+                <li class="drawer__sub-item">
+                  <a href="#clinic" class="drawer__sub-link">어깨 통증</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#clinic" class="topbar__drawer-sub-link"
-                    >허리 통증</a
-                  >
+                <li class="drawer__sub-item">
+                  <a href="#clinic" class="drawer__sub-link">허리 통증</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#clinic" class="topbar__drawer-sub-link"
-                    >손 통증</a
-                  >
+                <li class="drawer__sub-item">
+                  <a href="#clinic" class="drawer__sub-link">손 통증</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#clinic" class="topbar__drawer-sub-link"
-                    >무릎 통증</a
-                  >
+                <li class="drawer__sub-item">
+                  <a href="#clinic" class="drawer__sub-link">무릎 통증</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#clinic" class="topbar__drawer-sub-link"
-                    >발 통증</a
-                  >
+                <li class="drawer__sub-item">
+                  <a href="#clinic" class="drawer__sub-link">발 통증</a>
                 </li>
               </ul>
             </li>
-            <li class="topbar__drawer-item">
-              <div class="topbar__drawer-accordion">
-                <a href="../index.html#rehab" class="topbar__drawer-link"
-                  >비수술 치료</a
-                >
+            <li class="drawer__item">
+              <div class="drawer__accordion">
+                <a href="#rehab" class="drawer__link">비수술 치료</a>
                 <button
                   type="button"
-                  class="topbar__drawer-toggle"
+                  class="drawer__toggle"
                   aria-label="비수술 치료 하위 메뉴 토글"
                   aria-expanded="false"
-                  aria-controls="drawer-sub-rehab"
+                  aria-controls="drawer__sub-rehab"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -386,45 +309,33 @@
                   </svg>
                 </button>
               </div>
-              <ul class="topbar__drawer-sub-list" id="drawer-sub-rehab">
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#rehab" class="topbar__drawer-sub-link"
-                    >도수 치료</a
-                  >
+              <ul class="drawer__sub-list" id="drawer__sub-rehab">
+                <li class="drawer__sub-item">
+                  <a href="#rehab" class="drawer__sub-link">도수 치료</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#rehab" class="topbar__drawer-sub-link"
-                    >신경 차단술 치료</a
-                  >
+                <li class="drawer__sub-item">
+                  <a href="#rehab" class="drawer__sub-link">신경 차단술 치료</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#rehab" class="topbar__drawer-sub-link"
-                    >주사 치료</a
-                  >
+                <li class="drawer__sub-item">
+                  <a href="#rehab" class="drawer__sub-link">주사 치료</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#rehab" class="topbar__drawer-sub-link"
-                    >재활 치료</a
-                  >
+                <li class="drawer__sub-item">
+                  <a href="#rehab" class="drawer__sub-link">재활 치료</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#rehab" class="topbar__drawer-sub-link"
-                    >체외 충격파 치료</a
-                  >
+                <li class="drawer__sub-item">
+                  <a href="#rehab" class="drawer__sub-link">체외 충격파 치료</a>
                 </li>
               </ul>
             </li>
-            <li class="topbar__drawer-item">
-              <div class="topbar__drawer-accordion">
-                <a href="../index.html#board" class="topbar__drawer-link"
-                  >커뮤니티</a
-                >
+            <li class="drawer__item">
+              <div class="drawer__accordion">
+                <a href="#board" class="drawer__link">커뮤니티</a>
                 <button
                   type="button"
-                  class="topbar__drawer-toggle"
+                  class="drawer__toggle"
                   aria-label="커뮤니티 하위 메뉴 토글"
                   aria-expanded="false"
-                  aria-controls="drawer-sub-board"
+                  aria-controls="drawer__sub-board"
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -437,21 +348,15 @@
                   </svg>
                 </button>
               </div>
-              <ul class="topbar__drawer-sub-list" id="drawer-sub-board">
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#news" class="topbar__drawer-sub-link"
-                    >병원 소식</a
-                  >
+              <ul class="drawer__sub-list" id="drawer__sub-board">
+                <li class="drawer__sub-item">
+                  <a href="#news" class="drawer__sub-link">병원 소식</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a href="../index.html#news" class="topbar__drawer-sub-link"
-                    >건강 정보</a
-                  >
+                <li class="drawer__sub-item">
+                  <a href="#news" class="drawer__sub-link">건강 정보</a>
                 </li>
-                <li class="topbar__drawer-sub-item">
-                  <a
-                    href="../index.html#self-test"
-                    class="topbar__drawer-sub-link"
+                <li class="drawer__sub-item">
+                  <a href="#self-test" class="drawer__sub-link"
                     >자가진단 테스트</a
                   >
                 </li>
@@ -459,22 +364,18 @@
             </li>
           </ul>
         </div>
-        <div class="topbar__drawer-footer">
-          <a class="primary-button topbar__drawer-btn" href="tel:0212345678"
+        <div class="drawer__footer">
+          <a class="primary-button drawer__btn" href="tel:0212345678"
             >전화 상담</a
           >
-          <a
-            class="ghost-button topbar__drawer-btn"
-            href="../index.html#booking"
-            >예약하기</a
-          >
+          <a class="ghost-button drawer__btn" href="#booking">예약하기</a>
         </div>
       </nav>
     </header>
 
     <main>
       <!-- ① Hero Section (subpage-hero 공통 컴포넌트 사용) -->
-      <section class="section subpage-hero subpage-hero--neck">
+      <section class="subpage-hero subpage-hero--neck">
         <div class="subpage-hero__container">
           <h1 class="subpage-hero__title">목 부위 관련 질환</h1>
           <ul class="disease-nav">
@@ -488,9 +389,9 @@
         </div>
       </section>
 
-      <section class="section neck-compare" id="neck-compare">
-        <div class="container">
-          <div class="section-head section-head--left">
+      <section class="section" id="neck-compare">
+        <div class="container disease-overview">
+          <div class="section-head--left">
             <h2 class="section-title">
               목 디스크
               <span class="section-title__eng-title"
@@ -578,25 +479,36 @@
             <h2 class="section-title">대표 원인</h2>
           </div>
           <div class="causes__wrapper">
-            <div class="causes-image__wrap">
-              <img
-                src="/disease/disease_assets/neck_disk__cuase.png"
-                alt="목 디스크 원인"
-                class="causes__img"
-              />
-            </div>
+            <div class="causes-image__wrap causes-image__neck"></div>
             <div class="causes-text__wrapper">
               <ul class="causes-text__list">
-                <li>노화에 따른 목 디스크와 관절의 퇴행</li>
-                <li>잘못된 자세로 인한 목의 지속적인 부담</li>
-                <li>교통사고나 낙상 등 갑작스러운 충격으로 목 디스크가 손상</li>
-                <li>
-                  장시간 컴퓨터·스마트폰 사용 등으로 목에 지속적인 피로와<br />자극이
-                  누적
+                <li class="causes-text__item">
+                  <span class="causes-text__desc"
+                    >노화에 따른 목 디스크와 관절의 퇴행</span
+                  >
                 </li>
-                <li>
-                  가족력이나 개인의 체질적 요인에 따라 디스크의 퇴행이<br />빠르게
-                  진행
+                <li class="causes-text__item">
+                  <span class="causes-text__desc"
+                    >잘못된 자세로 인한 목의 지속적인 부담</span
+                  >
+                </li>
+                <li class="causes-text__item">
+                  <span class="causes-text__desc"
+                    >교통사고나 낙상 등 갑작스러운 충격으로 목 디스크가
+                    손상</span
+                  >
+                </li>
+                <li class="causes-text__item">
+                  <span class="causes-text__desc">
+                    장시간 컴퓨터·스마트폰 사용 등으로 목에 지속적인 피로와<br />자극이
+                    누적</span
+                  >
+                </li>
+                <li class="causes-text__item">
+                  <span class="causes-text__desc">
+                    가족력이나 개인의 체질적 요인에 따라 디스크의 퇴행이<br />빠르게
+                    진행</span
+                  >
                 </li>
               </ul>
             </div>
@@ -607,7 +519,7 @@
       <!-- 목 디스크 주요 증상 -->
       <section class="section">
         <div class="container symptoms">
-          <div class="section-head section-head--left">
+          <div class="section-head--left">
             <h2 class="section-title">주요 증상</h2>
             <p class="section-desc">
               목과 어깨의 통증부터 팔 저림과 두통까지, 목 디스크 질환 진행 시
@@ -616,7 +528,7 @@
           </div>
           <div class="symptoms__wrapper">
             <ul class="symptoms__list">
-              <li>
+              <li class="symptoms__card">
                 <div class="symptoms__img-wrapper">
                   <img
                     src="/disease/disease_assets/neck_symptoms__list-item_01.png"
@@ -625,7 +537,7 @@
                 </div>
                 <p class="symptoms__text">목과 어깨의 뻐근함</p>
               </li>
-              <li>
+              <li class="symptoms__card">
                 <div class="symptoms__img-wrapper">
                   <img
                     src="/disease/disease_assets/neck_symptoms__list-item_02.png"
@@ -634,7 +546,7 @@
                 </div>
                 <p class="symptoms__text">손가락 감각의 무뎌짐</p>
               </li>
-              <li>
+              <li class="symptoms__card">
                 <div class="symptoms__img-wrapper">
                   <img
                     src="/disease/disease_assets/neck_symptoms__list-item_03.png"
@@ -645,7 +557,7 @@
                   어깨, 팔, 손끝으로 뻗치는 저림과 통증 (방사통)
                 </p>
               </li>
-              <li>
+              <li class="symptoms__card">
                 <div class="symptoms__img-wrapper">
                   <img
                     src="/disease/disease_assets/neck_symptoms__list-item_04.png"
@@ -654,7 +566,7 @@
                 </div>
                 <p class="symptoms__text">원인 모를 두통과 안구 피로</p>
               </li>
-              <li>
+              <li class="symptoms__card">
                 <div class="symptoms__img-wrapper">
                   <img
                     src="/disease/disease_assets/neck_symptoms__list-item_05.png"
@@ -663,7 +575,7 @@
                 </div>
                 <p class="symptoms__text">쥐는 힘과 팔 근력 약화</p>
               </li>
-              <li>
+              <li class="symptoms__card">
                 <div class="symptoms__img-wrapper">
                   <img
                     src="/disease/disease_assets/neck_symptoms__list-item_06.png"
@@ -727,7 +639,9 @@
                 <li class="swiper-slide showcase-slider__slide">
                   <div class="showcase-slider__card">
                     <div class="showcase-slider__content">
-                      <span class="slide__card-badge">보존적 치료의 기본</span>
+                      <span class="badge badge--soft-blue"
+                        >보존적 치료의 기본</span
+                      >
                       <h3 class="card-title">미세현미경 수술</h3>
                       <p class="section-desc showcase-slider__card-desc">
                         수술 현미경을 이용해 신경을 확대하여 확인하면서 신경을
@@ -771,7 +685,7 @@
                 <li class="swiper-slide showcase-slider__slide">
                   <div class="showcase-slider__card">
                     <div class="showcase-slider__content">
-                      <span class="slide__card-badge"
+                      <span class="badge badge--soft-blue"
                         >신경 주변의 염증과 유착을 완화</span
                       >
                       <h3 class="card-title">고주파 수핵 성형술</h3>
@@ -818,7 +732,7 @@
                 <li class="swiper-slide showcase-slider__slide">
                   <div class="showcase-slider__card">
                     <div class="showcase-slider__content">
-                      <span class="slide__card-badge"
+                      <span class="badge badge--soft-blue"
                         >최소침습적 디스크 치료</span
                       >
                       <h3 class="card-title">신경 성형술</h3>
@@ -866,7 +780,7 @@
                 <li class="swiper-slide showcase-slider__slide">
                   <div class="showcase-slider__card">
                     <div class="showcase-slider__content">
-                      <span class="slide__card-badge"
+                      <span class="badge badge--soft-blue"
                         >신경 압박 병변을 직접 제거</span
                       >
                       <h3 class="card-title">물리 치료</h3>
@@ -919,99 +833,104 @@
       </section>
       <!-- 관련 시술 끝 -->
     </main>
-
-    <!-- 푸터 -->
-    <footer class="footer" id="footer">
+    <footer class="footer" inert>
       <div class="footer__watermark" aria-hidden="true">
         COREUP SPINE & PAIN CENTER
       </div>
-      <div class="footer-inner">
-        <div class="footer-brand-header">
-          <div class="footer-brand-header__left">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__brand-wrap">
             <img
-              class="footer-brand-header__logo"
+              class="footer__brand-logo"
               src="../assets/logo.png"
               alt="코어업 척추통증센터 로고"
             />
-            <span class="footer-brand-header__tagline"
+            <span class="footer__brand-tagline"
               >아프지 않은 건강한 일상, 코어업이 함께합니다.</span
             >
           </div>
         </div>
 
-        <ul class="footer-top">
-          <li class="footer-card">
-            <div class="footer-card__head">
-              <h4 class="footer-card__eng-title">Clinic Hours</h4>
-              <p class="footer-card__title">진료안내</p>
+        <ul class="footer__info">
+          <!-- 1. 진료안내 카드 -->
+          <li class="footer__card">
+            <div class="footer__card-head">
+              <h4 class="footer__card-eng-title">Clinic Hours</h4>
+              <p class="footer__card-title">진료안내</p>
             </div>
-            <div class="time-box">
-              <div class="item">
-                <p>월 / 화 / 수 /목</p>
-                <strong>09:00 ~ 18:00</strong>
+            <div class="footer__card-schedule">
+              <div class="footer__card-schedule-item">
+                <p class="footer__card-text">월 / 화 / 수 /목</p>
+                <strong class="footer__card-time">09:00 ~ 18:00</strong>
               </div>
-              <div class="item">
-                <p>금요일<span class="circle-box">야간진료</span></p>
-                <strong>09:00 ~ 19:00</strong>
+              <div class="footer__card-schedule-item">
+                <p class="footer__card-text">
+                  금요일<span class="footer__card-badge">야간진료</span>
+                </p>
+                <strong class="footer__card-time">09:00 ~ 19:00</strong>
               </div>
-              <div class="item">
-                <p>토요일</p>
-                <strong>09:00 ~ 13:00</strong>
+              <div class="footer__card-schedule-item">
+                <p class="footer__card-text">토요일</p>
+                <strong class="footer__card-time">09:00 ~ 13:00</strong>
               </div>
-              <div class="item">
-                <p>점심시간</p>
-                <strong>12:30 ~ 14:00</strong>
+              <div class="footer__card-schedule-item">
+                <p class="footer__card-text">점심시간</p>
+                <strong class="footer__card-time">12:30 ~ 14:00</strong>
               </div>
-              <div class="item">
-                <p>일 / 공휴일</p>
-                <strong>휴진</strong>
+              <div class="footer__card-schedule-item">
+                <p class="footer__card-text">일 / 공휴일</p>
+                <strong class="footer__card-time footer__card-time--off"
+                  >휴진</strong
+                >
               </div>
             </div>
-            <div class="addr-box">
-              <p class="footer-card__text">
+            <div class="footer__card-address">
+              <p class="footer__card-text">
                 주소. 서울특별시 강남구 미래로 123, 미래타워 8층 (우) 06234
               </p>
-              <p class="footer-card__text">대표자. 박훈상</p>
+              <p class="footer__card-text">대표자. 박훈상</p>
             </div>
           </li>
 
-          <li class="footer-card">
-            <div class="footer-card__head">
-              <h4 class="footer-card__eng-title">Our Location</h4>
-              <p class="footer-card__title">오시는 길</p>
+          <!-- 2. 오시는 길 카드 -->
+          <li class="footer__card">
+            <div class="footer__card-head">
+              <h4 class="footer__card-eng-title">Our Location</h4>
+              <p class="footer__card-title">오시는 길</p>
             </div>
             <a
               href="https://map.naver.com/"
               target="_blank"
-              class="map-box"
+              class="footer__card-map"
               aria-label="오시는 길 네이버 지도 보기 (새 창 열림)"
               title="새 창 열림"
             ></a>
-            <div class="map-info-badges">
-              <div class="map-info-item">
+            <div class="footer__card-traffic">
+              <div class="footer__card-traffic-item">
                 <strong>지하철</strong>
-                <span class="footer-card__text">강남역 1번 출구 도보 2분</span>
+                <span class="footer__card-text">강남역 1번 출구 도보 2분</span>
               </div>
-              <div class="map-info-item">
+              <div class="footer__card-traffic-item">
                 <strong>주차</strong>
-                <span class="footer-card__text"
+                <span class="footer__card-text"
                   >건물 내 지하 전용 주차장 무료 이용 가능</span
                 >
               </div>
             </div>
           </li>
 
-          <li class="footer-card">
-            <div class="footer-card__head">
-              <h4 class="footer-card__eng-title">Call Center</h4>
-              <p class="footer-card__title footer-card__title--phone">
+          <!-- 3. 콜센터 / 빠른 예약 카드 -->
+          <li class="footer__card">
+            <div class="footer__card-head">
+              <h4 class="footer__card-eng-title">Call Center</h4>
+              <p class="footer__card-title footer__card-title--phone">
                 02-1234-5678
               </p>
             </div>
-            <div class="link-box">
+            <div class="footer__card-actions">
               <a
                 href="javascript:void(0)"
-                class="kakao"
+                class="footer__card-btn footer__card-btn--kakao"
                 target="_blank"
                 title="새 창 열림"
               >
@@ -1031,7 +950,7 @@
               </a>
               <a
                 href="javascript:void(0)"
-                class="naver"
+                class="footer__card-btn footer__card-btn--naver"
                 target="_blank"
                 title="새 창 열림"
               >
@@ -1052,16 +971,17 @@
             </div>
           </li>
 
-          <li class="footer-card">
-            <div class="footer-card__head">
-              <h4 class="footer-card__eng-title">Official Channels</h4>
-              <p class="footer-card__title">코어업 채널</p>
+          <!-- 4. 공식 채널 카드 -->
+          <li class="footer__card">
+            <div class="footer__card-head">
+              <h4 class="footer__card-eng-title">Official Channels</h4>
+              <p class="footer__card-title">코어업 채널</p>
             </div>
-            <div class="sns-box">
+            <div class="footer__card-sns">
               <a
                 href="#"
                 target="_blank"
-                class="sns youtube"
+                class="footer__card-sns-link footer__card-sns-link--youtube"
                 aria-label="유튜브 채널 바로가기 (새 창 열림)"
                 title="새 창 열림"
               >
@@ -1082,7 +1002,7 @@
               <a
                 href="#"
                 target="_blank"
-                class="sns blog"
+                class="footer__card-sns-link footer__card-sns-link--blog"
                 aria-label="네이버 블로그 바로가기 (새 창 열림)"
                 title="새 창 열림"
               >
@@ -1116,7 +1036,7 @@
               <a
                 href="#"
                 target="_blank"
-                class="sns facebook"
+                class="footer__card-sns-link footer__card-sns-link--facebook"
                 aria-label="페이스북 바로가기 (새 창 열림)"
                 title="새 창 열림"
               >
@@ -1135,7 +1055,7 @@
               <a
                 href="#"
                 target="_blank"
-                class="sns insta"
+                class="footer__card-sns-link footer__card-sns-link--insta"
                 aria-label="인스타그램 바로가기 (새 창 열림)"
                 title="새 창 열림"
               >
@@ -1155,23 +1075,29 @@
           </li>
         </ul>
 
-        <!-- 5. footer-bottom -->
-        <div class="footer-bottom">
-          <div class="info-link-area">
-            <a href="#terms">이용약관</a>
-            <a href="#privacy" class="highlight">개인정보처리방침</a>
-            <a href="#rights">환자권리장전</a>
-            <a href="#non-covered">비급여 진료비 안내</a>
-            <a href="#ad">제휴/광고제안</a>
-          </div>
+        <!-- 3. 법적 필수 고지 및 카피라이트 -->
+        <div class="footer__legal">
+          <ul class="footer__legal-links">
+            <li class="footer__legal-item"><a href="#terms">이용약관</a></li>
+            <li class="footer__legal-item">
+              <a href="#privacy" class="highlight">개인정보처리방침</a>
+            </li>
+            <li class="footer__legal-item">
+              <a href="#rights">환자권리장전</a>
+            </li>
+            <li class="footer__legal-item">
+              <a href="#non-covered">비급여 진료비 안내</a>
+            </li>
+            <li class="footer__legal-item"><a href="#ad">제휴/광고제안</a></li>
+          </ul>
 
-          <div class="logo-bottom">
+          <div class="footer__legal-copy">
             <img
-              class="footer__logo-img"
+              class="footer__legal-logo"
               src="../assets/logo.png"
               alt="코어업 척추통증센터 로고"
             />
-            <span class="footer-bottom__copy"
+            <span class="footer__legal-text"
               >© 2026 COREUP Spine & Pain Center. All rights reserved.</span
             >
           </div>

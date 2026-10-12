@@ -4,15 +4,19 @@
    ========================================== */
 .gnb {
   display: flex;
-  height: 52px;
+  align-items: center;
+  height: 100%;
 }
 .gnb__list {
   display: flex;
+  align-items: center;
+  height: 100%;
   gap: 20px;
 }
 .gnb__item {
   position: relative;
   display: flex;
+  align-items: center;
   height: 100%;
   padding: 0 10px;
   transition: padding 0.3s ease;
@@ -29,6 +33,7 @@
   padding: 8px 0;
   font-size: 1rem;
   font-weight: 500;
+  line-height: 1;
   color: #fff;
   transition: color 0.2s ease;
 }
@@ -60,7 +65,7 @@
 
 .gnb__sub-list {
   position: absolute;
-  top: 60px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
   display: none;
@@ -253,13 +258,13 @@
    ========================================== */
 .topbar {
   position: fixed;
-  display: flex;
-  justify-content: center;
   top: 12px;
   left: 0;
-  height: 80px;
   z-index: 9999;
+  display: flex;
+  justify-content: center;
   width: 100%;
+  height: 80px;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .topbar.topbar--up, .topbar.topbar--top {
@@ -279,7 +284,6 @@
 .topbar__logo {
   display: flex;
   align-items: center;
-  height: 52px;
 }
 .topbar__logo-img {
   width: auto;
@@ -297,7 +301,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  height: 52px;
 }
 @media (max-width: 960px) {
   .topbar__actions {
@@ -307,33 +310,38 @@
 
 .topbar_nav_wrap {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  overflow: hidden;
   width: min(1200px, 100% - 40px);
   height: 80px;
+  padding: 0 24px;
+  border-radius: 24px;
   background: #acbac9;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
-  padding: 14px 24px;
-  border-radius: 24px;
-  overflow: hidden;
   transition: height 0.3s ease-in-out;
 }
 .topbar_nav_wrap.is-open {
   height: 330px;
 }
 
+.topbar__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+}
+
 .topbar__hamburger {
   display: none;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   width: 44px;
   height: 44px;
-  padding: 10px 8px;
+  padding: 8px;
   border: none;
   border-radius: 10px;
   background-color: transparent;
@@ -445,6 +453,7 @@
   border-left: 1px solid rgba(238, 242, 246, 0.5);
   font-size: 0.9375rem;
   font-weight: 500;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -468,11 +477,16 @@
 .footer__card {
   display: flex;
   flex-direction: column;
-  padding: 28px;
+  padding: 20px 24px;
   border-radius: 16px;
   background-color: rgba(27, 45, 90, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+}
+@media (max-width: 768px) {
+  .footer__card {
+    padding: 16px;
+  }
 }
 
 .footer__card-head {
@@ -483,7 +497,7 @@
   margin-bottom: 4px;
   font-size: 0.875rem;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.35;
   letter-spacing: 0.05em;
   color: #e0f6f3;
   text-transform: uppercase;
@@ -492,7 +506,7 @@
 .footer__card-title {
   font-size: 1.25rem;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.35;
   color: #fff;
 }
 .footer__card-title--phone {
@@ -531,6 +545,7 @@
 .footer__card-time {
   font-size: 0.9375rem;
   font-weight: 600;
+  line-height: 1.25;
   color: #fff;
 }
 .footer__card-time--off {
@@ -548,6 +563,7 @@
   background-color: rgba(239, 68, 68, 0.2);
   font-size: 0.75rem;
   font-weight: 600;
+  line-height: 1;
   color: #f87171;
 }
 
@@ -605,7 +621,7 @@
   gap: 8px;
 }
 .footer__card-traffic-item strong {
-  padding: 2px 6px;
+  padding: 4px 8px;
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.15);
   font-size: 0.875rem;
@@ -632,6 +648,7 @@
   border-radius: 10px;
   font-size: 0.875rem;
   font-weight: 600;
+  line-height: 1;
   letter-spacing: -0.3px;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
@@ -692,7 +709,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  padding-top: 30px;
+  padding-top: 32px;
   border-top: 1px solid rgba(238, 242, 246, 0.5);
 }
 @media (max-width: 768px) {
@@ -718,6 +735,7 @@
   border-radius: 6px;
   font-size: 0.875rem;
   font-weight: 400;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
   transition: color 0.2s ease, background-color 0.2s ease;
 }
@@ -747,5 +765,6 @@
 
 .footer__legal-text {
   font-size: 0.8125rem;
+  line-height: 1.5;
   color: #666;
 }

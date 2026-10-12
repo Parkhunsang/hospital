@@ -1,16 +1,12 @@
+@use "../variables" as *;
+
 .subpage-hero--neck {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(15, 26, 60, 0.85) 0%,
-      rgba(10, 19, 41, 0.9) 100%
-    ),
-    url("/disease/disease_assets/background_neck.png") no-repeat center / cover;
+  @include hero-overlay("/disease/disease_assets/background_neck.png");
 }
+
 .neck-compare__image-wrap {
-  width: 100%;
   max-width: 762px;
-  margin: 0 auto 80px;
+  margin: 0 auto;
 }
 
 .neck-compare__image {
@@ -21,8 +17,7 @@
 
 .neck-compare__table-wrap {
   overflow-x: auto;
-  width: 100%;
-  border: 1px solid var(--color-border);
+  border: 1px solid $color-border;
   border-radius: 12px;
 }
 
@@ -33,19 +28,20 @@
 }
 
 .neck-compare__th {
-  padding: 18px 24px;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  font-size: var(--font-base);
+  padding: $space-md $space-lg;
+  background-color: $color-primary;
+  color: $color-white;
+  font-size: $font-base;
   font-weight: 700;
+  line-height: $line-height-heading;
 }
 
 .neck-compare__td {
-  padding: 18px 24px;
-  border-bottom: 1px solid var(--color-border);
-  color: var(--color-text-dark);
-  font-size: var(--font-md);
-  line-height: 1.5;
+  padding: $space-md $space-lg;
+  border-bottom: 1px solid $color-border;
+  color: $color-text-dark;
+  font-size: $font-md;
+  line-height: $line-height-body;
 }
 
 .neck-compare__row:last-child .neck-compare__td {
@@ -53,14 +49,19 @@
 }
 
 .neck-compare__th--row {
-  border-bottom: 1px solid var(--color-border);
-  background-color: var(--color-bg-light);
-  font-size: var(--font-md);
+  border-bottom: 1px solid $color-border;
+  background-color: $color-bg-light;
+  font-size: $font-md;
   font-weight: 700;
-  color: var(--color-primary);
+  line-height: $line-height-heading;
+  color: $color-primary;
   text-align: left;
 }
 
 .neck-compare__row:last-child .neck-compare__th--row {
   border-bottom: none;
+}
+
+.causes-image__neck {
+  background-image: url("/disease/disease_assets/neck_disk__cuase.png");
 }

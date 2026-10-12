@@ -8,8 +8,8 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: clamp(80px, 10vw, 150px) 0;
-  box-sizing: border-box;
+  padding-top: clamp(160px, 9.72vw + 113px, 230px);
+  padding-bottom: clamp(80px, 9.72vw + 33px, 150px);
   overflow: hidden;
 }
 
@@ -18,61 +18,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 60px;
+  gap: clamp(32px, 3.89vw + 13px, 60px);
   width: 100%;
-  max-width: 1200px;
-  margin-top: 80px;
-}
-
-.subpage-hero__subtitle {
-  display: inline-block;
-  margin-bottom: 16px;
-  color: var(--color-secondary);
-  font-size: var(--font-lg);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
 }
 
 .subpage-hero__title {
-  color: var(--color-white);
-  font-size: var(--font-4xl);
+  color: #fff;
+  font-size: 2.25rem;
   font-weight: 800;
   line-height: 1.25;
 }
 
 .subpage-hero__title--english {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: var(--font-2xl);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.5rem;
   font-weight: 400;
-}
-
-.subpage-hero__desc {
-  max-width: 600px;
-  margin-bottom: 40px;
-  color: #cbd5e1;
-  font-size: var(--font-lg);
-  line-height: 1.6;
-}
-
-.subpage-hero__button {
-  display: inline-block;
-  padding: 16px 32px;
-  box-sizing: border-box;
-  border-radius: 30px;
-  background-color: var(--color-secondary);
-  color: var(--color-white);
-  font-size: var(--font-base);
-  font-weight: 700;
-  text-decoration: none;
-  text-align: center;
-  transition: background-color 0.25s ease, transform 0.2s ease;
-  cursor: pointer;
-}
-
-.subpage-hero__button:hover {
-  background-color: var(--color-tertiary);
-  transform: translateY(-2px);
+  line-height: 1.35;
 }
 
 .disease-text-wrap {
@@ -89,7 +50,7 @@
   z-index: 2;
   width: 50px;
   height: 4px;
-  background-color: var(--color-tertiary);
+  background-color: #00a88f;
   content: "";
 }
 
@@ -122,10 +83,6 @@
 .disease-nav__link:hover {
   color: #1b2d5a;
 }
-.disease-nav__link:focus-visible {
-  outline: 2px solid #2f5fa7;
-  outline-offset: 2px;
-}
 
 .disease-nav__item--active .disease-nav__link,
 .disease-nav__link--active {
@@ -138,76 +95,86 @@
   color: #fff;
 }
 
+.disease-overview.container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 11.11vw - 13px, 80px);
+}
+
 .causes {
-  background-color: var(--color-bg-light);
+  background-color: #f9fbfd;
 }
 
 .causes__wrapper {
-  max-width: 1040px;
-  margin: 0 auto;
-  display: flex;
-  background-color: var(--color-white);
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #fff;
   border-radius: 16px;
   overflow: hidden;
 }
+@media (max-width: 768px) {
+  .causes__wrapper {
+    grid-template-columns: 1fr;
+  }
+}
 
 .causes-text__wrapper {
-  flex: 1;
-  padding: 2.625em 3.25em 0;
-  font-size: 1rem;
+  padding: clamp(20px, 3vw + 6px, 42px) clamp(24px, 3.8vw + 7px, 52px);
 }
 
 .causes-text__list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
-.causes-text__list li {
-  position: relative;
-  padding: 1em 0 1em 2.75em;
-  border-bottom: 1px solid var(--color-border);
-  font-size: var(--font-base);
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--color-text-dark);
+.causes-text__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #eef2f6;
 }
-
-.causes-text__list li:last-child {
+.causes-text__item:last-child {
   border-bottom: none;
 }
-
-.causes-text__list li::before {
-  position: absolute;
-  top: 50%;
-  left: 0;
+.causes-text__item::before {
+  content: "";
+  flex-shrink: 0;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: url(/disease/disease_assets/check.svg) no-repeat center center var(--color-primary);
-  content: "";
-  transform: translateY(-50%);
+  background: url("/disease/disease_assets/check.svg") no-repeat center center #1b2d5a;
+}
+
+.causes-text__desc {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #222;
 }
 
 .causes-image__wrap {
-  width: 100%;
-  max-width: 520px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
-
-.causes__img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+@media (max-width: 768px) {
+  .causes-image__wrap {
+    aspect-ratio: 16/9;
+  }
 }
 
 /* 대표 증상 */
 .symptoms {
   display: grid;
   grid-template-columns: 300px 1fr;
-  gap: 48px;
+  gap: clamp(24px, 5.5vw - 18px, 48px);
   align-items: start;
+}
+@media (max-width: 1200px) {
+  .symptoms {
+    grid-template-columns: 1fr;
+  }
 }
 
 .symptoms__list {
@@ -216,19 +183,30 @@
   align-items: start;
   -moz-column-gap: 24px;
        column-gap: 24px;
-  row-gap: 72px;
+  row-gap: clamp(20px, 12vw - 72px, 72px);
+}
+@media (max-width: 1200px) {
+  .symptoms__list {
+    grid-template-columns: repeat(2, 1fr);
+    -moz-column-gap: 20px;
+         column-gap: 20px;
+  }
 }
 
-.symptoms__list li {
-  background-color: var(--color-white);
+.symptoms__card {
+  background-color: #fff;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
 }
 
 .symptoms__img-wrapper {
-  width: 100%;
   height: 240px;
+}
+@media (max-width: 768px) {
+  .symptoms__img-wrapper {
+    height: 180px;
+  }
 }
 
 .symptoms__img-wrapper img {
@@ -239,91 +217,20 @@
 }
 
 .symptoms__text {
-  color: var(--color-text-dark);
-  font-size: var(--font-md);
+  color: #222;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
-  padding: 20px 20px 24px;
+  padding: 20px 24px;
+}
+@media (max-width: 768px) {
+  .symptoms__text {
+    padding: 16px;
+  }
 }
 
-/* 관련 시술 */
 .treatment {
   position: relative;
   overflow: hidden;
   background-color: #f9fbfd;
-}
-
-/* 슬라이더 공통 컴포넌트(.showcase-slider) 기반 - 서브페이지 맞춤 이미지 규격 */
-.treatment .showcase-slider__image-wrapper {
-  overflow: hidden;
-  flex: none;
-  width: 520px;
-  max-width: calc(50% - 20px);
-  height: 330px;
-  margin: auto 40px;
-  border-radius: 20px;
-}
-
-/* 관련 시술 끝 */
-@media (max-width: 1200px) {
-  html {
-    font-size: 14px;
-  }
-  .symptoms {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .symptoms__list {
-    grid-template-columns: repeat(2, 1fr);
-    -moz-column-gap: 20px;
-         column-gap: 20px;
-    row-gap: 36px;
-  }
-  .symptoms__img-wrapper {
-    height: 200px;
-  }
-}
-/* 1. 태블릿 반응형 (1024px 이하) */
-@media (max-width: 960px) {
-  .causes-text__wrapper {
-    font-size: 0.875rem;
-  }
-  .treatment .showcase-slider__image-wrapper {
-    width: 100%;
-    max-width: 100%;
-    height: clamp(200px, 28vw, 280px);
-    margin: 0;
-    border-radius: 0;
-  }
-}
-@media (max-width: 768px) {
-  .symptoms {
-    gap: 24px;
-  }
-  .causes__wrapper {
-    flex-direction: column;
-  }
-  .causes-image__wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    padding: 24px 20px 0;
-  }
-  .causes__img {
-    width: min(100%, 320px);
-    height: auto;
-    border-radius: 12px;
-  }
-  .symptoms__list {
-    row-gap: 20px;
-  }
-  .symptoms__img-wrapper {
-    height: 180px;
-  }
-  .symptoms__text {
-    padding: 16px;
-    font-size: var(--font-base);
-  }
 }

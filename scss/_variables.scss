@@ -41,6 +41,30 @@ $font-3xl: 1.875rem; // 30px
 $font-4xl: 2.25rem; // 36px
 $font-5xl: 3.125rem; // 50px
 
+$line-height-none: 1; // 단일 행 UI 컴포넌트 (버튼, 뱃지, 탭 링크)
+$line-height-tight: 1.25; // 대형 디스플레이 및 히어로 타이틀 ($font-3xl ~ $font-5xl)
+$line-height-heading: 1.35; // 섹션 제목 및 카드 타이틀 ($font-lg ~ $font-2xl)
+$line-height-body: 1.5; // 기본 본문, 테이블 셀, 리스트 ($font-sm ~ $font-base)
+$line-height-loose: 1.7; // 2줄 이상의 장문 설명문, 긴 줄글 본문
+
+// Spacing System (8pt Grid 기반 간격 토큰)
+$space-2xs: 4px;
+$space-xs: 8px;
+$space-sm: 12px;
+$space-md: 16px;
+$space-ml: 20px;
+$space-lg: 24px;
+$space-xl: 32px;
+$space-2xl: 40px;
+$space-3xl: 48px;
+
+$radius-xs: 4px; // 미세 칩, 라벨 태그, 툴팁
+$radius-sm: 8px; // 버튼, 인풋, 드롭다운 메뉴
+$radius-md: 12px; // 소형 카드, 리스트 박스, 테이블
+$radius-lg: 16px; // 일반 카드, 이미지 래퍼, 모달
+$radius-xl: 24px; // 대형 컨테이너, 헤더 플로팅 바, 인트로 카드
+$radius-pill: 9999px; // 알약형 캡슐 태그, 탭 버튼, 원형 버튼
+
 $breakpoint-mobile: 480px;
 $breakpoint-small: 640px;
 $breakpoint-tablet: 768px;
@@ -50,7 +74,7 @@ $breakpoint-desktop: 1200px;
 @mixin text-desc {
   font-size: $font-base;
   font-weight: 500;
-  line-height: 1.75;
+  line-height: $line-height-loose;
   word-break: keep-all;
   overflow-wrap: break-word;
 }
@@ -60,4 +84,18 @@ $breakpoint-desktop: 1200px;
   background: rgba($color-white, $bg-opacity);
   -webkit-backdrop-filter: blur($blur);
   backdrop-filter: blur($blur);
+}
+
+@mixin hero-overlay($bg-url) {
+  background-color: $color-primary;
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(15, 26, 60, 0.85) 0%,
+      rgba(10, 19, 41, 0.9) 100%
+    ),
+    url($bg-url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }

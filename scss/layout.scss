@@ -19,13 +19,13 @@
    ========================================== */
 .topbar {
   position: fixed;
-  display: flex;
-  justify-content: center;
   top: 12px;
   left: 0;
-  height: 80px;
   z-index: 9999;
+  display: flex;
+  justify-content: center;
   width: 100%;
+  height: 80px;
   transition:
     transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
@@ -54,7 +54,6 @@
   &__logo {
     display: flex;
     align-items: center;
-    height: 52px;
     &-img {
       width: auto;
       height: 52px;
@@ -72,8 +71,7 @@
   &__actions {
     display: flex;
     align-items: center;
-    gap: 12px;
-    height: 52px;
+    gap: $space-sm;
 
     @media (max-width: $breakpoint-large-tablet) {
       display: none;
@@ -83,33 +81,39 @@
 
 .topbar_nav_wrap {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  overflow: hidden;
   width: min(1200px, calc(100% - 40px));
   height: 80px;
+  padding: 0 $space-lg;
+  border-radius: 24px;
   background: $color-nav-bg;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: $shadow-lg;
-  padding: 14px 24px;
-  border-radius: 24px;
-  overflow: hidden;
   transition: height 0.3s ease-in-out;
+
   &.is-open {
     height: 330px;
   }
 }
 
+.topbar__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+}
+
 .topbar__hamburger {
   display: none;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   width: 44px;
   height: 44px;
-  padding: 10px 8px;
+  padding: $space-xs;
   border: none;
   border-radius: 10px;
   background-color: transparent;
@@ -178,7 +182,7 @@
   width: 100%;
   font-size: clamp(40px, 8vw, 120px);
   font-weight: 800;
-  line-height: 1;
+  line-height: $line-height-none;
   letter-spacing: 0.05em;
   color: rgba($color-white, 0.02);
   text-align: center;
@@ -200,7 +204,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 32px;
+  padding-bottom: $space-xl;
   border-bottom: 1px solid rgba($color-border, 0.5);
 
   @media (max-width: $breakpoint-tablet) {
@@ -212,7 +216,7 @@
 .footer__brand-wrap {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: $space-md;
 }
 
 .footer__brand-logo {
@@ -222,17 +226,18 @@
 }
 
 .footer__brand-tagline {
-  padding-left: 16px;
+  padding-left: $space-md;
   border-left: 1px solid rgba($color-border, 0.5);
   font-size: $font-md;
   font-weight: 500;
+  line-height: $line-height-body;
   color: $color-text-white-subtle;
 }
 
 .footer__info {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  gap: $space-xl;
 
   @media (max-width: $breakpoint-desktop) {
     grid-template-columns: repeat(2, 1fr);
@@ -247,11 +252,15 @@
 .footer__card {
   display: flex;
   flex-direction: column;
-  padding: 28px;
+  padding: $space-ml $space-lg;
   border-radius: 16px;
   background-color: rgba($color-primary, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: $space-md;
+  }
 }
 
 .footer__card-head {
@@ -259,10 +268,10 @@
 }
 
 .footer__card-eng-title {
-  margin-bottom: 4px;
+  margin-bottom: $space-2xs;
   font-size: $font-sm;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: $line-height-heading;
   letter-spacing: 0.05em;
   color: $color-secondary-light;
   text-transform: uppercase;
@@ -271,7 +280,7 @@
 .footer__card-title {
   font-size: $font-xl;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: $line-height-heading;
   color: $color-white;
 
   &--phone {
@@ -293,7 +302,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 8px;
+  padding-bottom: $space-xs;
   border-bottom: 1px dashed rgba($color-border, 0.6);
 
   &:last-child {
@@ -305,13 +314,14 @@
 .footer__card-text {
   font-size: $font-sm;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: $line-height-body;
   color: $color-text-white-subtle;
 }
 
 .footer__card-time {
   font-size: $font-md;
   font-weight: 600;
+  line-height: $line-height-tight;
   color: $color-white;
 
   &--off {
@@ -325,11 +335,12 @@
   align-items: center;
   vertical-align: middle;
   margin-left: 6px;
-  padding: 2px 8px;
+  padding: 2px $space-xs;
   border-radius: 9999px;
   background-color: rgba(239, 68, 68, 0.2);
   font-size: $font-xs;
   font-weight: 600;
+  line-height: $line-height-none;
   color: #f87171;
 }
 
@@ -338,7 +349,7 @@
   flex-direction: column;
   gap: 6px;
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: $space-md;
   border-top: 1px solid rgba($color-border, 0.5);
 }
 
@@ -389,7 +400,7 @@
   gap: 8px;
 
   strong {
-    padding: 2px 6px;
+    padding: $space-2xs $space-xs;
     border-radius: 4px;
     background-color: rgba($color-text-white-subtle, 0.15);
     font-size: $font-sm;
@@ -403,7 +414,7 @@
 .footer__card-actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: $space-sm;
   margin-top: auto;
 }
 
@@ -411,12 +422,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: $space-xs;
   height: 48px;
-  padding: 0 16px;
+  padding: 0 $space-md;
   border-radius: 10px;
   font-size: $font-sm;
   font-weight: 600;
+  line-height: $line-height-none;
   letter-spacing: -0.3px;
   transition:
     transform 0.2s ease,
@@ -486,13 +498,13 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  padding-top: 30px;
+  padding-top: $space-xl;
   border-top: 1px solid rgba($color-border, 0.5);
 
   @media (max-width: $breakpoint-tablet) {
     flex-direction: column-reverse;
     align-items: flex-start;
-    gap: 16px;
+    gap: $space-md;
   }
 }
 
@@ -500,7 +512,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  gap: $space-sm;
 }
 
 .footer__legal-item {
@@ -508,10 +520,11 @@
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    padding: 4px 12px;
+    padding: $space-2xs $space-sm;
     border-radius: 6px;
     font-size: $font-sm;
     font-weight: 400;
+    line-height: $line-height-body;
     color: $color-text-white-subtle;
     transition:
       color 0.2s ease,
@@ -531,7 +544,7 @@
 .footer__legal-copy {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: $space-md;
 }
 
 .footer__legal-logo {
@@ -547,5 +560,6 @@
 
 .footer__legal-text {
   font-size: $font-xss;
+  line-height: $line-height-body;
   color: $color-text-light;
 }

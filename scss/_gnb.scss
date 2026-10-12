@@ -6,10 +6,14 @@
 //메인 메뉴
 .gnb {
   display: flex;
-  height: 52px;
+  align-items: center;
+  height: 100%;
+
   //ul태그
   &__list {
     display: flex;
+    align-items: center;
+    height: 100%;
     gap: 20px;
   }
 
@@ -17,6 +21,7 @@
   &__item {
     position: relative;
     display: flex;
+    align-items: center;
     height: 100%;
     padding: 0 10px;
     transition: padding 0.3s ease;
@@ -32,9 +37,10 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    padding: 8px 0;
+    padding: $space-xs 0;
     font-size: $font-base;
     font-weight: 500;
+    line-height: $line-height-none;
     color: $color-white;
     transition: color 0.2s ease;
 
@@ -69,14 +75,14 @@
 //서브메뉴(ul태그)
 .gnb__sub-list {
   position: absolute;
-  top: 60px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
   display: none;
   flex-direction: column;
   gap: 6px;
   min-width: 150px;
-  padding: 12px 8px;
+  padding: $space-sm $space-xs;
 
   .topbar_nav_wrap.is-open & {
     display: flex;

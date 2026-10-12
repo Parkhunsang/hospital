@@ -84,7 +84,7 @@ body.door-locked {
   font-size: $font-xl;
   font-weight: 400;
   color: $color-white;
-  line-height: 1.6;
+  line-height: $line-height-loose;
   margin-bottom: 32px;
   @media (max-width: $breakpoint-mobile) {
     font-size: 15px;
@@ -190,7 +190,7 @@ body.door-locked {
   justify-content: space-between;
   width: 100%;
   max-width: 1200px;
-  padding: 0 24px;
+  padding: 0 $space-lg;
   height: 100%;
   pointer-events: none;
 
@@ -200,7 +200,7 @@ body.door-locked {
     left: 0;
     transform: none;
     width: 100%;
-    padding: 80px 16px 20px;
+    padding: 80px $space-md $space-ml;
   }
 }
 
@@ -217,7 +217,7 @@ body.door-locked {
   overflow: hidden;
   width: 350px;
   height: auto;
-  padding: 12px;
+  padding: $space-sm;
   box-shadow: $shadow-md;
   @include glass(8px, 0.15, 0.45);
   border-radius: 20px;
@@ -264,7 +264,7 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding-top: 12px;
+  padding-top: $space-sm;
   border-top: 1px solid rgba($color-secondary, 0.08);
   margin-top: 12px;
 
@@ -333,7 +333,7 @@ body.door-locked {
     opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
     transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 340px;
-  padding: 36px 30px;
+  padding: $space-xl;
   @include glass(12px, 0.25, 0.4);
   border-radius: 24px;
   box-shadow: $shadow-lg;
@@ -348,7 +348,7 @@ body.door-locked {
 
   @media (max-width: $breakpoint-desktop) {
     width: 290px;
-    padding: 22px 18px;
+    padding: $space-lg $space-ml;
   }
 
   @media (max-width: $breakpoint-tablet) {
@@ -362,7 +362,7 @@ body.door-locked {
     left: 0;
     right: auto;
     width: 100%;
-    padding: 12px 14px 10px;
+    padding: $space-md;
     border-radius: 16px;
     background: $color-white;
     transform: none;
@@ -401,8 +401,7 @@ body.door-locked {
     @media (max-width: $breakpoint-small) {
       width: 100%;
       min-height: 44px;
-      padding: 6px 16px;
-      font-size: 12px;
+      padding: $space-xs $space-md;
     }
   }
 }
@@ -438,7 +437,7 @@ body.door-locked {
     -webkit-overflow-scrolling: touch;
     width: 100%;
     margin: 6px 0 8px 0;
-    padding-bottom: 4px;
+    padding-bottom: $space-2xs;
     scrollbar-width: none;
     -ms-overflow-style: none;
     &::-webkit-scrollbar {
@@ -460,7 +459,7 @@ body.door-locked {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: $space-md $space-ml;
   border-radius: 12px;
   border: 1px solid $color-border;
   background-color: $color-white;
@@ -493,15 +492,13 @@ body.door-locked {
 
   @media (max-width: $breakpoint-desktop) {
     min-height: 44px;
-    padding: 10px 14px;
-    font-size: 14px;
+    padding: $space-sm $space-md;
   }
 
   @media (max-width: $breakpoint-small) {
     white-space: nowrap;
     min-height: 44px;
-    padding: 10px 14px;
-    font-size: 13px;
+    padding: $space-xs $space-sm;
     &::after {
       font-size: 14px;
     }
@@ -561,7 +558,7 @@ body.door-locked {
     flex-wrap: wrap;
     gap: 10px;
     height: auto;
-    padding: 10px;
+    padding: $space-sm;
     border-radius: 16px;
   }
 }
@@ -631,7 +628,7 @@ body.door-locked {
   width: 100%;
   height: 100%;
   @media (max-width: $breakpoint-large-tablet) {
-    padding: 8px 12px;
+    padding: $space-xs $space-sm;
     gap: 8px;
   }
 }
@@ -862,7 +859,7 @@ body.door-locked {
   gap: 8px;
   align-self: flex-start;
   margin-top: auto;
-  padding: 12px 24px;
+  padding: $space-sm $space-lg;
   border: 1px solid rgba($color-secondary, 0.2);
   border-radius: 12px;
   background-color: $color-white;
@@ -1009,7 +1006,7 @@ body.door-locked {
   font-size: $font-4xl;
   font-weight: 800;
   color: $color-white;
-  line-height: 1.4;
+  line-height: $line-height-heading;
   word-break: keep-all;
 
   @media (max-width: $breakpoint-large-tablet) {
@@ -1055,7 +1052,7 @@ body.door-locked {
   justify-content: center;
   gap: 12px;
   flex: 1;
-  padding: 30px 24px;
+  padding: $space-xl $space-lg;
   border-radius: 20px;
   @include glass(10px, 0.08, 0.15);
   box-shadow: 0 15px 35px rgba(8, 26, 60, 0.25);
@@ -1070,7 +1067,7 @@ body.door-locked {
   }
 
   @media (max-width: $breakpoint-large-tablet) {
-    padding: 16px 20px;
+    padding: $space-md $space-ml;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -1118,7 +1115,7 @@ body.door-locked {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 12px 24px;
+  padding: $space-sm $space-lg;
   border-radius: 30px;
   @include glass(20px, 0.1, 0.2);
   box-shadow: $shadow-xl;
@@ -1226,7 +1223,7 @@ body.door-locked {
   overflow: hidden;
   flex: 1;
   height: 100%;
-  padding: 40px 24px;
+  padding: $space-2xl $space-lg;
   background: $color-white;
   transition:
     flex 0.5s cubic-bezier(0.16, 1, 0.3, 1),
@@ -1239,7 +1236,7 @@ body.door-locked {
     align-items: center;
     flex: none;
     height: auto;
-    padding: 30px 20px;
+    padding: $space-xl $space-ml;
     border: 1px solid $color-border;
     border-radius: 24px;
     cursor: default;
@@ -1248,7 +1245,6 @@ body.door-locked {
   @media (max-width: $breakpoint-small) {
     flex-direction: column;
     align-items: center;
-    padding: 30px 20px;
   }
 }
 
@@ -1347,7 +1343,7 @@ body.door-locked {
 
 .doctors__spec-text {
   font-size: 0.9375rem;
-  line-height: 1.55;
+  line-height: $line-height-body;
   color: $color-text-white-subtle;
   word-break: keep-all;
 
@@ -1361,7 +1357,7 @@ body.door-locked {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 18px;
+  padding: $space-sm $space-ml;
   border-radius: 12px;
   @include glass(5px, 0.08, 0.12);
 
@@ -1518,7 +1514,7 @@ body.door-locked {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 20px 24px;
+  padding: $space-ml $space-lg;
   border-radius: 16px;
   border: 1px solid $color-border;
   background: $color-white;
@@ -1585,7 +1581,7 @@ body.door-locked {
   justify-content: center;
   gap: 24px;
   width: 340px;
-  padding: 36px 30px;
+  padding: $space-xl $space-lg;
   border-radius: 20px;
   background: $color-primary;
   color: $color-white;
@@ -1598,14 +1594,14 @@ body.door-locked {
 
   @media (max-width: $breakpoint-large-tablet) {
     width: 100%;
-    padding: 30px;
+    padding: $space-lg;
   }
 }
 
 .self-test__result-title {
   font-size: $font-xl;
   font-weight: 800;
-  line-height: 1.4;
+  line-height: $line-height-heading;
 }
 
 .self-test__desc {
@@ -1688,7 +1684,7 @@ body.door-locked {
 .news__tab-button {
   display: inline-flex;
   align-items: center;
-  padding: 12px 28px;
+  padding: $space-sm $space-lg;
   border: 1px solid $color-primary;
   border-radius: 30px;
   background: $color-white;
@@ -1774,14 +1770,14 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 24px;
+  padding: $space-lg;
   gap: 12px;
 }
 
 .news__title {
   font-size: $font-base;
   font-weight: 800;
-  line-height: 1.45;
+  line-height: $line-height-heading;
   color: $color-primary;
   word-break: keep-all;
 }
@@ -1789,7 +1785,7 @@ body.door-locked {
 .news__desc {
   font-size: $font-sm;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: $line-height-body;
   color: $color-text-light;
   word-break: keep-all;
 }
