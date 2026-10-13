@@ -61,7 +61,7 @@ body.door-locked {
   text-align: center;
   width: min(540px, calc(100% - 40px));
   padding: 50px 30px;
-  border-radius: 32px;
+  border-radius: $radius-xl;
   @include glass(25px, 0.03, 0.15);
   box-shadow: $shadow-xl;
   pointer-events: auto;
@@ -81,14 +81,9 @@ body.door-locked {
 }
 
 .intro-door__desc {
-  font-size: $font-xl;
-  font-weight: 400;
-  color: $color-white;
-  line-height: $line-height-loose;
   margin-bottom: 32px;
-  @media (max-width: $breakpoint-mobile) {
-    font-size: 15px;
-  }
+  @include text-desc($size: $font-xl, $weight: 400);
+  color: $color-white;
 }
 
 .intro-door__btn-wrap {
@@ -117,7 +112,7 @@ body.door-locked {
   width: 22px;
   height: 34px;
   border: 2px solid rgba($color-white, 0.4);
-  border-radius: 11px;
+  border-radius: 12px;
 }
 
 .intro-door__mouse-wheel {
@@ -128,9 +123,8 @@ body.door-locked {
   width: 4px;
   height: 6px;
   background-color: $color-white;
-  border-radius: 2px;
+  border-radius: 4px;
   animation: scrollWheel 1.6s infinite ease-in-out;
-
   @keyframes scrollWheel {
     0% {
       top: 6px;
@@ -193,7 +187,6 @@ body.door-locked {
   padding: 0 $space-lg;
   height: 100%;
   pointer-events: none;
-
   @media (max-width: $breakpoint-small) {
     flex-direction: column;
     justify-content: space-between;
@@ -220,10 +213,9 @@ body.door-locked {
   padding: $space-sm;
   box-shadow: $shadow-md;
   @include glass(8px, 0.15, 0.45);
-  border-radius: 20px;
+  border-radius: $radius-lg;
   text-align: center;
   pointer-events: auto;
-
   @media (max-width: $breakpoint-desktop) {
     display: none;
   }
@@ -233,22 +225,6 @@ body.door-locked {
   font-size: $font-lg;
   font-weight: 600;
   color: $color-text-light;
-  @media (max-width: $breakpoint-large-tablet) {
-    font-size: 15px;
-  }
-  @media (max-width: $breakpoint-small) {
-    font-size: 13px;
-  }
-}
-
-.hero-3d__welcome-desc {
-  font-size: $font-3xl;
-  @media (max-width: $breakpoint-large-tablet) {
-    font-size: 20px;
-  }
-  @media (max-width: $breakpoint-small) {
-    font-size: 17px;
-  }
 }
 
 .hero-3d__menu {
@@ -267,14 +243,12 @@ body.door-locked {
   padding-top: $space-sm;
   border-top: 1px solid rgba($color-secondary, 0.08);
   margin-top: 12px;
-
   @media (max-width: $breakpoint-small) {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 6px;
     border-top: none;
   }
-
   @media (max-width: $breakpoint-mobile) {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -285,8 +259,7 @@ body.door-locked {
   align-items: center;
   justify-content: center;
   min-height: clamp(36px, 2.5vw + 20px, 50px);
-  padding: 0 clamp(4px, 6vw - 32px, 36px);
-  border-radius: 30px;
+  border-radius: $radius-lg;
   border: 1px solid $color-border;
   background-color: $color-white;
   box-shadow: $shadow-md;
@@ -300,9 +273,7 @@ body.door-locked {
     transform: translateX(6px);
     box-shadow: $shadow-lg;
   }
-
   @media (max-width: $breakpoint-small) {
-    border-radius: 16px;
     text-align: center;
 
     &:hover {
@@ -315,9 +286,6 @@ body.door-locked {
   font-size: $font-base;
   font-weight: 700;
   color: $color-primary;
-  @media (max-width: $breakpoint-large-tablet) {
-    font-size: 14px;
-  }
 }
 
 .hero-3d__info-panel {
@@ -335,7 +303,7 @@ body.door-locked {
   width: 340px;
   padding: $space-xl;
   @include glass(12px, 0.25, 0.4);
-  border-radius: 24px;
+  border-radius: $radius-lg;
   box-shadow: $shadow-lg;
   color: $color-primary;
   pointer-events: auto;
@@ -345,16 +313,13 @@ body.door-locked {
     transform: translate(40px, -50%);
     pointer-events: none;
   }
-
   @media (max-width: $breakpoint-desktop) {
     width: 290px;
     padding: $space-lg $space-ml;
   }
-
   @media (max-width: $breakpoint-tablet) {
     width: 200px;
   }
-
   @media (max-width: $breakpoint-small) {
     position: absolute;
     top: auto;
@@ -363,7 +328,6 @@ body.door-locked {
     right: auto;
     width: 100%;
     padding: $space-md;
-    border-radius: 16px;
     background: $color-white;
     transform: none;
     backdrop-filter: blur(12px);
@@ -448,7 +412,6 @@ body.door-locked {
 
 .hero-3d__disease-item {
   width: 100%;
-
   @media (max-width: $breakpoint-small) {
     flex: 0 0 auto;
     width: auto;
@@ -460,7 +423,7 @@ body.door-locked {
   align-items: center;
   justify-content: space-between;
   padding: $space-md $space-ml;
-  border-radius: 12px;
+  border-radius: $radius-md;
   border: 1px solid $color-border;
   background-color: $color-white;
   box-shadow: $shadow-sm;
@@ -489,12 +452,10 @@ body.door-locked {
     color: $color-secondary;
     transform: translateX(4px);
   }
-
   @media (max-width: $breakpoint-desktop) {
     min-height: 44px;
     padding: $space-sm $space-md;
   }
-
   @media (max-width: $breakpoint-small) {
     white-space: nowrap;
     min-height: 44px;
@@ -516,7 +477,6 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
   @media (max-width: $breakpoint-small) {
     position: relative;
     top: auto;
@@ -535,12 +495,10 @@ body.door-locked {
   height: 80px;
   margin-bottom: 30px;
   pointer-events: auto;
-
   @media (max-width: $breakpoint-large-tablet) {
     height: auto;
     margin-bottom: 20px;
   }
-
   @media (max-width: $breakpoint-small) {
     margin-bottom: 0;
   }
@@ -552,14 +510,14 @@ body.door-locked {
   align-items: center;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: $radius-lg;
+  overflow: hidden;
   background: $color-white;
   @media (max-width: $breakpoint-large-tablet) {
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     height: auto;
     padding: $space-sm;
-    border-radius: 16px;
   }
 }
 
@@ -570,14 +528,8 @@ body.door-locked {
   justify-content: center;
   flex: 1;
   height: 100%;
-  &:first-child {
-    border-radius: 20px 0 0 20px;
-    &::after {
-      display: none;
-    }
-  }
-  &:last-child {
-    border-radius: 0 20px 20px 0;
+  &:first-child::after {
+    display: none;
   }
   //호버 인터렉션
   &:hover {
@@ -596,7 +548,7 @@ body.door-locked {
     left: -0.5px;
     width: 1px;
     height: 50%;
-    border-radius: 50px;
+    border-radius: $radius-pill;
     background: rgba(136, 149, 182, 0.85);
     content: "";
     transform: translateY(-50%);
@@ -606,14 +558,10 @@ body.door-locked {
     min-width: 140px;
     min-height: 48px;
     border: 1px solid rgba($color-primary, 0.08);
-    border-radius: 12px;
+    border-radius: $radius-md;
     background: $color-white;
     box-shadow: $shadow-sm;
     transition: all 0.25s ease;
-    &:first-child,
-    &:last-child {
-      border-radius: 12px;
-    }
     &::after {
       display: none;
     }
@@ -624,7 +572,7 @@ body.door-locked {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 16px;
   width: 100%;
   height: 100%;
   @media (max-width: $breakpoint-large-tablet) {
@@ -650,7 +598,6 @@ body.door-locked {
   position: relative;
   width: 100%;
   background-color: $color-bg-light;
-
   @media (min-width: $breakpoint-large-tablet) {
     padding: 240px 0 calc(28vh + 120px);
   }
@@ -664,7 +611,6 @@ body.door-locked {
       position: sticky;
       top: 140px;
     }
-
     @media (max-width: $breakpoint-large-tablet) {
       width: 100%;
       margin-bottom: 50px;
@@ -691,7 +637,6 @@ body.door-locked {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-
   @media (max-width: $breakpoint-large-tablet) {
     flex-direction: column;
   }
@@ -721,7 +666,6 @@ body.door-locked {
 
 .fast-diagnosis__con {
   width: 68%;
-
   @media (max-width: $breakpoint-large-tablet) {
     width: 100%;
   }
@@ -731,9 +675,8 @@ body.door-locked {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 120px 42px;
-
   @media (max-width: $breakpoint-large-tablet) {
-    gap: 40px;
+    gap: 24px;
   }
   @media (max-width: $breakpoint-mobile) {
     grid-template-columns: 1fr;
@@ -743,26 +686,20 @@ body.door-locked {
 .fast-diagnosis__step {
   position: relative;
   overflow: hidden;
-  border-radius: 30px;
-  box-shadow: $shadow-md;
   aspect-ratio: 1 / 1;
-  transition:
-    transform 0.4s $ease-out-expo,
-    box-shadow 0.4s $ease-out-expo;
+  transition: transform 0.4s $ease-out-expo;
 
   &:nth-child(even) {
     transform: translateY(28vh);
   }
 
   &:hover {
-    box-shadow: $shadow-xl;
     transform: translateY(-8px);
   }
 
   &:nth-child(even):hover {
     transform: translateY(calc(28vh - 8px));
   }
-
   @media (max-width: $breakpoint-large-tablet) {
     &:nth-child(even) {
       transform: translateY(0);
@@ -782,7 +719,7 @@ body.door-locked {
   overflow: hidden;
   width: 100%;
   height: 100%;
-  border-radius: 30px;
+  border-radius: $radius-lg;
 
   &::after {
     position: absolute;
@@ -861,9 +798,8 @@ body.door-locked {
   margin-top: auto;
   padding: $space-sm $space-lg;
   border: 1px solid rgba($color-secondary, 0.2);
-  border-radius: 12px;
+  border-radius: $radius-sm;
   background-color: $color-white;
-  box-shadow: 0 4px 12px rgba(27, 45, 90, 0.03);
   font-size: $font-md;
   font-weight: 700;
   color: $color-secondary;
@@ -872,7 +808,6 @@ body.door-locked {
   &:hover {
     border-color: $color-secondary;
     background-color: $color-secondary;
-    box-shadow: $shadow-primary;
     color: $color-white;
     transform: translateY(-2px);
   }
@@ -896,7 +831,6 @@ body.door-locked {
   width: 100%;
   //마우스 휠 길이만큼의 높이 설정
   height: calc(210vh + 80px);
-
   @media (max-width: $breakpoint-large-tablet) {
     height: 100vh;
   }
@@ -909,7 +843,6 @@ body.door-locked {
   overflow: hidden;
   width: 100%;
   height: 100vh;
-
   @media (max-width: $breakpoint-large-tablet) {
     position: relative;
     height: 100vh;
@@ -923,7 +856,6 @@ body.door-locked {
   width: calc(50% + 4px);
   height: calc(100% + 4px);
   background-color: $color-white;
-
   @media (max-width: $breakpoint-large-tablet) {
     display: none;
   }
@@ -1008,7 +940,6 @@ body.door-locked {
   color: $color-white;
   line-height: $line-height-heading;
   word-break: keep-all;
-
   @media (max-width: $breakpoint-large-tablet) {
     font-size: 28px;
   }
@@ -1025,7 +956,6 @@ body.door-locked {
   @include text-desc;
   font-size: $font-lg;
   color: $color-text-white-subtle;
-
   @media (max-width: $breakpoint-large-tablet) {
     font-size: 15px;
   }
@@ -1037,7 +967,6 @@ body.door-locked {
 .brand-trust__stats-list {
   display: flex;
   gap: 20px;
-
   @media (max-width: $breakpoint-large-tablet) {
     flex-direction: column;
     gap: 12px;
@@ -1053,9 +982,8 @@ body.door-locked {
   gap: 12px;
   flex: 1;
   padding: $space-xl $space-lg;
-  border-radius: 20px;
+  border-radius: $radius-md;
   @include glass(10px, 0.08, 0.15);
-  box-shadow: 0 15px 35px rgba(8, 26, 60, 0.25);
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
@@ -1065,7 +993,6 @@ body.door-locked {
     background-color: rgba($color-white, 0.15);
     transform: translateY(-5px);
   }
-
   @media (max-width: $breakpoint-large-tablet) {
     padding: $space-md $space-ml;
     flex-direction: row;
@@ -1077,7 +1004,6 @@ body.door-locked {
   font-size: $font-sm;
   font-weight: 700;
   color: $color-text-white-subtle;
-
   @media (max-width: $breakpoint-large-tablet) {
     margin-bottom: 0;
   }
@@ -1097,7 +1023,6 @@ body.door-locked {
     font-weight: 700;
     color: $color-accent;
   }
-
   @media (max-width: $breakpoint-large-tablet) {
     font-size: 24px;
   }
@@ -1116,9 +1041,8 @@ body.door-locked {
   align-items: center;
   gap: 20px;
   padding: $space-sm $space-lg;
-  border-radius: 30px;
+  border-radius: $radius-pill;
   @include glass(20px, 0.1, 0.2);
-  box-shadow: $shadow-xl;
   color: $color-white;
 }
 
@@ -1183,7 +1107,7 @@ body.door-locked {
   overflow: hidden;
   width: 60px;
   height: 2px;
-  border-radius: 1px;
+  border-radius: $radius-xs;
   background: rgba($color-white, 0.2);
 }
 
@@ -1206,7 +1130,6 @@ body.door-locked {
   height: 620px;
   border-top: 1px solid $color-border;
   border-bottom: 1px solid $color-border;
-
   @media (max-width: $breakpoint-large-tablet) {
     flex-direction: column;
     gap: 30px;
@@ -1230,7 +1153,6 @@ body.door-locked {
     background-color 0.5s ease,
     box-shadow 0.5s ease;
   cursor: pointer;
-
   @media (max-width: $breakpoint-large-tablet) {
     flex-direction: row;
     align-items: center;
@@ -1238,10 +1160,9 @@ body.door-locked {
     height: auto;
     padding: $space-xl $space-ml;
     border: 1px solid $color-border;
-    border-radius: 24px;
+    border-radius: $radius-xl;
     cursor: default;
   }
-
   @media (max-width: $breakpoint-small) {
     flex-direction: column;
     align-items: center;
@@ -1260,7 +1181,6 @@ body.door-locked {
     transform 0.4s ease,
     height 0.4s ease,
     margin-bottom 0.4s ease;
-
   @media (max-width: $breakpoint-large-tablet) {
     margin: 0 20px 0 10px;
   }
@@ -1277,7 +1197,6 @@ body.door-locked {
   gap: 24px;
   align-items: center;
   width: 100%;
-
   @media (max-width: $breakpoint-large-tablet) {
     flex-direction: column;
     align-items: flex-start;
@@ -1320,7 +1239,6 @@ body.door-locked {
     height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     margin-top 0.4s ease,
     opacity 0.15s ease;
-
   @media (max-width: $breakpoint-large-tablet) {
     overflow: visible;
     height: auto;
@@ -1332,8 +1250,6 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 0;
-
   @media (max-width: $breakpoint-large-tablet) {
     .info-label {
       color: $color-secondary;
@@ -1341,14 +1257,17 @@ body.door-locked {
   }
 }
 
-.doctors__spec-text {
-  font-size: 0.9375rem;
-  line-height: $line-height-body;
-  color: $color-text-white-subtle;
-  word-break: keep-all;
+.doctors__spec-info {
+  margin-right: 4px;
+  color: $color-white;
+  font-size: $font-base;
+  font-weight: 700;
+}
 
+.doctors__spec-text {
+  @include text-desc($size: $font-md, $line-height: $line-height-body);
+  color: $color-text-white-subtle;
   @media (max-width: $breakpoint-large-tablet) {
-    font-weight: 500;
     color: $color-text-light;
   }
 }
@@ -1358,9 +1277,8 @@ body.door-locked {
   justify-content: space-between;
   align-items: center;
   padding: $space-sm $space-ml;
-  border-radius: 12px;
+  border-radius: $radius-md;
   @include glass(5px, 0.08, 0.12);
-
   @media (max-width: $breakpoint-large-tablet) {
     background: $color-bg-light;
   }
@@ -1371,7 +1289,6 @@ body.door-locked {
   align-items: center;
   gap: 8px;
   color: $color-white;
-
   @media (max-width: $breakpoint-large-tablet) {
     color: $color-primary;
   }
@@ -1395,7 +1312,6 @@ body.door-locked {
   font-size: 0.9375rem;
   font-weight: 800;
   color: $color-accent;
-
   @media (max-width: $breakpoint-large-tablet) {
     color: $color-secondary;
   }
@@ -1515,7 +1431,7 @@ body.door-locked {
   align-items: center;
   gap: 14px;
   padding: $space-ml $space-lg;
-  border-radius: 16px;
+  border-radius: $radius-md;
   border: 1px solid $color-border;
   background: $color-white;
   cursor: pointer;
@@ -1538,7 +1454,7 @@ body.door-locked {
   position: relative;
   width: 26px;
   height: 26px;
-  border-radius: 6px;
+  border-radius: $radius-sm;
   flex-shrink: 0;
   border: 2px solid $color-border;
   transition:
@@ -1582,7 +1498,7 @@ body.door-locked {
   gap: 24px;
   width: 340px;
   padding: $space-xl $space-lg;
-  border-radius: 20px;
+  border-radius: $radius-lg;
   background: $color-primary;
   color: $color-white;
 
@@ -1653,7 +1569,7 @@ body.door-locked {
 .location__card {
   height: 330px;
   border: 1px solid $color-border;
-  border-radius: 20px;
+  border-radius: $radius-lg;
   box-shadow: $shadow-md;
   overflow: hidden;
 }
@@ -1686,7 +1602,7 @@ body.door-locked {
   align-items: center;
   padding: $space-sm $space-lg;
   border: 1px solid $color-primary;
-  border-radius: 30px;
+  border-radius: $radius-pill;
   background: $color-white;
   font-size: 1rem;
   font-weight: 700;
@@ -1740,7 +1656,7 @@ body.door-locked {
   overflow: hidden;
   flex: 1;
   border: 1px solid $color-border;
-  border-radius: 16px;
+  border-radius: $radius-lg;
   background: $color-white;
   box-shadow: $shadow-sm;
   transition:
@@ -1783,11 +1699,8 @@ body.door-locked {
 }
 
 .news__desc {
-  font-size: $font-sm;
-  font-weight: 500;
-  line-height: $line-height-body;
+  @include text-desc($size: $font-sm, $line-height: $line-height-body);
   color: $color-text-light;
-  word-break: keep-all;
 }
 
 .news__date {

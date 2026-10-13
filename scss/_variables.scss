@@ -71,10 +71,14 @@ $breakpoint-tablet: 768px;
 $breakpoint-large-tablet: 960px;
 $breakpoint-desktop: 1200px;
 
-@mixin text-desc {
-  font-size: $font-base;
-  font-weight: 500;
-  line-height: $line-height-loose;
+@mixin text-desc(
+  $size: $font-base,
+  $weight: 500,
+  $line-height: $line-height-loose
+) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
   word-break: keep-all;
   overflow-wrap: break-word;
 }

@@ -62,7 +62,7 @@
   padding: 8px;
   gap: 8px;
   box-sizing: border-box;
-  border-radius: 50px;
+  border-radius: 9999px;
   background-color: #f9fbfd;
 }
 .disease-nav__link {
@@ -70,18 +70,13 @@
   align-items: center;
   justify-content: center;
   padding: 8px 16px;
-  box-sizing: border-box;
-  border-radius: 32px;
+  border-radius: 9999px;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1;
-  color: #475569;
-  text-decoration: none;
+  color: #222;
   transition: background-color 0.2s ease, color 0.2s ease;
   cursor: pointer;
-}
-.disease-nav__link:hover {
-  color: #1b2d5a;
 }
 
 .disease-nav__item--active .disease-nav__link,
@@ -109,7 +104,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: #fff;
-  border-radius: 16px;
+  border-radius: 24px;
   overflow: hidden;
 }
 @media (max-width: 768px) {
@@ -150,6 +145,8 @@
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.5;
+  word-break: keep-all;
+  overflow-wrap: break-word;
   color: #222;
 }
 
@@ -195,18 +192,14 @@
 
 .symptoms__card {
   background-color: #fff;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
 }
 
 .symptoms__img-wrapper {
-  height: 240px;
-}
-@media (max-width: 768px) {
-  .symptoms__img-wrapper {
-    height: 180px;
-  }
+  aspect-ratio: 16/10;
+  width: 100%;
 }
 
 .symptoms__img-wrapper img {
@@ -217,11 +210,13 @@
 }
 
 .symptoms__text {
-  color: #222;
+  padding: 20px 24px;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
-  padding: 20px 24px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  color: #222;
 }
 @media (max-width: 768px) {
   .symptoms__text {

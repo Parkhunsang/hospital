@@ -62,7 +62,7 @@ body.door-locked {
   text-align: center;
   width: min(540px, 100% - 40px);
   padding: 50px 30px;
-  border-radius: 32px;
+  border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(25px);
@@ -83,16 +83,13 @@ body.door-locked {
 }
 
 .intro-door__desc {
+  margin-bottom: 32px;
   font-size: 1.25rem;
   font-weight: 400;
-  color: #fff;
   line-height: 1.7;
-  margin-bottom: 32px;
-}
-@media (max-width: 480px) {
-  .intro-door__desc {
-    font-size: 15px;
-  }
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  color: #fff;
 }
 
 .intro-door__btn-wrap {
@@ -121,7 +118,7 @@ body.door-locked {
   width: 22px;
   height: 34px;
   border: 2px solid rgba(255, 255, 255, 0.4);
-  border-radius: 11px;
+  border-radius: 12px;
 }
 
 .intro-door__mouse-wheel {
@@ -132,7 +129,7 @@ body.door-locked {
   width: 4px;
   height: 6px;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 4px;
   animation: scrollWheel 1.6s infinite ease-in-out;
 }
 @keyframes scrollWheel {
@@ -223,7 +220,7 @@ body.door-locked {
   border: 1px solid rgba(255, 255, 255, 0.45);
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
-  border-radius: 20px;
+  border-radius: 16px;
   text-align: center;
   pointer-events: auto;
 }
@@ -237,30 +234,6 @@ body.door-locked {
   font-size: 1.125rem;
   font-weight: 600;
   color: #666;
-}
-@media (max-width: 960px) {
-  .hero-3d__welcome-title {
-    font-size: 15px;
-  }
-}
-@media (max-width: 640px) {
-  .hero-3d__welcome-title {
-    font-size: 13px;
-  }
-}
-
-.hero-3d__welcome-desc {
-  font-size: 1.875rem;
-}
-@media (max-width: 960px) {
-  .hero-3d__welcome-desc {
-    font-size: 20px;
-  }
-}
-@media (max-width: 640px) {
-  .hero-3d__welcome-desc {
-    font-size: 17px;
-  }
 }
 
 .hero-3d__menu {
@@ -301,8 +274,7 @@ body.door-locked {
   align-items: center;
   justify-content: center;
   min-height: clamp(36px, 2.5vw + 20px, 50px);
-  padding: 0 clamp(4px, 6vw - 32px, 36px);
-  border-radius: 30px;
+  border-radius: 16px;
   border: 1px solid #eef2f6;
   background-color: #fff;
   box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
@@ -318,7 +290,6 @@ body.door-locked {
 }
 @media (max-width: 640px) {
   .hero-3d__pain-item {
-    border-radius: 16px;
     text-align: center;
   }
   .hero-3d__pain-item:hover {
@@ -330,11 +301,6 @@ body.door-locked {
   font-size: 1rem;
   font-weight: 700;
   color: #1b2d5a;
-}
-@media (max-width: 960px) {
-  .hero-3d__menu-text {
-    font-size: 14px;
-  }
 }
 
 .hero-3d__info-panel {
@@ -352,7 +318,7 @@ body.door-locked {
   border: 1px solid rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(12px);
-  border-radius: 24px;
+  border-radius: 16px;
   box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
   color: #1b2d5a;
   pointer-events: auto;
@@ -382,7 +348,6 @@ body.door-locked {
     right: auto;
     width: 100%;
     padding: 16px;
-    border-radius: 16px;
     background: #fff;
     transform: none;
     backdrop-filter: blur(12px);
@@ -575,16 +540,16 @@ body.door-locked {
   align-items: center;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: 16px;
+  overflow: hidden;
   background: #fff;
 }
 @media (max-width: 960px) {
   .hero-3d__togo-list {
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     height: auto;
     padding: 12px;
-    border-radius: 16px;
   }
 }
 
@@ -596,14 +561,8 @@ body.door-locked {
   flex: 1;
   height: 100%;
 }
-.hero-3d__togo-item:first-child {
-  border-radius: 20px 0 0 20px;
-}
 .hero-3d__togo-item:first-child::after {
   display: none;
-}
-.hero-3d__togo-item:last-child {
-  border-radius: 0 20px 20px 0;
 }
 .hero-3d__togo-item:hover {
   background: #1b2d5a;
@@ -620,7 +579,7 @@ body.door-locked {
   left: -0.5px;
   width: 1px;
   height: 50%;
-  border-radius: 50px;
+  border-radius: 9999px;
   background: rgba(136, 149, 182, 0.85);
   content: "";
   transform: translateY(-50%);
@@ -636,9 +595,6 @@ body.door-locked {
     box-shadow: 0 4px 12px rgba(27, 45, 90, 0.04);
     transition: all 0.25s ease;
   }
-  .hero-3d__togo-item:first-child, .hero-3d__togo-item:last-child {
-    border-radius: 12px;
-  }
   .hero-3d__togo-item::after {
     display: none;
   }
@@ -648,7 +604,7 @@ body.door-locked {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 16px;
   width: 100%;
   height: 100%;
 }
@@ -762,7 +718,7 @@ body.door-locked {
 }
 @media (max-width: 960px) {
   .fast-diagnosis__steps {
-    gap: 40px;
+    gap: 24px;
   }
 }
 @media (max-width: 480px) {
@@ -774,16 +730,13 @@ body.door-locked {
 .fast-diagnosis__step {
   position: relative;
   overflow: hidden;
-  border-radius: 30px;
-  box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
   aspect-ratio: 1/1;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .fast-diagnosis__step:nth-child(even) {
   transform: translateY(28vh);
 }
 .fast-diagnosis__step:hover {
-  box-shadow: 0 20px 40px rgba(27, 45, 90, 0.15);
   transform: translateY(-8px);
 }
 .fast-diagnosis__step:nth-child(even):hover {
@@ -806,7 +759,7 @@ body.door-locked {
   overflow: hidden;
   width: 100%;
   height: 100%;
-  border-radius: 30px;
+  border-radius: 16px;
 }
 .fast-diagnosis__image-container::after {
   position: absolute;
@@ -883,9 +836,8 @@ body.door-locked {
   margin-top: auto;
   padding: 12px 24px;
   border: 1px solid rgba(47, 95, 167, 0.2);
-  border-radius: 12px;
+  border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 4px 12px rgba(27, 45, 90, 0.03);
   font-size: 0.9375rem;
   font-weight: 700;
   color: #2f5fa7;
@@ -895,7 +847,6 @@ body.door-locked {
 .non-surgical__card-btn:hover {
   border-color: #2f5fa7;
   background-color: #2f5fa7;
-  box-shadow: 0 8px 20px rgba(47, 95, 167, 0.15);
   color: #fff;
   transform: translateY(-2px);
 }
@@ -1078,11 +1029,10 @@ body.door-locked {
   gap: 12px;
   flex: 1;
   padding: 32px 24px;
-  border-radius: 20px;
+  border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
-  box-shadow: 0 15px 35px rgba(8, 26, 60, 0.25);
   transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 .brand-trust__stat-card:hover {
@@ -1146,11 +1096,10 @@ body.door-locked {
   align-items: center;
   gap: 20px;
   padding: 12px 24px;
-  border-radius: 30px;
+  border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
-  box-shadow: 0 20px 40px rgba(27, 45, 90, 0.15);
   color: #fff;
 }
 
@@ -1208,7 +1157,7 @@ body.door-locked {
   overflow: hidden;
   width: 60px;
   height: 2px;
-  border-radius: 1px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.2);
 }
 
@@ -1357,7 +1306,6 @@ body.door-locked {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 0;
 }
 @media (max-width: 960px) {
   .doctors__specs .info-label {
@@ -1365,15 +1313,23 @@ body.door-locked {
   }
 }
 
+.doctors__spec-info {
+  margin-right: 4px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
 .doctors__spec-text {
   font-size: 0.9375rem;
+  font-weight: 500;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.85);
   word-break: keep-all;
+  overflow-wrap: break-word;
+  color: rgba(255, 255, 255, 0.85);
 }
 @media (max-width: 960px) {
   .doctors__spec-text {
-    font-weight: 500;
     color: #666;
   }
 }
@@ -1548,7 +1504,7 @@ body.door-locked {
   align-items: center;
   gap: 14px;
   padding: 20px 24px;
-  border-radius: 16px;
+  border-radius: 12px;
   border: 1px solid #eef2f6;
   background: #fff;
   cursor: pointer;
@@ -1567,7 +1523,7 @@ body.door-locked {
   position: relative;
   width: 26px;
   height: 26px;
-  border-radius: 6px;
+  border-radius: 8px;
   flex-shrink: 0;
   border: 2px solid #eef2f6;
   transition: border-color 0.2s ease, background-color 0.2s ease;
@@ -1610,7 +1566,7 @@ body.door-locked {
   gap: 24px;
   width: 340px;
   padding: 32px 24px;
-  border-radius: 20px;
+  border-radius: 16px;
   background: #1b2d5a;
   color: #fff;
 }
@@ -1685,7 +1641,7 @@ body.door-locked {
 .location__card {
   height: 330px;
   border: 1px solid #eef2f6;
-  border-radius: 20px;
+  border-radius: 16px;
   box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
   overflow: hidden;
 }
@@ -1718,7 +1674,7 @@ body.door-locked {
   align-items: center;
   padding: 12px 24px;
   border: 1px solid #1b2d5a;
-  border-radius: 30px;
+  border-radius: 9999px;
   background: #fff;
   font-size: 1rem;
   font-weight: 700;
@@ -1815,8 +1771,9 @@ body.door-locked {
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.5;
-  color: #666;
   word-break: keep-all;
+  overflow-wrap: break-word;
+  color: #666;
 }
 
 .news__date {

@@ -23,11 +23,11 @@
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0 10px;
+    padding: 0 $space-sm;
     transition: padding 0.3s ease;
     @media (min-width: $breakpoint-desktop) {
       .topbar_nav_wrap.is-open & {
-        padding: 0 20px;
+        padding: 0 $space-ml;
       }
     }
   }
@@ -35,8 +35,7 @@
   //a태그
   &__link {
     position: relative;
-    display: inline-flex;
-    align-items: center;
+    display: block;
     padding: $space-xs 0;
     font-size: $font-base;
     font-weight: 500;
@@ -50,21 +49,15 @@
       left: 0;
       width: 100%;
       height: 2px;
-      border-radius: 2px;
+      border-radius: $radius-xs;
       background-color: $color-white;
       content: "";
       transform: scaleX(0);
-      transform-origin: center;
       transition: transform 0.3s ease;
 
       .gnb__item:is(:hover, :focus-within) & {
         transform: scaleX(1);
       }
-    }
-
-    &:focus-visible {
-      outline: 2px solid $color-focus-dark;
-      outline-offset: 4px;
     }
   }
   @media (max-width: $breakpoint-large-tablet) {
@@ -80,7 +73,7 @@
   transform: translateX(-50%);
   display: none;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   min-width: 150px;
   padding: $space-sm $space-xs;
 
@@ -97,8 +90,8 @@
 //a태그
 .gnb__sub-link {
   display: block;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: $space-xs $space-sm;
+  border-radius: $radius-sm;
   font-size: $font-base;
   font-weight: 400;
   color: rgba($color-white, 0.5);
@@ -110,10 +103,5 @@
     background-color: rgba($color-white, 0.8);
     color: $color-secondary;
     font-weight: 700;
-  }
-
-  &:focus-visible {
-    outline: 2px solid $color-focus-dark;
-    outline-offset: -2px;
   }
 }

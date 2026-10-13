@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  if (typeof initIntroDoor === "function") initIntroDoor();
-  if (typeof init3DBodyMap === "function") init3DBodyMap();
-  if (typeof initFastDiagnosis === "function") initFastDiagnosis();
-  if (typeof initBrandTrustPartners === "function") initBrandTrustPartners();
-  if (typeof initLocationSlider === "function") initLocationSlider();
-  if (typeof initNewsTabs === "function") initNewsTabs();
+  initIntroDoor();
+  init3DBodyMap();
+  initFastDiagnosis();
+  initBrandTrustPartners();
+  initLocationSlider();
+  initNewsTabs();
 });
 
 function initLocationSlider() {
@@ -50,7 +50,6 @@ function initLocationSlider() {
 function init3DBodyMap() {
   const container = document.getElementById("canvas-container");
   if (!container) return;
-
 
   // 1. 신체 부위별 데이터 (타겟(LookAt) 위치, 카메라(Zoom-in) 위치 설정, 및 일러스트 연동)
   const bodyData = {
@@ -509,16 +508,26 @@ function init3DBodyMap() {
   let glowBaseOpacity = 0.0;
   // --------------------------------------------------------
 
-  // 창 크기 대응
+  // 창 크기 대응 (requestAnimationFrame으로 쓰로틀링)
+  let resizeRafId = null;
   window.addEventListener("resize", () => {
-    camera.aspect = container.clientWidth / container.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    if (resizeRafId) cancelAnimationFrame(resizeRafId);
+    resizeRafId = requestAnimationFrame(() => {
+      if (!container.clientHeight) return;
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
   });
 
-  // 애니메이션 루프
+  // 애니메이션 루프 최적화 (루프 외부 벡터 재사용 및 뷰포트 온디맨드 렌더링)
+  const toCameraVec = new THREE.Vector3();
+  let animationFrameId = null;
+  let isCanvasVisible = true;
+
   function animate() {
-    requestAnimationFrame(animate);
+    if (!isCanvasVisible) return;
+    animationFrameId = requestAnimationFrame(animate);
     controls.update();
 
     if (markerGroup.visible) {
@@ -532,12 +541,14 @@ function init3DBodyMap() {
 
       // 2) 3D 평면 일러스트 및 글로우용 펄스 애니메이션
       if (jointPlane.visible) {
-        // 카메라 시선 각도와 법선 벡터 간의 내적 계산
+        // 카메라 시선 각도와 법선 벡터 간의 내적 계산 (캐싱된 벡터 재사용)
         if (activeNormal) {
-          const toCamera = new THREE.Vector3();
-          toCamera.copy(camera.position).sub(markerGroup.position).normalize();
+          toCameraVec
+            .copy(camera.position)
+            .sub(markerGroup.position)
+            .normalize();
 
-          const dot = toCamera.dot(activeNormal);
+          const dot = toCameraVec.dot(activeNormal);
           // dot이 0.5 이상이면 1.0, 0.1 이하면 0.0으로 부드럽게 보간
           const angleOpacity = THREE.MathUtils.clamp(
             (dot - 0.1) / 0.4,
@@ -566,6 +577,29 @@ function init3DBodyMap() {
 
     renderer.render(scene, camera);
   }
+
+  // 뷰포트 감지: 화면 밖으로 스크롤 시 렌더링을 일시 정지하여 GPU/배터리 낭비 방지
+  const canvasObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (!isCanvasVisible) {
+            isCanvasVisible = true;
+            animate();
+          }
+        } else {
+          isCanvasVisible = false;
+          if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+          }
+        }
+      });
+    },
+    { threshold: 0.05 },
+  );
+  canvasObserver.observe(container);
+
   animate();
 
   // 카메라 구면 보간(Spherical Interpolation) 애니메이션 함수 (갑작스러운 회전 및 모델 파고들기 방지)
@@ -743,7 +777,9 @@ function init3DBodyMap() {
         infoPanel.classList.remove("hero-3d__info-panel--hidden");
 
         // 질환 패널이 열리면 키보드 탐색(A11y)을 위해 첫 번째 질환 링크로 포커스 자동 이동
-        const firstDiseaseLink = infoDiseaseList.querySelector(".hero-3d__disease-link");
+        const firstDiseaseLink = infoDiseaseList.querySelector(
+          ".hero-3d__disease-link",
+        );
         if (firstDiseaseLink) {
           firstDiseaseLink.focus();
         }
@@ -979,31 +1015,7 @@ function initFastDiagnosis() {
   const section = document.querySelector(".fast-diagnosis");
   if (!section) return;
 
-  // 1. GSAP ScrollTrigger 핀(Pin) 고정 (데스크톱)
-  const titleEl = section.querySelector(".section-title-wrap");
-  if (
-    titleEl &&
-    typeof gsap !== "undefined" &&
-    typeof ScrollTrigger !== "undefined"
-  ) {
-    gsap.registerPlugin(ScrollTrigger);
-
-    ScrollTrigger.matchMedia({
-      "(min-width: 1024px)": function () {
-        ScrollTrigger.create({
-          trigger: ".fast-diagnosis__conwrap",
-          start: "top 140px",
-          end: "bottom bottom",
-          pin: titleEl,
-          pinSpacing: false,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        });
-      },
-    });
-  }
-
-  // 2. 카드 등장 및 팬아웃(Fan-out) 모션
+  // 카드 등장 및 팬아웃(Fan-out) 모션 (헤더 핀 고정은 CSS position: sticky로 처리됨)
   const observer = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {
@@ -1101,7 +1113,7 @@ function initIntroDoor() {
   const introDoor = document.querySelector(".intro-door");
   if (!introDoor) return;
 
-  const enterBtn = document.getElementById("enter-clinic-btn");
+  const enterBtn = introDoor.querySelector("#enter-clinic-btn");
   const doorLeft = introDoor.querySelector(".intro-door__panel--left");
   const doorRight = introDoor.querySelector(".intro-door__panel--right");
   const introContent = introDoor.querySelector(".intro-door__content");
@@ -1113,7 +1125,6 @@ function initIntroDoor() {
   if (typeof gsap !== "undefined") {
     gsap.set(".topbar", { opacity: 0, y: -80 });
     gsap.set(".hero-3d__menu", { opacity: 0, x: -50 });
-    gsap.set(".hero-3d__tv-wrap", { opacity: 0, y: 50 });
     gsap.set(".hero-3d__welcome", { opacity: 0, y: -50 });
   }
 
@@ -1124,6 +1135,9 @@ function initIntroDoor() {
     hasOpened = true;
 
     // 이벤트 리스너 제거
+    if (enterBtn) {
+      enterBtn.removeEventListener("click", openDoors);
+    }
     window.removeEventListener("wheel", handleScrollTrigger);
     window.removeEventListener("touchstart", handleTouchStart);
     window.removeEventListener("touchmove", handleTouchTrigger);
@@ -1201,7 +1215,7 @@ function initIntroDoor() {
 
       // 4. 메인 Welcome 텍스트 및 인체 맵 UI 등장
       tl.to(
-        [".hero-3d__menu", ".hero-3d__tv-wrap", ".hero-3d__welcome"],
+        [".hero-3d__menu", ".hero-3d__welcome"],
         {
           opacity: 1,
           x: 0,
@@ -1390,6 +1404,8 @@ function initBrandTrustPartners() {
 
   // 2. GSAP ScrollTrigger timelines for Desktop (width > 768px)
   const isDesktop = window.matchMedia("(min-width: 769px)");
+  const leftCover = section.querySelector(".brand-trust__left-cover");
+  const rightCover = section.querySelector(".brand-trust__right-cover");
 
   if (
     typeof gsap !== "undefined" &&
@@ -1407,9 +1423,7 @@ function initBrandTrustPartners() {
       onUpdate: (self) => {
         const progress = self.progress;
 
-        // 1) Animate curtain widths (fully open by progress = 0.5)
-        const leftCover = section.querySelector(".brand-trust__left-cover");
-        const rightCover = section.querySelector(".brand-trust__right-cover");
+        // 1) Animate curtain widths (fully open by progress = 0.5) - 캐싱된 요소 재사용
         if (leftCover && rightCover) {
           const curtainProgress = Math.min(progress / 0.5, 1);
           const currentWidth = (1 - curtainProgress) * 50;
@@ -1431,10 +1445,7 @@ function initBrandTrustPartners() {
       },
     });
   } else {
-    // Mobile/Tablet Fallback: Fully open curtains
-    const leftCover = section.querySelector(".brand-trust__left-cover");
-    const rightCover = section.querySelector(".brand-trust__right-cover");
-
+    // Mobile/Tablet Fallback: Fully open curtains (캐싱된 요소 사용)
     if (leftCover) leftCover.style.width = "0";
     if (rightCover) rightCover.style.width = "0";
 
@@ -1450,8 +1461,12 @@ function initNewsTabs() {
   const tabList = document.querySelector('.news__tab-bar[role="tablist"]');
   if (!tabList) return;
 
-  const tabs = Array.from(tabList.querySelectorAll('.news__tab-button[role="tab"]'));
-  const panels = Array.from(document.querySelectorAll('.news__content[role="tabpanel"]'));
+  const tabs = Array.from(
+    tabList.querySelectorAll('.news__tab-button[role="tab"]'),
+  );
+  const panels = Array.from(
+    document.querySelectorAll('.news__content[role="tabpanel"]'),
+  );
 
   function activateTab(targetTab) {
     tabs.forEach((tab) => {
@@ -1497,4 +1512,3 @@ function initNewsTabs() {
     });
   });
 }
-

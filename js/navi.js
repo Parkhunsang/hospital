@@ -80,7 +80,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   handleScroll();
-  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  let scrollTicking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    },
+    { passive: true },
+  );
 
   // ==========================================
   // 3. 모바일 햄버거 버튼 & 드로어 (Drawer) 토글

@@ -48,7 +48,6 @@
   font-size: clamp(24px, 2vw + 12px, 36px);
   font-weight: 800;
   line-height: $line-height-heading;
-  letter-spacing: -0.03em;
   word-break: keep-all;
   display: inline-block;
 
@@ -58,7 +57,6 @@
     font-size: $font-xl;
     font-weight: 500;
     line-height: $line-height-heading;
-    letter-spacing: -0.03em;
     word-break: keep-all;
   }
 }
@@ -74,21 +72,19 @@
   align-items: center;
   width: fit-content;
   padding: $space-2xs $space-sm;
-  border-radius: 20px;
+  border-radius: $radius-pill;
   font-size: $font-xs;
   font-weight: 700;
-  letter-spacing: -0.01em;
   line-height: $line-height-none;
 
   &--glass-gold {
     background: rgba($color-white, 0.1);
     color: $color-accent;
-    letter-spacing: 0.15em;
     text-transform: uppercase;
   }
 
   &--soft-blue {
-    background-color: rgba(234, 242, 255, 0.8);
+    background-color: rgba($color-secondary, 0.2);
     color: $color-secondary;
   }
 }
@@ -110,7 +106,6 @@
   color: $color-text-light;
   font-size: $font-md;
   font-weight: 500;
-  letter-spacing: -0.01em;
 }
 
 /* Info Badge (공통 안내 뱃지 UI) */
@@ -132,7 +127,6 @@
   font-size: $font-md;
   font-weight: 700;
   color: $color-secondary;
-  letter-spacing: -0.02em;
 }
 
 /* 슬라이더의 좌/우 버튼 속성 */
@@ -158,8 +152,7 @@
   transition:
     background-color 0.25s ease,
     border-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease;
+    color 0.25s ease;
   user-select: none;
 
   svg {
@@ -168,20 +161,18 @@
   }
 
   &:hover {
-    border-color: $color-secondary;
     background-color: $color-secondary;
+    border-color: $color-secondary;
     color: $color-white;
-    box-shadow: 0 4px 12px rgba($color-secondary, 0.2);
   }
 
   &:disabled {
-    border-color: $color-border-disabled;
     background-color: $color-bg-light;
+    border-color: $color-border-disabled;
     color: $color-disabled;
     opacity: 0.6;
     cursor: not-allowed;
     pointer-events: none;
-    box-shadow: none;
   }
 }
 
@@ -225,11 +216,7 @@
     /* 2. Swiper 메인 컨테이너 */
     overflow: visible;
     width: 100%;
-    margin-bottom: 60px;
-
-    @media (max-width: $breakpoint-large-tablet) {
-      margin-bottom: clamp(24px, 6vw, 60px);
-    }
+    margin-bottom: clamp(24px, 5vw, 60px);
   }
 
   &__slide {
@@ -260,9 +247,9 @@
     width: 100%;
     height: 480px;
     border: 1px solid rgba($color-secondary, 0.08);
-    border-radius: 24px;
+    border-radius: $radius-xl;
     background-color: $color-white;
-    box-shadow: 0 10px 40px rgba($color-primary, 0.04);
+    box-shadow: $shadow-md;
     transition: box-shadow 0.5s ease;
 
     @media (max-width: $breakpoint-large-tablet) {
@@ -337,11 +324,11 @@
   }
 
   &__pagination {
-    /* 7. 슬라이더 맨 하단 도트 페이지네이션 (맨 끝으로 이동!) */
+    /* 7. 슬라이더 맨 하단 도트 페이지네이션 */
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 
     .swiper-pagination-bullet {
       width: 10px;
@@ -354,19 +341,9 @@
 
       &-active {
         width: 28px;
-        border-radius: 5px;
+        border-radius: $radius-xs;
         background-color: $color-secondary;
-      }
-
-      &:hover {
-        background-color: rgba($color-secondary, 0.4);
       }
     }
   }
-}
-// 최적화 시킬 거
-.info-label {
-  margin-right: 6px;
-  color: $color-white;
-  font-weight: 700;
 }

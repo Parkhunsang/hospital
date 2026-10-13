@@ -46,7 +46,6 @@
   font-size: clamp(24px, 2vw + 12px, 36px);
   font-weight: 800;
   line-height: 1.35;
-  letter-spacing: -0.03em;
   word-break: keep-all;
   display: inline-block;
 }
@@ -56,7 +55,6 @@
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.35;
-  letter-spacing: -0.03em;
   word-break: keep-all;
 }
 
@@ -76,20 +74,18 @@
   width: -moz-fit-content;
   width: fit-content;
   padding: 4px 12px;
-  border-radius: 20px;
+  border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
   line-height: 1;
 }
 .badge--glass-gold {
   background: rgba(255, 255, 255, 0.1);
   color: #fdb608;
-  letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 .badge--soft-blue {
-  background-color: rgba(234, 242, 255, 0.8);
+  background-color: rgba(47, 95, 167, 0.2);
   color: #2f5fa7;
 }
 
@@ -110,7 +106,6 @@
   color: #666;
   font-size: 0.9375rem;
   font-weight: 500;
-  letter-spacing: -0.01em;
 }
 
 /* Info Badge (공통 안내 뱃지 UI) */
@@ -134,7 +129,6 @@
   font-size: 0.9375rem;
   font-weight: 700;
   color: #2f5fa7;
-  letter-spacing: -0.02em;
 }
 
 /* 슬라이더의 좌/우 버튼 속성 */
@@ -157,7 +151,7 @@
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -167,19 +161,17 @@
   height: 18px;
 }
 .slider-nav__btn:hover {
-  border-color: #2f5fa7;
   background-color: #2f5fa7;
+  border-color: #2f5fa7;
   color: #fff;
-  box-shadow: 0 4px 12px rgba(47, 95, 167, 0.2);
 }
 .slider-nav__btn:disabled {
-  border-color: rgba(47, 95, 167, 0.1);
   background-color: #f9fbfd;
+  border-color: rgba(47, 95, 167, 0.1);
   color: #a0aec0;
   opacity: 0.6;
   cursor: not-allowed;
   pointer-events: none;
-  box-shadow: none;
 }
 
 .card-title {
@@ -225,12 +217,7 @@
   /* 2. Swiper 메인 컨테이너 */
   overflow: visible;
   width: 100%;
-  margin-bottom: 60px;
-}
-@media (max-width: 960px) {
-  .showcase-slider__swiper {
-    margin-bottom: clamp(24px, 6vw, 60px);
-  }
+  margin-bottom: clamp(24px, 5vw, 60px);
 }
 .showcase-slider__slide {
   /* 3. 개별 슬라이드 (li) */
@@ -259,7 +246,7 @@
   border: 1px solid rgba(47, 95, 167, 0.08);
   border-radius: 24px;
   background-color: #fff;
-  box-shadow: 0 10px 40px rgba(27, 45, 90, 0.04);
+  box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
   transition: box-shadow 0.5s ease;
 }
 @media (max-width: 960px) {
@@ -328,11 +315,11 @@
   }
 }
 .showcase-slider__pagination {
-  /* 7. 슬라이더 맨 하단 도트 페이지네이션 (맨 끝으로 이동!) */
+  /* 7. 슬라이더 맨 하단 도트 페이지네이션 */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 .showcase-slider__pagination .swiper-pagination-bullet {
   width: 10px;
@@ -345,15 +332,6 @@
 }
 .showcase-slider__pagination .swiper-pagination-bullet-active {
   width: 28px;
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: #2f5fa7;
-}
-.showcase-slider__pagination .swiper-pagination-bullet:hover {
-  background-color: rgba(47, 95, 167, 0.4);
-}
-
-.info-label {
-  margin-right: 6px;
-  color: #fff;
-  font-weight: 700;
 }

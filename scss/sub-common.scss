@@ -61,7 +61,7 @@
   padding: $space-xs;
   gap: $space-xs;
   box-sizing: border-box;
-  border-radius: 50px;
+  border-radius: $radius-pill;
   background-color: $color-bg-light;
 
   &__link {
@@ -69,21 +69,15 @@
     align-items: center;
     justify-content: center;
     padding: $space-xs $space-md;
-    box-sizing: border-box;
-    border-radius: 32px;
+    border-radius: $radius-pill;
     font-size: 1rem;
     font-weight: 600;
     line-height: $line-height-none;
-    color: #475569;
-    text-decoration: none;
+    color: $color-text-dark;
     transition:
       background-color 0.2s ease,
       color 0.2s ease;
     cursor: pointer;
-
-    &:hover {
-      color: $color-primary;
-    }
   }
 }
 
@@ -112,7 +106,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: $color-white;
-  border-radius: 16px;
+  border-radius: $radius-xl;
   overflow: hidden;
 
   @media (max-width: $breakpoint-tablet) {
@@ -151,9 +145,7 @@
 }
 
 .causes-text__desc {
-  font-size: $font-base;
-  font-weight: 500;
-  line-height: $line-height-body;
+  @include text-desc($line-height: $line-height-body);
   color: $color-text-dark;
 }
 
@@ -193,17 +185,14 @@
 
 .symptoms__card {
   background-color: $color-white;
-  border-radius: 16px;
+  border-radius: $radius-md;
   overflow: hidden;
   box-shadow: $shadow-md;
 }
 
 .symptoms__img-wrapper {
-  height: 240px;
-
-  @media (max-width: $breakpoint-tablet) {
-    height: 180px;
-  }
+  aspect-ratio: 16 / 10; // 또는 4 / 3
+  width: 100%;
 }
 
 .symptoms__img-wrapper img {
@@ -213,12 +202,9 @@
 }
 
 .symptoms__text {
-  color: $color-text-dark;
-  font-size: $font-base;
-  font-weight: 600;
-  line-height: $line-height-body;
   padding: $space-ml $space-lg;
-
+  @include text-desc($weight: 600, $line-height: $line-height-body);
+  color: $color-text-dark;
   @media (max-width: $breakpoint-tablet) {
     padding: $space-md;
   }
