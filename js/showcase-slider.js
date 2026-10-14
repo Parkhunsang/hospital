@@ -1,7 +1,3 @@
-/**
- * 공통 컴포넌트: 쇼케이스 슬라이더 (Showcase Slider)
- * index.html(비수술 치료) 및 서브 질환 페이지(관련 시술) 공통 적용
- */
 function initShowcaseSlider() {
   const sliderEl = document.querySelector(".showcase-slider__swiper");
   // 해당 요소가 없거나 Swiper 라이브러리가 로드되지 않은 경우 안전하게 중단
@@ -39,5 +35,4 @@ function initShowcaseSlider() {
     },
   });
 }
-
 document.addEventListener("DOMContentLoaded", initShowcaseSlider);

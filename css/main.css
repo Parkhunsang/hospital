@@ -146,6 +146,18 @@ body.door-locked {
   }
 }
 
+/* fallback 코드 */
+.intro-door--opened .intro-door__panel--left {
+  transform: translateX(-100%);
+}
+.intro-door--opened .intro-door__panel--right {
+  transform: translateX(100%);
+}
+.intro-door--opened .intro-door__content {
+  opacity: 0;
+  transform: translate(-50%, -60%);
+}
+
 /* 인트로 도어 끝 */
 /* 메인 섹션 배경색 */
 .self-test,
