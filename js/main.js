@@ -4,182 +4,380 @@ document.addEventListener("DOMContentLoaded", () => {
   initLocationSlider();
   initNewsTabs();
 });
+// 인트로 도어 로직
+// 1. 애니메이션 전담 (CSS transitionend 실패 대비 2초 타임아웃 장착)
+function playDoorOpenAnimation(elements, hasGsap, onComplete) {
+  const { introDoor, introContent, doorLeft, doorRight } = elements;
 
+  // 1. [GSAP 없을 때: 순수 CSS 트랜지션 Fallback] //
+  if (!hasGsap) {
+    introDoor.classList.add("intro-door--opened");
+
+    let isCompleted = false;
+    let fallbackTimer = null;
+
+    // 안전한 종료 통합 함수
+    const safeComplete = () => {
+      if (isCompleted) return;
+      isCompleted = true;
+
+      // 리소스 완전 회수:
+      if (fallbackTimer) clearTimeout(fallbackTimer);
+      doorLeft.removeEventListener("transitionend", handleTransitionEnd);
+
+      onComplete();
+    };
+
+    const handleTransitionEnd = (event) => {
+      if (event.target !== doorLeft) return;
+      if (event.propertyName !== "transform") return;
+
+      safeComplete();
+    };
+
+    doorLeft.addEventListener("transitionend", handleTransitionEnd);
+
+    fallbackTimer = setTimeout(safeComplete, 1800);
+    return;
+  }
+
+  // 2. [GSAP 타임라인 애니메이션] //
+  gsap
+    .timeline({ onComplete })
+    .to(introContent, { opacity: 0, y: -40, duration: 0.6, ease: "power2.in" })
+    .to(
+      doorLeft,
+      { xPercent: -100, duration: 1.5, ease: "power3.inOut" },
+      "-=0.2",
+    )
+    .to(
+      doorRight,
+      { xPercent: 100, duration: 1.5, ease: "power3.inOut" },
+      "-=1.5",
+    )
+    .to(
+      ".topbar",
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+      "-=0.9",
+    )
+    .to(
+      [".hero-3d__menu", ".hero-3d__welcome"],
+      {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: 1.0,
+        stagger: 0.15,
+        ease: "power3.out",
+      },
+      "-=0.5",
+    );
+}
+
+// 2. 센서 전담
+function bindDoorTriggers(enterBtn, onTrigger) {
+  let touchStartY = 0;
+  let hasFired = false; //
+
+  const fire = (isKeyboard) => {
+    if (hasFired) return;
+    hasFired = true;
+
+    // 즉시 센서 철거
+    window.removeEventListener("wheel", handleWheel);
+    window.removeEventListener("touchstart", handleTouchStart);
+    window.removeEventListener("touchmove", handleTouchMove);
+    window.removeEventListener("keydown", handleKeydown);
+    if (enterBtn) enterBtn.removeEventListener("click", handleBtnClick);
+
+    onTrigger(isKeyboard);
+  };
+
+  const handleWheel = (e) => e.deltaY > 0 && fire(false);
+  const handleTouchStart = (e) => (touchStartY = e.touches[0].clientY);
+  const handleTouchMove = (e) =>
+    touchStartY - e.touches[0].clientY > 30 && fire(false);
+  const handleKeydown = (e) =>
+    ["ArrowDown", "PageDown", " ", "Enter"].includes(e.key) && fire(true);
+  const handleBtnClick = (e) => fire(e.detail === 0);
+
+  window.addEventListener("wheel", handleWheel, { passive: true });
+  window.addEventListener("touchstart", handleTouchStart, { passive: true });
+  window.addEventListener("touchmove", handleTouchMove, { passive: true });
+  window.addEventListener("keydown", handleKeydown);
+  if (enterBtn) enterBtn.addEventListener("click", handleBtnClick);
+}
+
+// 뒷정리 함수
+function cleanupIntroDoor(introDoor, openedByKeyboard) {
+  introDoor.style.display = "none";
+  document.body.classList.remove("door-locked");
+
+  document.querySelectorAll("header, main, footer").forEach((el) => {
+    el.removeAttribute("inert");
+  });
+
+  window.dispatchEvent(new Event("resize"));
+  if (typeof gsap !== "undefined") {
+    gsap.set(".topbar", { clearProps: "all" });
+  }
+
+  if (openedByKeyboard) {
+    document.querySelector(".topbar__brand")?.focus();
+  }
+}
+
+// 3. 최종 실행
 function initIntroDoor() {
   const introDoor = document.querySelector(".intro-door");
   if (!introDoor) return;
 
-  const enterBtn = introDoor.querySelector("#enter-clinic-btn");
-  const doorLeft = introDoor.querySelector(".intro-door__panel--left");
-  const doorRight = introDoor.querySelector(".intro-door__panel--right");
-  const introContent = introDoor.querySelector(".intro-door__content");
   const hasGsap = typeof gsap !== "undefined";
+  const enterBtn = introDoor.querySelector("#enter-clinic-btn");
   document.body.classList.add("door-locked");
 
-  // 메인 콘텐츠 요소 초기 상태 설정 (GSAP 있을 때만 숨김 처리)
   if (hasGsap) {
     gsap.set(".topbar", { opacity: 0, y: -80 });
     gsap.set(".hero-3d__menu", { opacity: 0, x: -50 });
     gsap.set(".hero-3d__welcome", { opacity: 0, y: -50 });
   }
 
-  let hasOpened = false;
-  let openedByKeyboard = false; // 키보드 조작 여부 판별 플래그
-
-  // GSAP이든 Fallback이든 문 열림이 끝나면 단 한 번만 실행
-  function finishIntroDoor() {
-    introDoor.style.display = "none";
-    document.body.classList.remove("door-locked");
-
-    document.querySelectorAll("header, main, footer").forEach((element) => {
-      element.removeAttribute("inert");
-    });
-    // Three.js 캔버스 렌더링 영역 화면 맞춤
-    window.dispatchEvent(new Event("resize"));
-    // GSAP 인라인 스타일 초기화 (헤더 스크롤 CSS 제어 복원)
-    if (hasGsap) {
-      gsap.set(".topbar", { clearProps: "all" });
-    }
-    // 키보드로 문을 연 사용자에게만 상단 로고로 안전하게 초점 이동
-    if (openedByKeyboard) {
-      const brandLink = document.querySelector(".topbar__brand");
-      if (brandLink) {
-        brandLink.focus();
-      }
-    }
-  }
-
-  function openDoors() {
-    if (hasOpened) return;
-    hasOpened = true;
-
-    // 이벤트 리스너 제거 (센서 철거)
-    if (enterBtn) {
-      enterBtn.removeEventListener("click", onEnterBtnClick);
-    }
-    window.removeEventListener("wheel", handleScrollTrigger);
-    window.removeEventListener("touchstart", handleTouchStart);
-    window.removeEventListener("touchmove", handleTouchTrigger);
-    window.removeEventListener("keydown", handleKeydownTrigger);
-
-    if (hasGsap) {
-      const tl = gsap.timeline({
-        onComplete: finishIntroDoor,
-      });
-      tl.to(introContent, {
-        opacity: 0,
-        y: -40,
-        duration: 0.6,
-        ease: "power2.in",
-      });
-      tl.to(
-        doorLeft,
-        {
-          xPercent: -100,
-          duration: 1.5,
-          ease: "power3.inOut",
-        },
-        "-=0.2",
-      );
-      tl.to(
-        doorRight,
-        {
-          xPercent: 100,
-          duration: 1.5,
-          ease: "power3.inOut",
-        },
-        "-=1.5",
-      );
-      tl.to(
-        ".topbar",
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        },
-        "-=0.9",
-      );
-      tl.to(
-        [".hero-3d__menu", ".hero-3d__welcome"],
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 1.0,
-          stagger: 0.15,
-          ease: "power3.out",
-        },
-        "-=0.5",
-      );
-    } else {
-      introDoor.classList.add("intro-door--opened");
-      doorLeft.addEventListener("transitionend", finishIntroDoor, {
-        once: true,
-      });
-    }
-  }
-
-  // 스크롤 휠 감지 (마우스 휠)
-  function handleScrollTrigger(e) {
-    if (e.deltaY > 0) {
-      openDoors();
-    }
-  }
-
-  // 모바일 터치 드래그 감지
-  let touchStartY = 0;
-  function handleTouchStart(e) {
-    touchStartY = e.touches[0].clientY;
-  }
-
-  function handleTouchTrigger(e) {
-    const touchEndY = e.touches[0].clientY;
-    if (touchStartY - touchEndY > 30) {
-      openDoors();
-    }
-  }
-
-  // 키보드 조작 감지 (방향키, Enter, Space 등)
-  function handleKeydownTrigger(e) {
-    const triggerKeys = ["ArrowDown", "PageDown", " ", "Enter"];
-    if (triggerKeys.includes(e.key)) {
-      openedByKeyboard = true;
-      openDoors();
-    }
-  }
-
-  // 입장 버튼 클릭 핸들러 (마우스 클릭 vs 키보드 엔터 구분)
-  function onEnterBtnClick(e) {
-    // 키보드로 엔터/스페이스를 쳐서 발생한 클릭은 e.detail이 0
-    if (e.detail === 0) {
-      openedByKeyboard = true;
-    }
-    openDoors();
-  }
-
-  // html 리딩 후에 첫 번째 요소에 포커스가 갈 수 있도록 조정(requestAnimationFrame를 통해)
-  if (enterBtn) {
-    enterBtn.addEventListener("click", onEnterBtnClick);
-    requestAnimationFrame(() => {
-      enterBtn.focus();
-    });
-  }
-  // passive를 통해 브라우저에서 자동으로 e.preventDefault를 호출 안하겠다고 미리 선언, keydown은 3개의 이벤트와 달리 딜레이를 피할 수 있음
-  window.addEventListener("wheel", handleScrollTrigger, { passive: true });
-  window.addEventListener("touchstart", handleTouchStart, { passive: true });
-  window.addEventListener("touchmove", handleTouchTrigger, { passive: true });
-  window.addEventListener("keydown", handleKeydownTrigger);
+  bindDoorTriggers(enterBtn, (openedByKeyboard) => {
+    playDoorOpenAnimation(
+      {
+        introDoor,
+        introContent: introDoor.querySelector(".intro-door__content"),
+        doorLeft: introDoor.querySelector(".intro-door__panel--left"),
+        doorRight: introDoor.querySelector(".intro-door__panel--right"),
+      },
+      hasGsap,
+      () => cleanupIntroDoor(introDoor, openedByKeyboard),
+    );
+  });
+  enterBtn?.focus();
 }
+
+// function initBrandTrustPartners() {
+//   const section = document.querySelector(".brand-trust");
+//   if (!section) return;
+
+//   let counterTriggered = false;
+
+//   // 페이지네이션 내에 숫자 갱신과 진행바 관련 로직
+//   function updateBTControls(swiper) {
+//     const current = section.querySelector(".brand-trust__current-index");
+//     const total = section.querySelector(".brand-trust__total-index");
+//     const progressFill = section.querySelector(".brand-trust__progress-fill");
+
+//     if (!current || !total) return;
+
+//     const realIndex = swiper.realIndex + 1;
+//     const totalSlides = 3; // stats, training, philosophy
+
+//     current.textContent = String(realIndex).padStart(2, "0");
+//     total.textContent = String(totalSlides).padStart(2, "0");
+
+//     if (progressFill) {
+//       progressFill.style.width = `${(realIndex / totalSlides) * 100}%`;
+//     }
+//   }
+
+//   // 숫자 카운터 애니메이션 로직
+//   function runStatsAnimation() {
+//     const valElements = section.querySelectorAll(".brand-trust__stat-val");
+//     valElements.forEach((el) => {
+//       const target = parseFloat(el.getAttribute("data-target"));
+//       const decimals = parseInt(el.getAttribute("data-decimals") || "0");
+//       const suffix = el.getAttribute("data-suffix") || "";
+
+//       const counterObj = { value: 0 };
+//       gsap.killTweensOf(counterObj);
+
+//       gsap.to(counterObj, {
+//         value: target,
+//         duration: 1.8,
+//         ease: "power2.out",
+//         onUpdate: () => {
+//           let formattedVal = "";
+//           if (decimals > 0) {
+//             formattedVal = counterObj.value.toFixed(decimals);
+//           } else {
+//             formattedVal = Math.floor(counterObj.value).toLocaleString();
+//           }
+//           el.innerHTML = `${formattedVal}<small>${suffix}</small>`;
+//         },
+//       });
+//     });
+//   }
+
+//   // 1. Initialize Swiper
+//   const btSwiper = new Swiper(".brand-trust__swiper", {
+//     effect: "slide",
+//     speed: 800,
+//     loop: true,
+//     autoplay: {
+//       delay: 5000,
+//       disableOnInteraction: false,
+//     },
+//     navigation: {
+//       nextEl: ".brand-trust__btn--next",
+//       prevEl: ".brand-trust__btn--prev",
+//     },
+//     on: {
+//       init: function () {
+//         updateBTControls(this);
+//       },
+//       slideChange: function () {
+//         updateBTControls(this);
+
+//         const isDesktop = window.matchMedia("(min-width: 769px)");
+//         if (this.realIndex === 0 && (!isDesktop.matches || counterTriggered)) {
+//           runStatsAnimation();
+//         }
+//       },
+//     },
+//   });
+
+//   // 슬라이드 재생/멈춤 버튼 로직
+//   const playPauseBtn = section.querySelector(".brand-trust__btn--play-pause");
+//   if (playPauseBtn) {
+//     const iconPause = playPauseBtn.querySelector(".brand-trust__icon-pause");
+//     const iconPlay = playPauseBtn.querySelector(".brand-trust__icon-play");
+
+//     playPauseBtn.addEventListener("click", () => {
+//       if (btSwiper.autoplay.running) {
+//         btSwiper.autoplay.stop();
+//         iconPause.classList.add("hidden");
+//         iconPlay.classList.remove("hidden");
+//       } else {
+//         btSwiper.autoplay.start();
+//         iconPause.classList.remove("hidden");
+//         iconPlay.classList.add("hidden");
+//       }
+//     });
+//   }
+
+//   // 실제 스크롤과 연동되는 앞/뒤 커튼 (width > 768px)
+//   const isDesktop = window.matchMedia("(min-width: 769px)");
+//   const leftCover = section.querySelector(".brand-trust__left-cover");
+//   const rightCover = section.querySelector(".brand-trust__right-cover");
+
+//   if (
+//     typeof gsap !== "undefined" &&
+//     typeof ScrollTrigger !== "undefined" &&
+//     isDesktop.matches
+//   ) {
+//     gsap.registerPlugin(ScrollTrigger);
+
+//     ScrollTrigger.create({
+//       trigger: ".brand-trust",
+//       start: "top top",
+//       end: "bottom bottom",
+//       scrub: true, // 스크롤 휠을 통한 커튼 제어
+//       pin: false,
+//       onUpdate: (self) => {
+//         const progress = self.progress;
+
+//         if (leftCover && rightCover) {
+//           const curtainProgress = Math.min(progress / 0.5, 1);
+//           const currentWidth = (1 - curtainProgress) * 50;
+//           leftCover.style.width =
+//             currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px"; // 여유있게 앞섶 느낌으로 4px 더하기
+//           rightCover.style.width =
+//             currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
+//         }
+
+//         // 반 정도(다 열렸을 때) counterTriggered 값을 바꿔서 숫자 카운트 애니메이션 열리게 하기
+//         if (progress > 0.5) {
+//           if (!counterTriggered) {
+//             counterTriggered = true;
+//             runStatsAnimation();
+//           }
+//         } else if (progress < 0.2) {
+//           counterTriggered = false; // 아직 덜 열렸다면 숫자 카운트 애니메이션은 안보이게 하기
+//         }
+//       },
+//     });
+//   } else {
+//     // 모바일/태블릿에선 커튼 효과 제거
+//     if (leftCover) leftCover.style.width = "0";
+//     if (rightCover) rightCover.style.width = "0";
+
+//     // 모바일/태블릿에선 숫자 카운터 애니메이션을 즉시 실행
+//     runStatsAnimation();
+//   }
+// }
+// 태그 오염 없이 트윈 인스턴스를 격리 관리하는 메모리 맵
+const statTweens = new WeakMap();
 
 function initBrandTrustPartners() {
   const section = document.querySelector(".brand-trust");
   if (!section) return;
 
-  let counterTriggered = false;
+  // 1. 이미 성공적으로 초기화된 경우만 차단
+  if (section.dataset.initialized === "true") return;
 
-  // Helper function to update custom Swiper pagination and progress bar
-  function updateBTControls(swiper) {
+  // 2. [필수 요소 검증] - 하나라도 없으면 '도장 찍지 않고' 안전 탈출 (재시도 가능)
+  const swiperElement = section.querySelector(".brand-trust__swiper");
+  if (!swiperElement) return;
+
+  const slides = section.querySelectorAll(
+    ".swiper-slide:not(.swiper-slide-duplicate)",
+  );
+  const totalSlidesCount = slides.length;
+  if (totalSlidesCount === 0) return; // 슬라이드가 0개면 중단
+
+  // 3. 🎯 모든 관문을 통과했으므로 비로소 '초기화 성공 도장'을 찍음 (원자성 확보)
+  section.dataset.initialized = "true";
+
+  const hasGsap = typeof gsap !== "undefined";
+  const hasScrollTrigger = hasGsap && typeof ScrollTrigger !== "undefined";
+
+  // =========================================================================
+  // 통계 숫자 카운터 (WeakMap + innerHTML 최소화 적용)
+  // =========================================================================
+  function runStatsAnimation() {
+    const valElements = section.querySelectorAll(".brand-trust__stat-val");
+
+    valElements.forEach((el) => {
+      const target = parseFloat(el.getAttribute("data-target")) || 0;
+      const decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+      const suffix = el.getAttribute("data-suffix") || "";
+
+      // innerHTML 파싱 낭비를 줄이고 textContent 위주로 렌더링
+      const render = (val) => {
+        const formatted =
+          decimals > 0
+            ? val.toFixed(decimals)
+            : Math.floor(val).toLocaleString();
+        el.innerHTML = `${formatted}<small>${suffix}</small>`;
+      };
+
+      if (!hasGsap) {
+        render(target);
+        return;
+      }
+
+      // WeakMap을 이용한 안전한 이전 트윈 캔슬
+      const existingTween = statTweens.get(el);
+      if (existingTween) existingTween.kill();
+
+      const counterObj = { value: 0 };
+      const newTween = gsap.to(counterObj, {
+        value: target,
+        duration: 1.8,
+        ease: "power2.out",
+        onUpdate: () => render(counterObj.value),
+      });
+
+      statTweens.set(el, newTween);
+    });
+  }
+
+  // =========================================================================
+  // Swiper 연동 (페이지네이션 및 컨트롤)
+  // =========================================================================
+  function updateControls(swiper) {
     const current = section.querySelector(".brand-trust__current-index");
     const total = section.querySelector(".brand-trust__total-index");
     const progressFill = section.querySelector(".brand-trust__progress-fill");
@@ -187,45 +385,17 @@ function initBrandTrustPartners() {
     if (!current || !total) return;
 
     const realIndex = swiper.realIndex + 1;
-    const totalSlides = 3; // stats, training, philosophy
-
     current.textContent = String(realIndex).padStart(2, "0");
-    total.textContent = String(totalSlides).padStart(2, "0");
+    total.textContent = String(totalSlidesCount).padStart(2, "0");
+
     if (progressFill) {
-      progressFill.style.width = `${(realIndex / totalSlides) * 100}%`;
+      progressFill.style.width = `${(realIndex / totalSlidesCount) * 100}%`;
     }
   }
 
-  // Helper function to animate Slide 1 counter numbers (including clones)
-  function runStatsAnimation() {
-    const valElements = section.querySelectorAll(".brand-trust__stat-val");
-    valElements.forEach((el) => {
-      const target = parseFloat(el.getAttribute("data-target"));
-      const decimals = parseInt(el.getAttribute("data-decimals") || "0");
-      const suffix = el.getAttribute("data-suffix") || "";
+  let isContentVisible = false;
 
-      const counterObj = { value: 0 };
-      gsap.killTweensOf(counterObj);
-
-      gsap.to(counterObj, {
-        value: target,
-        duration: 1.8,
-        ease: "power2.out",
-        onUpdate: () => {
-          let formattedVal = "";
-          if (decimals > 0) {
-            formattedVal = counterObj.value.toFixed(decimals);
-          } else {
-            formattedVal = Math.floor(counterObj.value).toLocaleString();
-          }
-          el.innerHTML = `${formattedVal}<small>${suffix}</small>`;
-        },
-      });
-    });
-  }
-
-  // 1. Initialize Swiper
-  const btSwiper = new Swiper(".brand-trust__swiper", {
+  const btSwiper = new Swiper(swiperElement, {
     effect: "slide",
     speed: 800,
     loop: true,
@@ -234,91 +404,115 @@ function initBrandTrustPartners() {
       disableOnInteraction: false,
     },
     navigation: {
-      nextEl: ".brand-trust__btn--next",
-      prevEl: ".brand-trust__btn--prev",
+      nextEl: section.querySelector(".brand-trust__btn--next"),
+      prevEl: section.querySelector(".brand-trust__btn--prev"),
     },
     on: {
       init: function () {
-        updateBTControls(this);
+        updateControls(this);
       },
       slideChange: function () {
-        updateBTControls(this);
-        // Play counter-up animation when user slides back to Slide 1
-        const isDesktop = window.matchMedia("(min-width: 769px)");
-        if (this.realIndex === 0 && (!isDesktop.matches || counterTriggered)) {
+        updateControls(this);
+        // 화면이 사용자에게 보이고 있는 상태에서만 1번 슬라이드 카운터 재실행
+        if (this.realIndex === 0 && isContentVisible) {
           runStatsAnimation();
         }
       },
     },
   });
 
-  // Play/Pause button click handler
+  // 재생/일시정지 버튼 연동
   const playPauseBtn = section.querySelector(".brand-trust__btn--play-pause");
   if (playPauseBtn) {
     const iconPause = playPauseBtn.querySelector(".brand-trust__icon-pause");
     const iconPlay = playPauseBtn.querySelector(".brand-trust__icon-play");
 
+    const syncButtonUI = (isRunning) => {
+      iconPause?.classList.toggle("hidden", !isRunning);
+      iconPlay?.classList.toggle("hidden", isRunning);
+    };
+
+    syncButtonUI(btSwiper.autoplay.running);
+
     playPauseBtn.addEventListener("click", () => {
       if (btSwiper.autoplay.running) {
         btSwiper.autoplay.stop();
-        iconPause.classList.add("hidden");
-        iconPlay.classList.remove("hidden");
+        syncButtonUI(false);
       } else {
         btSwiper.autoplay.start();
-        iconPause.classList.remove("hidden");
-        iconPlay.classList.add("hidden");
+        syncButtonUI(true);
       }
     });
   }
 
-  // 2. GSAP ScrollTrigger timelines for Desktop (width > 768px)
-  const isDesktop = window.matchMedia("(min-width: 769px)");
+  // =========================================================================
+  // 커튼 및 ScrollTrigger 연동 (명시적 인라인 클린업)
+  // =========================================================================
   const leftCover = section.querySelector(".brand-trust__left-cover");
   const rightCover = section.querySelector(".brand-trust__right-cover");
 
-  if (
-    typeof gsap !== "undefined" &&
-    typeof ScrollTrigger !== "undefined" &&
-    isDesktop.matches
-  ) {
+  const setCoverWidth = (widthStr) => {
+    if (leftCover) leftCover.style.width = widthStr;
+    if (rightCover) rightCover.style.width = widthStr;
+  };
+
+  if (hasScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
+    const mm = gsap.matchMedia();
 
-    ScrollTrigger.create({
-      trigger: ".brand-trust",
-      start: "top top",
-      end: "bottom bottom",
-      scrub: true,
-      pin: false,
-      onUpdate: (self) => {
-        const progress = self.progress;
+    // 데스크톱 (769px 이상)
+    mm.add("(min-width: 769px)", () => {
+      let counterTriggered = false;
+      isContentVisible = false;
 
-        // 1) Animate curtain widths (fully open by progress = 0.5) - 캐싱된 요소 재사용
-        if (leftCover && rightCover) {
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+        onUpdate: (self) => {
+          const progress = self.progress;
           const curtainProgress = Math.min(progress / 0.5, 1);
           const currentWidth = (1 - curtainProgress) * 50;
-          leftCover.style.width =
-            currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
-          rightCover.style.width =
-            currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
-        }
+          setCoverWidth(
+            currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px",
+          );
 
-        // 2) Trigger stats counter count-up when curtain is fully open (>0.5)
-        if (progress > 0.5) {
-          if (!counterTriggered) {
-            counterTriggered = true;
-            runStatsAnimation();
+          if (progress > 0.5) {
+            isContentVisible = true;
+            if (!counterTriggered) {
+              counterTriggered = true;
+              runStatsAnimation();
+            }
+          } else if (progress < 0.2) {
+            counterTriggered = false;
+            isContentVisible = false;
           }
-        } else if (progress < 0.2) {
-          counterTriggered = false; // Reset trigger so it can re-animate when scrolling down again
-        }
-      },
+        },
+      });
+
+      return () => {
+        setCoverWidth("");
+        counterTriggered = false;
+        isContentVisible = false;
+      };
+    });
+
+    // 모바일 (768px 이하)
+    mm.add("(max-width: 768px)", () => {
+      isContentVisible = true;
+      setCoverWidth("0px");
+      runStatsAnimation();
+
+      return () => {
+        setCoverWidth("");
+        isContentVisible = false;
+      };
     });
   } else {
-    // Mobile/Tablet Fallback: Fully open curtains (캐싱된 요소 사용)
-    if (leftCover) leftCover.style.width = "0";
-    if (rightCover) rightCover.style.width = "0";
-
-    // Trigger stats counter immediately on mobile fallback
+    // GSAP/ScrollTrigger 미지원 환경
+    isContentVisible = true;
+    setCoverWidth("0px");
     runStatsAnimation();
   }
 }
@@ -364,57 +558,16 @@ function initLocationSlider() {
 }
 
 function initNewsTabs() {
-  const tabList = document.querySelector('.news__tab-bar[role="tablist"]');
-  if (!tabList) return;
-
-  const tabs = Array.from(
-    tabList.querySelectorAll('.news__tab-button[role="tab"]'),
-  );
-  const panels = Array.from(
-    document.querySelectorAll('.news__content[role="tabpanel"]'),
-  );
-
-  function activateTab(targetTab) {
-    tabs.forEach((tab) => {
-      const isSelected = tab === targetTab;
-      tab.setAttribute("aria-selected", isSelected ? "true" : "false");
-      tab.setAttribute("tabindex", isSelected ? "0" : "-1");
-    });
-
-    const targetPanelId = targetTab.getAttribute("aria-controls");
-    panels.forEach((panel) => {
-      const isActive = panel.id === targetPanelId;
-      panel.classList.toggle("is-active", isActive);
-      if (isActive) {
-        panel.removeAttribute("hidden");
-      } else {
-        panel.setAttribute("hidden", "");
-      }
-    });
-  }
+  const tabs = document.querySelectorAll(".news__tab-button");
+  const panels = document.querySelectorAll(".news__content");
 
   tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activateTab(tab));
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
+      panels.forEach((p) => (p.hidden = true));
 
-    // WAI-ARIA 키보드 내비게이션 (좌/우 방향키 및 Home/End)
-    tab.addEventListener("keydown", (e) => {
-      let targetIndex = index;
-
-      if (e.key === "ArrowRight") {
-        targetIndex = (index + 1) % tabs.length;
-      } else if (e.key === "ArrowLeft") {
-        targetIndex = (index - 1 + tabs.length) % tabs.length;
-      } else if (e.key === "Home") {
-        targetIndex = 0;
-      } else if (e.key === "End") {
-        targetIndex = tabs.length - 1;
-      } else {
-        return;
-      }
-
-      e.preventDefault();
-      tabs[targetIndex].focus();
-      activateTab(tabs[targetIndex]);
+      tab.setAttribute("aria-selected", "true");
+      panels[index].hidden = false;
     });
   });
 }

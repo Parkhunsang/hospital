@@ -1702,13 +1702,12 @@ body.door-locked {
 }
 
 .news__content {
-  display: none;
-  opacity: 0;
+  display: block;
   transition: opacity 0.4s ease;
 }
-.news__content.is-active {
-  display: block;
-  opacity: 1;
+
+.news__content[hidden] {
+  display: none;
 }
 
 .news__grid {
