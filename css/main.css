@@ -1065,37 +1065,33 @@ body.door-locked {
   font-weight: 700;
   color: rgba(255, 255, 255, 0.85);
 }
-@media (max-width: 960px) {
-  .brand-trust__stat-label {
-    margin-bottom: 0;
-  }
-}
 @media (max-width: 640px) {
   .brand-trust__stat-label {
     font-size: 12px;
   }
 }
 
-.brand-trust__stat-val {
+.brand-trust__stat-num {
   font-size: 2.25rem;
   font-weight: 800;
   color: #fff;
 }
-.brand-trust__stat-val small {
-  margin-left: 2px;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #fdb608;
-}
 @media (max-width: 960px) {
-  .brand-trust__stat-val {
+  .brand-trust__stat-num {
     font-size: 24px;
   }
 }
 @media (max-width: 640px) {
-  .brand-trust__stat-val {
+  .brand-trust__stat-num {
     font-size: 20px;
   }
+}
+
+.brand-trust__stat-val small {
+  margin-left: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fdb608;
 }
 
 .brand-trust__controls {

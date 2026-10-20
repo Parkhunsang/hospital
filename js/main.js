@@ -6,9 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // 인트로 도어 로직
 // 1. 애니메이션 전담 (CSS transitionend 실패 대비 2초 타임아웃 장착)
-function playDoorOpenAnimation(elements, hasGsap, onComplete) {
-  const { introDoor, introContent, doorLeft, doorRight } = elements;
-
+function playDoorOpenAnimation(
+  { introDoor, introContent, doorLeft, doorRight },
+  hasGsap,
+  onComplete,
+) {
   // 1. [GSAP 없을 때: 순수 CSS 트랜지션 Fallback] //
   if (!hasGsap) {
     introDoor.classList.add("intro-door--opened");
@@ -77,18 +79,17 @@ function playDoorOpenAnimation(elements, hasGsap, onComplete) {
 // 2. 센서 전담
 function bindDoorTriggers(enterBtn, onTrigger) {
   let touchStartY = 0;
-  let hasFired = false; //
+  let hasFired = false;
 
   const fire = (isKeyboard) => {
     if (hasFired) return;
     hasFired = true;
 
-    // 즉시 센서 철거
     window.removeEventListener("wheel", handleWheel);
     window.removeEventListener("touchstart", handleTouchStart);
     window.removeEventListener("touchmove", handleTouchMove);
     window.removeEventListener("keydown", handleKeydown);
-    if (enterBtn) enterBtn.removeEventListener("click", handleBtnClick);
+    enterBtn?.removeEventListener("click", handleBtnClick);
 
     onTrigger(isKeyboard);
   };
@@ -105,24 +106,24 @@ function bindDoorTriggers(enterBtn, onTrigger) {
   window.addEventListener("touchstart", handleTouchStart, { passive: true });
   window.addEventListener("touchmove", handleTouchMove, { passive: true });
   window.addEventListener("keydown", handleKeydown);
-  if (enterBtn) enterBtn.addEventListener("click", handleBtnClick);
+  enterBtn?.addEventListener("click", handleBtnClick);
 }
 
 // 뒷정리 함수
-function cleanupIntroDoor(introDoor, openedByKeyboard) {
+function cleanupIntroDoor(introDoor, isKeyboard, hasGsap) {
   introDoor.style.display = "none";
   document.body.classList.remove("door-locked");
 
-  document.querySelectorAll("header, main, footer").forEach((el) => {
-    el.removeAttribute("inert");
+  document.querySelectorAll("header, main, footer").forEach((element) => {
+    element.removeAttribute("inert");
   });
 
   window.dispatchEvent(new Event("resize"));
-  if (typeof gsap !== "undefined") {
+  if (hasGsap) {
     gsap.set(".topbar", { clearProps: "all" });
   }
 
-  if (openedByKeyboard) {
+  if (isKeyboard) {
     document.querySelector(".topbar__brand")?.focus();
   }
 }
@@ -142,7 +143,7 @@ function initIntroDoor() {
     gsap.set(".hero-3d__welcome", { opacity: 0, y: -50 });
   }
 
-  bindDoorTriggers(enterBtn, (openedByKeyboard) => {
+  bindDoorTriggers(enterBtn, (isKeyboard) => {
     playDoorOpenAnimation(
       {
         introDoor,
@@ -151,7 +152,7 @@ function initIntroDoor() {
         doorRight: introDoor.querySelector(".intro-door__panel--right"),
       },
       hasGsap,
-      () => cleanupIntroDoor(introDoor, openedByKeyboard),
+      () => cleanupIntroDoor(introDoor, isKeyboard, hasGsap),
     );
   });
   enterBtn?.focus();
@@ -307,17 +308,11 @@ function initIntroDoor() {
 //     runStatsAnimation();
 //   }
 // }
-// 태그 오염 없이 트윈 인스턴스를 격리 관리하는 메모리 맵
-const statTweens = new WeakMap();
-
 function initBrandTrustPartners() {
   const section = document.querySelector(".brand-trust");
   if (!section) return;
-
-  // 1. 이미 성공적으로 초기화된 경우만 차단
   if (section.dataset.initialized === "true") return;
 
-  // 2. [필수 요소 검증] - 하나라도 없으면 '도장 찍지 않고' 안전 탈출 (재시도 가능)
   const swiperElement = section.querySelector(".brand-trust__swiper");
   if (!swiperElement) return;
 
@@ -325,32 +320,25 @@ function initBrandTrustPartners() {
     ".swiper-slide:not(.swiper-slide-duplicate)",
   );
   const totalSlidesCount = slides.length;
-  if (totalSlidesCount === 0) return; // 슬라이드가 0개면 중단
+  if (totalSlidesCount === 0) return;
 
-  // 3. 🎯 모든 관문을 통과했으므로 비로소 '초기화 성공 도장'을 찍음 (원자성 확보)
   section.dataset.initialized = "true";
 
   const hasGsap = typeof gsap !== "undefined";
   const hasScrollTrigger = hasGsap && typeof ScrollTrigger !== "undefined";
 
-  // =========================================================================
-  // 통계 숫자 카운터 (WeakMap + innerHTML 최소화 적용)
-  // =========================================================================
   function runStatsAnimation() {
-    const valElements = section.querySelectorAll(".brand-trust__stat-val");
+    const numElements = section.querySelectorAll(".brand-trust__stat-num");
 
-    valElements.forEach((el) => {
-      const target = parseFloat(el.getAttribute("data-target")) || 0;
-      const decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
-      const suffix = el.getAttribute("data-suffix") || "";
+    numElements.forEach((element) => {
+      const target = parseFloat(element.getAttribute("data-target"));
+      const decimals = parseInt(element.getAttribute("data-decimals"), 10);
 
-      // innerHTML 파싱 낭비를 줄이고 textContent 위주로 렌더링
       const render = (val) => {
-        const formatted =
+        element.textContent =
           decimals > 0
             ? val.toFixed(decimals)
             : Math.floor(val).toLocaleString();
-        el.innerHTML = `${formatted}<small>${suffix}</small>`;
       };
 
       if (!hasGsap) {
@@ -358,25 +346,17 @@ function initBrandTrustPartners() {
         return;
       }
 
-      // WeakMap을 이용한 안전한 이전 트윈 캔슬
-      const existingTween = statTweens.get(el);
-      if (existingTween) existingTween.kill();
-
       const counterObj = { value: 0 };
-      const newTween = gsap.to(counterObj, {
+      gsap.to(counterObj, {
         value: target,
         duration: 1.8,
         ease: "power2.out",
         onUpdate: () => render(counterObj.value),
       });
-
-      statTweens.set(el, newTween);
     });
   }
 
-  // =========================================================================
-  // Swiper 연동 (페이지네이션 및 컨트롤)
-  // =========================================================================
+  // Swiper 연동 (페이지네이션 및 컨트롤) //
   function updateControls(swiper) {
     const current = section.querySelector(".brand-trust__current-index");
     const total = section.querySelector(".brand-trust__total-index");
@@ -392,8 +372,6 @@ function initBrandTrustPartners() {
       progressFill.style.width = `${(realIndex / totalSlidesCount) * 100}%`;
     }
   }
-
-  let isContentVisible = false;
 
   const btSwiper = new Swiper(swiperElement, {
     effect: "slide",
@@ -413,10 +391,6 @@ function initBrandTrustPartners() {
       },
       slideChange: function () {
         updateControls(this);
-        // 화면이 사용자에게 보이고 있는 상태에서만 1번 슬라이드 카운터 재실행
-        if (this.realIndex === 0 && isContentVisible) {
-          runStatsAnimation();
-        }
       },
     },
   });
@@ -445,9 +419,7 @@ function initBrandTrustPartners() {
     });
   }
 
-  // =========================================================================
   // 커튼 및 ScrollTrigger 연동 (명시적 인라인 클린업)
-  // =========================================================================
   const leftCover = section.querySelector(".brand-trust__left-cover");
   const rightCover = section.querySelector(".brand-trust__right-cover");
 
@@ -463,7 +435,6 @@ function initBrandTrustPartners() {
     // 데스크톱 (769px 이상)
     mm.add("(min-width: 769px)", () => {
       let counterTriggered = false;
-      isContentVisible = false;
 
       ScrollTrigger.create({
         trigger: section,
@@ -479,14 +450,12 @@ function initBrandTrustPartners() {
           );
 
           if (progress > 0.5) {
-            isContentVisible = true;
             if (!counterTriggered) {
               counterTriggered = true;
               runStatsAnimation();
             }
           } else if (progress < 0.2) {
             counterTriggered = false;
-            isContentVisible = false;
           }
         },
       });
@@ -494,24 +463,20 @@ function initBrandTrustPartners() {
       return () => {
         setCoverWidth("");
         counterTriggered = false;
-        isContentVisible = false;
       };
     });
 
     // 모바일 (768px 이하)
     mm.add("(max-width: 768px)", () => {
-      isContentVisible = true;
       setCoverWidth("0px");
       runStatsAnimation();
 
       return () => {
         setCoverWidth("");
-        isContentVisible = false;
       };
     });
   } else {
     // GSAP/ScrollTrigger 미지원 환경
-    isContentVisible = true;
     setCoverWidth("0px");
     runStatsAnimation();
   }
