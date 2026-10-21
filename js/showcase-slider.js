@@ -1,6 +1,5 @@
 function initShowcaseSlider() {
   const sliderEl = document.querySelector(".showcase-slider__swiper");
-  // 해당 요소가 없거나 Swiper 라이브러리가 로드되지 않은 경우 안전하게 중단
   if (!sliderEl || typeof Swiper === "undefined") return;
 
   new Swiper(sliderEl, {

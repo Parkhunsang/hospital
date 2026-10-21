@@ -167,20 +167,42 @@ body.door-locked {
   overflow: hidden;
   width: 100%;
   height: 100vh;
-  //색상변경 금지 / 보간법 사용 일부러 안함
-  --bg-start: #f9fbfd;
-  --bg-end: #eef2f6;
   background: radial-gradient(
     circle at 50% 50%,
-    var(--bg-start) 0%,
-    var(--bg-end) 100%
+    $color-bg-light 0%,
+    $color-border 100%
   );
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      #f5f9ff 0%,
+      #cbdfff 100%
+    );
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    pointer-events: none;
+    content: "";
+  }
+
+  &--active::before {
+    opacity: 1;
+  }
+
   @media (max-width: $breakpoint-small) {
     min-height: 560px;
   }
 }
 
 .hero-3d__canvas-container {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;

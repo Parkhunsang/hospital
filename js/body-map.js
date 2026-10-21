@@ -626,34 +626,13 @@ function init3DBodyMap() {
   }
 
   // 6. UI 메뉴 클릭과 3D 카메라 연동 로직
+  const heroSection = document.querySelector(".hero-3d");
   const menuItems = document.querySelectorAll(".hero-3d__pain-item");
   const infoPanel = document.getElementById("info-panel");
   const infoTitle = document.getElementById("info-title");
   const infoDiseaseList = document.getElementById("info-disease-list");
   const closeBtn = document.getElementById("close-panel");
   const welcomeMessage = document.querySelector(".hero-3d__welcome");
-  const infoVisualImg = document.getElementById("info-visual-img");
-  const infoVisualPlaceholder = document.getElementById(
-    "info-visual-placeholder",
-  );
-
-  // 6-1. 테마 색상 정의 (배경 및 인포패널 연동)
-  const themeData = {
-    default: {
-      bgStart: "#f8fafd",
-      bgEnd: "#eaf2ff",
-      panelBg: "rgba(248, 250, 253, 0.25)",
-      panelBorder: "rgba(234, 242, 255, 0.8)",
-      panelText: "#1b2d5a",
-    },
-    active: {
-      bgStart: "#f5f9ff",
-      bgEnd: "#cbdfff",
-      panelBg: "rgba(224, 237, 255, 0.25)",
-      panelBorder: "rgba(47, 95, 167, 0.25)",
-      panelText: "#1b2d5a",
-    },
-  };
 
   menuItems.forEach((item) => {
     const handleSelect = () => {
@@ -665,7 +644,6 @@ function init3DBodyMap() {
 
       const targetId = item.getAttribute("data-target");
       const data = bodyData[targetId];
-      const theme = themeData.active;
 
       if (data && typeof gsap !== "undefined") {
         // 정보 패널 데이터 업데이트 및 보이기
@@ -767,13 +745,8 @@ function init3DBodyMap() {
           1.5, // 부드러운 전환을 위해 1.5초 설정
         );
 
-        // 테마 색상 애니메이션 적용 (배경 그라데이션 전환)
-        gsap.to(".hero-3d", {
-          "--bg-start": theme.bgStart,
-          "--bg-end": theme.bgEnd,
-          duration: 1.2,
-          ease: "power3.inOut",
-        });
+        // 테마 색상 애니메이션 적용 (CSS 클래스 토글로 배경 그라데이션 전환)
+        heroSection?.classList.add("hero-3d--active");
 
         // 마커 위치 지정 및 보이기
         markerGroup.position.set(
@@ -915,13 +888,8 @@ function init3DBodyMap() {
         1.5,
       );
 
-      // 기본 테마 색상으로 복구 애니메이션
-      gsap.to(".hero-3d", {
-        "--bg-start": themeData.default.bgStart,
-        "--bg-end": themeData.default.bgEnd,
-        duration: 1.2,
-        ease: "power3.inOut",
-      });
+      // 기본 테마 색상으로 복구 (CSS 클래스 제거)
+      heroSection?.classList.remove("hero-3d--active");
 
       // 스프라이트 마커 페이드아웃 후 숨기기
       // 3D 융화 마커 페이드아웃 후 숨기기

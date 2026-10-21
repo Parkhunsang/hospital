@@ -158,156 +158,6 @@ function initIntroDoor() {
   enterBtn?.focus();
 }
 
-// function initBrandTrustPartners() {
-//   const section = document.querySelector(".brand-trust");
-//   if (!section) return;
-
-//   let counterTriggered = false;
-
-//   // 페이지네이션 내에 숫자 갱신과 진행바 관련 로직
-//   function updateBTControls(swiper) {
-//     const current = section.querySelector(".brand-trust__current-index");
-//     const total = section.querySelector(".brand-trust__total-index");
-//     const progressFill = section.querySelector(".brand-trust__progress-fill");
-
-//     if (!current || !total) return;
-
-//     const realIndex = swiper.realIndex + 1;
-//     const totalSlides = 3; // stats, training, philosophy
-
-//     current.textContent = String(realIndex).padStart(2, "0");
-//     total.textContent = String(totalSlides).padStart(2, "0");
-
-//     if (progressFill) {
-//       progressFill.style.width = `${(realIndex / totalSlides) * 100}%`;
-//     }
-//   }
-
-//   // 숫자 카운터 애니메이션 로직
-//   function runStatsAnimation() {
-//     const valElements = section.querySelectorAll(".brand-trust__stat-val");
-//     valElements.forEach((el) => {
-//       const target = parseFloat(el.getAttribute("data-target"));
-//       const decimals = parseInt(el.getAttribute("data-decimals") || "0");
-//       const suffix = el.getAttribute("data-suffix") || "";
-
-//       const counterObj = { value: 0 };
-//       gsap.killTweensOf(counterObj);
-
-//       gsap.to(counterObj, {
-//         value: target,
-//         duration: 1.8,
-//         ease: "power2.out",
-//         onUpdate: () => {
-//           let formattedVal = "";
-//           if (decimals > 0) {
-//             formattedVal = counterObj.value.toFixed(decimals);
-//           } else {
-//             formattedVal = Math.floor(counterObj.value).toLocaleString();
-//           }
-//           el.innerHTML = `${formattedVal}<small>${suffix}</small>`;
-//         },
-//       });
-//     });
-//   }
-
-//   // 1. Initialize Swiper
-//   const btSwiper = new Swiper(".brand-trust__swiper", {
-//     effect: "slide",
-//     speed: 800,
-//     loop: true,
-//     autoplay: {
-//       delay: 5000,
-//       disableOnInteraction: false,
-//     },
-//     navigation: {
-//       nextEl: ".brand-trust__btn--next",
-//       prevEl: ".brand-trust__btn--prev",
-//     },
-//     on: {
-//       init: function () {
-//         updateBTControls(this);
-//       },
-//       slideChange: function () {
-//         updateBTControls(this);
-
-//         const isDesktop = window.matchMedia("(min-width: 769px)");
-//         if (this.realIndex === 0 && (!isDesktop.matches || counterTriggered)) {
-//           runStatsAnimation();
-//         }
-//       },
-//     },
-//   });
-
-//   // 슬라이드 재생/멈춤 버튼 로직
-//   const playPauseBtn = section.querySelector(".brand-trust__btn--play-pause");
-//   if (playPauseBtn) {
-//     const iconPause = playPauseBtn.querySelector(".brand-trust__icon-pause");
-//     const iconPlay = playPauseBtn.querySelector(".brand-trust__icon-play");
-
-//     playPauseBtn.addEventListener("click", () => {
-//       if (btSwiper.autoplay.running) {
-//         btSwiper.autoplay.stop();
-//         iconPause.classList.add("hidden");
-//         iconPlay.classList.remove("hidden");
-//       } else {
-//         btSwiper.autoplay.start();
-//         iconPause.classList.remove("hidden");
-//         iconPlay.classList.add("hidden");
-//       }
-//     });
-//   }
-
-//   // 실제 스크롤과 연동되는 앞/뒤 커튼 (width > 768px)
-//   const isDesktop = window.matchMedia("(min-width: 769px)");
-//   const leftCover = section.querySelector(".brand-trust__left-cover");
-//   const rightCover = section.querySelector(".brand-trust__right-cover");
-
-//   if (
-//     typeof gsap !== "undefined" &&
-//     typeof ScrollTrigger !== "undefined" &&
-//     isDesktop.matches
-//   ) {
-//     gsap.registerPlugin(ScrollTrigger);
-
-//     ScrollTrigger.create({
-//       trigger: ".brand-trust",
-//       start: "top top",
-//       end: "bottom bottom",
-//       scrub: true, // 스크롤 휠을 통한 커튼 제어
-//       pin: false,
-//       onUpdate: (self) => {
-//         const progress = self.progress;
-
-//         if (leftCover && rightCover) {
-//           const curtainProgress = Math.min(progress / 0.5, 1);
-//           const currentWidth = (1 - curtainProgress) * 50;
-//           leftCover.style.width =
-//             currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px"; // 여유있게 앞섶 느낌으로 4px 더하기
-//           rightCover.style.width =
-//             currentWidth > 0 ? `calc(${currentWidth}% + 4px)` : "0px";
-//         }
-
-//         // 반 정도(다 열렸을 때) counterTriggered 값을 바꿔서 숫자 카운트 애니메이션 열리게 하기
-//         if (progress > 0.5) {
-//           if (!counterTriggered) {
-//             counterTriggered = true;
-//             runStatsAnimation();
-//           }
-//         } else if (progress < 0.2) {
-//           counterTriggered = false; // 아직 덜 열렸다면 숫자 카운트 애니메이션은 안보이게 하기
-//         }
-//       },
-//     });
-//   } else {
-//     // 모바일/태블릿에선 커튼 효과 제거
-//     if (leftCover) leftCover.style.width = "0";
-//     if (rightCover) rightCover.style.width = "0";
-
-//     // 모바일/태블릿에선 숫자 카운터 애니메이션을 즉시 실행
-//     runStatsAnimation();
-//   }
-// }
 function initBrandTrustPartners() {
   const section = document.querySelector(".brand-trust");
   if (!section) return;
@@ -356,7 +206,7 @@ function initBrandTrustPartners() {
     });
   }
 
-  // Swiper 연동 (페이지네이션 및 컨트롤) //
+  // Swiper를 통한 페이지네이션 및 컨트롤 //
   function updateControls(swiper) {
     const current = section.querySelector(".brand-trust__current-index");
     const total = section.querySelector(".brand-trust__total-index");
@@ -367,7 +217,7 @@ function initBrandTrustPartners() {
     const realIndex = swiper.realIndex + 1;
     current.textContent = String(realIndex).padStart(2, "0");
     total.textContent = String(totalSlidesCount).padStart(2, "0");
-
+    // 진행바가 없을 때도 로직 실행 될 수 있게
     if (progressFill) {
       progressFill.style.width = `${(realIndex / totalSlidesCount) * 100}%`;
     }
@@ -419,7 +269,7 @@ function initBrandTrustPartners() {
     });
   }
 
-  // 커튼 및 ScrollTrigger 연동 (명시적 인라인 클린업)
+  // 커튼 및 ScrollTrigger 연동
   const leftCover = section.querySelector(".brand-trust__left-cover");
   const rightCover = section.querySelector(".brand-trust__right-cover");
 
@@ -430,10 +280,9 @@ function initBrandTrustPartners() {
 
   if (hasScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
-    const mm = gsap.matchMedia();
+    const mediaScreen = gsap.matchMedia();
 
-    // 데스크톱 (769px 이상)
-    mm.add("(min-width: 769px)", () => {
+    mediaScreen.add("(min-width: 961px)", () => {
       let counterTriggered = false;
 
       ScrollTrigger.create({
@@ -466,8 +315,7 @@ function initBrandTrustPartners() {
       };
     });
 
-    // 모바일 (768px 이하)
-    mm.add("(max-width: 768px)", () => {
+    mediaScreen.add("(max-width: 960px)", () => {
       setCoverWidth("0px");
       runStatsAnimation();
 
