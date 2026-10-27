@@ -1,97 +1,81 @@
 function init3DBodyMap() {
   const container = document.getElementById("canvas-container");
-  if (!container) return;
+  if (!container || typeof gsap === "undefined") return;
 
-  // 1. 신체 부위별 데이터 (타겟(LookAt) 위치, 카메라(Zoom-in) 위치 설정, 및 일러스트 연동)
+  // =========================================================================
+  // [단락 1] 신체 부위별 데이터 정의 (카메라 시점, 질환 목록, 홀로그램 설정)
+  // =========================================================================
+  // - targetX / targetY: 카메라가 바라보는 3D 포커스 중심 좌표
+  // - camX / camY / camZ: 카메라 렌즈 본체의 3D 위치 및 거리(줌) 수치
+  // - mobile: 640px 이하 모바일 전용 카메라 줌아웃 및 시선 오프셋 (생략 시 기본값 사용)
+  // - normal: 홀로그램 평면이 바라보는 방향 벡터 ([0,0,1]: 정면, [0,0,-1]: 후면, [-1,0,0]: 측면)
+  // - width: 홀로그램 가로 크기 (세로 크기는 원본 이미지 비율에 맞춰 자동 계산)
+  // - imageOffsetX / Y / Z, zOffset: 홀로그램 미세 위치 및 깊이 오프셋 (기본값: 0, zOffset: 0.05)
+  // - maskScale: 가장자리 투명 마스크 범위 (기본값: [1.0, 1.0])
   const bodyData = {
     neck: {
       title: "목",
       diseases: ["목디스크", "거북목 증후군"],
-      // [카메라 시점 설정]
-      targetX: 0, // 카메라가 바라보는 3D 포커스 중심 X좌표 (음수: 오른쪽, 양수: 왼쪽)
-      targetY: 1.2, // 카메라가 바라보는 3D 포커스 중심 Y좌표 (양수: 위, 음수: 아래)
-      camX: 0, // 카메라의 3D 위치 X좌표 (targetX와 동일하게 설정 시 정면 바라봄)
-      camY: 1.2, // 카메라의 3D 위치 Y좌표 (targetY와 동일하게 설정)
-      camZ: -2.5, // 카메라 거리/줌 수치 (숫자가 클수록 멀어지고 작을수록 확대)
-
-      // [홀로그램 이미지 파일 및 위치 미세조정]
+      targetX: 0,
+      targetY: 1.2,
+      camX: 0,
+      camY: 1.2,
+      camZ: -2.5,
       image: "./assets/neck.png",
-      imageOffsetX: 0, // 일러스트 좌/우 미세 위치 조정 (양수: 오른쪽, 음수: 왼쪽)
-      imageOffsetY: 0.1, // 일러스트 위/아래 미세 위치 조정 (양수: 위쪽, 음수: 아래쪽)
-      normal: [0, 0, -1], // 이미지가 바라보는 방향 [X, Y, Z] ([0,0,1]: 앞면, [0,0,-1]: 뒷면)
-      width: 0.2, // 일러스트 가로 표시 크기
-      height: 0.2, // 일러스트 세로 표시 크기
-      maskScale: [1.0, 1.0], // 가장자리 부드러운 투명 마스크 범위 [가로, 세로]
-      zOffset: -0.2, // 3D 모델 몸체 표면으로부터 앞/뒤 튀어나오는 깊이 거리
+      normal: [0, 0, -1],
+      width: 0.2,
+      imageOffsetY: 0.1,
+      zOffset: -0.2,
     },
 
     shoulder: {
       title: "어깨",
       diseases: ["오십견", "회전근개파열", "석회성 건염", "견관절재발성 탈구"],
-
-      /* [데스크톱/태블릿 기본 카메라 시점] */
       targetX: -0.42,
       targetY: 1.06,
       camX: -0.42,
       camY: 1.06,
       camZ: 2.0,
-
-      /* [모바일 640px 이하 전용 카메라 줌아웃 & 시선 오프셋] */
       mobile: {
-        targetX: -0.42, // 카메라가 바라보는 시선 중심점의 좌/우 위치 (음수: 오른쪽, 양수: 왼쪽)
-        targetY: 0.8, // 카메라가 바라보는 시선 중심점의 상/하 높이 (양수: 위로 들어올림, 음수: 아래)
-        camX: -0.42, // 3D 카메라 렌즈 본체의 좌/우 위치 (targetX와 동일 시 정면 바라봄)
-        camY: 1.25, // 3D 카메라 렌즈 본체의 상/하 높이 (targetY와 동일 시 수평 높이)
-        camZ: 3.2, // 3D 카메라와의 앞/뒤 거리 줌 수치 (절대값이 클수록 멀어지는 줌아웃)
+        targetX: -0.42,
+        targetY: 0.8,
+        camX: -0.42,
+        camY: 1.25,
+        camZ: 3.2,
       },
-
       image: "./assets/shoulder.png",
-      imageOffsetX: 0.075,
-      imageOffsetY: -0.15,
-      zOffset: 0.05,
-
       normal: [0, 0, 1],
       width: 0.48,
-      height: 0.48,
-      maskScale: [1.0, 1.0],
+      imageOffsetX: 0.075,
+      imageOffsetY: -0.15,
     },
 
     waist: {
       title: "허리",
       diseases: [
         "허리디스크",
-        "목 디스크",
         "척추협착증",
         "척추 전방 전위증",
         "척추 골절",
         "골다공증성 압박골절",
       ],
-
-      /* [데스크톱/태블릿 기본 카메라 시점] */
       targetX: -0.02,
       targetY: 0,
       camX: -0.02,
       camY: 0,
       camZ: -3.8,
-
-      /* [모바일 640px 이하 전용 카메라 줌아웃 & 시선 오프셋] */
       mobile: {
-        targetX: -0.02, // 모바일 카메라가 바라보는 시선 X축
-        targetY: -0.2, // 모바일 카메라가 바라보는 시선 Y축 (위로 살짝 올림)
-        camX: -0.02, // 모바일 3D 카메라 렌즈 위치 X축
-        camY: 0.25, // 모바일 3D 카메라 렌즈 높이 Y축
-        camZ: -4.8, // 모바일 줌아웃 거리 (더 멀어짐)
+        targetX: -0.02,
+        targetY: -0.2,
+        camX: -0.02,
+        camY: 0.25,
+        camZ: -4.8,
       },
-
       image: "./assets/waist.png",
-      imageOffsetX: 0,
-      imageOffsetY: -0.02,
-      zOffset: -0.05,
-
       normal: [0, 0, -1],
       width: 0.7,
-      height: 0.7,
-      maskScale: [1.0, 1.0],
+      imageOffsetY: -0.02,
+      zOffset: -0.05,
     },
 
     wrist: {
@@ -103,33 +87,24 @@ function init3DBodyMap() {
         "골프엘보우",
         "팔꿈치터널증후군",
       ],
-
-      /* [데스크톱/태블릿 기본 카메라 시점] */
       targetX: -1.1,
       targetY: -0.2,
       camX: -2.8,
       camY: -0.2,
       camZ: 0.0,
-
-      /* [모바일 640px 이하 전용 카메라 줌아웃 & 시선 오프셋] */
       mobile: {
-        targetX: -0.8, // 모바일 시선 중심점 X축 (손목 측면)
-        targetY: -0.4, // 모바일 시선 중심점 Y축
-        camX: -3.6, // 모바일 카메라 렌즈 X축 (더 멀리 줌아웃)
-        camY: -0.1, // 모바일 카메라 렌즈 Y축
-        camZ: 0.0, // 모바일 카메라 렌즈 Z축
+        targetX: -0.8,
+        targetY: -0.4,
+        camX: -3.6,
+        camY: -0.1,
+        camZ: 0.0,
       },
-
       image: "./assets/wrist.png",
-      imageOffsetX: 0,
+      normal: [-1, 0, 0],
+      width: 0.36,
       imageOffsetY: 0.05,
       imageOffsetZ: -0.1,
       zOffset: 0.08,
-
-      normal: [-1, 0, 0],
-      width: 0.36,
-      height: 0.73,
-      maskScale: [1.0, 1.0],
     },
 
     knee: {
@@ -141,71 +116,55 @@ function init3DBodyMap() {
         "줄기세포 수술",
         "퇴행성 관절염",
       ],
-
-      /* [데스크톱/태블릿 기본 카메라 시점] */
-      targetY: -1.1,
       targetX: 0.3,
+      targetY: -1.1,
       camX: 0.3,
       camY: -1.1,
       camZ: 2.0,
-
-      /* [모바일 640px 이하 전용 카메라 줌아웃 & 시선 오프셋] */
       mobile: {
-        targetX: 0.3, // 모바일 시선 중심점 X축
-        targetY: -1.2, // 모바일 시선 중심점 Y축 (상단으로 들어올림)
-        camX: 0.3, // 모바일 카메라 렌즈 X축
-        camY: -0.85, // 모바일 카메라 렌즈 Y축
-        camZ: 3.2, // 모바일 전면 줌아웃 수치
+        targetX: 0.3,
+        targetY: -1.2,
+        camX: 0.3,
+        camY: -0.85,
+        camZ: 3.2,
       },
-
       image: "./assets/knee.png",
-      imageOffsetX: 0.03,
-      imageOffsetY: 0,
-      zOffset: 0.05,
-
       normal: [0, 0, 1],
       width: 0.3,
-      height: 0.65,
-      maskScale: [1.0, 1.0],
+      imageOffsetX: 0.03,
     },
 
     foot: {
       title: "발/ 발목",
       diseases: ["발목염좌", "무지외반증", "발목 관절염", "족저근막염"],
-
-      /* [데스크톱/태블릿 기본 카메라 시점] */
       targetX: 0.2,
       targetY: -2.1,
       camX: -2.2,
       camY: -2.1,
       camZ: 0.0,
-
-      /* [모바일 640px 이하 전용 카메라 줌아웃 & 시선 오프셋] */
       mobile: {
-        targetX: 0.2, // 모바일 시선 중심점 X축
-        targetY: -2.4, // 모바일 시선 중심점 Y축 (상단으로 들어올림)
-        camX: -3.4, // 모바일 카메라 렌즈 X축 (더 멀리 줌아웃)
-        camY: -1.8, // 모바일 카메라 렌즈 Y축
-        camZ: 0.0, // 모바일 카메라 렌즈 Z축
+        targetX: 0.2,
+        targetY: -2.4,
+        camX: -3.4,
+        camY: -1.8,
+        camZ: 0.0,
       },
-
       image: "./assets/foot.png",
+      normal: [-1, 0, 0],
+      width: 0.8,
       imageOffsetX: -0.5,
       imageOffsetY: -0.06,
       imageOffsetZ: 0.04,
       zOffset: 0.1,
-
-      normal: [-1, 0, 0],
-      width: 0.8,
-      height: 0.44,
       maskScale: [0.8, 0.8],
     },
   };
 
-  // 2. 기본 Scene, Camera, Renderer 초기화
+  // =========================================================================
+  // [단락 2] 3D 무대(Scene, Camera, Renderer, Light) 및 인체 모델 세팅
+  // =========================================================================
   const scene = new THREE.Scene();
-  // scene.background 코드를 지워서 CSS의 그라데이션 배경이 보이도록 투명하게 만듭니다.
-  scene.fog = new THREE.Fog(0xc4d7eb, 10, 30); // 배경 그라데이션 톤에 맞춤
+  scene.fog = new THREE.Fog(0xc4d7eb, 10, 30);
 
   const camera = new THREE.PerspectiveCamera(
     45,
@@ -214,93 +173,71 @@ function init3DBodyMap() {
     1000,
   );
   const defaultCamPos = { x: 0, y: 0, z: 9 };
+  const lookAtTarget = new THREE.Vector3(0, 0, 0);
   camera.position.set(defaultCamPos.x, defaultCamPos.y, defaultCamPos.z);
+  camera.lookAt(lookAtTarget);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.shadowMap.enabled = true;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.0;
   container.appendChild(renderer.domElement);
 
-  // 3. 조명 (빛) 세팅
-  // 환경광(AmbientLight)을 부드럽게 설정하여 유리 내부 투명성 확보
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-  scene.add(ambientLight);
+  const renderScene = () => renderer.render(scene, camera);
 
-  // 주 방향광 (정측면)
+  // 조명 (은은한 환경광 + 정측면 주광 + 좌우 파란 역광)
+  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+
   const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
   dirLight.position.set(5, 10, 7);
-  dirLight.castShadow = true;
   scene.add(dirLight);
 
-  // Rim Light (역광) - 밝은 배경 위에서 파란색 크리스탈 외곽선의 굴절/반사를 살리는 용도
-  const rimLightLeft = new THREE.DirectionalLight(0x2f5fa7, 4.0);
-  rimLightLeft.position.set(-6, 3, -10);
-  scene.add(rimLightLeft);
+  [-6, 6].forEach((xPos) => {
+    const rimLight = new THREE.DirectionalLight(0x2f5fa7, 4.0);
+    rimLight.position.set(xPos, 3, -10);
+    scene.add(rimLight);
+  });
 
-  const rimLightRight = new THREE.DirectionalLight(0x2f5fa7, 4.0);
-  rimLightRight.position.set(6, 3, -10);
-  scene.add(rimLightRight);
-
-  // 4. 실제 OBJ 인체 모델 로드
+  // 실제 OBJ 인체 모델 로드 (반투명 화이트/그레이 서리 유리 질감)
   const loader = new THREE.OBJLoader();
   loader.load(
     "./assets/human_body.obj",
-    function (object) {
-      const model = object;
-
-      // 반투명 화이트/그레이 서리 유리(translucent frosted glass) 질감의 Physical Material 적용 (투명도를 약간 낮춰 두께감 표현)
-      const material = new THREE.MeshPhysicalMaterial({
-        color: 0xf3f6fb, // 반투명 화이트/그레이톤
-        transmission: 0.35, // 껍데기가 겹쳐 보여 유령처럼 흐려지는 현상을 막기 위해 투명도 하향
-        opacity: 1.0,
+    (model) => {
+      const bodyMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0xf3f6fb,
+        transmission: 0.35,
         transparent: true,
-        roughness: 0.25, // frosted 유리의 뽀얀 무광 질감
-        ior: 1.45, // 유리의 실제 굴절률
-        clearcoat: 0.3, // 매끄러운 표면 반사광 하이라이트 생성
+        roughness: 0.25,
+        ior: 1.45,
+        clearcoat: 0.3,
         clearcoatRoughness: 0.1,
+        thickness: 1.2,
+        attenuationColor: new THREE.Color(0xffffff),
+        attenuationDistance: 0.8,
       });
-      material.thickness = 1.2; // 유리의 입체감을 살리는 두께감
-      material.attenuationColor = new THREE.Color(0xffffff);
-      material.attenuationDistance = 0.8;
-      material.emissive = new THREE.Color(0x000000);
 
-      // 그림자 생성 및 모든 메시(Mesh)에 재질 적용
       model.traverse((node) => {
         if (node.isMesh) {
-          node.castShadow = true;
-          node.receiveShadow = true;
-          node.material = material;
+          node.material = bodyMaterial;
         }
       });
 
-      // 모델의 기본 크기나 위치 조절이 필요하다면 아래 주석을 풀고 수치를 변경하세요.
       model.scale.set(0.2, 0.2, 0.2);
       model.position.set(0, -2.3, 0);
-
       scene.add(model);
+      renderScene();
     },
     undefined,
-    function (error) {
+    (error) => {
       console.error("3D 모델을 불러오는 중 오류가 발생했습니다:", error);
     },
   );
 
-  // 5. 마우스 드래그 컨트롤 설정
-  const controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true; // 부드러운 감속 효과
-  controls.dampingFactor = 0.05;
-  controls.maxPolarAngle = Math.PI / 2; // 바닥 아래로 카메라가 내려가지 않도록 제한
-  controls.enableZoom = false; // 마우스 스크롤을 통한 줌인/줌아웃 비활성화
-  controls.minDistance = 3;
-  controls.maxDistance = 15;
-  controls.target.set(0, 0, 0);
-
-  // --------------------------------------------------------
-  // [커스텀 셰이더 정의]
-  const jointVertexShader = `
+  // =========================================================================
+  // [단락 3] 홀로그램 유리판(마커) 셰이더, 텍스처 및 메시 생성
+  // =========================================================================
+  const sharedVertexShader = `
     varying vec2 vUv;
     void main() {
       vUv = uv;
@@ -311,7 +248,6 @@ function init3DBodyMap() {
   const jointFragmentShader = `
     uniform sampler2D tDiffuse;
     uniform float uOpacity;
-    uniform float uAngleOpacity;
     uniform vec2 uMaskScale;
     varying vec2 vUv;
     
@@ -319,147 +255,92 @@ function init3DBodyMap() {
       vec4 texColor = texture2D(tDiffuse, vUv);
       if (texColor.a < 0.02) discard;
       
-      // 중심 (0.5, 0.5)으로부터의 거리 계산
-      vec2 centerDist = vUv - vec2(0.5);
-      centerDist *= uMaskScale;
-      float dist = length(centerDist);
+      vec2 centerDist = (vUv - vec2(0.5)) * uMaskScale;
+      float mask = smoothstep(0.5, 0.35, length(centerDist));
       
-      // 원형 마스킹 (외곽 부드럽게 뭉개기)
-      float mask = smoothstep(0.5, 0.35, dist);
-      
-      gl_FragColor = vec4(texColor.rgb, texColor.a * mask * uOpacity * uAngleOpacity);
-    }
-  `;
-
-  const glowVertexShader = `
-    varying vec2 vUv;
-    void main() {
-      vUv = uv;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      gl_FragColor = vec4(texColor.rgb, texColor.a * mask * uOpacity);
     }
   `;
 
   const glowFragmentShader = `
     uniform vec3 uGlowColor;
     uniform float uOpacity;
-    uniform float uAngleOpacity;
     varying vec2 vUv;
     
     void main() {
       float dist = length(vUv - vec2(0.5));
-      // 부드러운 원형 글로우
-      float intensity = smoothstep(0.5, 0.0, dist);
-      intensity = pow(intensity, 2.0); // 중앙 집중 발광 효과
+      float intensity = pow(smoothstep(0.5, 0.0, dist), 2.0);
       
-      gl_FragColor = vec4(uGlowColor, intensity * uOpacity * uAngleOpacity);
+      gl_FragColor = vec4(uGlowColor, intensity * uOpacity);
     }
   `;
 
-  // [홀로그램 텍스처 로딩 - 비등방성 필터링 및 밉맵 비활성화로 2D 일러스트 선명도 극대화]
   const textureLoader = new THREE.TextureLoader();
+  const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
 
   function loadSharpTexture(path) {
-    const texture = textureLoader.load(path, (tex) => {
-      // 그래픽 카드 지원 최대 배수 비등방성 필터링 적용 (사선 구도 뭉개짐 방지)
-      const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
+    return textureLoader.load(path, (tex) => {
       tex.anisotropy = maxAnisotropy;
-
-      // 밉맵(원거리 축소 시 블러링)을 끄고 항상 원본에 가까운 선명한 픽셀 보간을 하도록 지시
       tex.minFilter = THREE.LinearFilter;
       tex.magFilter = THREE.LinearFilter;
       tex.generateMipmaps = false;
       tex.needsUpdate = true;
+      renderScene();
     });
-    return texture;
   }
 
-  const illustrationTextures = {
-    neck: loadSharpTexture("./assets/neck.png"),
-    shoulder: loadSharpTexture("./assets/shoulder.png"),
-    waist: loadSharpTexture("./assets/waist.png"),
-    wrist: loadSharpTexture("./assets/wrist.png"),
-    knee: loadSharpTexture("./assets/knee.png"),
-    foot: loadSharpTexture("./assets/foot.png"),
+  const illustrationTextures = {};
+  Object.entries(bodyData).forEach(([key, item]) => {
+    if (item.image) {
+      illustrationTextures[key] = loadSharpTexture(item.image);
+    }
+  });
+
+  const markerGroup = new THREE.Group();
+  const sharedPlaneGeo = new THREE.PlaneGeometry(1, 1);
+  const sharedPlaneMatOpts = {
+    vertexShader: sharedVertexShader,
+    transparent: true,
+    depthTest: false,
+    depthWrite: false,
+    side: THREE.DoubleSide,
   };
 
-  // [마커] 통증 부위 표시용 빛나는 포인터 및 3D 홀로그램 평면/글로우 생성
-  const markerGroup = new THREE.Group();
-
-  // 1) 기본 구체 마커 (고광택 딥 로열 블루) - 일러스트 준비 중인 부위에 표시
-  const markerGeo = new THREE.SphereGeometry(0.06, 32, 32);
-  const markerMat = new THREE.MeshStandardMaterial({
-    color: 0x2f5fa7,
-    roughness: 0.05,
-    metalness: 0.9,
-    depthTest: false,
-  });
-  const markerMesh = new THREE.Mesh(markerGeo, markerMat);
-  markerMesh.renderOrder = 999;
-  markerGroup.add(markerMesh);
-
-  const glowGeo = new THREE.SphereGeometry(0.12, 32, 32);
-  const glowMat = new THREE.MeshBasicMaterial({
-    color: 0x2f5fa7,
-    transparent: true,
-    opacity: 0.45,
-    depthTest: false,
-  });
-  const glowMesh = new THREE.Mesh(glowGeo, glowMat);
-  glowMesh.renderOrder = 998;
-  markerGroup.add(glowMesh);
-
-  // 2) 3D 평면 융화 재질 & 메시 (스프라이트 대체)
-  const jointPlaneGeo = new THREE.PlaneGeometry(1, 1);
+  // 1) 앞장: 관절 일러스트 평면
   const jointMat = new THREE.ShaderMaterial({
-    vertexShader: jointVertexShader,
+    ...sharedPlaneMatOpts,
     fragmentShader: jointFragmentShader,
     uniforms: {
       tDiffuse: { value: null },
       uOpacity: { value: 0.0 },
-      uAngleOpacity: { value: 1.0 },
       uMaskScale: { value: new THREE.Vector2(1.0, 1.0) },
     },
-    transparent: true,
-    depthTest: false,
-    depthWrite: false,
-    side: THREE.DoubleSide,
   });
-  const jointPlane = new THREE.Mesh(jointPlaneGeo, jointMat);
-  jointPlane.renderOrder = 1; // 반투명 유리 모델보다 먼저 렌더링하여 서리유리 굴절/블러 효과 유도
+  const jointPlane = new THREE.Mesh(sharedPlaneGeo, jointMat);
+  jointPlane.renderOrder = 1;
   jointPlane.visible = false;
   markerGroup.add(jointPlane);
 
-  // 3) 3D 포커스 글로우 평면 메시
-  const glowPlaneGeo = new THREE.PlaneGeometry(1, 1);
+  // 2) 뒷장: 포커스 후광 평면 (단순 표시/숨김 토글)
   const glowPlaneMat = new THREE.ShaderMaterial({
-    vertexShader: glowVertexShader,
+    ...sharedPlaneMatOpts,
     fragmentShader: glowFragmentShader,
     uniforms: {
       uGlowColor: { value: new THREE.Color(0x3a86ff) },
-      uOpacity: { value: 0.0 },
-      uAngleOpacity: { value: 1.0 },
+      uOpacity: { value: 0.45 },
     },
-    transparent: true,
-    depthTest: false,
-    depthWrite: false,
-    side: THREE.DoubleSide,
   });
-  const glowPlane = new THREE.Mesh(glowPlaneGeo, glowPlaneMat);
-  glowPlane.renderOrder = 0; // 일러스트 배후 렌더링
+  const glowPlane = new THREE.Mesh(sharedPlaneGeo, glowPlaneMat);
+  glowPlane.renderOrder = 0;
   glowPlane.visible = false;
   markerGroup.add(glowPlane);
 
-  markerGroup.visible = false; // 초기에는 마커를 숨김
+  markerGroup.visible = false;
   scene.add(markerGroup);
 
-  let pulseTime = 0;
-  let activeNormal = null;
-  let activeWidth = 1.0;
-  let activeHeight = 1.0;
-  let glowBaseOpacity = 0.0;
-  // --------------------------------------------------------
-
-  // 창 크기 대응 (requestAnimationFrame으로 쓰로틀링)
+  // =========================================================================
+  // [단락 4] 반응형 창 크기 대응 및 온디맨드 초기 렌더링
+  // =========================================================================
   let resizeRafId = null;
   window.addEventListener("resize", () => {
     if (resizeRafId) cancelAnimationFrame(resizeRafId);
@@ -468,164 +349,70 @@ function init3DBodyMap() {
       camera.aspect = container.clientWidth / container.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(container.clientWidth, container.clientHeight);
+      renderScene();
     });
   });
 
-  // 애니메이션 루프 최적화 (루프 외부 벡터 재사용 및 뷰포트 온디맨드 렌더링)
-  const toCameraVec = new THREE.Vector3();
-  let animationFrameId = null;
-  let isCanvasVisible = true;
+  renderScene();
 
-  function animate() {
-    if (!isCanvasVisible) return;
-    animationFrameId = requestAnimationFrame(animate);
-    controls.update();
+  // =========================================================================
+  // [단락 5] 카메라 구면 보간(Spherical Interpolation) 이동 함수
+  // =========================================================================
+  const startTarget = new THREE.Vector3();
+  const endTarget = new THREE.Vector3();
+  const relativeCam = new THREE.Vector3();
+  const startSpherical = new THREE.Spherical();
+  const endSpherical = new THREE.Spherical();
+  const tempSph = new THREE.Spherical();
+  const camAnimState = { progress: 0 };
 
-    if (markerGroup.visible) {
-      pulseTime += 0.05;
-
-      // 1) 구체 마커용 펄스 (일러스트 비활성화된 부위용)
-      if (glowMesh.visible) {
-        const scale = 1 + Math.sin(pulseTime) * 0.2;
-        glowMesh.scale.set(scale, scale, scale);
-      }
-
-      // 2) 3D 평면 일러스트 및 글로우용 펄스 애니메이션
-      if (jointPlane.visible) {
-        // 카메라 시선 각도와 법선 벡터 간의 내적 계산 (캐싱된 벡터 재사용)
-        if (activeNormal) {
-          toCameraVec
-            .copy(camera.position)
-            .sub(markerGroup.position)
-            .normalize();
-
-          const dot = toCameraVec.dot(activeNormal);
-          // dot이 0.5 이상이면 1.0, 0.1 이하면 0.0으로 부드럽게 보간
-          const angleOpacity = THREE.MathUtils.clamp(
-            (dot - 0.1) / 0.4,
-            0.0,
-            1.0,
-          );
-
-          jointMat.uniforms.uAngleOpacity.value = angleOpacity;
-          glowPlaneMat.uniforms.uAngleOpacity.value = angleOpacity;
-        }
-
-        // 글로우의 맥동 효과 (크기와 투명도가 호흡하듯 변화)
-        if (glowPlane.visible) {
-          const scalePulse = 1.0 + Math.sin(pulseTime * 2.0) * 0.08; // 0.92 ~ 1.08
-          glowPlane.scale.set(
-            activeWidth * 1.6 * scalePulse,
-            activeHeight * 1.6 * scalePulse,
-            1.0,
-          );
-
-          const opacityPulse = 0.4 + Math.sin(pulseTime * 2.0) * 0.15; // 0.25 ~ 0.55
-          glowPlaneMat.uniforms.uOpacity.value = opacityPulse * glowBaseOpacity;
-        }
-      }
-    }
-
-    renderer.render(scene, camera);
-  }
-
-  // 뷰포트 감지: 화면 밖으로 스크롤 시 렌더링을 일시 정지하여 GPU/배터리 낭비 방지
-  const canvasObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (!isCanvasVisible) {
-            isCanvasVisible = true;
-            animate();
-          }
-        } else {
-          isCanvasVisible = false;
-          if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-            animationFrameId = null;
-          }
-        }
-      });
-    },
-    { threshold: 0.05 },
-  );
-  canvasObserver.observe(container);
-
-  animate();
-
-  // 카메라 구면 보간(Spherical Interpolation) 애니메이션 함수 (갑작스러운 회전 및 모델 파고들기 방지)
   function animateCamera(targetCam, targetLook, duration = 1.5) {
-    if (typeof gsap === "undefined") return;
+    gsap.killTweensOf(camAnimState);
 
-    gsap.killTweensOf(camera.position);
-    gsap.killTweensOf(controls.target);
+    startTarget.copy(lookAtTarget);
+    endTarget.set(targetLook.x, targetLook.y, targetLook.z ?? 0);
 
-    const startTarget = controls.target.clone();
-    const endTarget = new THREE.Vector3(
-      targetLook.x,
-      targetLook.y,
-      targetLook.z || 0,
+    startSpherical.setFromVector3(
+      relativeCam.copy(camera.position).sub(startTarget),
     );
-
-    const startRelativeCam = camera.position.clone().sub(startTarget);
-    const endRelativeCam = new THREE.Vector3(
-      targetCam.x,
-      targetCam.y,
-      targetCam.z,
-    ).sub(endTarget);
-
-    const startSpherical = new THREE.Spherical().setFromVector3(
-      startRelativeCam,
+    endSpherical.setFromVector3(
+      relativeCam.set(targetCam.x, targetCam.y, targetCam.z).sub(endTarget),
     );
-    const endSpherical = new THREE.Spherical().setFromVector3(endRelativeCam);
 
     // theta의 최단 경로 보정 (180도 이상 휙 돌지 않도록 방지)
     let diffTheta = endSpherical.theta - startSpherical.theta;
     diffTheta = Math.atan2(Math.sin(diffTheta), Math.cos(diffTheta));
     const endTheta = startSpherical.theta + diffTheta;
 
-    const animObj = { progress: 0 };
-    gsap.to(animObj, {
+    camAnimState.progress = 0;
+    gsap.to(camAnimState, {
       progress: 1,
       duration: duration,
       ease: "power2.inOut",
       onUpdate: () => {
-        const t = animObj.progress;
+        const t = camAnimState.progress;
 
         // 1. 시점 타겟 선형 보간
-        const currTarget = new THREE.Vector3().lerpVectors(
-          startTarget,
-          endTarget,
-          t,
-        );
-        controls.target.copy(currTarget);
+        lookAtTarget.lerpVectors(startTarget, endTarget, t);
 
-        // 2. 구면 좌표계 보간
-        const currRadius = THREE.MathUtils.lerp(
-          startSpherical.radius,
-          endSpherical.radius,
-          t,
+        // 2. 구면 좌표계 보간 및 최종 카메라 위치/시선 대입
+        tempSph.set(
+          THREE.MathUtils.lerp(startSpherical.radius, endSpherical.radius, t),
+          THREE.MathUtils.lerp(startSpherical.phi, endSpherical.phi, t),
+          THREE.MathUtils.lerp(startSpherical.theta, endTheta, t),
         );
-        const currPhi = THREE.MathUtils.lerp(
-          startSpherical.phi,
-          endSpherical.phi,
-          t,
-        );
-        const currTheta = THREE.MathUtils.lerp(
-          startSpherical.theta,
-          endTheta,
-          t,
-        );
-
-        // 3. 최종 카메라 위치 대입
-        const tempSph = new THREE.Spherical(currRadius, currPhi, currTheta);
-        const relativeCam = new THREE.Vector3().setFromSpherical(tempSph);
-        camera.position.copy(currTarget).add(relativeCam);
+        camera.position
+          .copy(lookAtTarget)
+          .add(relativeCam.setFromSpherical(tempSph));
+        camera.lookAt(lookAtTarget);
+        renderScene();
       },
     });
   }
 
-  // 6. UI 메뉴 클릭과 3D 카메라 연동 로직
+  // =========================================================================
+  // [단락 6] UI 메뉴 이벤트 및 3D 카메라·홀로그램 연동
+  // =========================================================================
   const heroSection = document.querySelector(".hero-3d");
   const menuItems = document.querySelectorAll(".hero-3d__pain-item");
   const infoPanel = document.getElementById("info-panel");
@@ -634,296 +421,186 @@ function init3DBodyMap() {
   const closeBtn = document.getElementById("close-panel");
   const welcomeMessage = document.querySelector(".hero-3d__welcome");
 
-  menuItems.forEach((item) => {
-    const handleSelect = () => {
-      // 기존 활성화 해제 및 현재 항목 활성화
-      menuItems.forEach((li) =>
-        li.classList.remove("hero-3d__pain-item--active"),
-      );
-      item.classList.add("hero-3d__pain-item--active");
+  // 평면 회전 계산용 재사용 수학 객체
+  const baseForwardVec = new THREE.Vector3(0, 0, 1);
+  const sharedNormalVec = new THREE.Vector3();
+  const sharedQuaternion = new THREE.Quaternion();
 
-      const targetId = item.getAttribute("data-target");
-      const data = bodyData[targetId];
-
-      if (data && typeof gsap !== "undefined") {
-        // 정보 패널 데이터 업데이트 및 보이기
-        infoTitle.textContent = data.title;
-
-        // 웰컴 메시지 위로 올리며 페이드 아웃
-        if (welcomeMessage) {
-          gsap.to(welcomeMessage, {
-            y: -80,
-            opacity: 0,
-            duration: 0.6,
-            ease: "power2.inOut",
-            pointerEvents: "none",
-          });
-        }
-
-        // 이미지 및 플레이스홀더 연동 및 애니메이션
-        if (infoVisualImg && infoVisualPlaceholder) {
-          if (data.image) {
-            infoVisualImg.src = data.image;
-            infoVisualImg.classList.remove("hidden");
-            infoVisualPlaceholder.classList.add("hidden");
-            gsap.fromTo(
-              infoVisualImg,
-              { opacity: 0, scale: 0.95 },
-              { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" },
-            );
-          } else {
-            infoVisualImg.classList.add("hidden");
-            infoVisualPlaceholder.classList.remove("hidden");
-            gsap.fromTo(
-              infoVisualPlaceholder,
-              { opacity: 0, scale: 0.95 },
-              { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" },
-            );
-          }
-        }
-
-        // 질환 리스트 동적 렌더링
-        infoDiseaseList.innerHTML = "";
-        if (data.diseases) {
-          data.diseases.forEach((disease) => {
-            const li = document.createElement("li");
-            li.classList.add("hero-3d__disease-item");
-            const a = document.createElement("a");
-            a.classList.add("hero-3d__disease-link");
-            if (disease === "목디스크" || disease === "목 디스크") {
-              a.href = "./disease/neck.html";
-            } else {
-              a.href = "#";
-            }
-            a.target = "_blank"; // 새 창으로 열림
-            a.textContent = disease;
-            li.appendChild(a);
-            infoDiseaseList.appendChild(li);
-          });
-        }
-
-        infoPanel.setAttribute("data-part", targetId);
-        infoPanel.classList.remove("hero-3d__info-panel--hidden");
-
-        // 질환 패널이 열리면 키보드 탐색(A11y)을 위해 첫 번째 질환 링크로 포커스 자동 이동
-        const firstDiseaseLink = infoDiseaseList.querySelector(
-          ".hero-3d__disease-link",
-        );
-        if (firstDiseaseLink) {
-          firstDiseaseLink.focus();
-        }
-
-        // 통증 부위 선택 시 마우스 드래그/회전 조작으로 카메라 시점이 틀어지지 않도록 고정(잠금)
-        controls.enabled = false;
-
-        /* --- [모바일 640px 이하 전용 시점 감지 및 3D 카메라 이동] --- */
-        const isMobile640 = window.innerWidth <= 640;
-        const mob = isMobile640 && data.mobile ? data.mobile : null;
-
-        // 모바일(640px 이하)이고 data.mobile이 존재하면 모바일 전용 시점 사용, 그 외(데스크톱/태블릿)는 원본 데이터 100% 사용
-        const targetCamX =
-          mob && mob.camX !== undefined
-            ? mob.camX
-            : data.camX !== undefined
-              ? data.camX
-              : 2.5;
-        const targetCamY = mob && mob.camY !== undefined ? mob.camY : data.camY;
-        const targetCamZ = mob && mob.camZ !== undefined ? mob.camZ : data.camZ;
-
-        const targetLookX =
-          mob && mob.targetX !== undefined
-            ? mob.targetX
-            : data.targetX !== undefined
-              ? data.targetX
-              : 0;
-        const targetLookY =
-          mob && mob.targetY !== undefined ? mob.targetY : data.targetY;
-
-        animateCamera(
-          { x: targetCamX, y: targetCamY, z: targetCamZ },
-          { x: targetLookX, y: targetLookY, z: 0 },
-          1.5, // 부드러운 전환을 위해 1.5초 설정
-        );
-
-        // 테마 색상 애니메이션 적용 (CSS 클래스 토글로 배경 그라데이션 전환)
-        heroSection?.classList.add("hero-3d--active");
-
-        // 마커 위치 지정 및 보이기
-        markerGroup.position.set(
-          data.targetX !== undefined ? data.targetX : 0,
-          data.targetY,
-          0,
-        );
-
-        // 부위별 3D 평면 융화 일러스트 렌더링 또는 기본 구체 마커 스위칭
-        if (data.image && illustrationTextures[targetId]) {
-          markerMesh.visible = false;
-          glowMesh.visible = false;
-
-          // 데이터 기반 파라미터 적용
-          activeWidth = data.width || 0.8;
-          activeHeight = data.height || 0.8;
-
-          // 이미지 실제 가로세로 비율에 맞춰 높이(height)를 자동 조정 (찌그러짐 방지)
-          const tex = illustrationTextures[targetId];
-          if (tex && tex.image && tex.image.width && tex.image.height) {
-            const imgAspect = tex.image.width / tex.image.height;
-            activeHeight = activeWidth / imgAspect;
-          }
-
-          const zOff = data.zOffset || 0.05;
-          const maskS = data.maskScale || [1.0, 1.0];
-
-          // 텍스처 및 균일 변수(Uniform) 업데이트
-          jointMat.uniforms.tDiffuse.value = illustrationTextures[targetId];
-          jointMat.uniforms.uMaskScale.value.set(maskS[0], maskS[1]);
-
-          // 평면 메시 방향 및 오프셋 적용
-          const normalVec = new THREE.Vector3(
-            data.normal[0],
-            data.normal[1],
-            data.normal[2],
-          );
-          const quaternion = new THREE.Quaternion().setFromUnitVectors(
-            new THREE.Vector3(0, 0, 1),
-            normalVec,
-          );
-
-          jointPlane.quaternion.copy(quaternion);
-          glowPlane.quaternion.copy(quaternion);
-
-          const imgOffsetX =
-            data.imageOffsetX !== undefined ? data.imageOffsetX : 0.0;
-          const imgOffsetY =
-            data.imageOffsetY !== undefined ? data.imageOffsetY : 0.0;
-          const imgOffsetZ =
-            data.imageOffsetZ !== undefined ? data.imageOffsetZ : zOff;
-          jointPlane.position.set(imgOffsetX, imgOffsetY, imgOffsetZ);
-          glowPlane.position.set(imgOffsetX, imgOffsetY, imgOffsetZ - 0.02); // 글로우는 일러스트보다 살짝 안쪽(뒤쪽)에 배치
-
-          jointPlane.scale.set(activeWidth, activeHeight, 1.0);
-          glowPlane.scale.set(activeWidth * 1.6, activeHeight * 1.6, 1.0);
-
-          activeNormal = normalVec;
-
-          jointPlane.visible = true;
-          glowPlane.visible = true;
-
-          // GSAP를 통한 페이드인 효과
-          gsap.killTweensOf([
-            jointMat.uniforms.uOpacity,
-            glowPlaneMat.uniforms.uOpacity,
-          ]);
-
-          gsap.fromTo(
-            jointMat.uniforms.uOpacity,
-            { value: 0 },
-            { value: 1.0, duration: 0.6, ease: "power2.out" },
-          );
-
-          glowBaseOpacity = 1.0;
-          gsap.fromTo(
-            glowPlaneMat.uniforms.uOpacity,
-            { value: 0 },
-            { value: 0.5, duration: 0.6, ease: "power2.out" },
-          );
-        } else {
-          markerMesh.visible = false;
-          glowMesh.visible = false;
-          jointPlane.visible = false;
-          glowPlane.visible = false;
-          activeNormal = null;
-        }
-
-        markerGroup.visible = true;
-      }
-    };
-
-    item.addEventListener("click", handleSelect);
-    item.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        handleSelect();
-      }
+  // [6-1] 상단 웰컴 메시지 표시/숨김 전환
+  function toggleWelcomeMessage(isVisible) {
+    if (!welcomeMessage) return;
+    gsap.to(welcomeMessage, {
+      y: isVisible ? 0 : -80,
+      opacity: isVisible ? 1 : 0,
+      duration: isVisible ? 0.8 : 0.6,
+      ease: isVisible ? "power2.out" : "power2.inOut",
+      pointerEvents: isVisible ? "auto" : "none",
     });
-  });
+  }
 
-  // 닫기/뒤로가기 버튼 클릭 시 전체 화면으로 복귀
-  closeBtn.addEventListener("click", () => {
-    infoPanel.classList.add("hero-3d__info-panel--hidden");
+  // [6-2] 2D 하단 질환 정보 패널 업데이트 및 열기
+  function openInfoPanel(targetId, data) {
+    infoTitle.textContent = data.title;
+    infoDiseaseList.innerHTML = "";
 
-    // 접근성(A11y): 패널이 닫히면 원래 열었던 통증 부위 메뉴 아이템으로 초점 복귀
-    const activeTrigger = document.querySelector(".hero-3d__pain-item--active");
-    if (activeTrigger) {
-      activeTrigger.focus();
+    data.diseases?.forEach((disease) => {
+      const li = document.createElement("li");
+      li.className = "hero-3d__disease-item";
+
+      const a = document.createElement("a");
+      a.className = "hero-3d__disease-link";
+      a.href = disease === "목디스크" ? "./disease/neck.html" : "#";
+      a.target = "_blank";
+      a.textContent = disease;
+
+      li.appendChild(a);
+      infoDiseaseList.appendChild(li);
+    });
+
+    infoPanel.setAttribute("data-part", targetId);
+    infoPanel.classList.remove("hero-3d__info-panel--hidden");
+
+    // 접근성(A11y): 첫 번째 질환 링크로 포커스 자동 이동
+    infoDiseaseList.querySelector(".hero-3d__disease-link")?.focus();
+  }
+
+  // [6-3] 3D 홀로그램 일러스트 및 후광 평면 표시
+  function showHologramMarker(targetId, data) {
+    markerGroup.position.set(data.targetX ?? 0, data.targetY, 0);
+    markerGroup.visible = true;
+
+    const tex = illustrationTextures[targetId];
+    if (!data.image || !tex) {
+      jointPlane.visible = false;
+      glowPlane.visible = false;
+      return;
     }
+
+    const activeWidth = data.width ?? 0.8;
+    const imgAspect =
+      tex.image?.width && tex.image?.height
+        ? tex.image.width / tex.image.height
+        : 1;
+    const activeHeight = activeWidth / imgAspect;
+
+    const zOff = data.zOffset ?? 0.05;
+    const maskS = data.maskScale ?? [1.0, 1.0];
+
+    jointMat.uniforms.tDiffuse.value = tex;
+    jointMat.uniforms.uMaskScale.value.set(maskS[0], maskS[1]);
+
+    sharedNormalVec.set(data.normal[0], data.normal[1], data.normal[2]);
+    sharedQuaternion.setFromUnitVectors(baseForwardVec, sharedNormalVec);
+    jointPlane.quaternion.copy(sharedQuaternion);
+    glowPlane.quaternion.copy(sharedQuaternion);
+
+    const imgOffsetX = data.imageOffsetX ?? 0.0;
+    const imgOffsetY = data.imageOffsetY ?? 0.0;
+    const imgOffsetZ = data.imageOffsetZ ?? zOff;
+
+    jointPlane.position.set(imgOffsetX, imgOffsetY, imgOffsetZ);
+    glowPlane.position.set(imgOffsetX, imgOffsetY, imgOffsetZ - 0.02);
+
+    jointPlane.scale.set(activeWidth, activeHeight, 1.0);
+    glowPlane.scale.set(activeWidth * 1.6, activeHeight * 1.6, 1.0);
+
+    // 카메라 회전 이동 중 반대편에서 미리 보이지 않도록 숨긴 뒤 도착 시점(0.65초 뒤)에 표시
+    jointPlane.visible = true;
+    glowPlane.visible = false;
+
+    gsap.killTweensOf(jointMat.uniforms.uOpacity);
+    jointMat.uniforms.uOpacity.value = 0;
+    gsap.to(jointMat.uniforms.uOpacity, {
+      value: 1.0,
+      duration: 0.6,
+      delay: 0.65,
+      ease: "power2.out",
+      onStart: () => {
+        glowPlane.visible = true;
+      },
+      onUpdate: renderScene,
+    });
+  }
+
+  // [6-4] 통증 부위 메뉴 선택 총괄 핸들러
+  function selectBodyPart(item) {
+    const targetId = item.getAttribute("data-target");
+    const data = bodyData[targetId];
+    if (!data) return;
 
     menuItems.forEach((li) =>
       li.classList.remove("hero-3d__pain-item--active"),
     );
+    item.classList.add("hero-3d__pain-item--active");
 
-    // 전체 인체 3D 화면으로 복귀할 때 마우스 드래그/회전 조작 잠금 해제
-    controls.enabled = true;
+    toggleWelcomeMessage(false);
+    openInfoPanel(targetId, data);
 
-    if (typeof gsap !== "undefined") {
-      // 웰컴 메시지 위에서 아래로 복귀하며 페이드 인
-      if (welcomeMessage) {
-        gsap.fromTo(
-          welcomeMessage,
-          { y: -80, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            pointerEvents: "auto",
-          },
-        );
-      }
+    const mob = window.innerWidth <= 640 ? data.mobile : null;
+    animateCamera(
+      {
+        x: mob?.camX ?? data.camX ?? 2.5,
+        y: mob?.camY ?? data.camY,
+        z: mob?.camZ ?? data.camZ,
+      },
+      {
+        x: mob?.targetX ?? data.targetX ?? 0,
+        y: mob?.targetY ?? data.targetY,
+        z: 0,
+      },
+      1.5,
+    );
 
-      // 카메라 구면 보간 함수 호출하여 원래 위치로 부드럽게 복귀
-      animateCamera(
-        { x: defaultCamPos.x, y: defaultCamPos.y, z: defaultCamPos.z },
-        { x: 0, y: 0, z: 0 },
-        1.5,
-      );
+    heroSection?.classList.add("hero-3d--active");
+    showHologramMarker(targetId, data);
+  }
 
-      // 기본 테마 색상으로 복구 (CSS 클래스 제거)
-      heroSection?.classList.remove("hero-3d--active");
+  // [6-5] 닫기/뒤로가기 클릭 시 초기 전신 화면으로 복귀
+  function resetBodyMap() {
+    infoPanel.classList.add("hero-3d__info-panel--hidden");
 
-      // 스프라이트 마커 페이드아웃 후 숨기기
-      // 3D 융화 마커 페이드아웃 후 숨기기
-      if (jointPlane.visible) {
-        gsap.killTweensOf([
-          jointMat.uniforms.uOpacity,
-          glowPlaneMat.uniforms.uOpacity,
-        ]);
+    // 접근성(A11y): 원래 열었던 통증 부위 메뉴 아이템으로 초점 복귀 후 활성화 해제
+    document.querySelector(".hero-3d__pain-item--active")?.focus();
+    menuItems.forEach((li) =>
+      li.classList.remove("hero-3d__pain-item--active"),
+    );
 
-        gsap.to(jointMat.uniforms.uOpacity, {
-          value: 0,
-          duration: 0.5,
-          ease: "power2.inOut",
-        });
+    heroSection?.classList.remove("hero-3d--active");
+    glowPlane.visible = false;
 
-        glowBaseOpacity = 0.0;
-        gsap.to(glowPlaneMat.uniforms.uOpacity, {
-          value: 0,
-          duration: 0.5,
-          ease: "power2.inOut",
-          onComplete: () => {
-            jointPlane.visible = false;
-            glowPlane.visible = false;
-            markerGroup.visible = false;
-            activeNormal = null;
-          },
-        });
-      } else {
-        markerGroup.visible = false;
-        activeNormal = null;
-      }
+    toggleWelcomeMessage(true);
+    animateCamera(defaultCamPos, { x: 0, y: 0, z: 0 }, 1.5);
+
+    if (jointPlane.visible) {
+      gsap.killTweensOf(jointMat.uniforms.uOpacity);
+      gsap.to(jointMat.uniforms.uOpacity, {
+        value: 0,
+        duration: 0.5,
+        ease: "power2.inOut",
+        onUpdate: renderScene,
+        onComplete: () => {
+          jointPlane.visible = false;
+          markerGroup.visible = false;
+          renderScene();
+        },
+      });
     } else {
       markerGroup.visible = false;
+      renderScene();
     }
+  }
+
+  // 이벤트 리스너 등록
+  menuItems.forEach((item) => {
+    item.addEventListener("click", () => selectBodyPart(item));
+    item.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        selectBodyPart(item);
+      }
+    });
   });
+
+  closeBtn.addEventListener("click", resetBodyMap);
 }
 document.addEventListener("DOMContentLoaded", init3DBodyMap);
