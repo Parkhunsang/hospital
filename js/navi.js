@@ -9,9 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let isDrawerOpen = false;
   let lastScrollY = window.scrollY;
 
-  // ==========================================
-  // 1. PC 데스크탑 드롭다운 메뉴 (80px <-> 300px)
-  // ==========================================
+  // 1. PC 데스크탑 드롭다운 메뉴 (80px <-> 300px) //
   function openMenu() {
     if (window.innerWidth <= 960) return;
     if (headerWrap) headerWrap.classList.add("is-open");
@@ -38,10 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-  // ==========================================
-  // 2. 스크롤 감지 (Scroll Up/Down 헤더 숨김 & 노출)
-  // ==========================================
+  // 2. 스크롤 감지 (Scroll Up/Down 헤더 숨김 & 노출) //
   function handleScroll() {
     if (isDrawerOpen) return;
 
@@ -80,9 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   handleScroll();
   window.addEventListener("scroll", handleScroll, { passive: true });
-  // ==========================================
-  // 3. 모바일 햄버거 버튼 & 드로어 (Drawer) 토글
-  // ==========================================
+  // 3. 모바일 햄버거 버튼 & 드로어 (Drawer) 토글 //
   function openDrawer() {
     isDrawerOpen = true;
     hamburger.classList.add("topbar__hamburger--active");
@@ -158,6 +151,45 @@ document.addEventListener("DOMContentLoaded", () => {
       if (hamburger) hamburger.focus();
     }
   });
+
+  // 4. 서브페이지 LNB 드롭다운 토글 //
+  const lnbItems = document.querySelectorAll(".lnb__item");
+
+  if (lnbItems.length) {
+    lnbItems.forEach((item) => {
+      const btn = item.querySelector(".lnb__button");
+      if (!btn) return;
+
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        // 1) 내가 아닌 다른 열린 LNB 메뉴는 모두 닫기
+        lnbItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem.classList.remove("lnb__item--open");
+            const otherBtn = otherItem.querySelector(".lnb__button");
+            if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        // 2) 현재 클릭한 메뉴 열기/닫기 스위치(toggle)
+        const isOpen = item.classList.toggle("lnb__item--open");
+        btn.setAttribute("aria-expanded", isOpen);
+      });
+    });
+
+    // 3) LNB 바깥(본문 빈 곳) 클릭 시 열린 드롭다운 모두 닫기
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".lnb")) {
+        lnbItems.forEach((item) => {
+          item.classList.remove("lnb__item--open");
+          const btn = item.querySelector(".lnb__button");
+          if (btn) btn.setAttribute("aria-expanded", "false");
+        });
+      }
+    });
+  }
+
   // 이벤트 리스너 최적화(공부필요)
   // let scrollTicking = false;
   // window.addEventListener(

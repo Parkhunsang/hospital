@@ -59,7 +59,10 @@
                 <a href="#reservation" class="gnb__link" aria-expanded="false">
                   진료안내 &amp; 예약
                 </a>
-                <ul class="gnb__sub-list" aria-label="진료안내 및 예약 하위 메뉴">
+                <ul
+                  class="gnb__sub-list"
+                  aria-label="진료안내 및 예약 하위 메뉴"
+                >
                   <li class="gnb__sub-item">
                     <a href="#footer" class="gnb__sub-link">진료시간 안내</a>
                   </li>
@@ -134,7 +137,9 @@
                     <a href="#news" class="gnb__sub-link">건강 정보</a>
                   </li>
                   <li class="gnb__sub-item">
-                    <a href="#self-test" class="gnb__sub-link">자가진단 테스트</a>
+                    <a href="#self-test" class="gnb__sub-link"
+                      >자가진단 테스트</a
+                    >
                   </li>
                 </ul>
               </li>
@@ -388,7 +393,96 @@
           </ul>
         </div>
       </section>
+      <nav class="lnb" aria-label="현재 위치 및 서브 메뉴">
+        <div class="container lnb__container">
+          <ul class="lnb__list">
+            <li class="lnb__item lnb__item--home">
+              <a
+                href="../index.html"
+                class="lnb__home-link"
+                aria-label="홈으로 이동"
+              >
+                <img src="../assets/home.svg" alt="" />
+              </a>
+            </li>
 
+            <li class="lnb__item">
+              <button
+                type="button"
+                class="lnb__button"
+                aria-expanded="false"
+              >
+                부위별 진료
+              </button>
+              <ul class="lnb__sub-list">
+                <li class="lnb__sub-item">
+                  <a href="../index.html#information" class="lnb__sub-link"
+                    >병원 소개</a
+                  >
+                </li>
+                <li class="lnb__sub-item">
+                  <a href="../index.html#reservation" class="lnb__sub-link"
+                    >진료안내 &amp; 예약</a
+                  >
+                </li>
+                <li class="lnb__sub-item">
+                  <a
+                    href="./neck.html"
+                    class="lnb__sub-link lnb__sub-link--active"
+                    aria-current="true"
+                    >부위별 진료</a
+                  >
+                </li>
+                <li class="lnb__sub-item">
+                  <a href="../index.html#rehab" class="lnb__sub-link"
+                    >비수술 치료</a
+                  >
+                </li>
+                <li class="lnb__sub-item">
+                  <a href="../index.html#board" class="lnb__sub-link"
+                    >커뮤니티</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="lnb__item">
+              <button
+                type="button"
+                class="lnb__button"
+                aria-expanded="false"
+              >
+                목 통증
+              </button>
+              <ul class="lnb__sub-list">
+                <li class="lnb__sub-item">
+                  <a
+                    href="./neck.html"
+                    class="lnb__sub-link lnb__sub-link--active"
+                    aria-current="page"
+                    >목 통증</a
+                  >
+                </li>
+                <li class="lnb__sub-item">
+                  <a href="#" class="lnb__sub-link">어깨 통증</a>
+                </li>
+                <li class="lnb__sub-item">
+                  <a href="#" class="lnb__sub-link">허리 통증</a>
+                </li>
+                <li class="lnb__sub-item">
+                  <a href="#" class="lnb__sub-link">손 통증</a>
+                </li>
+                <li class="lnb__sub-item">
+                  <a href="#" class="lnb__sub-link">무릎 통증</a>
+                </li>
+                <li class="lnb__sub-item">
+                  <a href="#" class="lnb__sub-link">발 통증</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <section class="section" id="neck-compare">
         <div class="container disease-overview">
           <div class="section-head--left">
