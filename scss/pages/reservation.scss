@@ -1,0 +1,4 @@
+@use "../variables" as *;
+.subpage-hero--reservation {
+  @include hero-overlay("/reservation/reservation_assets/background_reservation2.jpg");
+}
