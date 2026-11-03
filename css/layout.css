@@ -343,6 +343,31 @@
   transform: translateY(0);
 }
 
+/* Responsive Media Queries - Start */
+@media (max-width: 640px) {
+  .lnb__list {
+    width: 100%;
+  }
+  .lnb__item {
+    flex: 1;
+    min-width: 0;
+  }
+  .lnb__item--home {
+    flex: 0 0 auto;
+  }
+  .lnb__home-link {
+    width: 48px;
+  }
+  .lnb__button {
+    padding: 0 12px;
+    font-size: 0.875rem;
+  }
+  .lnb__sub-link {
+    padding: 12px;
+  }
+}
+/* Responsive Media Queries - End */
+
 /* ==========================================
    Layout CSS (헤더, 푸터, 전역 레이아웃 컨테이너)
    ========================================== */

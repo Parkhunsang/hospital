@@ -141,3 +141,33 @@
     transform: translateY(0);
   }
 }
+
+/* Responsive Media Queries - Start */
+@media (max-width: $breakpoint-small) {
+  .lnb__list {
+    width: 100%;
+  }
+
+  .lnb__item {
+    flex: 1;
+    min-width: 0;
+
+    &--home {
+      flex: 0 0 auto;
+    }
+  }
+
+  .lnb__home-link {
+    width: 48px;
+  }
+
+  .lnb__button {
+    padding: 0 $space-sm;
+    font-size: $font-sm;
+  }
+
+  .lnb__sub-link {
+    padding: $space-sm;
+  }
+}
+/* Responsive Media Queries - End */
