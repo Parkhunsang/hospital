@@ -4,14 +4,12 @@
    LNB (서브페이지 로컬 네비게이션 / 로케이션 바)
    ========================================== */
 .lnb {
-  position: relative;
-  z-index: 100;
   width: 100%;
   border-bottom: 1px solid $color-border;
   background-color: $color-white;
 }
 
-.lnb__container {
+.lnb .container {
   display: flex;
   align-items: center;
   height: 56px;
@@ -19,7 +17,6 @@
 
 .lnb__list {
   display: flex;
-  align-items: stretch;
   height: 100%;
 }
 
@@ -50,14 +47,11 @@
 }
 
 .lnb__button {
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 100%;
   padding: 0 $space-lg;
-  border: 0;
   background-color: transparent;
   font-size: $font-md;
   font-weight: 600;
@@ -65,10 +59,6 @@
   text-align: left;
   transition: background-color 0.2s ease;
   cursor: pointer;
-
-  &:hover {
-    background-color: $color-bg-light;
-  }
 
   &::after {
     width: 8px;
@@ -92,7 +82,6 @@
   width: calc(100% + 2px);
   padding: $space-xs 0;
   border: 1px solid $color-border;
-  border-radius: 0 0 $radius-sm $radius-sm;
   background-color: $color-white;
   box-shadow: $shadow-md;
   opacity: 0;
@@ -119,12 +108,12 @@
     color 0.2s ease;
 
   &:hover {
-    background-color: $color-bg-light;
+    background-color: $color-nav-bg;
     color: $color-primary;
   }
 
   &--active {
-    background-color: $color-bg-light;
+    background-color: $color-nav-bg;
     font-weight: 700;
     color: $color-primary;
   }
