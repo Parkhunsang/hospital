@@ -117,6 +117,8 @@
   gap: 8px;
   padding-left: $space-sm;
   svg {
+    width: 22px;
+    height: 22px;
     color: $color-secondary;
   }
   @media (max-width: $breakpoint-small) {

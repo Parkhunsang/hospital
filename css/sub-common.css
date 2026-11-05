@@ -178,15 +178,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: start;
-  -moz-column-gap: 24px;
-       column-gap: 24px;
+  column-gap: 24px;
   row-gap: clamp(20px, 12vw - 72px, 72px);
 }
 @media (max-width: 1200px) {
   .symptoms__list {
     grid-template-columns: repeat(2, 1fr);
-    -moz-column-gap: 20px;
-         column-gap: 20px;
+    column-gap: 20px;
   }
 }
 
@@ -205,8 +203,7 @@
 .symptoms__img-wrapper img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .symptoms__text {

@@ -22,7 +22,7 @@ body.door-locked {
   z-index: 1;
   width: 50vw;
   height: 100vh;
-  background-image: url("../assets/intro_door.png");
+  background-image: url("../assets/intro_door.jpg");
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -99,6 +99,8 @@ body.door-locked {
 }
 
 .intro-door__arrow-icon {
+  stroke-linecap: round;
+  stroke-linejoin: round;
   transition: transform 0.3s ease;
 }
 
@@ -882,6 +884,11 @@ body.door-locked {
 .non-surgical__card-btn-icon {
   width: 16px;
   height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   transition: transform 0.3s ease;
 }
 
@@ -960,10 +967,10 @@ body.door-locked {
   background-repeat: no-repeat;
 }
 .brand-trust__slide--stats {
-  background-image: url("../assets/brand_trust_bg_1.png");
+  background-image: url("../assets/brand_trust_bg_1.jpg");
 }
 .brand-trust__slide--training {
-  background-image: url("../assets/brand_trust_bg_2.png");
+  background-image: url("../assets/brand_trust_bg_2.jpg");
 }
 .brand-trust__slide--philosophy {
   background-image: url("../assets/non_surgical_4.png");
@@ -1400,6 +1407,11 @@ body.door-locked {
 .doctors__schedule-icon {
   width: 18px;
   height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .doctors__schedule-time {

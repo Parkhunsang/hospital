@@ -165,6 +165,7 @@
 .drawer__toggle svg {
   width: 18px;
   height: 18px;
+  fill: none;
   transition: transform 0.3s ease;
 }
 .drawer__toggle--active svg {
@@ -405,8 +406,7 @@
 .topbar__logo-img {
   width: auto;
   height: 52px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .topbar__brand {
   display: flex;
@@ -523,9 +523,7 @@
   text-align: center;
   white-space: nowrap;
   transform: translateX(-50%);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   pointer-events: none;
 }
 
@@ -702,7 +700,7 @@
   height: 140px;
   border: 1px solid #eef2f6;
   border-radius: 12px;
-  background: url("../assets/img-map.webp") no-repeat center center/cover;
+  background: url("../assets/img-map.jpg") no-repeat center center/cover;
   transition: border-color 0.3s ease;
 }
 .footer__card-map::after {
