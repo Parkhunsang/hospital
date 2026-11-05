@@ -138,7 +138,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: url("/disease/disease_assets/check.svg") no-repeat center center #1b2d5a;
+  background: url("../disease/disease_assets/check.svg") no-repeat center center #1b2d5a;
 }
 
 .causes-text__desc {

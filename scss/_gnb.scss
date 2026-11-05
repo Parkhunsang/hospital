@@ -22,7 +22,7 @@
     padding: 0 $space-sm;
     transition: padding 0.3s ease;
     @media (min-width: $breakpoint-desktop) {
-      .topbar_nav_wrap.is-open & {
+      .topbar__nav_wrap.is-open & {
         padding: 0 $space-ml;
       }
     }
@@ -73,7 +73,7 @@
   min-width: 150px;
   padding: $space-sm $space-xs;
 
-  .topbar_nav_wrap.is-open & {
+  .topbar__nav_wrap.is-open & {
     display: flex;
   }
 }

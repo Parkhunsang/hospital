@@ -19,7 +19,7 @@
   transition: padding 0.3s ease;
 }
 @media (min-width: 1200px) {
-  .topbar_nav_wrap.is-open .gnb__item {
+  .topbar__nav_wrap.is-open .gnb__item {
     padding: 0 20px;
   }
 }
@@ -65,7 +65,7 @@
   min-width: 150px;
   padding: 12px 8px;
 }
-.topbar_nav_wrap.is-open .gnb__sub-list {
+.topbar__nav_wrap.is-open .gnb__sub-list {
   display: flex;
 }
 
@@ -425,7 +425,7 @@
   }
 }
 
-.topbar_nav_wrap {
+.topbar__nav_wrap {
   position: relative;
   overflow: hidden;
   width: min(1200px, 100% - 40px);
@@ -438,7 +438,7 @@
   box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
   transition: height 0.3s ease-in-out;
 }
-.topbar_nav_wrap.is-open {
+.topbar__nav_wrap.is-open {
   height: 350px;
 }
 

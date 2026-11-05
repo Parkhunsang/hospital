@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const topbar = document.querySelector(".topbar");
   if (!topbar) return;
-  const headerWrap = topbar.querySelector(".topbar_nav_wrap");
+  const headerWrap = topbar.querySelector(".topbar__nav_wrap");
   const mainMenu = topbar.querySelectorAll(".gnb__item > .gnb__link");
   const hamburger = topbar.querySelector(".topbar__hamburger");
   const drawer = document.querySelector(".drawer");

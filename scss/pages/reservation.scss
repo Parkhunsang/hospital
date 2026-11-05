@@ -3,7 +3,7 @@
 /* Subpage Hero - Start */
 .subpage-hero--reservation {
   @include hero-overlay(
-    "/reservation/reservation_assets/background_reservation.jpg"
+    "../../reservation/reservation_assets/background_reservation.jpg"
   );
 }
 /* Subpage Hero - End */
@@ -70,12 +70,6 @@
 
 .reservation__input::placeholder {
   color: $color-text-white-subtle;
-}
-
-.reservation__input:focus,
-.reservation__select:focus {
-  border-color: $color-text-white-subtle;
-  outline: none;
 }
 
 .reservation__select {

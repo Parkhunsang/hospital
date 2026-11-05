@@ -1,7 +1,7 @@
 @use "../variables" as *;
 
 .subpage-hero--neck {
-  @include hero-overlay("/disease/disease_assets/background_neck.png");
+  @include hero-overlay("../../disease/disease_assets/background_neck.png");
 }
 
 .neck-compare__image-wrap {
@@ -63,5 +63,5 @@
 }
 
 .causes-image__neck {
-  background-image: url("/disease/disease_assets/neck_disk__cuase.png");
+  background-image: url("../../disease/disease_assets/neck_disk__cuase.png");
 }
