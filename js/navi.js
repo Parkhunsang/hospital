@@ -153,42 +153,27 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 4. 서브페이지 LNB 드롭다운 토글 //
-  const lnbItems = document.querySelectorAll(".lnb__item");
+const lnb = document.querySelector(".lnb");
+if (lnb) {
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".lnb__button");
+    const currentItem = btn?.closest(".lnb__item");
 
-  if (lnbItems.length) {
-    lnbItems.forEach((item) => {
-      const btn = item.querySelector(".lnb__button");
-      if (!btn) return;
-
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-
-        // 1) 내가 아닌 다른 열린 LNB 메뉴는 모두 닫기
-        lnbItems.forEach((otherItem) => {
-          if (otherItem !== item) {
-            otherItem.classList.remove("lnb__item--open");
-            const otherBtn = otherItem.querySelector(".lnb__button");
-            if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
-          }
-        });
-
-        // 2) 현재 클릭한 메뉴 열기/닫기 스위치(toggle)
-        const isOpen = item.classList.toggle("lnb__item--open");
-        btn.setAttribute("aria-expanded", isOpen);
-      });
-    });
-
-    // 3) LNB 바깥(본문 빈 곳) 클릭 시 열린 드롭다운 모두 닫기
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".lnb")) {
-        lnbItems.forEach((item) => {
-          item.classList.remove("lnb__item--open");
-          const btn = item.querySelector(".lnb__button");
-          if (btn) btn.setAttribute("aria-expanded", "false");
-        });
+    // 1) 내가 누른 아이템을 제외한 모든 열린 메뉴는 닫기 (바깥 클릭 포함)
+    lnb.querySelectorAll(".lnb__item--open").forEach((item) => {
+      if (item !== currentItem) {
+        item.classList.remove("lnb__item--open");
+        item.querySelector(".lnb__button")?.setAttribute("aria-expanded", "false");
       }
     });
-  }
+
+    // 2) 내가 버튼을 눌렀다면 내 메뉴만 토글
+    if (btn && currentItem) {
+      const isOpen = currentItem.classList.toggle("lnb__item--open");
+      btn.setAttribute("aria-expanded", isOpen);
+    }
+  });
+}
 
   // 이벤트 리스너 최적화(공부필요)
   // let scrollTicking = false;
