@@ -13,10 +13,10 @@ html {
 }
 
 body {
-  color: $color-primary;
+  background-color: $color-white;
   font-family: $font-family-base;
-  background: $color-white;
-  letter-spacing: -0.02em;
+  letter-spacing: $letter-spacing-base;
+  color: $color-primary;
 }
 a {
   color: inherit;

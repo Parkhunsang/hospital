@@ -23,17 +23,19 @@
 }
 
 .subpage-hero__title {
-  color: $color-white;
   font-size: $font-4xl;
   font-weight: 800;
   line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  color: $color-white;
 }
 
 .subpage-hero__title--english {
-  color: $color-text-white-subtle;
   font-size: $font-2xl;
   font-weight: 400;
   line-height: $line-height-heading;
+  letter-spacing: $letter-spacing-wide;
+  color: $color-text-white-subtle;
 }
 
 .disease-text-wrap {
@@ -70,7 +72,7 @@
     justify-content: center;
     padding: $space-xs $space-md;
     border-radius: $radius-pill;
-    font-size: 1rem;
+    font-size: $font-base;
     font-weight: 600;
     line-height: $line-height-none;
     color: $color-text-dark;

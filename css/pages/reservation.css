@@ -132,7 +132,7 @@
   align-items: center;
   gap: 8px;
   height: 36px;
-  padding: 6px 18px;
+  padding: 4px 16px;
   border: 1px solid #eef2f6;
   border-radius: 9999px;
   font-size: 0.8125rem;
@@ -229,11 +229,11 @@
 }
 
 .channel__icon-wrap--kakao + .channel__btn {
-  background: #fee500;
+  background-color: #fee500;
 }
 
 .channel__icon-wrap--naver + .channel__btn {
-  background: #68b984;
+  background-color: #68b984;
 }
 
 .channel__icon {
@@ -252,6 +252,7 @@
   font-size: 1.125rem;
   font-weight: 800;
   line-height: 38px;
+  letter-spacing: 0;
   color: #222;
 }
 

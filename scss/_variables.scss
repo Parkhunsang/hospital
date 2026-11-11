@@ -47,6 +47,13 @@ $line-height-heading: 1.35; // 섹션 제목 및 카드 타이틀 ($font-lg ~ $f
 $line-height-body: 1.5; // 기본 본문, 테이블 셀, 리스트 ($font-sm ~ $font-base)
 $line-height-loose: 1.7; // 2줄 이상의 장문 설명문, 긴 줄글 본문
 
+// Letter Spacing System (Pretendard 국문 시각 보정 및 Tailwind/Material 영문 표준 규격)
+$letter-spacing-tight: -0.03em; // 대형 디스플레이($font-3xl ~ $font-5xl): 큰 폰트의 글자 간 시각적 여백을 조여 응집력 확보
+$letter-spacing-base: -0.02em; // 국문 기본 본문 및 중형 제목($font-sm ~ $font-2xl): Pretendard/KRDS 국문 표준 자간 (-2%)
+$letter-spacing-normal: 0; // 소형 캡션($font-xs), 숫자(전화번호/통계), 영문 일반 텍스트: 좁은 자간으로 인한 글자 뭉침 방지
+$letter-spacing-wide: 0.05em; // 영문 서브 타이틀 및 워터마크: 영문 가독성 확보 표준 (Tailwind wider 규격, +5%)
+$letter-spacing-widest: 0.1em; // 영문 대문자(UPPERCASE) 라벨/아이브로우: 대문자 블록 현상 방지 표준 (Tailwind widest 규격, +10%)
+
 // Spacing System (8pt Grid 기반 간격 토큰)
 $space-2xs: 4px;
 $space-xs: 8px;
@@ -85,7 +92,7 @@ $breakpoint-desktop: 1200px;
 
 @mixin glass($blur: 12px, $bg-opacity: 0.12, $border-opacity: 0.25) {
   border: 1px solid rgba($color-white, $border-opacity);
-  background: rgba($color-white, $bg-opacity);
+  background-color: rgba($color-white, $bg-opacity);
   -webkit-backdrop-filter: blur($blur);
   backdrop-filter: blur($blur);
 }

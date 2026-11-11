@@ -18,7 +18,7 @@
 .neck-compare__table-wrap {
   overflow-x: auto;
   border: 1px solid $color-border;
-  border-radius: 12px;
+  border-radius: $radius-md;
 }
 
 .neck-compare__table {

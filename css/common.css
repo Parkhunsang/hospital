@@ -16,10 +16,10 @@ html {
 }
 
 body {
-  color: #1b2d5a;
+  background-color: #fff;
   font-family: "Pretendard Variable", "Pretendard", sans-serif;
-  background: #fff;
   letter-spacing: -0.02em;
+  color: #1b2d5a;
 }
 
 a {

@@ -383,7 +383,7 @@
   justify-content: center;
   width: 100%;
   height: 80px;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .topbar.topbar--up, .topbar.topbar--top {
   opacity: 1;
@@ -406,7 +406,8 @@
 .topbar__logo-img {
   width: auto;
   height: 52px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .topbar__brand {
   display: flex;
@@ -432,7 +433,7 @@
   height: 80px;
   padding: 0 24px;
   border-radius: 24px;
-  background: #acbac9;
+  background-color: #acbac9;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
@@ -523,7 +524,9 @@
   text-align: center;
   white-space: nowrap;
   transform: translateX(-50%);
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   pointer-events: none;
 }
 
@@ -627,6 +630,7 @@
 .footer__card-title--phone {
   font-size: 1.5rem;
   font-weight: 800;
+  letter-spacing: 0;
   color: #38bdf8;
 }
 
@@ -660,6 +664,7 @@
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.25;
+  letter-spacing: 0;
   color: #fff;
 }
 .footer__card-time--off {
@@ -672,12 +677,13 @@
   align-items: center;
   vertical-align: middle;
   margin-left: 6px;
-  padding: 2px 8px;
+  padding: 4px 8px;
   border-radius: 9999px;
   background-color: rgba(239, 68, 68, 0.2);
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1;
+  letter-spacing: 0;
   color: #f87171;
 }
 

@@ -24,7 +24,7 @@
 
 .ghost-button {
   border: 1px solid $color-border;
-  background: $color-text-white-subtle;
+  background-color: $color-text-white-subtle;
 }
 
 .section-head {
@@ -44,19 +44,21 @@
 
 .section-title {
   position: relative;
-  color: $color-primary;
+  display: inline-block;
   font-size: clamp(24px, 2vw + 12px, 36px);
   font-weight: 800;
   line-height: $line-height-heading;
+  letter-spacing: $letter-spacing-tight;
+  color: $color-primary;
   word-break: keep-all;
-  display: inline-block;
 
   &__eng-title {
     margin-left: 8px;
-    color: $color-text-light;
     font-size: $font-xl;
     font-weight: 500;
     line-height: $line-height-heading;
+    letter-spacing: $letter-spacing-normal;
+    color: $color-text-light;
     word-break: keep-all;
   }
 }
@@ -76,9 +78,11 @@
   font-size: $font-xs;
   font-weight: 700;
   line-height: $line-height-none;
+  letter-spacing: $letter-spacing-normal;
 
   &--glass-gold {
-    background: rgba($color-white, 0.1);
+    background-color: rgba($color-white, 0.1);
+    letter-spacing: $letter-spacing-widest;
     color: $color-accent;
     text-transform: uppercase;
   }
@@ -93,10 +97,10 @@
 .eyebrow {
   display: block;
   margin-bottom: 12px;
-  color: $color-secondary;
   font-size: $font-xs;
   font-weight: 800;
-  letter-spacing: 0.15em;
+  letter-spacing: $letter-spacing-widest;
+  color: $color-secondary;
   text-transform: uppercase;
 }
 

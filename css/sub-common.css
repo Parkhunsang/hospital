@@ -23,17 +23,19 @@
 }
 
 .subpage-hero__title {
-  color: #fff;
   font-size: 2.25rem;
   font-weight: 800;
   line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: #fff;
 }
 
 .subpage-hero__title--english {
-  color: rgba(255, 255, 255, 0.85);
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.35;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .disease-text-wrap {
@@ -178,13 +180,15 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: start;
-  column-gap: 24px;
+  -moz-column-gap: 24px;
+       column-gap: 24px;
   row-gap: clamp(20px, 12vw - 72px, 72px);
 }
 @media (max-width: 1200px) {
   .symptoms__list {
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
+    -moz-column-gap: 20px;
+         column-gap: 20px;
   }
 }
 
@@ -203,7 +207,8 @@
 .symptoms__img-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .symptoms__text {

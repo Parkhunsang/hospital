@@ -61,10 +61,10 @@ body.door-locked {
   align-items: center;
   text-align: center;
   width: min(540px, 100% - 40px);
-  padding: 50px 30px;
+  padding: 48px 32px;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(25px);
   box-shadow: 0 20px 40px rgba(27, 45, 90, 0.15);
   pointer-events: auto;
@@ -110,7 +110,7 @@ body.door-locked {
   align-items: center;
   gap: 10px;
   margin-top: 36px;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.5);
 }
@@ -248,7 +248,7 @@ body.door-locked {
   padding: 12px;
   box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.45);
-  background: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
   border-radius: 16px;
   text-align: center;
@@ -346,7 +346,7 @@ body.door-locked {
   width: 340px;
   padding: 32px;
   border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(12px);
   border-radius: 16px;
   box-shadow: 0 12px 30px rgba(27, 45, 90, 0.08);
@@ -378,7 +378,7 @@ body.door-locked {
     right: auto;
     width: 100%;
     padding: 16px;
-    background: #fff;
+    background-color: #fff;
     transform: none;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -433,15 +433,15 @@ body.door-locked {
   width: 6px;
 }
 .hero-3d__disease-list::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background-color: #f1f1f1;
   border-radius: 4px;
 }
 .hero-3d__disease-list::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background-color: #c1c1c1;
   border-radius: 4px;
 }
 .hero-3d__disease-list::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background-color: #a8a8a8;
 }
 @media (max-width: 640px) {
   .hero-3d__disease-list {
@@ -572,7 +572,7 @@ body.door-locked {
   height: 100%;
   border-radius: 16px;
   overflow: hidden;
-  background: #fff;
+  background-color: #fff;
 }
 @media (max-width: 960px) {
   .hero-3d__togo-list {
@@ -595,7 +595,7 @@ body.door-locked {
   display: none;
 }
 .hero-3d__togo-item:hover {
-  background: #1b2d5a;
+  background-color: #1b2d5a;
 }
 .hero-3d__togo-item:hover .hero-3d__menu-text {
   color: #fff;
@@ -610,7 +610,7 @@ body.door-locked {
   width: 1px;
   height: 50%;
   border-radius: 9999px;
-  background: rgba(136, 149, 182, 0.85);
+  background-color: rgba(136, 149, 182, 0.85);
   content: "";
   transform: translateY(-50%);
 }
@@ -621,7 +621,7 @@ body.door-locked {
     min-height: 48px;
     border: 1px solid rgba(27, 45, 90, 0.08);
     border-radius: 12px;
-    background: #fff;
+    background-color: #fff;
     box-shadow: 0 4px 12px rgba(27, 45, 90, 0.04);
     transition: all 0.25s ease;
   }
@@ -1005,8 +1005,9 @@ body.door-locked {
 .brand-trust__title {
   font-size: 2.25rem;
   font-weight: 800;
-  color: #fff;
   line-height: 1.35;
+  letter-spacing: -0.03em;
+  color: #fff;
   word-break: keep-all;
 }
 @media (max-width: 960px) {
@@ -1066,7 +1067,7 @@ body.door-locked {
   padding: 32px 24px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
   transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
@@ -1097,6 +1098,7 @@ body.door-locked {
 .brand-trust__stat-num {
   font-size: 2.25rem;
   font-weight: 800;
+  letter-spacing: 0;
   color: #fff;
 }
 @media (max-width: 960px) {
@@ -1129,7 +1131,7 @@ body.door-locked {
   padding: 12px 24px;
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   color: #fff;
 }
@@ -1181,6 +1183,7 @@ body.door-locked {
 .brand-trust__total-index {
   font-size: 0.875rem;
   font-weight: 800;
+  letter-spacing: 0;
 }
 
 .brand-trust__progress-wrap {
@@ -1189,7 +1192,7 @@ body.door-locked {
   width: 60px;
   height: 2px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .brand-trust__progress-fill {
@@ -1198,7 +1201,7 @@ body.door-locked {
   left: 0;
   width: 33.33%;
   height: 100%;
-  background: #fdb608;
+  background-color: #fdb608;
   transition: width 0.3s ease;
 }
 
@@ -1230,8 +1233,8 @@ body.door-locked {
   flex: 1;
   height: 100%;
   padding: 40px 24px;
-  background: #fff;
-  transition: flex 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.5s ease, box-shadow 0.5s ease;
+  background-color: #fff;
+  transition: flex 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.5s ease;
   cursor: pointer;
 }
 @media (max-width: 960px) {
@@ -1258,6 +1261,7 @@ body.door-locked {
   margin-bottom: 20px;
   font-size: 2.25rem;
   font-weight: 800;
+  letter-spacing: 0;
   color: #2f5fa7;
   opacity: 0.35;
   transition: opacity 0.4s ease, transform 0.4s ease, height 0.4s ease, margin-bottom 0.4s ease;
@@ -1372,12 +1376,12 @@ body.door-locked {
   padding: 12px 20px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(5px);
 }
 @media (max-width: 960px) {
   .doctors__schedule {
-    background: #f9fbfd;
+    background-color: #f9fbfd;
   }
 }
 
@@ -1417,6 +1421,7 @@ body.door-locked {
 .doctors__schedule-time {
   font-size: 0.9375rem;
   font-weight: 800;
+  letter-spacing: 0;
   color: #fdb608;
 }
 @media (max-width: 960px) {
@@ -1473,7 +1478,6 @@ body.door-locked {
   .doctors__card:focus-within {
     flex: 2;
     background-color: #1b2d5a;
-    box-shadow: 0 4px 12px rgba(27, 45, 90, 0.04);
   }
   .doctors__card:hover .doctors__number,
   .doctors__card:focus-within .doctors__number {
@@ -1503,12 +1507,12 @@ body.door-locked {
   }
   .doctors__card:hover .primary-button,
   .doctors__card:focus-within .primary-button {
-    background: #fff;
+    border-color: #fff;
     color: #1b2d5a;
   }
   .doctors__card:hover .primary-button:hover,
   .doctors__card:focus-within .primary-button:hover {
-    background: #eef2f6;
+    border-color: #eef2f6;
   }
 }
 /* 05. 의료진 소개 및 오늘 진료 가능 일정 [END] */
@@ -1542,7 +1546,7 @@ body.door-locked {
   padding: 20px 24px;
   border-radius: 12px;
   border: 1px solid #eef2f6;
-  background: #fff;
+  background-color: #fff;
   cursor: pointer;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -1567,7 +1571,7 @@ body.door-locked {
 
 .self-test__checkbox input:checked + .self-test__box {
   border-color: #2f5fa7;
-  background: #2f5fa7;
+  background-color: #2f5fa7;
 }
 .self-test__checkbox input:checked + .self-test__box::after {
   position: absolute;
@@ -1603,11 +1607,11 @@ body.door-locked {
   width: 340px;
   padding: 32px 24px;
   border-radius: 16px;
-  background: #1b2d5a;
+  background-color: #1b2d5a;
   color: #fff;
 }
 .self-test__result-box .primary-button {
-  background: #fff;
+  background-color: #fff;
   color: #1b2d5a;
   align-self: flex-start;
 }
@@ -1711,8 +1715,8 @@ body.door-locked {
   padding: 12px 24px;
   border: 1px solid #1b2d5a;
   border-radius: 9999px;
-  background: #fff;
-  font-size: 1rem;
+  background-color: #fff;
+  font-size: 0.9375rem;
   font-weight: 700;
   color: #1b2d5a;
   cursor: pointer;
@@ -1720,7 +1724,7 @@ body.door-locked {
 }
 .news__tab-button[aria-selected=true] {
   border-color: #1b2d5a;
-  background: #1b2d5a;
+  background-color: #1b2d5a;
   color: #fff;
   box-shadow: 0 8px 24px rgba(27, 45, 90, 0.05);
 }
@@ -1762,7 +1766,7 @@ body.door-locked {
   flex: 1;
   border: 1px solid #eef2f6;
   border-radius: 16px;
-  background: #fff;
+  background-color: #fff;
   box-shadow: 0 4px 12px rgba(27, 45, 90, 0.04);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -1815,6 +1819,7 @@ body.door-locked {
   margin-top: auto;
   font-size: 0.8125rem;
   font-weight: 600;
+  letter-spacing: 0;
   color: #666;
 }
 
