@@ -1507,12 +1507,12 @@ body.door-locked {
   }
   .doctors__card:hover .primary-button,
   .doctors__card:focus-within .primary-button {
-    border-color: #fff;
+    background-color: #fff;
     color: #1b2d5a;
   }
   .doctors__card:hover .primary-button:hover,
   .doctors__card:focus-within .primary-button:hover {
-    border-color: #eef2f6;
+    background-color: #eef2f6;
   }
 }
 /* 05. 의료진 소개 및 오늘 진료 가능 일정 [END] */

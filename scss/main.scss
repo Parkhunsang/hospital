@@ -420,7 +420,7 @@ body.door-locked {
   }
   &::-webkit-scrollbar-thumb {
     background-color: #c1c1c1;
-    border-radius:$radius-xs;
+    border-radius: $radius-xs;
   }
   &::-webkit-scrollbar-thumb:hover {
     background-color: #a8a8a8;
@@ -1437,11 +1437,11 @@ body.door-locked {
     }
 
     .primary-button {
-      border-color: $color-white;
+      background-color: $color-white;
       color: $color-primary;
 
       &:hover {
-        border-color: $color-border;
+        background-color: $color-border;
       }
     }
   }
