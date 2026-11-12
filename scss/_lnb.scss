@@ -53,12 +53,10 @@
   width: 100%;
   padding: 0 $space-lg;
   background-color: transparent;
-  font-size: $font-md;
-  font-weight: 600;
+  @include typo($font-md, 600, $line-height-heading);
   color: $color-text-dark;
   text-align: left;
   transition: background-color 0.2s ease;
-  cursor: pointer;
 
   &::after {
     width: 8px;
@@ -100,8 +98,7 @@
   display: block;
   width: 100%;
   padding: $space-sm $space-lg;
-  font-size: $font-sm;
-  font-weight: 500;
+  @include text-body-sm;
   color: $color-text-light;
   transition:
     background-color 0.2s ease,

@@ -6,24 +6,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   min-height: 44px;
   padding: 0 16px;
   border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(47, 95, 167, 0.15);
   font-size: 1rem;
   font-weight: 700;
+  line-height: 1;
   color: #1b2d5a;
 }
 
-.primary-button {
-  border: 0;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(47, 95, 167, 0.15);
-}
-
 .ghost-button {
-  border: 1px solid #eef2f6;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: #fff;
 }
 
 .section-head {
@@ -43,12 +37,12 @@
 .section-title {
   position: relative;
   display: inline-block;
-  font-size: clamp(24px, 2vw + 12px, 36px);
+  font-size: 2.25rem;
   font-weight: 800;
   line-height: 1.35;
   letter-spacing: -0.03em;
+  font-size: clamp(24px, 2vw + 12px, 36px);
   color: #1b2d5a;
-  word-break: keep-all;
 }
 .section-title__eng-title {
   margin-left: 8px;
@@ -57,15 +51,12 @@
   line-height: 1.35;
   letter-spacing: 0;
   color: #666;
-  word-break: keep-all;
 }
 
 .section-desc {
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.7;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: #666;
 }
 
@@ -99,6 +90,7 @@
   margin-bottom: 12px;
   font-size: 0.75rem;
   font-weight: 800;
+  line-height: 1;
   letter-spacing: 0.1em;
   color: #2f5fa7;
   text-transform: uppercase;
@@ -107,10 +99,10 @@
 .sub-eyebrow {
   display: block;
   margin-bottom: 16px;
-  color: #666;
   font-size: 0.9375rem;
   font-weight: 500;
   line-height: 1.7;
+  color: #666;
 }
 
 /* Info Badge (공통 안내 뱃지 UI) */
@@ -135,6 +127,7 @@
 .info-badge__desc {
   font-size: 0.9375rem;
   font-weight: 700;
+  line-height: 1.35;
   color: #2f5fa7;
 }
 
@@ -154,10 +147,10 @@
   border: 1px solid rgba(47, 95, 167, 0.15);
   border-radius: 50%;
   background-color: #fff;
-  color: #1b2d5a;
   font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
+  font-weight: 700;
+  line-height: 1;
+  color: #1b2d5a;
   transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -189,7 +182,7 @@
 }
 @media (max-width: 768px) {
   .card-title {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 }
 
@@ -197,8 +190,6 @@
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.7;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: #666;
 }
 
@@ -284,8 +275,8 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  word-break: keep-all;
   font-size: 0.9375rem;
+  font-weight: 500;
   line-height: 1.5;
 }
 .showcase-slider__features-item::before {

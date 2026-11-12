@@ -7,24 +7,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   min-height: 44px;
   padding: 0 $space-md;
   border-radius: $radius-sm;
-  font-size: $font-base;
-  font-weight: 700;
+  box-shadow: $shadow-primary;
+  @include text-btn;
   color: $color-primary;
 }
 
-.primary-button {
-  border: 0;
-  cursor: pointer;
-  box-shadow: $shadow-primary;
-}
-
 .ghost-button {
-  border: 1px solid $color-border;
-  background-color: $color-text-white-subtle;
+  background-color: $color-white;
 }
 
 .section-head {
@@ -45,26 +37,19 @@
 .section-title {
   position: relative;
   display: inline-block;
+  @include text-display;
   font-size: clamp(24px, 2vw + 12px, 36px);
-  font-weight: 800;
-  line-height: $line-height-heading;
-  letter-spacing: $letter-spacing-tight;
   color: $color-primary;
-  word-break: keep-all;
 
   &__eng-title {
     margin-left: 8px;
-    font-size: $font-xl;
-    font-weight: 500;
-    line-height: $line-height-heading;
-    letter-spacing: $letter-spacing-normal;
+    @include typo($font-xl, 500, $line-height-heading, $letter-spacing-normal);
     color: $color-text-light;
-    word-break: keep-all;
   }
 }
 
 .section-desc {
-  @include text-desc;
+  @include text-body-lg;
   color: $color-text-light;
 }
 
@@ -75,10 +60,7 @@
   width: fit-content;
   padding: $space-2xs $space-sm;
   border-radius: $radius-pill;
-  font-size: $font-xs;
-  font-weight: 700;
-  line-height: $line-height-none;
-  letter-spacing: $letter-spacing-normal;
+  @include text-badge;
 
   &--glass-gold {
     background-color: rgba($color-white, 0.1);
@@ -97,9 +79,7 @@
 .eyebrow {
   display: block;
   margin-bottom: 12px;
-  font-size: $font-xs;
-  font-weight: 800;
-  letter-spacing: $letter-spacing-widest;
+  @include typo($font-xs, 800, $line-height-none, $letter-spacing-widest);
   color: $color-secondary;
   text-transform: uppercase;
 }
@@ -107,10 +87,8 @@
 .sub-eyebrow {
   display: block;
   margin-bottom: 16px;
+  @include typo($font-md, 500, $line-height-loose);
   color: $color-text-light;
-  font-size: $font-md;
-  font-weight: 500;
-  line-height: $line-height-loose;
 }
 
 /* Info Badge (공통 안내 뱃지 UI) */
@@ -131,8 +109,7 @@
 }
 
 .info-badge__desc {
-  font-size: $font-md;
-  font-weight: 700;
+  @include typo($font-md, 700, $line-height-heading);
   color: $color-secondary;
 }
 
@@ -152,10 +129,8 @@
   border: 1px solid $color-border-default;
   border-radius: 50%;
   background-color: $color-white;
+  @include typo($font-base, 700, $line-height-none);
   color: $color-primary;
-  font-size: $font-base;
-  font-weight: bold;
-  cursor: pointer;
   transition:
     background-color 0.25s ease,
     border-color 0.25s ease,
@@ -184,18 +159,16 @@
 }
 
 .card-title {
-  font-size: $font-2xl;
-  font-weight: 800;
-  line-height: $line-height-heading;
+  @include text-title-lg;
   color: $color-primary;
 
   @media (max-width: $breakpoint-tablet) {
-    font-size: 20px;
+    font-size: $font-xl;
   }
 }
 
 .showcase-slider__card-desc {
-  @include text-desc;
+  @include text-body-lg;
   color: $color-text-light;
 }
 
@@ -286,10 +259,8 @@
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      word-break: keep-all;
       // 폰트 크기와 행간을 부모 한곳에서 중앙 통제(불릿과 텍스트의 높이를 맞추기 위함)
-      font-size: $font-md;
-      line-height: $line-height-body;
+      @include text-body-md;
 
       &::before {
         content: "";

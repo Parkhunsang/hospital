@@ -78,16 +78,60 @@ $breakpoint-tablet: 768px;
 $breakpoint-large-tablet: 960px;
 $breakpoint-desktop: 1200px;
 
-@mixin text-desc(
+// 타이포그래피 베이스 믹스인 (font-size, font-weight, line-height, letter-spacing 통합 제어)
+@mixin typo(
   $size: $font-base,
   $weight: 500,
-  $line-height: $line-height-loose
+  $line-height: $line-height-body,
+  $tracking: null
 ) {
   font-size: $size;
   font-weight: $weight;
   line-height: $line-height;
-  word-break: keep-all;
-  overflow-wrap: break-word;
+  @if $tracking != null {
+    letter-spacing: $tracking;
+  }
+}
+
+// 피그마 Text Style 1:1 매칭 핵심 프리셋 믹스인
+@mixin text-display {
+  @include typo($font-4xl, 800, $line-height-heading, $letter-spacing-tight);
+}
+
+@mixin text-display-num {
+  @include typo($font-4xl, 800, $line-height-none, $letter-spacing-normal);
+}
+
+@mixin text-title-lg {
+  @include typo($font-2xl, 800, $line-height-heading);
+}
+
+@mixin text-title-md {
+  @include typo($font-xl, 700, $line-height-heading);
+}
+
+@mixin text-btn {
+  @include typo($font-base, 700, $line-height-none);
+}
+
+@mixin text-body-lg {
+  @include typo($font-base, 500, $line-height-loose);
+}
+
+@mixin text-body-md {
+  @include typo($font-md, 500, $line-height-body);
+}
+
+@mixin text-body-sm {
+  @include typo($font-sm, 500, $line-height-body);
+}
+
+@mixin text-caption {
+  @include typo($font-xss, 500, $line-height-body, $letter-spacing-normal);
+}
+
+@mixin text-badge {
+  @include typo($font-xs, 700, $line-height-none, $letter-spacing-normal);
 }
 
 @mixin glass($blur: 12px, $bg-opacity: 0.12, $border-opacity: 0.25) {

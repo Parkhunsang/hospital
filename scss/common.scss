@@ -17,6 +17,8 @@ body {
   font-family: $font-family-base;
   letter-spacing: $letter-spacing-base;
   color: $color-primary;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 a {
   color: inherit;

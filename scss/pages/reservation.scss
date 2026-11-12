@@ -40,8 +40,7 @@
 
 .reservation__title {
   margin-bottom: $font-3xl;
-  font-size: $font-2xl;
-  font-weight: 800;
+  @include text-title-lg;
   color: $color-white;
 }
 
@@ -62,8 +61,7 @@
   border: 1px solid transparent;
   border-radius: $radius-sm;
   background-color: rgba($color-text-dark, 0.2);
-  font-size: $font-md;
-  font-weight: 500;
+  @include text-body-md;
   color: $color-white;
   transition: border-color 0.2s ease;
 }
@@ -92,17 +90,15 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 54px;
+  min-height: 54px;
   padding: 0 $space-lg;
   border-radius: $radius-sm;
   background-color: $color-secondary;
-  font-size: $font-md;
-  font-weight: 700;
+  @include text-btn;
   color: $color-white;
   transition:
     background-color 0.2s ease,
     transform 0.2s ease;
-  cursor: pointer;
   &:hover {
     background-color: $color-primary;
   }
@@ -123,13 +119,12 @@
 .reservation__agreement-label {
   display: inline-flex;
   align-items: center;
-  gap: $space-xs; 
+  gap: $space-xs;
   height: 36px;
   padding: $space-2xs $space-md;
   border: 1px solid $color-border;
   border-radius: $radius-pill;
-  font-size: $font-xss;
-  font-weight: 500;
+  @include text-caption;
   color: $color-white;
   transition:
     border-color 0.2s ease,
@@ -163,12 +158,10 @@
 
 .reservation__privacy-btn {
   background: transparent;
-  font-size: $font-xss;
-  font-weight: 500;
+  @include text-caption;
   color: $color-text-white-subtle;
   text-decoration: underline;
   text-underline-offset: 3px;
-  cursor: pointer;
 }
 /* 입력폼 끝 */
 
@@ -209,9 +202,7 @@
 }
 
 .channel__title {
-  font-size: $font-base;
-  font-weight: 700;
-  line-height: $line-height-heading;
+  @include typo($font-base, 700, $line-height-heading);
   color: $color-text-dark;
 }
 
@@ -240,25 +231,19 @@
 
 .channel__phone {
   height: 38px;
-  font-size: $font-lg;
-  font-weight: 800;
-  line-height: 38px;
-  letter-spacing: $letter-spacing-normal;
+  @include typo($font-lg, 800, 38px, $letter-spacing-normal);
   color: $color-text-dark;
 }
 
 .channel__btn {
-  min-width: 112px;
   min-height: 38px;
   padding: 0 $space-ml;
   border-radius: $radius-pill;
   text-align: center;
 
   & span {
-    line-height: 38px;
-    font-size: $font-xss;
-    font-weight: 600;
-    color: black;
+    @include typo($font-xss, 600, 38px, $letter-spacing-normal);
+    color: $color-text-dark;
   }
 }
 /* 예약 채널 끝 */

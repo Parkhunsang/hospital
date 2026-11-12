@@ -23,18 +23,12 @@
 }
 
 .subpage-hero__title {
-  font-size: $font-4xl;
-  font-weight: 800;
-  line-height: $line-height-tight;
-  letter-spacing: $letter-spacing-tight;
+  @include text-display;
   color: $color-white;
 }
 
 .subpage-hero__title--english {
-  font-size: $font-2xl;
-  font-weight: 400;
-  line-height: $line-height-heading;
-  letter-spacing: $letter-spacing-wide;
+  @include typo($font-2xl, 400, $line-height-heading, $letter-spacing-wide);
   color: $color-text-white-subtle;
 }
 
@@ -71,10 +65,10 @@
     align-items: center;
     justify-content: center;
     padding: $space-xs $space-md;
+    min-height: 38px;
+    padding: 0 $space-md;
     border-radius: $radius-pill;
-    font-size: $font-base;
-    font-weight: 600;
-    line-height: $line-height-none;
+    @include text-btn;
     color: $color-text-dark;
     transition:
       background-color 0.2s ease,
@@ -141,13 +135,13 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: url("../disease/disease_assets/check.svg") no-repeat center center
-      $color-primary;
+    background: url("../disease/disease_assets/check.svg") no-repeat center
+      center $color-primary;
   }
 }
 
 .causes-text__desc {
-  @include text-desc($line-height: $line-height-body);
+  @include typo($font-base, 500, $line-height-body);
   color: $color-text-dark;
 }
 
@@ -205,7 +199,7 @@
 
 .symptoms__text {
   padding: $space-ml $space-lg;
-  @include text-desc($weight: 600, $line-height: $line-height-body);
+  @include typo($font-base, 600, $line-height-body);
   color: $color-text-dark;
   @media (max-width: $breakpoint-tablet) {
     padding: $space-md;

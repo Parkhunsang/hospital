@@ -33,9 +33,7 @@
     position: relative;
     display: block;
     padding: $space-xs 0;
-    font-size: $font-base;
-    font-weight: 500;
-    line-height: $line-height-none;
+    @include typo($font-base, 500, $line-height-none);
     color: $color-white;
     transition: color 0.2s ease;
 
@@ -88,11 +86,10 @@
   display: block;
   padding: $space-xs $space-sm;
   border-radius: $radius-sm;
-  font-size: $font-base;
-  font-weight: 400;
+  @include typo($font-base, 500, $line-height-none);
   white-space: nowrap;
   text-align: center;
-    color: rgba($color-white, 0.5);
+  color: rgba($color-white, 0.5);
   transition: all 0.2s ease;
 
   &:is(:hover, :focus-visible) {

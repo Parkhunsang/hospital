@@ -222,7 +222,7 @@
 .footer__brand-tagline {
   padding-left: $space-md;
   border-left: 1px solid rgba($color-border, 0.5);
-  @include text-desc($size: $font-md, $line-height: $line-height-body);
+  @include text-body-md;
   color: $color-text-white-subtle;
 }
 
@@ -261,23 +261,17 @@
 
 .footer__card-eng-title {
   margin-bottom: $space-2xs;
-  font-size: $font-sm;
-  font-weight: 600;
-  line-height: $line-height-heading;
-  letter-spacing: $letter-spacing-wide;
+  @include typo($font-sm, 600, $line-height-heading, $letter-spacing-wide);
   color: $color-secondary-light;
   text-transform: uppercase;
 }
 
 .footer__card-title {
-  font-size: $font-xl;
-  font-weight: 700;
-  line-height: $line-height-heading;
+  @include text-title-md;
   color: $color-white;
 
   &--phone {
-    font-size: $font-2xl;
-    font-weight: 800;
+    @include text-title-lg;
     letter-spacing: $letter-spacing-normal;
     color: $color-focus-dark;
   }
@@ -304,17 +298,12 @@
 }
 
 .footer__card-text {
-  font-size: $font-sm;
-  font-weight: 500;
-  line-height: $line-height-body;
+  @include text-body-sm;
   color: $color-text-white-subtle;
 }
 
 .footer__card-time {
-  font-size: $font-md;
-  font-weight: 600;
-  line-height: $line-height-tight;
-  letter-spacing: $letter-spacing-normal;
+  @include typo($font-md, 600, $line-height-tight, $letter-spacing-normal);
   color: $color-white;
 
   &--off {
@@ -322,19 +311,9 @@
   }
 }
 
-.footer__card-badge {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
+.footer .badge {
   margin-left: 6px;
-  padding: $space-2xs $space-xs;
-  border-radius: 9999px;
   background-color: rgba(239, 68, 68, 0.2);
-  font-size: $font-xs;
-  font-weight: 600;
-  line-height: $line-height-none;
-  letter-spacing: $letter-spacing-normal;
   color: #f87171;
 }
 
@@ -370,8 +349,7 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(15, 23, 42, 0.4);
-    font-size: $font-xss;
-    font-weight: 600;
+    @include typo($font-xss, 600, $line-height-none);
     color: $color-white;
     transition: background-color 0.3s ease;
     content: "지도 바로가기 ↗";
@@ -397,8 +375,7 @@
     padding: $space-2xs $space-xs;
     border-radius: $radius-xs;
     background-color: rgba($color-text-white-subtle, 0.15);
-    font-size: $font-sm;
-    font-weight: 600;
+    @include typo($font-sm, 700, $line-height-none);
     color: $color-text-white-subtle;
     white-space: nowrap;
   }
@@ -417,12 +394,10 @@
   justify-content: center;
   align-items: center;
   gap: $space-xs;
-  height: 48px;
+  min-height: 48px;
   padding: 0 $space-md;
   border-radius: $radius-sm;
-  font-size: $font-sm;
-  font-weight: 600;
-  line-height: $line-height-none;
+  @include typo($font-sm, 700, $line-height-none);
 
   &--kakao {
     background-color: #fee500;
@@ -489,9 +464,7 @@
     align-items: center;
     min-height: 44px;
     padding: $space-2xs $space-sm;
-    font-size: $font-sm;
-    font-weight: 400;
-    line-height: $line-height-body;
+    @include text-body-sm;
     color: $color-text-white-subtle;
     transition:
       color 0.2s ease,
@@ -526,6 +499,6 @@
 }
 
 .footer__legal-text {
-  @include text-desc($size: $font-xss, $line-height: $line-height-body);
+  @include text-caption;
   color: $color-text-light;
 }

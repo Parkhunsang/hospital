@@ -64,8 +64,7 @@
 
 //a태그
 .drawer__link {
-  font-size: $font-base;
-  font-weight: 500;
+  @include typo($font-base, 500, $line-height-none);
   color: $color-white;
   transition: color 0.2s ease;
 }
@@ -124,8 +123,7 @@
   align-items: center;
   gap: 12px;
   padding: $space-xs $space-sm;
-  font-size: $font-md;
-  font-weight: 400;
+  @include typo($font-md, 500, $line-height-body);
   color: $color-white;
 }
 
@@ -141,5 +139,4 @@
 
 .drawer__btn {
   width: 100%;
-  text-align: center;
 }

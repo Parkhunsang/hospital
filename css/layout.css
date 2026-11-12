@@ -78,7 +78,8 @@
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
+  line-height: 1;
   white-space: nowrap;
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
@@ -148,6 +149,7 @@
 .drawer__link {
   font-size: 1rem;
   font-weight: 500;
+  line-height: 1;
   color: #fff;
   transition: color 0.2s ease;
 }
@@ -198,7 +200,8 @@
   gap: 12px;
   padding: 8px 12px;
   font-size: 0.9375rem;
-  font-weight: 400;
+  font-weight: 500;
+  line-height: 1.5;
   color: #fff;
 }
 
@@ -213,7 +216,6 @@
 
 .drawer__btn {
   width: 100%;
-  text-align: center;
 }
 
 /* ==========================================
@@ -269,10 +271,10 @@
   background-color: transparent;
   font-size: 0.9375rem;
   font-weight: 600;
+  line-height: 1.35;
   color: #222;
   text-align: left;
   transition: background-color 0.2s ease;
-  cursor: pointer;
 }
 .lnb__button::after {
   width: 8px;
@@ -312,6 +314,7 @@
   padding: 12px 24px;
   font-size: 0.875rem;
   font-weight: 500;
+  line-height: 1.5;
   color: #666;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -570,8 +573,6 @@
   font-size: 0.9375rem;
   font-weight: 500;
   line-height: 1.5;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -630,6 +631,7 @@
 .footer__card-title--phone {
   font-size: 1.5rem;
   font-weight: 800;
+  line-height: 1.35;
   letter-spacing: 0;
   color: #38bdf8;
 }
@@ -671,19 +673,9 @@
   color: #f87171;
 }
 
-.footer__card-badge {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
+.footer .badge {
   margin-left: 6px;
-  padding: 4px 8px;
-  border-radius: 9999px;
   background-color: rgba(239, 68, 68, 0.2);
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0;
   color: #f87171;
 }
 
@@ -721,6 +713,7 @@
   background-color: rgba(15, 23, 42, 0.4);
   font-size: 0.8125rem;
   font-weight: 600;
+  line-height: 1;
   color: #fff;
   transition: background-color 0.3s ease;
   content: "지도 바로가기 ↗";
@@ -745,7 +738,8 @@
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.15);
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1;
   color: rgba(255, 255, 255, 0.85);
   white-space: nowrap;
 }
@@ -763,11 +757,11 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  height: 48px;
+  min-height: 48px;
   padding: 0 16px;
   border-radius: 8px;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
 }
 .footer__card-btn--kakao {
@@ -834,7 +828,7 @@
   min-height: 44px;
   padding: 4px 12px;
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
   transition: color 0.2s ease, background-color 0.2s ease;
@@ -867,7 +861,6 @@
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.5;
-  word-break: keep-all;
-  overflow-wrap: break-word;
+  letter-spacing: 0;
   color: #666;
 }

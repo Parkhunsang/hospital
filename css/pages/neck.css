@@ -36,8 +36,6 @@
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.35;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: #fff;
 }
 
@@ -47,8 +45,6 @@
   font-size: 0.9375rem;
   font-weight: 500;
   line-height: 1.5;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: #222;
 }
 

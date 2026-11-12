@@ -30,14 +30,14 @@
 .neck-compare__th {
   padding: $space-md $space-lg;
   background-color: $color-primary;
-  @include text-desc($size: $font-base, $weight: 700, $line-height: $line-height-heading);
+  @include typo($font-base, 700, $line-height-heading);
   color: $color-white;
 }
 
 .neck-compare__td {
   padding: $space-md $space-lg;
   border-bottom: 1px solid $color-border;
-  @include text-desc($size : $font-md, $line-height: $line-height-body);
+  @include text-body-md;
   color: $color-text-dark;
 }
 

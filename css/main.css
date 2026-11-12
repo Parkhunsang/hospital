@@ -87,8 +87,6 @@ body.door-locked {
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.7;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: #fff;
 }
 
@@ -112,6 +110,8 @@ body.door-locked {
   margin-top: 36px;
   font-size: 0.8125rem;
   font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -263,6 +263,7 @@ body.door-locked {
 .hero-3d__welcome-title {
   font-size: 1.125rem;
   font-weight: 600;
+  line-height: 1.35;
   color: #666;
 }
 
@@ -330,6 +331,7 @@ body.door-locked {
 .hero-3d__pain-text {
   font-size: 1rem;
   font-weight: 700;
+  line-height: 1.35;
   color: #1b2d5a;
 }
 
@@ -395,6 +397,7 @@ body.door-locked {
 .hero-3d__info-title {
   font-size: 1.5rem;
   font-weight: 800;
+  line-height: 1.35;
   color: #1b2d5a;
 }
 @media (max-width: 1200px) {
@@ -464,6 +467,10 @@ body.door-locked {
 
 .hero-3d__disease-item {
   width: 100%;
+  border-radius: 12px;
+  border: 1px solid #eef2f6;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(27, 45, 90, 0.04);
 }
 @media (max-width: 640px) {
   .hero-3d__disease-item {
@@ -476,15 +483,12 @@ body.door-locked {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
-  border-radius: 12px;
-  border: 1px solid #eef2f6;
-  background-color: #fff;
-  box-shadow: 0 4px 12px rgba(27, 45, 90, 0.04);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 600;
+  line-height: 1.35;
   color: #1b2d5a;
   transition: all 0.3s ease-in-out;
+  padding: 16px 20px;
 }
 .hero-3d__disease-link::after {
   font-size: 1rem;
@@ -511,11 +515,10 @@ body.door-locked {
 @media (max-width: 640px) {
   .hero-3d__disease-link {
     white-space: nowrap;
-    min-height: 44px;
     padding: 8px 12px;
   }
   .hero-3d__disease-link::after {
-    font-size: 14px;
+    content: none;
   }
 }
 
@@ -715,6 +718,7 @@ body.door-locked {
   text-align: left;
   font-size: 0.9375rem;
   font-weight: 700;
+  line-height: 1.35;
   color: #1b2d5a;
   transition: color 0.3s ease;
 }
@@ -832,8 +836,6 @@ body.door-locked {
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.7;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -863,16 +865,17 @@ body.door-locked {
   justify-content: center;
   gap: 8px;
   align-self: flex-start;
+  min-height: 44px;
   margin-top: auto;
-  padding: 12px 24px;
+  padding: 0 24px;
   border: 1px solid rgba(47, 95, 167, 0.2);
   border-radius: 8px;
   background-color: #fff;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 700;
+  line-height: 1;
   color: #2f5fa7;
   transition: all 0.3s ease;
-  cursor: pointer;
 }
 .non-surgical__card-btn:hover {
   border-color: #2f5fa7;
@@ -1008,7 +1011,6 @@ body.door-locked {
   line-height: 1.35;
   letter-spacing: -0.03em;
   color: #fff;
-  word-break: keep-all;
 }
 @media (max-width: 960px) {
   .brand-trust__title {
@@ -1029,8 +1031,6 @@ body.door-locked {
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.7;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: rgba(255, 255, 255, 0.85);
 }
 @media (max-width: 960px) {
@@ -1086,6 +1086,7 @@ body.door-locked {
 .brand-trust__stat-label {
   font-size: 0.875rem;
   font-weight: 700;
+  line-height: 1;
   color: rgba(255, 255, 255, 0.85);
 }
 @media (max-width: 640px) {
@@ -1097,6 +1098,7 @@ body.door-locked {
 .brand-trust__stat-num {
   font-size: 2.25rem;
   font-weight: 800;
+  line-height: 1;
   letter-spacing: 0;
   color: #fff;
 }
@@ -1115,6 +1117,7 @@ body.door-locked {
   margin-left: 4px;
   font-size: 1rem;
   font-weight: 700;
+  line-height: 1;
   color: #fdb608;
 }
 
@@ -1154,7 +1157,6 @@ body.door-locked {
   border: none;
   background: transparent;
   color: inherit;
-  cursor: pointer;
   transition: transform 0.2s ease;
 }
 .brand-trust__btn--prev:hover, .brand-trust__btn--next:hover, .brand-trust__btn--play-pause:hover {
@@ -1181,7 +1183,8 @@ body.door-locked {
 .brand-trust__current-index,
 .brand-trust__total-index {
   font-size: 0.875rem;
-  font-weight: 800;
+  font-weight: 700;
+  line-height: 1;
   letter-spacing: 0;
 }
 
@@ -1260,6 +1263,7 @@ body.door-locked {
   margin-bottom: 20px;
   font-size: 2.25rem;
   font-weight: 800;
+  line-height: 1;
   letter-spacing: 0;
   color: #2f5fa7;
   opacity: 0.35;
@@ -1311,6 +1315,7 @@ body.door-locked {
 .doctors__role {
   font-size: 1rem;
   font-weight: 600;
+  line-height: 1.5;
   color: #666;
   transition: color 0.5s ease;
 }
@@ -1349,17 +1354,16 @@ body.door-locked {
 
 .doctors__spec-info {
   margin-right: 4px;
-  color: #fff;
   font-size: 1rem;
   font-weight: 700;
+  line-height: 1.35;
+  color: #fff;
 }
 
 .doctors__spec-text {
   font-size: 0.9375rem;
   font-weight: 500;
   line-height: 1.5;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: rgba(255, 255, 255, 0.85);
 }
 @media (max-width: 960px) {
@@ -1399,6 +1403,7 @@ body.door-locked {
 .doctors__schedule-label {
   font-size: 0.875rem;
   font-weight: 700;
+  line-height: 1;
   color: #fff;
 }
 @media (max-width: 960px) {
@@ -1419,7 +1424,8 @@ body.door-locked {
 
 .doctors__schedule-time {
   font-size: 0.9375rem;
-  font-weight: 800;
+  font-weight: 700;
+  line-height: 1;
   letter-spacing: 0;
   color: #fdb608;
 }
@@ -1433,7 +1439,7 @@ body.door-locked {
   display: flex;
 }
 
-.doctors__actions .primary-button.full-width {
+.doctors__actions .ghost-button {
   justify-content: center;
   width: 100%;
 }
@@ -1592,6 +1598,7 @@ body.door-locked {
 .self-test__text {
   font-size: 1rem;
   font-weight: 600;
+  line-height: 1.5;
   color: #1b2d5a;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -1609,9 +1616,7 @@ body.door-locked {
   background-color: #1b2d5a;
   color: #fff;
 }
-.self-test__result-box .primary-button {
-  background-color: #fff;
-  color: #1b2d5a;
+.self-test__result-box .ghost-button {
   align-self: flex-start;
 }
 @media (max-width: 960px) {
@@ -1623,7 +1628,7 @@ body.door-locked {
 
 .self-test__result-title {
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.35;
 }
 
@@ -1631,8 +1636,6 @@ body.door-locked {
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.7;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -1711,14 +1714,16 @@ body.door-locked {
 .news__tab-button {
   display: inline-flex;
   align-items: center;
-  padding: 12px 24px;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 24px;
   border: 1px solid #1b2d5a;
   border-radius: 9999px;
   background-color: #fff;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 700;
+  line-height: 1;
   color: #1b2d5a;
-  cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 .news__tab-button[aria-selected=true] {
@@ -1799,25 +1804,23 @@ body.door-locked {
 
 .news__title {
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.35;
   color: #1b2d5a;
-  word-break: keep-all;
 }
 
 .news__desc {
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.5;
-  word-break: keep-all;
-  overflow-wrap: break-word;
   color: #666;
 }
 
 .news__date {
   margin-top: auto;
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 1.5;
   letter-spacing: 0;
   color: #666;
 }

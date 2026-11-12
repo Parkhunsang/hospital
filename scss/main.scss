@@ -82,7 +82,7 @@ body.door-locked {
 
 .intro-door__desc {
   margin-bottom: 32px;
-  @include text-desc($size: $font-xl, $weight: 400);
+  @include typo($font-xl, 400, $line-height-loose);
   color: $color-white;
 }
 
@@ -104,8 +104,7 @@ body.door-locked {
   align-items: center;
   gap: 10px;
   margin-top: 36px;
-  font-size: $font-xss;
-  font-weight: 600;
+  @include typo($font-xss, 600, $line-height-body, $letter-spacing-normal);
   color: rgba($color-white, 0.5);
 }
 
@@ -255,8 +254,7 @@ body.door-locked {
 }
 
 .hero-3d__welcome-title {
-  font-size: $font-lg;
-  font-weight: 600;
+  @include typo($font-lg, 600, $line-height-heading);
   color: $color-text-light;
 }
 
@@ -316,8 +314,7 @@ body.door-locked {
 }
 
 .hero-3d__pain-text {
-  font-size: $font-base;
-  font-weight: 700;
+  @include typo($font-base, 700, $line-height-heading);
   color: $color-primary;
 }
 
@@ -379,8 +376,7 @@ body.door-locked {
 }
 
 .hero-3d__info-title {
-  font-size: $font-2xl;
-  font-weight: 800;
+  @include text-title-lg;
   color: $color-primary;
   @media (max-width: $breakpoint-desktop) {
     font-size: 19px;
@@ -445,6 +441,11 @@ body.door-locked {
 
 .hero-3d__disease-item {
   width: 100%;
+
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  background-color: $color-white;
+  box-shadow: $shadow-sm;
   @media (max-width: $breakpoint-small) {
     flex: 0 0 auto;
     width: auto;
@@ -455,16 +456,10 @@ body.door-locked {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $space-md $space-ml;
-  border-radius: $radius-md;
-  border: 1px solid $color-border;
-  background-color: $color-white;
-  box-shadow: $shadow-sm;
-  font-size: $font-md;
-  font-weight: 600;
+  @include typo($font-base, 600, $line-height-heading);
   color: $color-primary;
   transition: all 0.3s ease-in-out;
-
+  padding: $space-md $space-ml;
   &::after {
     font-size: $font-base;
     color: $color-primary;
@@ -491,10 +486,9 @@ body.door-locked {
   }
   @media (max-width: $breakpoint-small) {
     white-space: nowrap;
-    min-height: 44px;
     padding: $space-xs $space-sm;
     &::after {
-      font-size: 14px;
+      content: none;
     }
   }
 }
@@ -678,8 +672,7 @@ body.door-locked {
 .fast-diagnosis__btn-more {
   display: inline-block;
   text-align: left;
-  font-size: $font-md;
-  font-weight: 700;
+  @include typo($font-md, 700, $line-height-heading);
   color: $color-primary;
   transition: color 0.3s ease;
   &:hover {
@@ -798,7 +791,7 @@ body.door-locked {
 }
 
 .fast-diagnosis__step-desc {
-  @include text-desc;
+  @include text-body-lg;
   color: $color-text-white-subtle;
 }
 /* 03. Fast Diagnosis [END] */
@@ -828,16 +821,15 @@ body.door-locked {
   justify-content: center;
   gap: 8px;
   align-self: flex-start;
+  min-height: 44px;
   margin-top: auto;
-  padding: $space-sm $space-lg;
+  padding: 0 $space-lg;
   border: 1px solid rgba($color-secondary, 0.2);
   border-radius: $radius-sm;
   background-color: $color-white;
-  font-size: $font-md;
-  font-weight: 700;
+  @include text-btn;
   color: $color-secondary;
   transition: all 0.3s ease;
-  cursor: pointer;
   &:hover {
     border-color: $color-secondary;
     background-color: $color-secondary;
@@ -973,12 +965,8 @@ body.door-locked {
 }
 
 .brand-trust__title {
-  font-size: $font-4xl;
-  font-weight: 800;
-  line-height: $line-height-heading;
-  letter-spacing: $letter-spacing-tight;
+  @include text-display;
   color: $color-white;
-  word-break: keep-all;
   @media (max-width: $breakpoint-large-tablet) {
     font-size: 28px;
   }
@@ -992,7 +980,7 @@ body.door-locked {
 }
 
 .brand-trust__desc {
-  @include text-desc($size: $font-lg);
+  @include typo($font-lg, 500, $line-height-loose);
   color: $color-text-white-subtle;
   @media (max-width: $breakpoint-large-tablet) {
     font-size: 15px;
@@ -1039,8 +1027,7 @@ body.door-locked {
 }
 
 .brand-trust__stat-label {
-  font-size: $font-sm;
-  font-weight: 700;
+  @include typo($font-sm, 700, $line-height-none);
   color: $color-text-white-subtle;
   @media (max-width: $breakpoint-small) {
     font-size: 12px;
@@ -1048,9 +1035,7 @@ body.door-locked {
 }
 
 .brand-trust__stat-num {
-  font-size: $font-4xl;
-  font-weight: 800;
-  letter-spacing: $letter-spacing-normal;
+  @include text-display-num;
   color: $color-white;
   @media (max-width: $breakpoint-large-tablet) {
     font-size: 24px;
@@ -1062,8 +1047,7 @@ body.door-locked {
 
 .brand-trust__stat-val small {
   margin-left: 4px;
-  font-size: $font-base;
-  font-weight: 700;
+  @include typo($font-base, 700, $line-height-none);
   color: $color-accent;
 }
 
@@ -1104,7 +1088,6 @@ body.door-locked {
     border: none;
     background: transparent;
     color: inherit;
-    cursor: pointer;
     transition: transform 0.2s ease;
     &:hover {
       transform: scale(1.15);
@@ -1134,9 +1117,7 @@ body.door-locked {
 
 .brand-trust__current-index,
 .brand-trust__total-index {
-  font-size: $font-sm;
-  font-weight: 800;
-  letter-spacing: $letter-spacing-normal;
+  @include typo($font-sm, 700, $line-height-none, $letter-spacing-normal);
 }
 
 .brand-trust__progress-wrap {
@@ -1208,9 +1189,7 @@ body.door-locked {
 .doctors__number {
   display: block;
   margin-bottom: 20px;
-  font-size: $font-4xl;
-  font-weight: 800;
-  letter-spacing: $letter-spacing-normal;
+  @include text-display-num;
   color: $color-secondary;
   opacity: 0.35;
   transition:
@@ -1255,8 +1234,7 @@ body.door-locked {
 }
 
 .doctors__role {
-  font-size: $font-base;
-  font-weight: 600;
+  @include typo($font-base, 600, $line-height-body);
   color: $color-text-light;
   transition: color 0.5s ease;
 }
@@ -1296,13 +1274,12 @@ body.door-locked {
 
 .doctors__spec-info {
   margin-right: 4px;
+  @include typo($font-base, 700, $line-height-heading);
   color: $color-white;
-  font-size: $font-base;
-  font-weight: 700;
 }
 
 .doctors__spec-text {
-  @include text-desc($size: $font-md, $line-height: $line-height-body);
+  @include text-body-md;
   color: $color-text-white-subtle;
   @media (max-width: $breakpoint-large-tablet) {
     color: $color-text-light;
@@ -1332,8 +1309,7 @@ body.door-locked {
 }
 
 .doctors__schedule-label {
-  font-size: $font-sm;
-  font-weight: 700;
+  @include typo($font-sm, 700, $line-height-none);
   color: $color-white;
   @media (max-width: $breakpoint-large-tablet) {
     color: $color-primary;
@@ -1351,9 +1327,7 @@ body.door-locked {
 }
 
 .doctors__schedule-time {
-  font-size: $font-md;
-  font-weight: 800;
-  letter-spacing: $letter-spacing-normal;
+  @include typo($font-md, 700, $line-height-none, $letter-spacing-normal);
   color: $color-accent;
   @media (max-width: $breakpoint-large-tablet) {
     color: $color-secondary;
@@ -1364,7 +1338,7 @@ body.door-locked {
   display: flex;
 }
 
-.doctors__actions .primary-button.full-width {
+.doctors__actions .ghost-button {
   justify-content: center;
   width: 100%;
 }
@@ -1527,8 +1501,7 @@ body.door-locked {
 }
 
 .self-test__text {
-  font-size: $font-base;
-  font-weight: 600;
+  @include typo($font-base, 600, $line-height-body);
   color: $color-primary;
   user-select: none;
 }
@@ -1544,9 +1517,7 @@ body.door-locked {
   background-color: $color-primary;
   color: $color-white;
 
-  .primary-button {
-    background-color: $color-white;
-    color: $color-primary;
+  .ghost-button {
     align-self: flex-start;
   }
 
@@ -1557,13 +1528,11 @@ body.door-locked {
 }
 
 .self-test__result-title {
-  font-size: $font-xl;
-  font-weight: 800;
-  line-height: $line-height-heading;
+  @include text-title-md;
 }
 
 .self-test__desc {
-  @include text-desc;
+  @include text-body-lg;
   color: $color-text-white-subtle;
 }
 /* 06. 자가진단 테스트[END] */
@@ -1642,14 +1611,14 @@ body.door-locked {
 .news__tab-button {
   display: inline-flex;
   align-items: center;
-  padding: $space-sm $space-lg;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 $space-lg;
   border: 1px solid $color-primary;
   border-radius: $radius-pill;
   background-color: $color-white;
-  font-size: $font-md;
-  font-weight: 700;
+  @include text-btn;
   color: $color-primary;
-  cursor: pointer;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
@@ -1730,23 +1699,18 @@ body.door-locked {
 }
 
 .news__title {
-  font-size: $font-base;
-  font-weight: 800;
-  line-height: $line-height-heading;
+  @include typo($font-base, 700, $line-height-heading);
   color: $color-primary;
-  word-break: keep-all;
 }
 
 .news__desc {
-  @include text-desc($size: $font-sm, $line-height: $line-height-body);
+  @include text-body-sm;
   color: $color-text-light;
 }
 
 .news__date {
   margin-top: auto;
-  font-size: $font-xss;
-  font-weight: 600;
-  letter-spacing: $letter-spacing-normal;
+  @include text-caption;
   color: $color-text-light;
 }
 /* 08. 공지사항 및 건강 정보 [END] */
