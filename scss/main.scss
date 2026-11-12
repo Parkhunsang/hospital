@@ -315,7 +315,7 @@ body.door-locked {
   }
 }
 
-.hero-3d__menu-text {
+.hero-3d__pain-text {
   font-size: $font-base;
   font-weight: 700;
   color: $color-primary;
@@ -567,7 +567,7 @@ body.door-locked {
   //호버 인터렉션
   &:hover {
     background-color: $color-primary;
-    .hero-3d__menu-text {
+    .hero-3d__pain-text {
       color: $color-white;
     }
     .hero-3d__togo-icon img {
@@ -992,8 +992,7 @@ body.door-locked {
 }
 
 .brand-trust__desc {
-  @include text-desc;
-  font-size: $font-lg;
+  @include text-desc($size: $font-lg);
   color: $color-text-white-subtle;
   @media (max-width: $breakpoint-large-tablet) {
     font-size: 15px;

@@ -90,9 +90,9 @@
   border-radius: $radius-sm;
   font-size: $font-base;
   font-weight: 400;
-  color: rgba($color-white, 0.5);
   white-space: nowrap;
   text-align: center;
+    color: rgba($color-white, 0.5);
   transition: all 0.2s ease;
 
   &:is(:hover, :focus-visible) {

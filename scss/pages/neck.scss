@@ -30,32 +30,19 @@
 .neck-compare__th {
   padding: $space-md $space-lg;
   background-color: $color-primary;
+  @include text-desc($size: $font-base, $weight: 700, $line-height: $line-height-heading);
   color: $color-white;
-  font-size: $font-base;
-  font-weight: 700;
-  line-height: $line-height-heading;
 }
 
 .neck-compare__td {
   padding: $space-md $space-lg;
   border-bottom: 1px solid $color-border;
+  @include text-desc($size : $font-md, $line-height: $line-height-body);
   color: $color-text-dark;
-  font-size: $font-md;
-  line-height: $line-height-body;
 }
 
 .neck-compare__row:last-child .neck-compare__td {
   border-bottom: none;
-}
-
-.neck-compare__th--row {
-  border-bottom: 1px solid $color-border;
-  background-color: $color-bg-light;
-  font-size: $font-md;
-  font-weight: 700;
-  line-height: $line-height-heading;
-  color: $color-primary;
-  text-align: left;
 }
 
 .neck-compare__row:last-child .neck-compare__th--row {

@@ -327,7 +327,7 @@ body.door-locked {
   }
 }
 
-.hero-3d__menu-text {
+.hero-3d__pain-text {
   font-size: 1rem;
   font-weight: 700;
   color: #1b2d5a;
@@ -597,7 +597,7 @@ body.door-locked {
 .hero-3d__togo-item:hover {
   background-color: #1b2d5a;
 }
-.hero-3d__togo-item:hover .hero-3d__menu-text {
+.hero-3d__togo-item:hover .hero-3d__pain-text {
   color: #fff;
 }
 .hero-3d__togo-item:hover .hero-3d__togo-icon img {
@@ -1026,12 +1026,11 @@ body.door-locked {
 }
 
 .brand-trust__desc {
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.7;
   word-break: keep-all;
   overflow-wrap: break-word;
-  font-size: 1.125rem;
   color: rgba(255, 255, 255, 0.85);
 }
 @media (max-width: 960px) {

@@ -33,32 +33,27 @@
 .neck-compare__th {
   padding: 16px 24px;
   background-color: #1b2d5a;
-  color: #fff;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.35;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  color: #fff;
 }
 
 .neck-compare__td {
   padding: 16px 24px;
   border-bottom: 1px solid #eef2f6;
-  color: #222;
   font-size: 0.9375rem;
+  font-weight: 500;
   line-height: 1.5;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  color: #222;
 }
 
 .neck-compare__row:last-child .neck-compare__td {
   border-bottom: none;
-}
-
-.neck-compare__th--row {
-  border-bottom: 1px solid #eef2f6;
-  background-color: #f9fbfd;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  line-height: 1.35;
-  color: #1b2d5a;
-  text-align: left;
 }
 
 .neck-compare__row:last-child .neck-compare__th--row {
