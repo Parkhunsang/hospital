@@ -37,8 +37,10 @@
 .section-title {
   position: relative;
   display: inline-block;
-  @include text-display;
   font-size: clamp(24px, 2vw + 12px, 36px);
+  font-weight: 800;
+  line-height: $line-height-heading;
+  letter-spacing: $letter-spacing-tight;
   color: $color-primary;
 
   &__eng-title {

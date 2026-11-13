@@ -37,11 +37,10 @@
 .section-title {
   position: relative;
   display: inline-block;
-  font-size: 2.25rem;
+  font-size: clamp(24px, 2vw + 12px, 36px);
   font-weight: 800;
   line-height: 1.35;
   letter-spacing: -0.03em;
-  font-size: clamp(24px, 2vw + 12px, 36px);
   color: #1b2d5a;
 }
 .section-title__eng-title {
