@@ -30,7 +30,7 @@
 .neck-compare__th {
   padding: $space-md $space-lg;
   background-color: $color-primary;
-  @include typo($font-base, 700, $line-height-heading);
+  @include text-body-lg;
   color: $color-white;
 }
 

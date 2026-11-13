@@ -331,7 +331,7 @@ body.door-locked {
 .hero-3d__pain-text {
   font-size: 1rem;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.5;
   color: #1b2d5a;
 }
 
@@ -484,8 +484,8 @@ body.door-locked {
   align-items: center;
   justify-content: space-between;
   font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.35;
+  font-weight: 700;
+  line-height: 1.5;
   color: #1b2d5a;
   transition: all 0.3s ease-in-out;
   padding: 16px 20px;
@@ -835,7 +835,7 @@ body.door-locked {
 .fast-diagnosis__step-desc {
   font-size: 1rem;
   font-weight: 500;
-  line-height: 1.7;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -1028,9 +1028,9 @@ body.door-locked {
 }
 
 .brand-trust__desc {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 500;
-  line-height: 1.7;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
 }
 @media (max-width: 960px) {
@@ -1085,8 +1085,8 @@ body.door-locked {
 
 .brand-trust__stat-label {
   font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1;
+  font-weight: 500;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
 }
 @media (max-width: 640px) {
@@ -1116,7 +1116,7 @@ body.door-locked {
 .brand-trust__stat-val small {
   margin-left: 4px;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   color: #fdb608;
 }
@@ -1356,13 +1356,18 @@ body.door-locked {
   margin-right: 4px;
   font-size: 1rem;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.5;
   color: #fff;
+}
+@media (max-width: 960px) {
+  .doctors__spec-info {
+    color: #666;
+  }
 }
 
 .doctors__spec-text {
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
 }
@@ -1401,8 +1406,8 @@ body.door-locked {
 }
 
 .doctors__schedule-label {
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
   line-height: 1;
   color: #fff;
 }
@@ -1423,10 +1428,9 @@ body.door-locked {
 }
 
 .doctors__schedule-time {
-  font-size: 0.9375rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
   line-height: 1;
-  letter-spacing: 0;
   color: #fdb608;
 }
 @media (max-width: 960px) {
@@ -1597,7 +1601,7 @@ body.door-locked {
 
 .self-test__text {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.5;
   color: #1b2d5a;
   -webkit-user-select: none;
@@ -1635,7 +1639,7 @@ body.door-locked {
 .self-test__desc {
   font-size: 1rem;
   font-weight: 500;
-  line-height: 1.7;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -1724,7 +1728,7 @@ body.door-locked {
   font-weight: 700;
   line-height: 1;
   color: #1b2d5a;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 .news__tab-button[aria-selected=true] {
   border-color: #1b2d5a;
@@ -1805,7 +1809,7 @@ body.door-locked {
 .news__title {
   font-size: 1rem;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.5;
   color: #1b2d5a;
 }
 

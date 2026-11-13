@@ -261,6 +261,7 @@
 
 .footer__card-eng-title {
   margin-bottom: $space-2xs;
+  font-family: $font-family-en;
   @include typo($font-sm, 600, $line-height-heading, $letter-spacing-wide);
   color: $color-secondary-light;
   text-transform: uppercase;
@@ -499,6 +500,7 @@
 }
 
 .footer__legal-text {
+  font-family: $font-family-en;
   @include text-caption;
   color: $color-text-light;
 }

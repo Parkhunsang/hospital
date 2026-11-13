@@ -141,7 +141,7 @@
 }
 
 .causes-text__desc {
-  @include typo($font-base, 500, $line-height-body);
+  @include text-body-base;
   color: $color-text-dark;
 }
 
@@ -199,7 +199,7 @@
 
 .symptoms__text {
   padding: $space-ml $space-lg;
-  @include typo($font-base, 600, $line-height-body);
+  @include text-body-base;
   color: $color-text-dark;
   @media (max-width: $breakpoint-tablet) {
     padding: $space-md;

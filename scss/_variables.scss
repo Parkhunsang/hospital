@@ -114,12 +114,20 @@ $breakpoint-desktop: 1200px;
   @include typo($font-base, 700, $line-height-none);
 }
 
+@mixin text-label-lg {
+  @include typo($font-base, 600, $line-height-none);
+}
+
 @mixin text-body-lg {
-  @include typo($font-base, 500, $line-height-loose);
+  @include typo($font-base, 700, $line-height-body);
+}
+
+@mixin text-body-base {
+  @include typo($font-base, 500, $line-height-body);
 }
 
 @mixin text-body-md {
-  @include typo($font-md, 500, $line-height-body);
+  @include typo($font-md, 600, $line-height-body);
 }
 
 @mixin text-body-sm {

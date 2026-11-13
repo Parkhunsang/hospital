@@ -32,15 +32,14 @@
 .reservation__input-wrap {
   display: flex;
   flex-direction: column;
+  gap: 24px;
   width: 600px;
   @media (max-width: $breakpoint-large-tablet) {
     width: 100%;
   }
 }
 
-.reservation__title {
-  margin-bottom: $font-3xl;
-  @include text-title-lg;
+.reservation .card-title {
   color: $color-white;
 }
 
@@ -202,7 +201,7 @@
 }
 
 .channel__title {
-  @include typo($font-base, 700, $line-height-heading);
+  @include text-body-lg;
   color: $color-text-dark;
 }
 
@@ -236,14 +235,14 @@
 }
 
 .channel__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 38px;
   padding: 0 $space-ml;
   border-radius: $radius-pill;
   text-align: center;
-
-  & span {
-    @include typo($font-xss, 600, 38px, $letter-spacing-normal);
-    color: $color-text-dark;
-  }
+  @include text-btn;
+  color: $color-text-dark;
 }
 /* 예약 채널 끝 */

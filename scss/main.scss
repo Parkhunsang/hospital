@@ -314,7 +314,7 @@ body.door-locked {
 }
 
 .hero-3d__pain-text {
-  @include typo($font-base, 700, $line-height-heading);
+  @include text-body-lg;
   color: $color-primary;
 }
 
@@ -456,7 +456,7 @@ body.door-locked {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @include typo($font-base, 600, $line-height-heading);
+  @include text-body-lg;
   color: $color-primary;
   transition: all 0.3s ease-in-out;
   padding: $space-md $space-ml;
@@ -791,7 +791,7 @@ body.door-locked {
 }
 
 .fast-diagnosis__step-desc {
-  @include text-body-lg;
+  @include text-body-base;
   color: $color-text-white-subtle;
 }
 /* 03. Fast Diagnosis [END] */
@@ -980,7 +980,7 @@ body.door-locked {
 }
 
 .brand-trust__desc {
-  @include typo($font-lg, 500, $line-height-loose);
+  @include text-body-base;
   color: $color-text-white-subtle;
   @media (max-width: $breakpoint-large-tablet) {
     font-size: 15px;
@@ -1027,7 +1027,7 @@ body.door-locked {
 }
 
 .brand-trust__stat-label {
-  @include typo($font-sm, 700, $line-height-none);
+  @include text-body-sm;
   color: $color-text-white-subtle;
   @media (max-width: $breakpoint-small) {
     font-size: 12px;
@@ -1047,7 +1047,7 @@ body.door-locked {
 
 .brand-trust__stat-val small {
   margin-left: 4px;
-  @include typo($font-base, 700, $line-height-none);
+  @include text-label-lg;
   color: $color-accent;
 }
 
@@ -1274,8 +1274,11 @@ body.door-locked {
 
 .doctors__spec-info {
   margin-right: 4px;
-  @include typo($font-base, 700, $line-height-heading);
+  @include text-body-lg;
   color: $color-white;
+  @media (max-width: $breakpoint-large-tablet) {
+    color: $color-text-light;
+  }
 }
 
 .doctors__spec-text {
@@ -1309,7 +1312,7 @@ body.door-locked {
 }
 
 .doctors__schedule-label {
-  @include typo($font-sm, 700, $line-height-none);
+  @include text-label-lg;
   color: $color-white;
   @media (max-width: $breakpoint-large-tablet) {
     color: $color-primary;
@@ -1327,7 +1330,7 @@ body.door-locked {
 }
 
 .doctors__schedule-time {
-  @include typo($font-md, 700, $line-height-none, $letter-spacing-normal);
+  @include text-label-lg;
   color: $color-accent;
   @media (max-width: $breakpoint-large-tablet) {
     color: $color-secondary;
@@ -1501,7 +1504,7 @@ body.door-locked {
 }
 
 .self-test__text {
-  @include typo($font-base, 600, $line-height-body);
+  @include text-body-base;
   color: $color-primary;
   user-select: none;
 }
@@ -1532,7 +1535,7 @@ body.door-locked {
 }
 
 .self-test__desc {
-  @include text-body-lg;
+  @include text-body-base;
   color: $color-text-white-subtle;
 }
 /* 06. 자가진단 테스트[END] */
@@ -1620,6 +1623,7 @@ body.door-locked {
   @include text-btn;
   color: $color-primary;
   transition:
+    box-shadow 0.3s ease,
     background-color 0.3s ease,
     color 0.3s ease;
 
@@ -1699,7 +1703,7 @@ body.door-locked {
 }
 
 .news__title {
-  @include typo($font-base, 700, $line-height-heading);
+  @include text-body-lg;
   color: $color-primary;
 }
 

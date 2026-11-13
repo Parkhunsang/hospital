@@ -49,7 +49,7 @@
 }
 
 .section-desc {
-  @include text-body-lg;
+  @include text-body-base;
   color: $color-text-light;
 }
 
@@ -79,7 +79,8 @@
 .eyebrow {
   display: block;
   margin-bottom: 12px;
-  @include typo($font-xs, 800, $line-height-none, $letter-spacing-widest);
+  font-family: $font-family-en;
+  @include typo($font-sm, 800, $line-height-none, $letter-spacing-widest);
   color: $color-secondary;
   text-transform: uppercase;
 }
@@ -87,7 +88,7 @@
 .sub-eyebrow {
   display: block;
   margin-bottom: 16px;
-  @include typo($font-md, 500, $line-height-loose);
+  @include typo($font-base, 500, $line-height-loose);
   color: $color-text-light;
 }
 
@@ -109,7 +110,7 @@
 }
 
 .info-badge__desc {
-  @include typo($font-md, 700, $line-height-heading);
+  @include text-body-md;
   color: $color-secondary;
 }
 
@@ -168,7 +169,7 @@
 }
 
 .showcase-slider__card-desc {
-  @include text-body-lg;
+  @include text-body-base;
   color: $color-text-light;
 }
 

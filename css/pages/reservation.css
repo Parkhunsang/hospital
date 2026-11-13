@@ -32,6 +32,7 @@
 .reservation__input-wrap {
   display: flex;
   flex-direction: column;
+  gap: 24px;
   width: 600px;
 }
 @media (max-width: 960px) {
@@ -40,11 +41,7 @@
   }
 }
 
-.reservation__title {
-  margin-bottom: 1.875rem;
-  font-size: 1.5rem;
-  font-weight: 800;
-  line-height: 1.35;
+.reservation .card-title {
   color: #fff;
 }
 
@@ -68,7 +65,7 @@
   border-radius: 8px;
   background-color: rgba(34, 34, 34, 0.2);
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.5;
   color: #fff;
   transition: border-color 0.2s ease;
@@ -224,7 +221,7 @@
 .channel__title {
   font-size: 1rem;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.5;
   color: #222;
 }
 
@@ -262,16 +259,16 @@
 }
 
 .channel__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 38px;
   padding: 0 20px;
   border-radius: 9999px;
   text-align: center;
-}
-.channel__btn span {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  line-height: 38px;
-  letter-spacing: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
   color: #222;
 }
 
